@@ -1,6 +1,6 @@
 """
-String-Reversal Patch for DrawString  (dialog text only)
-=========================================================
+String-Reversal Patch for DrawString  (ALL call-sites)
+=======================================================
 
 PROBLEM
 -------
@@ -8,21 +8,24 @@ The game engine splits long Hebrew text into lines and passes each line
 individually to DrawString.  If the translated string is stored in natural
 (straight) Hebrew order the line *order* is correct (line 1 at top), but
 each line is rendered left-to-right so it appears backwards visually.
+This affects dialog text, tooltip/hover text, UI labels, and any other
+string rendered through DrawString.
 
 SOLUTION
 --------
-Patch the two DrawString call-sites that belong to the dialog/subtitle
-renderer (0x004DD250).  Replace each CALL with a CALL to a small wrapper
-function that lives in a free NOP region of .text.
-
-The wrapper:
-  1. Reads the string-pointer argument (third arg = [EBP+10h] inside
-     DrawString, confirmed by movzx dx, byte[eax+ecx] at 0x4DC072).
+Scan the entire .text section for every CALL DrawString instruction and
+replace each one with a CALL to a small wrapper that lives in a free NOP
+region of .text.  The wrapper:
+  1. Reads the string-pointer argument (arg3 = [ESP+0x1C] after 4 pushes).
   2. Advances a ring-buffer slot index (4 slots × 128 bytes in .data).
   3. Reverses the bytes into the next available ring slot.
   4. Replaces the string-pointer argument on the caller's stack with the
      slot address (so DrawString sees the reversed copy).
   5. Tail-calls DrawString normally.
+
+Previously only the 2 call-sites inside the dialog renderer (0x004DD250)
+were patched; mouse-pointer / tooltip sites were excluded.  Now ALL sites
+are patched so every string type is reversed.
 
 WHY A RING BUFFER?
 ------------------
@@ -35,7 +38,9 @@ to display line 2's reversed content.
 Using a rotating ring of 4 slots (128 bytes each) ensures that at least 4
 consecutive DrawString calls can coexist without colliding.  For a 2-line
 dialog each rendered with shadow + foreground (= 4 calls total) this is
-exactly sufficient.
+exactly sufficient.  Non-dialog strings (tooltips, UI labels) are typically
+single calls whose batch is flushed before the next string, so they never
+collide with each other or with dialog slots.
 
 BUG FIXED (strlen → arg4)
 --------------------------
@@ -57,8 +62,7 @@ passing as a small signed value.
 KEY ADDRESSES
 -------------
   DrawString       0x004DBFA0   renders one line of text
-  Call-site 1      0x004DD340   first  DrawString call inside 0x004DD250
-  Call-site 2      0x004DD37C   second DrawString call inside 0x004DD250
+  Call-sites       auto-discovered by scanning .text for CALL DrawString
   Wrapper cave     0x00403851   252 free NOP bytes in .text (103 bytes used)
   Ring index       0x005350E8   4-byte ring slot counter in .data
   Ring buffers     0x005350EC   4 × 128 = 512 bytes of slot buffers in .data
@@ -137,8 +141,6 @@ EXE_PATH = os.path.normpath(EXE_PATH)
 
 IMAGE_BASE    = 0x00400000
 DRAWSTRING_VA = 0x004DBFA0
-CALL_SITE_1   = 0x004DD340   # first  DrawString CALL inside 0x004DD250
-CALL_SITE_2   = 0x004DD37C   # second DrawString CALL inside 0x004DD250
 CALL_SITE_LEN = 5
 
 WRAPPER_VA    = 0x00403851   # 252-byte free NOP area in .text
@@ -150,10 +152,6 @@ RING_BUF_VA   = 0x005350EC   # 4 slots × 128 bytes = 512 bytes of slot buffers
 RING_SLOTS    = 4
 RING_SLOT_SZ  = 128
 RING_DATA_LEN = 4 + RING_SLOTS * RING_SLOT_SZ  # 516 bytes total
-
-# original 5 bytes at each call site (CALL DrawString)
-CALL_SITE_1_ORIG = bytes.fromhex('E85BECFFFF')
-CALL_SITE_2_ORIG = bytes.fromhex('E81FECFFFF')
 
 # ---------------------------------------------------------------------------
 # PE helpers
@@ -186,6 +184,53 @@ def _rel32(src_va: int, dst_va: int) -> bytes:
     """32-bit relative offset for a JMP/CALL instruction at src_va (5-byte)."""
     offset = dst_va - (src_va + 5)
     return struct.pack('<i', offset)
+
+
+def _find_call_sites(data: bytearray) -> list[int]:
+    """Scan the .text section for every CALL DrawString (E8 rel32) instruction.
+
+    Returns a sorted list of virtual addresses of matching CALL instructions.
+    Only the .text section is scanned to avoid data-section false positives.
+    """
+    pe_off = struct.unpack_from('<I', data, 0x3C)[0]
+    nsec   = struct.unpack_from('<H', data, pe_off + 6)[0]
+    opt_sz = struct.unpack_from('<H', data, pe_off + 0x14)[0]
+    sec_tb = pe_off + 0x18 + opt_sz
+
+    text_va = text_raw_off = text_raw_sz = None
+    for i in range(nsec):
+        s    = sec_tb + i * 40
+        name = data[s:s + 8].rstrip(b'\x00')
+        if name == b'.text':
+            text_va      = struct.unpack_from('<I', data, s + 12)[0]
+            text_raw_sz  = struct.unpack_from('<I', data, s + 16)[0]
+            text_raw_off = struct.unpack_from('<I', data, s + 20)[0]
+            break
+
+    if text_raw_off is None:
+        raise ValueError('.text section not found in PE headers')
+
+    sites = []
+    limit = text_raw_sz - 5
+    for i in range(limit):
+        if data[text_raw_off + i] != 0xE8:
+            continue
+        rel    = struct.unpack_from('<i', data, text_raw_off + i + 1)[0]
+        src_va = IMAGE_BASE + text_va + i
+        if src_va + 5 + rel == DRAWSTRING_VA:
+            sites.append(src_va)
+
+    return sorted(sites)
+
+
+def _orig_call_bytes(site_va: int) -> bytes:
+    """Reconstruct the original CALL DrawString bytes for a given call-site VA."""
+    return b'\xE8' + _rel32(site_va, DRAWSTRING_VA)
+
+
+def _patched_call_bytes(site_va: int) -> bytes:
+    """Return the patched CALL Wrapper bytes for a given call-site VA."""
+    return b'\xE8' + _rel32(site_va, WRAPPER_VA)
 
 # ---------------------------------------------------------------------------
 # Build wrapper bytecode
@@ -342,36 +387,58 @@ def _wrapper_len() -> int:
 # ---------------------------------------------------------------------------
 # Verify patch state helpers
 # ---------------------------------------------------------------------------
-def _is_patched(data: bytearray) -> bool:
-    off1 = _va_to_off(data, CALL_SITE_1)
-    return data[off1:off1+5] != CALL_SITE_1_ORIG
+def _site_status(data: bytearray, site_va: int) -> str:
+    """Return 'patched', 'original', or 'unknown' for a call-site VA."""
+    off = _va_to_off(data, site_va)
+    b   = bytes(data[off:off + 5])
+    if b == _patched_call_bytes(site_va):
+        return 'patched'
+    if b == _orig_call_bytes(site_va):
+        return 'original'
+    return f'unknown({b.hex()})'
+
+
+def _any_patched(data: bytearray, sites: list[int]) -> bool:
+    return any(_site_status(data, s) == 'patched' for s in sites)
+
 
 # ---------------------------------------------------------------------------
 # Apply patch
 # ---------------------------------------------------------------------------
 def apply_patch():
-    print('=== apply_reverse_patch  (string reversal for dialog text) ===')
+    print('=== apply_reverse_patch  (string reversal for ALL DrawString calls) ===')
     data = _load_exe()
 
-    if _is_patched(data):
-        print('[!] Patch already applied.')
+    sites = _find_call_sites(data)
+    if not sites:
+        print('[!] No CALL DrawString instructions found — wrong EXE?')
+        return
+    print(f'[*] Found {len(sites)} DrawString call-site(s):')
+    for s in sites:
+        print(f'      0x{s:08X}  ({_site_status(data, s)})')
+    print()
+
+    # Check whether all sites are already patched
+    statuses = [_site_status(data, s) for s in sites]
+    if all(st == 'patched' for st in statuses):
+        print('[!] All call-sites already patched.')
         return
 
-    # Verify expected original bytes at call sites
-    off1 = _va_to_off(data, CALL_SITE_1)
-    off2 = _va_to_off(data, CALL_SITE_2)
-    if data[off1:off1+5] != CALL_SITE_1_ORIG:
-        print(f'[!] Unexpected bytes at call-site 1: {data[off1:off1+5].hex()}')
-        return
-    if data[off2:off2+5] != CALL_SITE_2_ORIG:
-        print(f'[!] Unexpected bytes at call-site 2: {data[off2:off2+5].hex()}')
-        return
+    # Warn about any site that is neither original nor already patched
+    unexpected = [(s, st) for s, st in zip(sites, statuses)
+                  if st not in ('original', 'patched')]
+    if unexpected:
+        for va, st in unexpected:
+            print(f'[!] Unexpected bytes at 0x{va:08X}: {st}')
+        if '--force' not in sys.argv:
+            print('    (run with --force to patch anyway)')
+            return
 
-    # Verify cave area is clean NOPs
-    wlen = _wrapper_len()
+    # Verify cave area is clean NOPs (or already our wrapper)
+    wlen     = _wrapper_len()
     cave_off = _va_to_off(data, WRAPPER_VA)
-    cave_region = data[cave_off:cave_off+wlen]
-    if any(b != 0x90 for b in cave_region):
+    cave_region = data[cave_off:cave_off + wlen]
+    if any(b != 0x90 for b in cave_region) and cave_region != _build_wrapper():
         print(f'[!] Cave at 0x{WRAPPER_VA:08X} is not clean NOPs.')
         if '--force' not in sys.argv:
             print('    (run with --force to overwrite anyway)')
@@ -379,32 +446,36 @@ def apply_patch():
 
     # Write wrapper
     wrapper = _build_wrapper()
-    data[cave_off:cave_off+wlen] = wrapper
+    data[cave_off:cave_off + wlen] = wrapper
     print(f'[+] Wrapper written at 0x{WRAPPER_VA:08X} ({wlen} bytes)')
     print(f'    {wrapper.hex()}')
 
     # Zero ring buffer area in .data
     ring_off = _va_to_off(data, RING_IDX_VA)
-    data[ring_off:ring_off+RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
+    data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
     print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X} ({RING_DATA_LEN} bytes)')
 
-    # Patch call-site 1
-    call1_off = _rel32(CALL_SITE_1, WRAPPER_VA)
-    data[off1:off1+5] = b'\xE8' + call1_off
-    print(f'[+] Call-site 1 patched: 0x{CALL_SITE_1:08X}  E8 {call1_off.hex()}')
-
-    # Patch call-site 2
-    call2_off = _rel32(CALL_SITE_2, WRAPPER_VA)
-    data[off2:off2+5] = b'\xE8' + call2_off
-    print(f'[+] Call-site 2 patched: 0x{CALL_SITE_2:08X}  E8 {call2_off.hex()}')
+    # Patch every call-site
+    patched_count = 0
+    for site_va in sites:
+        if _site_status(data, site_va) == 'patched':
+            print(f'    0x{site_va:08X}  already patched, skipping')
+            continue
+        off      = _va_to_off(data, site_va)
+        new_bytes = _patched_call_bytes(site_va)
+        data[off:off + 5] = new_bytes
+        print(f'[+] Patched 0x{site_va:08X}  -> {new_bytes.hex()}')
+        patched_count += 1
 
     _save_exe(data)
-    print('[+] Monkey2.exe saved.')
+    print(f'[+] Monkey2.exe saved.  ({patched_count} site(s) patched)')
     print()
     print('EXPECTED BEHAVIOUR')
-    print('  Each DrawString call gets its own ring slot (4 slots × 128 bytes).')
+    print('  Every DrawString call goes through the reversal wrapper.')
+    print('  Each call gets its own ring slot (4 slots × 128 bytes).')
     print('  Multi-line dialog: each line reversed independently, no overlap.')
-    print('  Non-dialog text (tooltips, save/load) unaffected.')
+    print('  Tooltip / UI text: also reversed, displayed correctly RTL.')
+
 
 # ---------------------------------------------------------------------------
 # Restore / revert
@@ -413,29 +484,62 @@ def restore_patch():
     print('=== restore_reverse_patch  (reverting to original) ===')
     data = _load_exe()
 
-    if not _is_patched(data):
-        print('[!] Patch is not applied.')
+    sites = _find_call_sites(data)
+
+    # Also scan for sites currently pointing at the wrapper (patched sites whose
+    # CALL target is WRAPPER_VA — they won't appear in _find_call_sites which
+    # looks for calls to DRAWSTRING_VA, so find them separately).
+    pe_off = struct.unpack_from('<I', data, 0x3C)[0]
+    nsec   = struct.unpack_from('<H', data, pe_off + 6)[0]
+    opt_sz = struct.unpack_from('<H', data, pe_off + 0x14)[0]
+    sec_tb = pe_off + 0x18 + opt_sz
+    for i in range(nsec):
+        s    = sec_tb + i * 40
+        name = data[s:s + 8].rstrip(b'\x00')
+        if name == b'.text':
+            text_va      = struct.unpack_from('<I', data, s + 12)[0]
+            text_raw_sz  = struct.unpack_from('<I', data, s + 16)[0]
+            text_raw_off = struct.unpack_from('<I', data, s + 20)[0]
+            break
+    for i in range(text_raw_sz - 5):
+        if data[text_raw_off + i] != 0xE8:
+            continue
+        rel    = struct.unpack_from('<i', data, text_raw_off + i + 1)[0]
+        src_va = IMAGE_BASE + text_va + i
+        if src_va + 5 + rel == WRAPPER_VA and src_va not in sites:
+            sites.append(src_va)
+    sites.sort()
+
+    if not sites:
+        print('[!] No relevant call-sites found.')
         return
 
-    off1 = _va_to_off(data, CALL_SITE_1)
-    off2 = _va_to_off(data, CALL_SITE_2)
+    restored_count = 0
+    for site_va in sites:
+        st = _site_status(data, site_va)
+        if st == 'patched':
+            off       = _va_to_off(data, site_va)
+            orig_bytes = _orig_call_bytes(site_va)
+            data[off:off + 5] = orig_bytes
+            print(f'[+] Restored 0x{site_va:08X}  -> {orig_bytes.hex()}')
+            restored_count += 1
+        elif st == 'original':
+            print(f'    0x{site_va:08X}  already original, skipping')
+        else:
+            print(f'[!] 0x{site_va:08X}  unexpected state: {st} — skipping')
 
-    data[off1:off1+5] = CALL_SITE_1_ORIG
-    data[off2:off2+5] = CALL_SITE_2_ORIG
-    print(f'[+] Call-site 1 restored: {CALL_SITE_1_ORIG.hex()}')
-    print(f'[+] Call-site 2 restored: {CALL_SITE_2_ORIG.hex()}')
-
-    wlen = _wrapper_len()
+    wlen     = _wrapper_len()
     cave_off = _va_to_off(data, WRAPPER_VA)
-    data[cave_off:cave_off+wlen] = b'\x90' * wlen
+    data[cave_off:cave_off + wlen] = b'\x90' * wlen
     print(f'[+] Cave NOP-ed at 0x{WRAPPER_VA:08X} ({wlen} bytes)')
 
     ring_off = _va_to_off(data, RING_IDX_VA)
-    data[ring_off:ring_off+RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
+    data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
     print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X}')
 
     _save_exe(data)
-    print('[+] Monkey2.exe restored.')
+    print(f'[+] Monkey2.exe restored.  ({restored_count} site(s) reverted)')
+
 
 # ---------------------------------------------------------------------------
 # Diagnostics
@@ -448,18 +552,20 @@ def diagnose():
 
     def dump(label, va, n=16):
         off = _va_to_off(data, va)
-        b = data[off:off+n]
+        b   = data[off:off + n]
         print(f'  {label} (0x{va:08X}): {b.hex()}')
 
     print('DrawString prologue:')
-    dump('0x4DBFA0', 0x4DBFA0, 24)
+    dump('0x4DBFA0', DRAWSTRING_VA, 24)
     print()
-    print('Call-site 1 (expected E8 5B EC FF FF):')
-    dump('0x4DD340', CALL_SITE_1, 10)
+
+    sites = _find_call_sites(data)
+    print(f'CALL DrawString sites found in .text: {len(sites)}')
+    for s in sites:
+        st = _site_status(data, s)
+        dump(f'0x{s:08X}  [{st}]', s, 10)
     print()
-    print('Call-site 2 (expected E8 1F EC FF FF):')
-    dump('0x4DD37C', CALL_SITE_2, 10)
-    print()
+
     wlen = _wrapper_len()
     print(f'Cave area (first {wlen} bytes, should be 90 NOPs when clean):')
     dump(f'0x{WRAPPER_VA:X}', WRAPPER_VA, wlen)
@@ -468,12 +574,12 @@ def diagnose():
     dump(f'0x{RING_IDX_VA:X}', RING_IDX_VA, 20)
     print()
 
-    patched = _is_patched(data)
-    print(f'Patch status: {"APPLIED" if patched else "NOT applied"}')
-    if patched:
-        wrapper = _build_wrapper()
+    all_patched = _any_patched(data, sites)
+    print(f'Patch status: {"APPLIED (at least one site)" if all_patched else "NOT applied"}')
+    if all_patched:
+        wrapper  = _build_wrapper()
         cave_off = _va_to_off(data, WRAPPER_VA)
-        actual   = bytes(data[cave_off:cave_off+wlen])
+        actual   = bytes(data[cave_off:cave_off + wlen])
         if actual == wrapper:
             print('Cave code matches expected wrapper exactly.')
         else:

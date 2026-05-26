@@ -55,9 +55,11 @@ def main() -> None:
     repo_root = Path(__file__).resolve().parents[2]
 
     parser = argparse.ArgumentParser(description='Create English-Hebrew mapping file.')
-    parser.add_argument('--english', default=str(repo_root / 'samples' / 'english.txt'))
-    parser.add_argument('--hebrew',  default=str(repo_root / 'samples' / 'hebrew.txt'))
-    parser.add_argument('--output',  default=str(repo_root / 'samples' / 'mapping.txt'))
+    parser.add_argument('--english',  default=str(repo_root / 'samples' / 'english.txt'))
+    parser.add_argument('--hebrew',   default=str(repo_root / 'samples' / 'hebrew.txt'))
+    parser.add_argument('--output',   default=str(repo_root / 'samples' / 'mapping.txt'))
+    parser.add_argument('--override', action='store_true',
+                        help='Overwrite the output file if it already exists')
     args = parser.parse_args()
 
     english_path = Path(args.english)
@@ -68,6 +70,12 @@ def main() -> None:
         raise FileNotFoundError(f'English file not found: {english_path}')
     if not hebrew_path.exists():
         raise FileNotFoundError(f'Hebrew file not found: {hebrew_path}')
+
+    if output_path.exists() and not args.override:
+        raise FileExistsError(
+            f'Output file already exists: {output_path}\n'
+            'Use --override to overwrite it.'
+        )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     build_mapping(english_path, hebrew_path, output_path)
