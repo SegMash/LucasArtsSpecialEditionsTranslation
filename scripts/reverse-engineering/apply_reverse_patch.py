@@ -1,6 +1,6 @@
 """
-String-Reversal Patch for DrawString  (ALL call-sites)
-=======================================================
+String-Reversal Patch for DrawString  (ALL call-sites + content filter)
+=======================================================================
 
 PROBLEM
 -------
@@ -11,6 +11,13 @@ each line is rendered left-to-right so it appears backwards visually.
 This affects dialog text, tooltip/hover text, UI labels, and any other
 string rendered through DrawString.
 
+For SAVE/LOAD slot info (date/time/percentage), the game builds the
+strings at runtime (e.g. "22:15:47", "12/05/2026", "37%") character-by-
+character via std::ostringstream — there is no sprintf format string we
+can intercept.  Those strings contain digits, but blindly reversing them
+turns "22:15:47" into "74:51:22" on screen.  We therefore detect them in
+the wrapper itself.
+
 SOLUTION
 --------
 Scan the entire .text section for every CALL DrawString instruction and
@@ -18,14 +25,23 @@ replace each one with a CALL to a small wrapper that lives in a free NOP
 region of .text.  The wrapper:
   1. Reads the string-pointer argument (arg3 = [ESP+0x1C] after 4 pushes).
   2. Advances a ring-buffer slot index (4 slots × 128 bytes in .data).
-  3. Reverses the bytes into the next available ring slot.
-  4. Replaces the string-pointer argument on the caller's stack with the
-     slot address (so DrawString sees the reversed copy).
+  3. CONTENT FILTER — scans the bytes:
+        - any byte in [0-9]   -> SKIP REVERSAL (string contains digits)
+        - otherwise           -> reverse
+  4. If we reverse: copies bytes backwards into the ring slot and
+     replaces the string-pointer argument on the caller's stack.
   5. Tail-calls DrawString normally.
+
+The content filter solves the save/load date/time/% display without
+needing to find or patch the engine's string-building code.  Any string
+that contains a digit (e.g. "22:15:47", "37%", or a mixed Hebrew+digit
+label that has been pre-reversed in the mapping file) is passed through
+unchanged.  All other strings (pure Hebrew dialog, English fallback,
+etc.) are reversed as before.
 
 Previously only the 2 call-sites inside the dialog renderer (0x004DD250)
 were patched; mouse-pointer / tooltip sites were excluded.  Now ALL sites
-are patched so every string type is reversed.
+are patched so every string type is handled by the content filter.
 
 WHY A RING BUFFER?
 ------------------
@@ -82,7 +98,8 @@ STACK LAYOUT in wrapper after push eax/ecx/esi/edi (16-byte frame):
   [esp+0x1C]  arg3 = string ptr   (read, then replaced with slot addr)
   [esp+0x20]  arg4 = char count   (used as string length when in 1..127)
 
-WRAPPER CODE (103 bytes at 0x403851):
+WRAPPER CODE outline (offsets approximate — see _build_wrapper for the
+canonical bytecode, which is regenerated on every patch):
   offset  hex                      notes
   ------  -----------------------  ------------------------------------------
    0      50                       push eax
@@ -152,6 +169,52 @@ RING_BUF_VA   = 0x005350EC   # 4 slots × 128 bytes = 512 bytes of slot buffers
 RING_SLOTS    = 4
 RING_SLOT_SZ  = 128
 RING_DATA_LEN = 4 + RING_SLOTS * RING_SLOT_SZ  # 516 bytes total
+
+# ---------------------------------------------------------------------------
+# Save/load slot format-string swaps (RTL ordering for the percent / play-time /
+# game-progress rows on the save/load screen).  These are .NET-style format
+# strings stored in .rdata; every swap below is length-preserving (same byte
+# count before/after) so no pointer or offset in the EXE needs to change.
+#
+# Each entry: (virtual_address, original_bytes, patched_bytes, description).
+# The block is rewritten in place; the patcher verifies the original bytes
+# match before swapping (unless --force is given).
+#
+# With the digit-skip filter in the DrawString wrapper, the full substituted
+# string is passed through unchanged when it contains digits, so the visual
+# pixel order is exactly what the engine produces.  Putting the value before
+# the label in the format string makes Hebrew readers see "label: value" in
+# their natural reading direction.
+# ---------------------------------------------------------------------------
+FORMAT_SWAPS = [
+    # Save/load time + percent (two adjacent strings in one 36-byte block).
+    # Patched in a single write so the inter-string padding (4 nulls) is
+    # preserved exactly.
+    (
+        0x0052CABC,
+        b'{0} {1:D2}:{2:D2}:{3:D2}\x00\x00\x00\x00{0} {1}%',
+        b'{1:D2}:{2:D2}:{3:D2} {0}\x00\x00\x00\x00{1}% {0}',
+        'save/load TIME + PERCENT',
+    ),
+    # Game-progress label: "{0} {1} - {2}" -> "{2} - {1} {0}" (13 bytes each).
+    (
+        0x0052CA7C,
+        b'{0} {1} - {2}',
+        b'{2} - {1} {0}',
+        'save/load PROGRESS (chapter line)',
+    ),
+    # Date+time format: switch from US-style month-day-year to Israeli day-month-year
+    # (just swap {0} <-> {1}; year, hour, minute placeholders unchanged).
+    (
+        0x0052CA98,
+        b'{0:D2}-{1:D2}-{2:D4} {3:D2}:{4:D2}',
+        b'{1:D2}-{0:D2}-{2:D4} {3:D2}:{4:D2}',
+        'save/load DATE+TIME (DD-MM-YYYY for Israel)',
+    ),
+]
+
+for _va, _orig, _new, _desc in FORMAT_SWAPS:
+    assert len(_orig) == len(_new), f'length mismatch for {_desc} at 0x{_va:08X}'
 
 # ---------------------------------------------------------------------------
 # PE helpers
@@ -332,6 +395,62 @@ def _build_wrapper() -> bytes:
     je_skip = len(code)
     code += bytes([0x74, 0x00])              # je skip_reversal
 
+    # --- Content scan: SKIP REVERSAL if the string contains any digit (0-9).
+    #     This covers all runtime-generated date / time / percentage strings
+    #     ("22:15:47", "12/05/2026", "37%"), AND any mixed Hebrew+digit label
+    #     that the translator pre-reverses in the mapping file.  Pure-text
+    #     strings (Hebrew dialog, English fallback) contain no digits and are
+    #     reversed by the wrapper as before.
+    #
+    #     Detection rule (per byte):
+    #       - byte in [0x30..0x39]      -> digit found -> SKIP REVERSAL
+    #       - otherwise                 -> keep scanning
+    #     If we reach the end with no digit, fall through to the reversal.
+    #
+    #     EAX (slot addr) and ECX (length) must be preserved across the scan;
+    #     EDX is used as the scratch scan pointer.
+    code += bytes([0x50])                    # push eax           (save slot addr)
+    code += bytes([0x51])                    # push ecx           (save length)
+    code += bytes([0x89, 0xF2])              # mov  edx, esi      (edx = scratch ptr)
+
+    scan_loop_off = len(code)                # scan_loop:
+    code += bytes([0x85, 0xC9])              # test ecx, ecx
+
+    jz_do_rev = len(code)
+    code += bytes([0x74, 0x00])              # jz   do_reverse    (no digit found)
+
+    code += bytes([0x8A, 0x02])              # mov  al, [edx]
+    code += bytes([0x3C, 0x30])              # cmp  al, '0'
+
+    jb_next = len(code)
+    code += bytes([0x72, 0x00])              # jb   scan_next     (al < '0' -> not a digit)
+
+    code += bytes([0x3C, 0x39])              # cmp  al, '9'
+
+    jbe_no_rev = len(code)
+    code += bytes([0x76, 0x00])              # jbe  no_reverse    ('0' <= al <= '9')
+
+    scan_next_off = len(code)                # scan_next:
+    code[jb_next + 1] = scan_next_off - (jb_next + 2)
+    code += bytes([0x42])                    # inc  edx
+    code += bytes([0x49])                    # dec  ecx
+    back_to_loop = -(len(code) + 2 - scan_loop_off)
+    code += bytes([0xEB, back_to_loop & 0xFF])  # jmp  scan_loop
+
+    # no_reverse: digit found -> skip reversal entirely
+    no_reverse_off = len(code)
+    code[jbe_no_rev + 1] = no_reverse_off - (jbe_no_rev + 2)
+    code += bytes([0x59])                    # pop  ecx
+    code += bytes([0x58])                    # pop  eax
+    jmp_skip = len(code)
+    code += bytes([0xEB, 0x00])              # jmp  skip_reversal (patched at the end)
+
+    # do_reverse: scanned whole string, no digit -> fall through to the reversal
+    do_reverse_off = len(code)
+    code[jz_do_rev + 1] = do_reverse_off - (jz_do_rev + 2)
+    code += bytes([0x59])                    # pop  ecx
+    code += bytes([0x58])                    # pop  eax
+
     # --- Clamp to 127 (unsigned JBE so 0xFFFFFFFF is treated as > 127) ---
     code += bytes([0x83, 0xF9, 0x7F])        # cmp ecx, 127
 
@@ -364,7 +483,8 @@ def _build_wrapper() -> bytes:
 
     # skip_reversal:
     skip_off = len(code)
-    code[je_skip + 1] = skip_off - (je_skip + 2)
+    code[je_skip   + 1] = skip_off - (je_skip   + 2)
+    code[jmp_skip  + 1] = skip_off - (jmp_skip  + 2)
 
     # --- Epilogue ---
     code += bytes([0x5F, 0x5E, 0x59, 0x58])  # pop edi; pop esi; pop ecx; pop eax
@@ -402,79 +522,115 @@ def _any_patched(data: bytearray, sites: list[int]) -> bool:
     return any(_site_status(data, s) == 'patched' for s in sites)
 
 
+def _format_swap_status(data: bytearray, va: int, orig: bytes, new: bytes) -> str:
+    """Return 'patched', 'original', or 'unknown(...)' for one format-swap entry."""
+    off = _va_to_off(data, va)
+    b   = bytes(data[off:off + len(orig)])
+    if b == new:
+        return 'patched'
+    if b == orig:
+        return 'original'
+    return f'unknown({b.hex()})'
+
+
 # ---------------------------------------------------------------------------
 # Apply patch
 # ---------------------------------------------------------------------------
 def apply_patch():
     print('=== apply_reverse_patch  (string reversal for ALL DrawString calls) ===')
     data = _load_exe()
+    dirty = False
 
     sites = _find_call_sites(data)
-    if not sites:
-        print('[!] No CALL DrawString instructions found — wrong EXE?')
-        return
     print(f'[*] Found {len(sites)} DrawString call-site(s):')
     for s in sites:
         print(f'      0x{s:08X}  ({_site_status(data, s)})')
     print()
 
-    # Check whether all sites are already patched
     statuses = [_site_status(data, s) for s in sites]
-    if all(st == 'patched' for st in statuses):
-        print('[!] All call-sites already patched.')
-        return
+    all_patched = bool(sites) and all(st == 'patched' for st in statuses)
+    no_sites    = not sites
 
-    # Warn about any site that is neither original nor already patched
-    unexpected = [(s, st) for s, st in zip(sites, statuses)
-                  if st not in ('original', 'patched')]
-    if unexpected:
-        for va, st in unexpected:
-            print(f'[!] Unexpected bytes at 0x{va:08X}: {st}')
-        if '--force' not in sys.argv:
-            print('    (run with --force to patch anyway)')
-            return
+    if no_sites:
+        print('[!] No CALL DrawString instructions found in .text.')
+        print('    (this is expected when the wrapper has already redirected every site;')
+        print('     skipping wrapper/call-site step, will still attempt the format swap)')
+    elif all_patched:
+        print('[!] All call-sites already patched — skipping wrapper/call-site step.')
+    else:
+        unexpected = [(s, st) for s, st in zip(sites, statuses)
+                      if st not in ('original', 'patched')]
+        if unexpected:
+            for va, st in unexpected:
+                print(f'[!] Unexpected bytes at 0x{va:08X}: {st}')
+            if '--force' not in sys.argv:
+                print('    (run with --force to patch anyway)')
+                return
 
-    # Verify cave area is clean NOPs (or already our wrapper)
-    wlen     = _wrapper_len()
-    cave_off = _va_to_off(data, WRAPPER_VA)
-    cave_region = data[cave_off:cave_off + wlen]
-    if any(b != 0x90 for b in cave_region) and cave_region != _build_wrapper():
-        print(f'[!] Cave at 0x{WRAPPER_VA:08X} is not clean NOPs.')
-        if '--force' not in sys.argv:
-            print('    (run with --force to overwrite anyway)')
-            return
+        wlen     = _wrapper_len()
+        cave_off = _va_to_off(data, WRAPPER_VA)
+        cave_region = data[cave_off:cave_off + wlen]
+        if any(b != 0x90 for b in cave_region) and cave_region != _build_wrapper():
+            print(f'[!] Cave at 0x{WRAPPER_VA:08X} is not clean NOPs.')
+            if '--force' not in sys.argv:
+                print('    (run with --force to overwrite anyway)')
+                return
 
-    # Write wrapper
-    wrapper = _build_wrapper()
-    data[cave_off:cave_off + wlen] = wrapper
-    print(f'[+] Wrapper written at 0x{WRAPPER_VA:08X} ({wlen} bytes)')
-    print(f'    {wrapper.hex()}')
+        wrapper = _build_wrapper()
+        data[cave_off:cave_off + wlen] = wrapper
+        print(f'[+] Wrapper written at 0x{WRAPPER_VA:08X} ({wlen} bytes)')
+        print(f'    {wrapper.hex()}')
 
-    # Zero ring buffer area in .data
-    ring_off = _va_to_off(data, RING_IDX_VA)
-    data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
-    print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X} ({RING_DATA_LEN} bytes)')
+        ring_off = _va_to_off(data, RING_IDX_VA)
+        data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
+        print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X} ({RING_DATA_LEN} bytes)')
 
-    # Patch every call-site
-    patched_count = 0
-    for site_va in sites:
-        if _site_status(data, site_va) == 'patched':
-            print(f'    0x{site_va:08X}  already patched, skipping')
-            continue
-        off      = _va_to_off(data, site_va)
-        new_bytes = _patched_call_bytes(site_va)
-        data[off:off + 5] = new_bytes
-        print(f'[+] Patched 0x{site_va:08X}  -> {new_bytes.hex()}')
-        patched_count += 1
+        patched_count = 0
+        for site_va in sites:
+            if _site_status(data, site_va) == 'patched':
+                print(f'    0x{site_va:08X}  already patched, skipping')
+                continue
+            off      = _va_to_off(data, site_va)
+            new_bytes = _patched_call_bytes(site_va)
+            data[off:off + 5] = new_bytes
+            print(f'[+] Patched 0x{site_va:08X}  -> {new_bytes.hex()}')
+            patched_count += 1
+        print(f'[+] {patched_count} call-site(s) patched.')
+        dirty = True
 
-    _save_exe(data)
-    print(f'[+] Monkey2.exe saved.  ({patched_count} site(s) patched)')
+    # --- Save/load format-string swaps (length-preserving in-place rewrites) ---
+    for va, orig, new, desc in FORMAT_SWAPS:
+        off = _va_to_off(data, va)
+        st  = _format_swap_status(data, va, orig, new)
+        if st == 'patched':
+            print(f'    0x{va:08X}  format swap already patched ({desc}), skipping')
+        elif st == 'original':
+            data[off:off + len(new)] = new
+            print(f'[+] Format swap at 0x{va:08X} applied ({len(new)} bytes — {desc})')
+            print(f'    {orig!r}')
+            print(f' -> {new!r}')
+            dirty = True
+        else:
+            print(f'[!] Format block at 0x{va:08X} has unexpected bytes ({desc}): {st}')
+            if '--force' in sys.argv:
+                data[off:off + len(new)] = new
+                print(f'[+] Format swap at 0x{va:08X} force-overwritten')
+                dirty = True
+            else:
+                print('    (skipping — run with --force to overwrite anyway)')
+
+    if dirty:
+        _save_exe(data)
+        print('[+] Monkey2.exe saved.')
+    else:
+        print('[*] Nothing to do — EXE unchanged.')
     print()
     print('EXPECTED BEHAVIOUR')
     print('  Every DrawString call goes through the reversal wrapper.')
     print('  Each call gets its own ring slot (4 slots × 128 bytes).')
-    print('  Multi-line dialog: each line reversed independently, no overlap.')
-    print('  Tooltip / UI text: also reversed, displayed correctly RTL.')
+    print('  Strings containing digits (date/time/percent/mixed-Hebrew labels)')
+    print('  are passed through unchanged; pure-text strings are reversed.')
+    print('  Save/load percent + time formats now place the value before the label.')
 
 
 # ---------------------------------------------------------------------------
@@ -537,6 +693,19 @@ def restore_patch():
     data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
     print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X}')
 
+    # Restore every format-string swap to its original bytes
+    for va, orig, new, desc in FORMAT_SWAPS:
+        off = _va_to_off(data, va)
+        st  = _format_swap_status(data, va, orig, new)
+        if st == 'patched':
+            data[off:off + len(orig)] = orig
+            print(f'[+] Format swap at 0x{va:08X} restored ({desc})')
+        elif st == 'original':
+            print(f'    0x{va:08X}  format swap already original ({desc}), skipping')
+        else:
+            print(f'[!] Format block at 0x{va:08X} has unexpected bytes ({desc}): {st}')
+            print('    (left as-is)')
+
     _save_exe(data)
     print(f'[+] Monkey2.exe restored.  ({restored_count} site(s) reverted)')
 
@@ -559,8 +728,31 @@ def diagnose():
     dump('0x4DBFA0', DRAWSTRING_VA, 24)
     print()
 
-    sites = _find_call_sites(data)
-    print(f'CALL DrawString sites found in .text: {len(sites)}')
+    # Find both "still-original" sites (call DRAWSTRING_VA) and "redirected"
+    # sites (call WRAPPER_VA) so the diagnostic reflects the true state.
+    sites = list(_find_call_sites(data))
+    pe_off = struct.unpack_from('<I', data, 0x3C)[0]
+    nsec   = struct.unpack_from('<H', data, pe_off + 6)[0]
+    opt_sz = struct.unpack_from('<H', data, pe_off + 0x14)[0]
+    sec_tb = pe_off + 0x18 + opt_sz
+    for i in range(nsec):
+        s    = sec_tb + i * 40
+        name = data[s:s + 8].rstrip(b'\x00')
+        if name == b'.text':
+            text_va      = struct.unpack_from('<I', data, s + 12)[0]
+            text_raw_sz  = struct.unpack_from('<I', data, s + 16)[0]
+            text_raw_off = struct.unpack_from('<I', data, s + 20)[0]
+            break
+    for i in range(text_raw_sz - 5):
+        if data[text_raw_off + i] != 0xE8:
+            continue
+        rel    = struct.unpack_from('<i', data, text_raw_off + i + 1)[0]
+        src_va = IMAGE_BASE + text_va + i
+        if src_va + 5 + rel == WRAPPER_VA and src_va not in sites:
+            sites.append(src_va)
+    sites.sort()
+
+    print(f'DrawString call-sites found (original + redirected): {len(sites)}')
     for s in sites:
         st = _site_status(data, s)
         dump(f'0x{s:08X}  [{st}]', s, 10)
@@ -586,6 +778,13 @@ def diagnose():
             print('WARNING: cave code does NOT match expected wrapper!')
             print(f'  expected: {wrapper.hex()}')
             print(f'  actual:   {actual.hex()}')
+    print()
+    print('Format swaps:')
+    for va, orig, new, desc in FORMAT_SWAPS:
+        off = _va_to_off(data, va)
+        st  = _format_swap_status(data, va, orig, new)
+        print(f'  0x{va:08X}  [{st}]  ({desc})')
+        print(f'    bytes: {bytes(data[off:off+len(orig)])!r}')
 
 # ---------------------------------------------------------------------------
 # Entry point

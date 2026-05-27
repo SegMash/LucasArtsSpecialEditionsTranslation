@@ -1,0 +1,1266 @@
+התחל משחק חדש
+CONTINUE/LOAD GAME
+HELP AND OPTIONS
+BONUS FEATURES
+LEADERBOARDS
+ACHIEVEMENTS
+RETURN TO GAME LIBRARY
+PIRATE PERFORMANCE
+HOW TO PLAY
+CONTROLS
+VIDEO SETTINGS
+CLASSIC EDITION CREDITS
+SPECIAL EDITION CREDITS
+MANUAL
+POINT AND CLICK
+על
+OFF
+מנהרה אחורית
+DIRECT INPUT
+TRACKPAD
+GAME CONTROLS
+SUBTITLES IN SPECIAL EDITION
+VOICES IN CLASSIC EDITION
+THE ART OF MONKEY ISLAND
+NAVIGATING GUYBRUSH\nWhen Manual Control is selected, use the <leftstick> to move Guybrush.\nWhen Point and Click Control is selecetd, use the <left or rightstick> to move the cursor.\nMove the cursor where you would like Guy-brush to go and press the <A> Button.
+INTERACTING WITH THE ENVIRONMENT\nThe cursor allows you to interact with the environment.\nUse the <rightstick> to move the cursor over objects in the environment.
+VERB ACTIONS\nWhen an object is selected, press and hold the <Right Trigger> to bring up the list of verb actions that can be performed with it.\nUse the <left or right stick> to select a verb icon.\nRelease the <Right Trigger> when a verb icon is highlighted to perform that action.
+OBJECT HIGHLIGHTING\nTo help you identifty interactive objects more quickly, press the <left button> to highlight them.
+INVENTORY MENU\nTo bring up the inventory menu, press and hold the <Left trigger> . Release the <Left Trigger> to close the inventory menu.\nUse the <left or rightstick> to highlight an item and press the <Right Trigger>  to select it.\nSome items can be combined with other items. Highlight another item when one item is selected and press the <Right Trigger> to combine them.
+USING INVENTORY ITEMS\nWhen an inventory item is selected, it will appear inside the cursor. \nMove the cursor over an object or character in the environment and press <Right Trigger> to use the inventory item with it.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by holding down the <x> button. Once you have held the button down long enough, the hint will appear.\nThese will start off being slight clues, and if you require further help you can press <X button> again for a more detailed decription of what you should do next.\n
+VERB ICONS
+POINT AND CLICK CONTROLS\nleft trigger:\nShow / Hide Inventory Menu\nright trigger:\nShow / Hide Action dial / Perform Action\nleft bumper:\nHighlight Interactive Objects\nright bumper:\nTrigger Audio Commentary\nMove cursor (Navigate Action Dial / Select Dialog)\n"Look At" inventory item / Walk to location\nTrigger Hint\nSwitch to Classic Mode\nMove cursor\nMake Guybrush Walk (Navigate Action Dial / Select Dialog)\nMANUAL CONTROLS\nOptions Menu
+POINT AND CLICK CONTROLS\nL2 button:\nShow / Hide Inventory Menu\nR2 button:\nShow / Hide Action dial / Perform Action\nL1 button:\nHighlight Interactive Objects\nR1 button:\nTrigger Audio Commentary\nMove cursor (Navigate Action Dial / Select Dialog)\n"Look At" inventory item / Walk to location\nTrigger Hint\nSwitch to Classic Mode\nMove cursor\nMake Guybrush Walk (Navigate Action Dial / Select Dialog)\nMANUAL CONTROLS\nOptions Menu
+CONTROLS\nGameplay screen:\nTouch anywhere to interact\nCursor:\nNavigate / Select objects\nVerb Icons:\nTap to select\nInventory Icon:\nTap to open / close
+INTERACTING WITH THE ENVIRONMENT\nThe cursor allows you to interact with the environment. Point the cursor over objects in the environment to select them.
+VERB ACTIONS\nWhen an object is selected, press and hold the Right Mouse Button to bring up the list of verb actions that can be performed with it.\nPoint the cursor to select a verb icon. \nRelease the Right Mouse Button when a verb icon is highlighted to perform that action.
+OBJECT HIGHLIGHTING\nTo help you identify interactive objects more quickly, press the Left and Right Mouse Buttons together to highlight them.
+INVENTORY MENU\nTo bring up the inventory menu, click the mouse wheel.\nPoint the cursor at an item to highlight it and press the Left Mouse Button to select it.\nSome items can be combined with other items. Highlight another item when one item is selected and press the Left Mouse Button to combine them.
+USING INVENTORY ITEMS\nWhen an inventory item is selected, it will appear inside the cursor. \nMove the cursor over objects or characters in the environment and press the Left Mouse Button to use the inventory item with it.
+USING THE HINT SYSTEM (Exactly as written in Monkey 1)\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by pressing the H key.  \nThese will start off being slight clues, and if you require further help you can press H again for a more detailed description of what you should do next.
+NAVIGATING GUYBRUSH\nUse the mouse to point the cursor where you would like Guybrush to go and press the Left Mouse Button to make Guybrush walk there.
+HOW TO PLAY\nNAVIGATING GUYBRUSH\nWhen Trackpad Control is selected, move the cursor where you want Guybrush to go and then tap the screen.\nWhen Direct Control is selected, touch the game screen where you want Guybrush to go. When you lift your finger, Guybrush will walk there.
+HOW TO PLAY\nNAVIGATING GUYBRUSH\nWhen Trackpad Control is selected, move the cursor where you want Guybrush to go and then tap the screen.\nWhen Direct Control is selected, touch the game screen where you want Guybrush to go. When you lift your finger, Guybrush will walk there.
+INTERACTING WITH THE ENVIRONMENT\nWhen Trackpad Control is selected, select a verb icon from the keyboard at the bottom of the screen and move the cursor over an interactive object. Tap anywhere on the screen to perform this action.\nWhen Direct Control is selected, select a verb icon from the keyboard at the bottom of the screen and touch an interactive object. Lift your finger off the screen to perform this action.
+OBJECT HIGHLIGHTING\nTo help you identify useful items more quickly, place two fingers on the screen at the same time and then lift them to highlight interactive objects.
+INVENTORY MENU (I)\nTo open and close the ivnentory menu, tap on the inventory icon at the lower right.\nYou can perform different actions with the inventory items. Select a verb from the keyboard at the bottom of the screen and then tap on an inventory item to aplpy the verb to it.
+INVENTORY MENU (II)\nSome items can be combined with other items. Tap the "use" verb icon at the bottom of the screen and then tap on two different inventory items to combine them.
+USING INVENTORY ITEMS IN THE ENVIRONMENT\nOnce you have selected an inventory item, touch an object in the environment to use the inventory item with it.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by shaking the Iphone or Ipod touch. \nThese will start off being slight clues, and if you require further help you can shake your device again for a more detailed description of what you should do next.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by placing three fingers on the screen at the same time. \nThese will start off being slight clues, and if you require further help you can place three fingers on the screen again for a more detailed description of what you should do next.
+AUDIO COMMENTARY\nAt certain points in the game, you can listen to the original developers of the Monkey Island game discuss the game's development. To play the Audio Commentary, touch the microphone icon at the top right of the screen when it lights up.
+PAUSE MENU\nTo access the Pause Menu, touch the compass icon at the top left of the screen.
+CONTROLS
+OBJECT HIGHLIGHTING
+CLASSIC MODE VOICE DIALOG
+SUBTITLES
+MUSIC VOLUME
+SFX VOLUME
+DIALOG VOLUME
+DEVELOPER'S COMMENTARY
+לך אל
+תן
+פתח
+סגור
+הרם
+הבט על
+דבר עם
+הפעל
+דחוף
+משוך
+פליטה
+רוק
+שפריץ
+יריקה
+מוחטה
+כיח
+ריר
+הפרשה
+ליחה
+RESUME GAME
+SAVE GAME
+LOAD GAME
+EXIT TO MAIN MENU
+QUIT GAME
+Are you sure you want to load from this save slot?
+Are you sure you want to overwrite this save slot?  All progress in this save slot will be lost.
+Are you sure you want to quit to the main menu?
+Continue Without Saving
+Create New Save Data
+Do not turn off the Xbox 360 console or remove the storage device whenever you see the icon above on screen.
+Exit Game
+Failed to Save
+Loading game. Please don't turn off your Xbox 360 console.
+Monkey Island
+Music Volume
+No storage device has been selected.  Please select a Storage device or choose to continue without saving.
+אישור
+Please choose a storage device with at least %iKB free or you will be unable to save.
+Quitting without saving will result in the loss of unsaved progress.
+Retry Load
+Save Data was not found on the storage device.  Would you like to create new save data or continue without saving?
+Saving content. Please do not turn off your console.
+Select
+Select A storage device
+SFX Volume
+Subtitles in Special Edition
+Voice Volume
+כן.
+You are not signed into Xbox LIVE and cannot access the Leaderboards.
+You do not have a valid storage device selected. If you choose to proceed, you will be unable to save your progress in the game.
+You do not have an active gamer profile. Saving and achievements will be disabled. To create or load a gamer profile now, press the Xbox Guide button. Do you want to continue without saving and achievements?
+ביטול
+Exit
+Choose your language
+Autosave and Quit
+Quit Without Saving
+לא.
+Leaderboard
+Unlock Full Game
+Press A button to view this leaderboard
+Retrieving records, please wait
+Total number of players:
+Friends
+Overall
+My Score
+Rank
+Gamertag
+Completed
+View
+Gamer Card
+Empty
+Autosave:
+Slot
+Warning - Autosave cannot be overwritten
+Part One
+Part Two
+Part Three
+The Last Part
+Play Time:
+Percent Complete:
+Disconnected from Xbox LIVE
+Press START
+Hold [Y] To Skip
+Hold [X] For Hint
+You are not yet ranked on the leaderboard for this game.
+Your friends are not yet ranked on the leaderboard for this game.
+There are no entries on this leaderboard.
+entries
+entry
+The data could not be saved on the selected storage device.
+Loading...
+Gentleman o' Fortune
+Jolly Roger
+Swifty Scallywag
+Playful Picaroon
+Steady Helmsman
+Grog Guzzler
+Land Lubber
+Squiffy Sprog
+This is a term of distinction for pirates! It is reserved for those pirates who are both wealthy and honorable.
+The Jolly Roger refers to the skull and crossbones found on the pirate flag! Anyone given this title is a true pirate.
+A scallywag is a bad person. A scoundrel. Considered to be clever and dangerous.
+The term Picaroon, is from the Spanish word for rascal. It is meant to describe pirates in a way that is satirical or humorous.
+The Helmsman is the Captain's attendant, who is tasked with rowing him to and from the ship.
+Grog is a pirate's favorite drink. Although the type of alcohol used to make it may vary, more often than not it contains large quantities of rum.
+"Lubber" was an old English word for a big, slow, clumsy person, and this term was aimed at those persons on ship who were not very skilled or at ease with ship life, as if to say, "You were no better on the land."
+A squiffy is a buffoon. A sprog is an untrained recruit. When someone calls you this, you should expect to be walking the plank very soon.
+CONGRATULATIONS! YOU'RE A:
+Cursor Speed
+Fast
+Normal
+Voices in Classic Edition
+Touch the screen anywhere and move the cursor as you would with a trackpad.\n\nThe cursor will allow you to interact with the environment.\n\nYou can adjust the speed of the cursor in the settings menu.\n
+על
+Off
+SETTINGS
+Buy Full Game
+Buy Full Game
+##### מטבעות כסף######
+%namount-of-money% pieces o' eight
+%namount-of-money% pieces o' eight and %nnumber-of-coins% dimes
+%namount-of-money% pieces o' eight and a dime
+%nnumber-of-coins% dimes
+
+
+
+שרידים
+דינמיט
+שלט `פנייה שמאלה`
+`The Jolly Rasta`
+1/%ntimes-drunk-near-grog% bottle o' near-grog
+2 pieces of eight
+פרסומת
+אזעקה
+סמטה
+תנין
+עוגן
+סוחר עתיקות
+appendix infections
+מעבר מקומר
+חץ
+חיים-תחת-אפר
+אפר
+אוגוסטוס דה-וואט
+מנהרה אחורית
+שק
+בלון
+בלון בקופסה
+בלון
+בננה
+כרזה
+כרזות
+גרי ל. דג
+פונדקאי
+חבית
+חביות
+חביות של רום
+מחסום
+בארט
+שעוות עטלף
+חוף
+מיטה
+שולחן מיטה
+פעמון
+מפוח
+שלט גדול
+עץ גדול
+איקס גדול
+ציפור
+משקה כחול
+עצם
+עצמות
+ציפורה
+ספרים
+אי הביזה
+משקה אלכוהולי
+בקבוק של כמעט-גרוג
+בקבוק
+בקבוקים
+בקבוקי רום
+קערה
+ילד הכדורת
+הגה של ספינה
+קופסה
+קופסה של אבקת רקיקים
+קופסה
+קופסה
+קופסה
+קופסה
+קופסאות
+breath o' dog
+ברי הכלב
+לבנה
+בקבוק שבור
+מכונת גרוג שבורה
+משוט שבור
+שלט שבור
+משקה חום
+דלי של בוץ
+דלי
+פסל
+מגלשת ישבן
+דלת התא
+לוח שנה
+תא טלפון
+כפתור קריאה
+נר
+קופסאות שימורים
+מו הקניבל
+תותח
+כדורי תותח
+קפטן טלטלה
+המפה של קפטן טלטלה
+קפטן קייט
+עכברוש כלוא
+קטלוג כרטיסיות
+תמי תנין
+מפאי
+מפאי מאחורי סורגים
+קופה
+מתלע חתולים
+מערה
+פרד איש המערות
+דלת התא
+בית עלמין
+בית עלמין
+כיסא
+פרגוד
+תחפושת זולה
+מגררת גבינה?
+פתלתולי גבינה
+מטען
+churned thymus
+כרטיס לקרקס
+כביסה נקייה
+ממחטה נקייה ולבנה
+חולצה לבנה ונקיה
+חולצה לבנה, נקיה ומקופלת
+צוק
+צלע הצוק
+מעיל
+ארון קבורה
+מסמר לארון
+ארון קבורה
+מטבע
+החזרת מטבע
+מטבע
+מטבעות
+טבח
+ליצן קוסמי
+בקתה
+בקתה
+ספה
+רקיק
+ארגז
+ארגזים
+ארגזי רום
+קשית מסולסלת
+חתיכות זקן פריכות
+צלב
+צלבים
+לום
+לום וחבל
+קהל
+חדר קבורה
+מפתח לחדר הקבורה
+השרידים של אבא
+אסיר מת
+סוחר
+מטבע נחושת
+שזלונג
+dock
+כלב
+דלת כלבלבים
+בובות
+דלת
+פתח
+dragon's teeth
+מגירה
+ספינתו של טלטלה
+Dred
+Dred's Ship
+שמלה
+מזנון
+פרגוד הלבשה
+מזרח
+ניחוח דה-כשף
+elephant drool
+דלת של מעלית
+קופסה ריקה
+ספל שתייה ריק
+ספל גרוג ריק
+שולחן בדיקות
+exit
+יציאה למעבר
+רטיות לעין
+ציטוטים מפורסמים של שודדי ים
+קו עונשין
+עט נוצה
+כפות רגליים
+פינק
+דג
+fish eyes
+שלט דג
+דייג
+חכת דיג
+דגל
+מציין קומה
+קוקטייל פירות
+furnace
+חור פעור
+פח אשפה
+גנן
+שער
+בובת קיופי וודו גנרית
+כוס מים מזוקקים
+כוס מים
+לשון זהובה
+מעטפת גורילה
+המושל כרסן
+אחוזת המושל
+grasshopper tongues
+קבר
+קברים
+משקה ירוק
+ספל גרוג עם משקה צבעוני
+ספל גרוג עם כמעט-גרוג
+גולגלות דוחות
+פסל מעוות
+אדמה
+חצר
+שומר
+דוכן השומר
+ספר אורחים
+פטיש
+יד ומפה
+הודעה ששורבטה בחופזה
+פתח
+בלון הליום
+כפפת מנתחים עם הליום
+מיכל הליום
+hemorrhoid specimens
+חיליק שנאלח
+חור
+חור באדמה
+חור
+קרס
+בית סירה
+טסה
+טסות
+דלת ענקית
+מזרק תת-עורי
+השוט של אינדי
+בעל האכסניה
+insect lungs
+הזמנה
+תא כלא
+קנקן
+קנקן
+קנקן
+קנקן
+קנקן
+קנקן
+ג'ואן לטאה
+ג'וג'ו
+jugular vein fragments
+תיק ג'וג'ו
+ג'ונגל
+מפתח
+חור-מפתח
+killer cooties
+דוכן
+סכין
+חוגה
+סולם
+אדמה
+תמיר גדליהו
+שובר קבלת כביסה
+כובס
+עלון
+כס הוודו של לה-צ'אק
+שאריות אוכל
+ברווז ארך-רגליים
+ידית
+ספרנית
+מתג אור
+Light
+Light
+ארון משקאות
+liquor cabinette
+דינמיט דלוק
+liverwurst
+בול עץ
+פצצת אהבה
+Mêlée Monkey
+מרטי המשוגע
+מרטי המשוגע
+מעטפת מנילה
+אחוזה
+אחוזה
+אחוזה
+מפה
+חתיכת מפה
+חתיכת מפה
+marinated fingertips
+כוס מרטיני
+כוס מרטיני
+מסיכה
+דלת עצומה
+מנעולים עצומים
+גפרורים
+מגירה רפואית
+אנשים עם אמות מוסר נמוכות )שודדי ים(
+מטרונום
+אייל אדיר
+מראה
+מסגרת מראה
+מראה
+דגם מגדלור
+עדשת דגם מגדלור
+השרידים של אמא
+ראש של קוף
+משקף
+עוד ג'ונגל
+עוד זבל של וודו
+ספל של גרוג
+ספל של גרוג
+ספל של גרוג
+שלט ממוסמר
+מסמרים
+nector o' spider
+חור פעור שעכשיו נתגלה
+צפון
+משוט
+אוקיינוס
+איש זקן
+oozing lizard tails
+משקה כתום
+עוגב
+בית שימוש חיצוני
+החוצה
+תנור
+ציור
+ציורים
+מחבת
+pancreas o' porcupine
+נייר
+תוכי
+אוכל לתוכים
+אורח מסיבה
+אורחי מסיבה
+מעבר
+שביל
+חזייה בגוון פנינה
+רגל מעץ
+חצי אי
+האי שומן
+פסנתר
+picture
+מטבע כסף
+piece o' eight and %nnumber-of-coins% dimes
+מטבע כסף ומטבע נחושת
+מזח
+ערימה
+ערימת ניירות
+עמוד
+סיכות
+כובע שודד ים
+כובעי שודד ים
+pit
+שלט ישן ופשוט
+קרש
+לוח
+אגם
+porthole
+Possible Hidden Treasure
+כרזה
+משאבה
+שק-אגרוף
+משקה סגול
+quiche
+מסילת רכבת
+משקה אדום
+משוט מחוזק
+reptilian brain cells
+טד הקרנף
+שפע
+הארנב הרעוע
+אבן
+צלחת רוק אנד רול לאספנים
+מזרן קשה כאבן
+בירה שחורה
+חבל
+המלח פאט
+Purple Tentacle
+אי הגלד
+צריף
+צריף
+דלי רעוע על משקוף הדלת
+מגן
+ספינה
+תיבת משלוח
+צופר של ספינה
+חוף
+קיצור-דרך
+את חפירה
+תריסים
+צד הבית
+שלט
+שלט
+שלט-שביבי-עץ
+שלד באמבטיה
+בהונות חומט
+גולגולת
+חריץ בדלת
+מפתח קטן
+מסגרת קטנה לתמונה
+מבנה קטן
+תיבת אוצר מרוסקת
+ריאות עכביש
+רוק נוזל על קיר
+נייר עם רוק
+יריקה על נייר
+לוח יריקות
+מדרגות
+stairs master
+מדרגות
+מקל
+מדבקה
+מזקקה
+stone 1
+stone 2
+stone 3
+stone 4
+stone 5
+stone 6
+stone 7
+שרפרף
+תנור
+רחוב
+חוט
+דברים
+דברים בפח אשפה
+ראש קלקר
+סמי הצפרדע
+כפפת מנתחים
+כפפת מנתחים
+כפפות מנתחים
+ביצה
+swamp worms
+נדן חרב?
+שולחן
+טלסקופ
+כרטיס ספרייה זמני
+מגע עדין
+The Mysterious Island of Cleptomaniac Parrots
+פני המים
+כרטיס
+אורות טיקי
+tissue o' serpent
+קבר
+מצבה
+מצבות
+ראש הצוק
+פאה
+דלת סתרים
+עכברוש כלוא ומפוחד
+פח אשפה
+תיבת אוצר
+treasure hunter
+עץ
+מנהרה
+מוטות מתכת מעוותים
+udder grease
+משהו מכוער מעצמות
+ראש ירוק מכוער
+תחתונים
+סיפון עליון
+למעלה
+ממחטה משומשת
+מעטפת ונילה
+אגרטל
+venom o' jackalope
+וישיסואז בתוספת עכברוש
+וישיסואז בתוספת שערות עכברוש
+וישיסואז
+עיירת דה לה ביזה
+בובת וודו
+מפתח וודו לכלא
+voodoo recipe book
+רשימת קניות לוודו
+וולי
+וולט
+מסיר יבלות
+כיור
+מפל
+מפל
+מפלט לשבוע באי הקרס
+בקתת נקניקיות
+מסור ישן מלוטש-כהוגן
+מערב
+ציור של לוויתן
+רציף
+רציף
+גלגל
+גלגל-המוות
+wig dandruff
+חלון
+אישה עם כובע גדול
+לכה
+שלט מעץ
+יער
+נגר
+כנימת עץ
+שולחן עבודה
+זר
+וונקי הפיל
+xeroxed nosehairs
+yak lips
+משקה צהוב
+והרי, עוד שלט
+zit puss
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+עם
+על
+ל
+עם
+חתור אל
+Concept Art Unlocked
+.
+להערות המפתחים לחץ
+Adult Entertainment \n`זלדה פרונקל מספרת הכל` \nזכרונותיה של אישה על תענוג מפוקפק.
+Animatronics \n`אנימטרוניקה` \nמאת וולט ביסלי
+Animatronics \n`מתחת לפני השטח` \nמאת וולט ביסלי
+Annotation \nSee Footnoting
+Archaeology \n`איקס אף פעם לא מסמן את המיקום` \nמאת א. ג'ונס
+אמנות \n`עמימות כצורת אמנות`
+Art/Philosophy \n`אידאליזם או סוריאליזם?` \nפילוסופיה/ספר אמנות.
+שתייה \n`משקאות לכולם`
+Big Whoop \nSee: Treasure
+Biography \n`בשתי ידיים ריקות` \nהסיפור של חיליק שנאלח.
+Biography \n`בשתי ידיים זזות` \nהסיפור של איתן.
+Biography \n`בשני ראשים ריקים` \nהסיפור של האחים פטוצ'יני.
+Biography \n`חופן בלוטי ים` \nיומנו של רב חובל סביבוני.
+Biography \n`לקק את כפית הכסף` \nמאת ל. כרסן
+ביוגרפיה \n`אני ושחורזקן`
+Biography \n`הפעם בה פוצצתי את לה-צ'אק` \nזכרונותיו המפוקפקים של ברנשצבע כפיסדבק
+Biography \n`אמאל'ה!` \nזכרונותיו של רב חובל גילברט
+גוף \n`כתמי לידה לא שגרתיים`
+ארוחת בוקר \n`ארוחת בוקר אצל קרס-בשר`
+Business \n`כיצד תרכוש ידידים והשפעה` \nמאת כחולזקן
+Cannibalism  \n`ארוחות ילדים` \nמאת ראש לימון
+Cannibalism \nSee Also:  Self-Help
+Catalogs \nSee Subheadings
+Cheese \n`המדריך לגבינות העולם` \nמראה מקומות.
+ספרי ילדים  \n`המפלצת הזדונית מתחת למיטה`
+ספרי ילדים \n`אוצר של סיפורי שודדי ים לילדים`
+Circuses \n`ההרפתקה המצוינת של אלפרדו וביל` \nבדיה
+Circuses \n`לעזאזל עם הטורפדו האנושי` \nהמקור של תרגיל התותח האנושי.
+Classics  \n`מישהו לירוק איתו` \nמאת קפטן מוחטה
+Collectables \n`זבל, זבל, ועוד זבל` \nמדריך לאיסוף מזכרות.
+בישול \n`מאכלי שודדי ים ראויים לציון`
+בישול \n`נוזלים צמיגיים שאפשר להכין בבית`
+סריגה \n`סריגה של רטיות לכיף ולרווח`
+Cross-Reference \nSee Referential Obscurantism
+Cryptography \n`הסיסמה באף שלי` \nהעברות מסרים ייחודיות במהלך ההיסטוריה.
+Dewey Decimal System \nSee Organizational Schema
+Disaster \n`הספינות הטרופות הטובות של המאה` \nמסדרת האסונות של חיי-ליים.
+Disease \n`Fascinating Facts \nAbout Scurvy`
+מחלה \n`מחלות ים`
+Dogs \n`מילון כלבי-עברי` \nמראה מקומות.
+Education \n`ספר הכנה למבחן הכשירות לשודד הים` \nמאת ס. קארפמן
+בידור \n`שקט על הסט`
+Entomology \n`תולעי העגבניה` \nמדריך לבעלים.
+אטימולוגיה \n`מקורות מילות שודדי הים`
+Eyesight \nSee: Vision
+Farthington Dynasty \nSee: Games
+Fashion \n`אופנת הקיץ להרפתקאות נועזות` \nשלוש שנים של כתב העת הפופולרי
+בדיה \n`נים מוסים`
+בדיה \n`חמש יותר ממה שהייתי צריך`
+בדיה \n`ימי הקיפוד`
+Fiction \n`אפילו לא דובלון` \nאנתולוגיה של סיפורים קצרים
+בדיה \n`סיפורים מאוד מאוד קצרים`
+כלכלה \n`דרכים קלות לעשות כסף`
+Fish \n`ספר הדגים הגדול` \nמדריך מצוייר לדגי העולם.
+דיג \n`דיג עלוקות: האמנות האבודה`
+Food \n`התחתנתי עם גיבן` \nמאת ג. שוויצרית
+אוכל \n`בגודל אמיתי ויותר גדול`
+אוכל \n`עכברושים כמקור חלבון`
+Food Also \nSee: Cannibalism
+Footnoting \nSee Vicious Pedantry
+Games \n`האל ברווד בקופים 2` \nסקירה חשובה.
+Games \n`משוגע על שיזוף מעריצים` \nמאת אלרוי י. טופי
+Games \n`מלכי משחק הדיסקיות` \nתיאור של שושלת פארת'ינגטון.
+Genealogy \n`אימי העגלה` \nסיפורים מוזרים אבל אמיתיים.
+גנטיקה \n`איך להכין ג'קאלופ`
+גאומטריה \n`המאפיינים של ההיפרבולואיד האליפטי`
+Ghost Pirate LeChuck \n`כשפוצצתי את לה-צ'אק` \nאחד הגרועים ביותר של כפיסדבק.
+Ghost Pirate LeChuck \n`היכן שפוצצתי את לה-צ'אק` \nאחד הגרועים ביותר של כפיסדבק.
+Ghost Pirate LeChuck \n`למה פוצצתי את לה-צ'אק` \nאחד הגרועים ביותר של כפיסדבק.
+גודייבה, גברת \n`החולצה שלבשתי`
+שוד קברים \n`עונשים פופולריים לשודדי קברים`
+Grog, Addiction to \n`אני הכבד של שחורזקן` \nהסיפור האמיתי והמחריד של גרוגהוליסט שהתוודה
+Groupings \nSee Catalogs
+Headings \nSee Cross-Reference
+History \n`זהירות עם כדורי התותח האלו!` \nהאגדה של צי תחתית-הזכוכית
+History \nSee Also: Scabb Island
+שטויות \n`זכרה של מולי`
+Humor \n`משחקי מילים גרועים לשודדי ים גרועים` \nמאת נ. פלסטיין
+הומור \n`בדיחות שודדי ים מטופשות`
+Humor, Gallows \n`אז הולכים להוציא אותך להורג...` \nעשרות דברים לומר על אבן הקיצוץ.
+גלידה \n`טעמי הגלידה האהובים על שודדי ים`
+Idols \n`פסלוני טיקי של דרום האוקיינוס השקט` \nמראה מקומות.
+איגלואים \n`בניית איגלו בקלות`
+Imaginary Numbers \n`חוקי המס החדשים` \nבדיה קלילה.
+Indexes \nSee Indices
+כוויות אינידאניות \n`איך לעשות כוויות אינדיאנות נהדרות`
+Indices \nSee Titles
+נחיתות \n`התסביך המסובך`
+Internal Revenue Service \nSee Imaginary Numbers.
+Jackalope \nSee Genetics
+Jelly \n`The Story of Jelly`
+מדוזה \n`בני דודינו חסרי עמוד השדרה`
+Justice \n`בית משפט מגוחך` \nביקורת על מערכת המשפט המודרנית.
+Juvenile Behavior \n`המדריך למפיל הפרות החובב` \nמבחר מאמרים על צורה וסגנון.
+Karate \nSee Martial Arts
+Karma \n`הקארמה שלי דרסה הרגע את תפיסת העולם שלך` \nראו גם: פילוסופיה
+גרירת שדרית \n`גרירה מתחת לספינה: שיטה ונוהג`
+Ketchup \nSee Vegetables
+Kidneys \n`האיבר הקטן שיכל` \nספר עם תמונות קופצות של פעולות הכליות.
+גניבות \n`קלפטומניה`
+Labyrinths \nSee Zip Codes
+Language \n`עגה מגניבה לשודדי ים` \nמילון מושגי עגה מודרניים.
+כינים \n`גידול טפילים לכיף ולרווח`
+צהריים \n`אחר הצהריים אצל קרס-בשר`
+Lyrics \n`רוק וגסות רוח` \nתקליטים מוחרמים של העשור האחרון.
+Magic \nSee Voodoo
+פרות ים \n`עלמות עלומות של המעמקים`
+Manatees \n`המלח ופרת הים` \n-- אגדה
+אומנויות לחימה \n`שבירת עצמות - תיאוריה ופרקטיקה`
+חשבון \n`נוסחאות למניסקטה ריבועיות`
+Maze Construction \nSee Annotation
+לוחמתי \n`מפרשית השיט: למה היא לא שטה`
+כסף \n`איך לעשות כסף קל מהבית`
+Music \n`אלוויס חי` \nניבוי מוזיקת העתיד מאת נוסטרדמיון
+Music \n`Greatest Rock Musicians \nof the Renaissance`
+מוזיקה \n`כרך ראשון`
+מוזיקה \n`שירי שודדי הים האיומים ביותר בעולם`
+מוזיקה \n`גיטרה למתחילים`
+Mystery \n`כמה עץ?` \nמסדרת המסתורין של העמלץ.
+נרקסיזם \n`להרגיש טוב עם נרקסיזם`
+נרקולפסיה \n`וידויים של נרקולפטי`
+עידן חדש \n`דיננטיקה מאת ל. רון גילברט`
+חושך \n`קולות מתחת למיטה`
+Normality \n`גדר עץ לבנה` \nמחקר סוציולוגי.
+Noses \n`צפור אם אתה חייב` \nצינונים, אלרגיות, ושאר מכאובים.
+Nostalgia \n`מזרקת סודה של ילדותי` \nמאת פונס דה לאון
+נומרולוגיה \n`נומרולוגיה למתחילים`
+ניילון \n`שימושים לניילון בידי שודדי ים`
+Obesity \n`יותר ממני לאהוב` \nמאת ל. כרסן
+Okra \n`מתכוני גמבו אהובים` \nראו גם אוכל.
+Olives \n`נגע הפיצה` \nבחינה של צריכת זיתים כפויה.
+אופטימיות \n`תמיד יש קשת בענן`
+קופי אורנג-אוטן \n`בני דודינו השעירים`
+Organizational Schema \nSee Labyrinths
+Origami \n`באפלו מנייר` \nעיצובי אוריגמי מתקדמים.
+אורתופדיה \n`הקשב לקול רגליי המדברות`
+Philosophy \n`גאולה` \nחיבור פילוסופי.
+פילוסופיה \n`פילוסופיה רסטאפרית`
+Pillaging \n`הכל על ביזה` \nמסדרת איך-לעשות הפופולרית.
+Pillaging \n`מומחי הביזה` \nראיונות עם כמה מהטובים ביותר.
+Piracy \n`תקציר על שוד ימי` \nלשודד הים המתחיל.
+Poetry \n`שלושה סדינים לרוח` \nשירה מאת שודדי ים.
+ציטוטים \n`ציטוטים מפורסמים של שודדי ים`
+Ranching \nSee Lice
+Recursion \nSee Recursion
+Recipes, Voodoo \n`ההנאה שבקללה` \n101 מתכוני וודו חיוניים.
+Referential Obscurantism \nSee Groupings
+Romance \n`הסיומת המייסרת של האהבה` \nמאת אריאל הילמן
+Romance \n`הסיום סר הטעם של החשק` \nמאת אריאל הילמן
+Romance \n`הטירוף הסופי של הריתוק` \nמאת אריאל הילמן
+Romance \n`התשישות המתמשכת של האהבה` \nמאת אריאל הילמן
+Romance \n`קרוב לכלום` \nמאת א. מארלי, תיאור של זמנה עם ברנשצבע כפיסדבק.
+Romance  \n`הנוכחות המתמידה של התשוקה` \nמאת אריאל הילמן
+Romance \n`השארית הבזויה של הרומנטיקה` \nמאת אריאל הילמן
+Romance \n`שירת הברבור השפלה של החטא` \nמאת אריאל הילמן
+Romance \n`ערגה לעבר המצהיב` \nמאת אריאל הילמן
+Sailing \n`לו רק היה לי ניקוז` \nהסכנות במקלחת על גבי הספינה.
+הפלגה \n`שיט בטוח`
+Salmon \n`נעליים ומנעולים` \nבעיות מודרניות הניצבות בפני סלמון.
+Scabb Island \n`ההיסטוריה של אי הגלד` \nמבוא
+עזרה עצמית \n`שודדי ים שאוהבים יותר מדי`
+Self-Help \n`לא לאכול אנשים ולהרגיש טוב לגבי זה` \nוידוייו של קניבל לשעבר
+Sharks \n`רוצחי המעמקים` \nמחקר על הכרישים הקאריביים.
+Shipbuilding \n`בניית ספינות מודרנית` \nמאת ג. פלדה
+Shipwrecks \nSee: Disaster
+חטא \n`החטאים המוסתרים של המתמטיקה`
+חטא \n`שבעת החטאים הכי קטלניים`
+עגה, שודד ים \n`חזיז ורעם`
+Sociology \n`דרוויניזם חברתי ומחלות חברתיות` \nתאוריית השוואה חברתית.
+Solitaire \n`מליון ואחת דרכים לשחק סוליטר` \nמאת חיליק שנאלח
+רוחני \n`מתנה מאנשי הלטאה`
+רוחני \n`מעל קן העורבים`
+Stupidity \n`ללכת דרך קירות: איך להימנע מאינטיליגנציה` \nניתוח של המערכת, ממתין לפטנט.
+Subheadings \nSee Maze Construction
+חיסור \n`חיסור: בן הזוג הערמומי של חיבור`
+Surgery \n`לנתח ללא רשת` \nשיטות לניתוח בטוח.
+כתובות קעקע \n`למה בחורות אוהבות קעקועים`
+כתובות קעקע \n`זיהומים שקשורים לקעקועים`
+כתובות קעקע \n`ספר הקעקועים הראשון לילד`
+Tea \n`טבח מסיבת התה` \nמאת לואיזה דה לה קרוז
+Theater \n`מעבר ללבבות וסימני שאלה` \nתיאטרון צלליות לשודד הים בעל שני-קרסים
+קוף תלת-ראשי \n`גאוותו של לוך-נס`
+Titles \nSee Headings
+טוסט \n`טוסטים טבעוניים בתשעים טעמים תמוהים`
+Toenails \n`אספן גזירי ציפורניים מודרני` \nמכלול כתבי עת.
+צעצועים \n`משאיות צעצוע לאספנים`
+Travel \n`טיול בקריביים בלי להוציא אפילו דולר ביום` \nמדריך לשודד הים.
+אוצר \n`א גרויסע מציאה: בוכטה שמחכה למוצא או מיתוס?`
+ניתוח עצים \n`חומרי הרדמה לעצים נשירים`
+Trilogies \n`מדוע לא כדאי לאנשים לכתוב טרילוגיות` \nמאת סיימון פינקלברת'
+Trilogies \n`מדוע אנשים לא קוראים טרילוגיות` \nמאת סיימון פינקלברת'
+Trilogies \n`מדוע אנשים כותבים טרילוגיות בכל זאת` \nמאת סיימון פינקלברת'
+קיבה \n`מתכוני קינוחים לאוהבי מעיים`
+כיב קיבה \n`למה אין צורך לדאוג מכיבי קיבה`
+מטריות \n`מטריות גדולות ויצירות אמנות אחרות`
+תחתונים \n`משיכת תחתונים: הנאה בלתי מזיקה או עינוי סדיסטי?`
+ירקות \n`ירקות שילדים יאכלו`
+חיים בעקיפין \n`ענפי ספורט מרובי צופים פופולריים`
+Vices \n`101 חטאים` \nמאת ג. פ. אמפלפורם
+Vicious Pedantry \nSee Dewey Decimal System
+כינורות \n`שלושים שימושים לא מוזיקליים לכינור שלך`
+וירוסים \n`דברים שאפשר להידבק בהם בקריאת ספר ספרייה`
+ראייה \n`רטיות`
+Volcanoes \n`חם כל השנה` \nמדריך נדל"ן.
+Voodoo \nSee: Recipes, Voodoo
+גסות \n`דברים דוחים לומר במסיבות`
+Waiting \n`זה כבר נחשב מרק?` \nזיליון דברים לעשות בזמן שמחכים בתור.
+Wallpaper \n`כל מקום חוץ מהחדר שלי` \nעיצובים הכוללים דמויות מצוירות חמודות.
+Wallpaper \n`השפעה של צהוב על ילדים קטנים` \nמחקר פסיכולוגי.
+Wallpaper \n`החיים בתוך לימון` \nאלף עיצובי ירוק ליים.
+ואלסים \n`ריקוד על שלוש רגליים`
+חזירי בר \n`חיית המחמד הבלתי מובנת`
+Wealth \n`עושר כאמנות חברתית` \nמאת ל. כרסן
+Wild Animals \n`תכיר את אדון נמר` \nספר עם תמונות קופצות.
+Wine \n`הסנפת הפקק` \nמדריך לסנוב היין.
+נגרות \n`ללכת על קרש דק`
+זאנטיפי \n`מעגל החיים של החדף`
+Xenophobia \n`Hey You Kids, Get Off \nMy Lawn`
+Xylophone \nSee: Music
+יאכטות, מועדונים \n`מדריך שודד הים למועדוני יאכטות בקאריביים`
+Yachting \n`כל מה שאתה צריך זה המכסה` \nשיט ביאכטה ביבשה.
+יאקים \n`היאק איטי אבל כדור הארץ סבלני`
+Yawning \n`הסיפוק שבפיהוק` \nמחקר פסיכולוגי על קנאת פיהוק.
+יטי \n`ראיון עם איש שלג`
+Yiddish \n`נו, ומונחים שימושיים אחרים` \nמראה מקומות.
+Yodeling \n`שירת יודל במלוא הריאות` \nמחקר של שירת יודל ככלי התקפי.
+Yorkshire Pudding \n`עדיין לא ממש פודינג` \nכתבות ומתכונים.
+Yo-yos \n`בסוף החבל` \nפוליטיקת יו-יואים.
+Yo-yos \n`ניתור ונימוסין` \nתרגילי יו-יו לרמת ביניים.
+Yo-yos \n`סחרור בקצה החוט` \nפילוסופיית יו-יו.
+זינז'אנתרופוס \n`שודדי הים של עידן הפלייסטוקן`
+Zip Codes \nSee Indexes
+רוכסנים \n`תיאוריית הרוכסן`
+זירקוניום \n`היסוד היפהפה ביותר`
+זואולוגיה \n`פשוט אחד מהפרימטים`
+זואולוגיה \n`חיות בגן חיות שהן יותר חכמות מבני אדם`
+הרים \n`המלכות של הרי הסיירה`
+Obscenity \n`&$*#!` \nסמלים השקולים למילים וביטויי תועבה.
+סרטים \n`המדריך השלם לקולות של סרטים מצוירים`
+שפשופי ראש \n`איך לתת שפשופי ראש מעולים`
+GAME SETTINGS
+AUDIO SETTINGS
+Monkey Island 2 Special Edition\nLeChuck's Revenge
+Part One: The Largo Embargo
+Part Two: Four Map Pieces
+Part Three: LeChuck's Fortress
+Part Four: Dinky Island
+%d%% complete
+בית 1:
+בית 2:
+בית 3:
+בית 4:
+VIEW PROFILE
+XBLA LEADERBOARDS
+MY FRIENDS
+MY SCORE
+GAMERTAG
+SCORE
+You will lose any unsaved progress. Are you sure you want to load from this save slot?
+Classic Edition is only available in English.
+KEYBOARD SHORTCUTS
+Keyboard Shortcuts
+Most of the actions you perform in Monkey Island 2 Special Edition can be entered with the keyboard.
+INVENTORY
+inventory
+Hint
+HINT
+View Profile
+CONTINUE GAME
+Cancel Button
+FULL SCREEN
+TRACKPAD
+PIRATE DICTIONARY
+PRESS FOR RANKING
+Left Button:\nWalk To / Use Inventory Item / Dialogue Selection\nWheel:\nClick once to:\nOpen / Close inventory menu\nScroll Through:\ninventory menu\nLeft + Right Button:\nObject Highlight\nRight Button:\nOpen Verb Action dial / Perform Action / Look at Inventory Item\nHint Button\nMove Cursor
+OVERALL
+Close Inventory
+No objects available
+Choose a different storage device.
+The selected storage device has been removed.
+The save file appears to be damaged and cannot be loaded.
+The save file appears to be damaged and cannot be loaded. Damaged save file will be overwritten automatically.
+Retry saving
+מטבעות כסף
+The selected storage device has been removed. Autosaving is now disabled. You must select a storage device to re-enable autosaving.
+מוכר
+מומחה היריקות
+CLICK ON THE IMAGE FOR FULL SCREEN
+Return to Game Library
+Exit to Main Menu
+ONLINE ID
+Time of Completion
+Time Score
+Number of Items Collected
+Number of Hints Used
+Score
+This game saves automatically at certain points. Do not switch off the power when the HDD access indicator is flashing.
+Special Effects
+Resolution
+Full Screen
+Apply
+SAVING CONTENT
+Online service is disabled on your PlayStation®Network account due to parental control restrictions.
+מטבעות נחושת
+and a dime
+and
+שחה אל
+N
+S
+E
+W
+Sorry, no hints available at this time...
+All unsaved progress will be lost. Are you sure you want to continue?
+A network error has occurred. Returning to the main menu.
+Settings
+Adult Entertainment \n`זלדה פרונקל מספרת הכל` \nזכרונותיה של אישה על תענוג מפוקפק.
+Animatronics \n`אנימטרוניקה` \nמאת וולט ביסלי
+Animatronics \n`מתחת לפני השטח` \nמאת וולט ביסלי
+Annotation \nSee Footnoting
+Archaeology \n`איקס אף פעם לא מסמן את המיקום` \nמאת א. ג'ונס
+אמנות \n`עמימות כצורת אמנות`
+Art/Philosophy \n`אידאליזם או סוריאליזם?` \nפילוסופיה/ספר אמנות.
+שתייה \n`משקאות לכולם`
+Big Whoop \nSee: Treasure
+Biography \n`בשתי ידיים ריקות` \nהסיפור של חיליק שנאלח.
+Biography \n`בשתי ידיים זזות` \nהסיפור של איתן.
+Biography \n`בשני ראשים ריקים` \nהסיפור של האחים פטוצ'יני.
+Biography \n`חופן בלוטי ים` \nיומנו של רב חובל סביבוני.
+Biography \n`לקק את כפית הכסף` \nמאת ל. כרסן
+ביוגרפיה \n`אני ושחורזקן`
+Biography \n`הפעם בה פוצצתי את לה-צ'אק` \nזכרונותיו המפוקפקים של ברנשצבע כפיסדבק
+Biography \n`אמאל'ה!` \nזכרונותיו של רב חובל גילברט
+גוף \n`כתמי לידה לא שגרתיים`
+ארוחת בוקר \n`ארוחת בוקר אצל קרס-בשר`
+Business \n`כיצד תרכוש ידידים והשפעה` \nמאת כחולזקן
+Cannibalism  \n`ארוחות ילדים` \nמאת ראש לימון
+Cannibalism \nSee Also:  Self-Help
+Catalogs \nSee Subheadings
+Cheese \n`המדריך לגבינות העולם` \nמראה מקומות.
+ספרי ילדים  \n`המפלצת הזדונית מתחת למיטה`
+ספרי ילדים \n`אוצר של סיפורי שודדי ים לילדים`
+Circuses \n`ההרפתקה המצוינת של אלפרדו וביל` \nבדיה
+Circuses \n`לעזאזל עם הטורפדו האנושי` \nהמקור של תרגיל התותח האנושי.
+Classics  \n`מישהו לירוק איתו` \nמאת קפטן מוחטה
+Collectables \n`זבל, זבל, ועוד זבל` \nמדריך לאיסוף מזכרות.
+בישול \n`מאכלי שודדי ים ראויים לציון`
+בישול \n`נוזלים צמיגיים שאפשר להכין בבית`
+סריגה \n`סריגה של רטיות לכיף ולרווח`
+Cross-Reference \nSee Referential Obscurantism
+Cryptography \n`הסיסמה באף שלי` \nהעברות מסרים ייחודיות במהלך ההיסטוריה.
+Dewey Decimal System \nSee Organizational Schema
+Disaster \n`הספינות הטרופות הטובות של המאה` \nמסדרת האסונות של חיי-ליים.
+Disease \n`Fascinating Facts \nAbout Scurvy`
+מחלה \n`מחלות ים`
+Dogs \n`מילון כלבי-עברי` \nמראה מקומות.
+Education \n`ספר הכנה למבחן הכשירות לשודד הים` \nמאת ס. קארפמן
+בידור \n`שקט על הסט`
+Entomology \n`תולעי העגבניה` \nמדריך לבעלים.
+אטימולוגיה \n`מקורות מילות שודדי הים`
+Eyesight \nSee: Vision
+Farthington Dynasty \nSee: Games
+Fashion \n`אופנת הקיץ להרפתקאות נועזות` \nשלוש שנים של כתב העת הפופולרי
+בדיה \n`נים מוסים`
+בדיה \n`חמש יותר ממה שהייתי צריך`
+בדיה \n`ימי הקיפוד`
+Fiction \n`אפילו לא דובלון` \nאנתולוגיה של סיפורים קצרים
+בדיה \n`סיפורים מאוד מאוד קצרים`
+כלכלה \n`דרכים קלות לעשות כסף`
+Fish \n`ספר הדגים הגדול` \nמדריך מצוייר לדגי העולם.
+דיג \n`דיג עלוקות: האמנות האבודה`
+Food \n`התחתנתי עם גיבן` \nמאת ג. שוויצרית
+אוכל \n`בגודל אמיתי ויותר גדול`
+אוכל \n`עכברושים כמקור חלבון`
+Food Also \nSee: Cannibalism
+Footnoting \nSee Vicious Pedantry
+Games \n`האל ברווד בקופים 2` \nסקירה חשובה.
+Games \n`משוגע על שיזוף מעריצים` \nמאת אלרוי י. טופי
+Games \n`מלכי משחק הדיסקיות` \nתיאור של שושלת פארת'ינגטון.
+Genealogy \n`אימי העגלה` \nסיפורים מוזרים אבל אמיתיים.
+גנטיקה \n`איך להכין ג'קאלופ`
+גאומטריה \n`המאפיינים של ההיפרבולואיד האליפטי`
+Ghost Pirate LeChuck \n`כשפוצצתי את לה-צ'אק` \nאחד הגרועים ביותר של כפיסדבק.
+Ghost Pirate LeChuck \n`היכן שפוצצתי את לה-צ'אק` \nאחד הגרועים ביותר של כפיסדבק.
+Ghost Pirate LeChuck \n`למה פוצצתי את לה-צ'אק` \nאחד הגרועים ביותר של כפיסדבק.
+גודייבה, גברת \n`החולצה שלבשתי`
+שוד קברים \n`עונשים פופולריים לשודדי קברים`
+Grog, Addiction to \n`אני הכבד של שחורזקן` \nהסיפור האמיתי והמחריד של גרוגהוליסט שהתוודה
+Groupings \nSee Catalogs
+Headings \nSee Cross-Reference
+History \n`זהירות עם כדורי התותח האלו!` \nהאגדה של צי תחתית-הזכוכית
+History \nSee Also: Scabb Island
+שטויות \n`זכרה של מולי`
+Humor \n`משחקי מילים גרועים לשודדי ים גרועים` \nמאת נ. פלסטיין
+הומור \n`בדיחות שודדי ים מטופשות`
+Humor, Gallows \n`אז הולכים להוציא אותך להורג...` \nעשרות דברים לומר על אבן הקיצוץ.
+גלידה \n`טעמי הגלידה האהובים על שודדי ים`
+Idols \n`פסלוני טיקי של דרום האוקיינוס השקט` \nמראה מקומות.
+איגלואים \n`בניית איגלו בקלות`
+Imaginary Numbers \n`חוקי המס החדשים` \nבדיה קלילה.
+Indexes \nSee Indices
+כוויות אינידאניות \n`איך לעשות כוויות אינדיאנות נהדרות`
+Indices \nSee Titles
+נחיתות \n`התסביך המסובך`
+Internal Revenue Service \nSee Imaginary Numbers.
+Jackalope \nSee Genetics
+Jelly \n`The Story of Jelly`
+מדוזה \n`בני דודינו חסרי עמוד השדרה`
+Justice \n`בית משפט מגוחך` \nביקורת על מערכת המשפט המודרנית.
+Juvenile Behavior \n`המדריך למפיל הפרות החובב` \nמבחר מאמרים על צורה וסגנון.
+Karate \nSee Martial Arts
+Karma \n`הקארמה שלי דרסה הרגע את תפיסת העולם שלך` \nראו גם: פילוסופיה
+גרירת שדרית \n`גרירה מתחת לספינה: שיטה ונוהג`
+Ketchup \nSee Vegetables
+Kidneys \n`האיבר הקטן שיכל` \nספר עם תמונות קופצות של פעולות הכליות.
+גניבות \n`קלפטומניה`
+Labyrinths \nSee Zip Codes
+Language \n`עגה מגניבה לשודדי ים` \nמילון מושגי עגה מודרניים.
+כינים \n`גידול טפילים לכיף ולרווח`
+צהריים \n`אחר הצהריים אצל קרס-בשר`
+Lyrics \n`רוק וגסות רוח` \nתקליטים מוחרמים של העשור האחרון.
+Magic \nSee Voodoo
+פרות ים \n`עלמות עלומות של המעמקים`
+Manatees \n`המלח ופרת הים` \n-- אגדה
+אומנויות לחימה \n`שבירת עצמות - תיאוריה ופרקטיקה`
+חשבון \n`נוסחאות למניסקטה ריבועיות`
+Maze Construction \nSee Annotation
+לוחמתי \n`מפרשית השיט: למה היא לא שטה`
+כסף \n`איך לעשות כסף קל מהבית`
+Music \n`אלוויס חי` \nניבוי מוזיקת העתיד מאת נוסטרדמיון
+Music \n`Greatest Rock Musicians \nof the Renaissance`
+מוזיקה \n`כרך ראשון`
+מוזיקה \n`שירי שודדי הים האיומים ביותר בעולם`
+מוזיקה \n`גיטרה למתחילים`
+Mystery \n`כמה עץ?` \nמסדרת המסתורין של העמלץ.
+נרקסיזם \n`להרגיש טוב עם נרקסיזם`
+נרקולפסיה \n`וידויים של נרקולפטי`
+עידן חדש \n`דיננטיקה מאת ל. רון גילברט`
+חושך \n`קולות מתחת למיטה`
+Normality \n`גדר עץ לבנה` \nמחקר סוציולוגי.
+Noses \n`צפור אם אתה חייב` \nצינונים, אלרגיות, ושאר מכאובים.
+Nostalgia \n`מזרקת סודה של ילדותי` \nמאת פונס דה לאון
+נומרולוגיה \n`נומרולוגיה למתחילים`
+ניילון \n`שימושים לניילון בידי שודדי ים`
+Obesity \n`יותר ממני לאהוב` \nמאת ל. כרסן
+Okra \n`מתכוני גמבו אהובים` \nראו גם אוכל.
+Olives \n`נגע הפיצה` \nבחינה של צריכת זיתים כפויה.
+אופטימיות \n`תמיד יש קשת בענן`
+קופי אורנג-אוטן \n`בני דודינו השעירים`
+Organizational Schema \nSee Labyrinths
+Origami \n`באפלו מנייר` \nעיצובי אוריגמי מתקדמים.
+אורתופדיה \n`הקשב לקול רגליי המדברות`
+Philosophy \n`גאולה` \nחיבור פילוסופי.
+פילוסופיה \n`פילוסופיה רסטאפרית`
+Pillaging \n`הכל על ביזה` \nמסדרת איך-לעשות הפופולרית.
+Pillaging \n`מומחי הביזה` \nראיונות עם כמה מהטובים ביותר.
+Piracy \n`תקציר על שוד ימי` \nלשודד הים המתחיל.
+Poetry \n`שלושה סדינים לרוח` \nשירה מאת שודדי ים.
+ציטוטים \n`ציטוטים מפורסמים של שודדי ים`
+Ranching \nSee Lice
+Recursion \nSee Recursion
+Recipes, Voodoo \n`ההנאה שבקללה` \n101 מתכוני וודו חיוניים.
+Referential Obscurantism \nSee Groupings
+Romance \n`הסיומת המייסרת של האהבה` \nמאת אריאל הילמן
+Romance \n`הסיום סר הטעם של החשק` \nמאת אריאל הילמן
+Romance \n`הטירוף הסופי של הריתוק` \nמאת אריאל הילמן
+Romance \n`התשישות המתמשכת של האהבה` \nמאת אריאל הילמן
+Romance \n`קרוב לכלום` \nמאת א. מארלי, תיאור של זמנה עם ברנשצבע כפיסדבק.
+Romance  \n`הנוכחות המתמידה של התשוקה` \nמאת אריאל הילמן
+Romance \n`השארית הבזויה של הרומנטיקה` \nמאת אריאל הילמן
+Romance \n`שירת הברבור השפלה של החטא` \nמאת אריאל הילמן
+Romance \n`ערגה לעבר המצהיב` \nמאת אריאל הילמן
+Sailing \n`לו רק היה לי ניקוז` \nהסכנות במקלחת על גבי הספינה.
+הפלגה \n`שיט בטוח`
+Salmon \n`נעליים ומנעולים` \nבעיות מודרניות הניצבות בפני סלמון.
+Scabb Island \n`ההיסטוריה של אי הגלד` \nמבוא
+עזרה עצמית \n`שודדי ים שאוהבים יותר מדי`
+Self-Help \n`לא לאכול אנשים ולהרגיש טוב לגבי זה` \nוידוייו של קניבל לשעבר
+Sharks \n`רוצחי המעמקים` \nמחקר על הכרישים הקאריביים.
+Shipbuilding \n`בניית ספינות מודרנית` \nמאת ג. פלדה
+Shipwrecks \nSee: Disaster
+חטא \n`החטאים המוסתרים של המתמטיקה`
+חטא \n`שבעת החטאים הכי קטלניים`
+עגה, שודד ים \n`חזיז ורעם`
+Sociology \n`דרוויניזם חברתי ומחלות חברתיות` \nתאוריית השוואה חברתית.
+Solitaire \n`מליון ואחת דרכים לשחק סוליטר` \nמאת חיליק שנאלח
+רוחני \n`מתנה מאנשי הלטאה`
+רוחני \n`מעל קן העורבים`
+Stupidity \n`ללכת דרך קירות: איך להימנע מאינטיליגנציה` \nניתוח של המערכת, ממתין לפטנט.
+Subheadings \nSee Maze Construction
+חיסור \n`חיסור: בן הזוג הערמומי של חיבור`
+Surgery \n`לנתח ללא רשת` \nשיטות לניתוח בטוח.
+כתובות קעקע \n`למה בחורות אוהבות קעקועים`
+כתובות קעקע \n`זיהומים שקשורים לקעקועים`
+כתובות קעקע \n`ספר הקעקועים הראשון לילד`
+Tea \n`טבח מסיבת התה` \nמאת לואיזה דה לה קרוז
+Theater \n`מעבר ללבבות וסימני שאלה` \nתיאטרון צלליות לשודד הים בעל שני-קרסים
+קוף תלת-ראשי \n`גאוותו של לוך-נס`
+Titles \nSee Headings
+טוסט \n`טוסטים טבעוניים בתשעים טעמים תמוהים`
+Toenails \n`אספן גזירי ציפורניים מודרני` \nמכלול כתבי עת.
+צעצועים \n`משאיות צעצוע לאספנים`
+Travel \n`טיול בקריביים בלי להוציא אפילו דולר ביום` \nמדריך לשודד הים.
+אוצר \n`א גרויסע מציאה: בוכטה שמחכה למוצא או מיתוס?`
+ניתוח עצים \n`חומרי הרדמה לעצים נשירים`
+Trilogies \n`מדוע לא כדאי לאנשים לכתוב טרילוגיות` \nמאת סיימון פינקלברת'
+Trilogies \n`מדוע אנשים לא קוראים טרילוגיות` \nמאת סיימון פינקלברת'
+Trilogies \n`מדוע אנשים כותבים טרילוגיות בכל זאת` \nמאת סיימון פינקלברת'
+קיבה \n`מתכוני קינוחים לאוהבי מעיים`
+כיב קיבה \n`למה אין צורך לדאוג מכיבי קיבה`
+מטריות \n`מטריות גדולות ויצירות אמנות אחרות`
+תחתונים \n`משיכת תחתונים: הנאה בלתי מזיקה או עינוי סדיסטי?`
+ירקות \n`ירקות שילדים יאכלו`
+חיים בעקיפין \n`ענפי ספורט מרובי צופים פופולריים`
+Vices \n`101 חטאים` \nמאת ג. פ. אמפלפורם
+Vicious Pedantry \nSee Dewey Decimal System
+כינורות \n`שלושים שימושים לא מוזיקליים לכינור שלך`
+וירוסים \n`דברים שאפשר להידבק בהם בקריאת ספר ספרייה`
+ראייה \n`רטיות`
+Volcanoes \n`חם כל השנה` \nמדריך נדל"ן.
+Voodoo \nSee: Recipes, Voodoo
+גסות \n`דברים דוחים לומר במסיבות`
+Waiting \n`זה כבר נחשב מרק?` \nזיליון דברים לעשות בזמן שמחכים בתור.
+Wallpaper \n`כל מקום חוץ מהחדר שלי` \nעיצובים הכוללים דמויות מצוירות חמודות.
+Wallpaper \n`השפעה של צהוב על ילדים קטנים` \nמחקר פסיכולוגי.
+Wallpaper \n`החיים בתוך לימון` \nאלף עיצובי ירוק ליים.
+ואלסים \n`ריקוד על שלוש רגליים`
+חזירי בר \n`חיית המחמד הבלתי מובנת`
+Wealth \n`עושר כאמנות חברתית` \nמאת ל. כרסן
+Wild Animals \n`תכיר את אדון נמר` \nספר עם תמונות קופצות.
+Wine \n`הסנפת הפקק` \nמדריך לסנוב היין.
+נגרות \n`ללכת על קרש דק`
+זאנטיפי \n`מעגל החיים של החדף`
+Xenophobia \n`Hey You Kids, Get Off \nMy Lawn`
+Xylophone \nSee: Music
+יאכטות, מועדונים \n`מדריך שודד הים למועדוני יאכטות בקאריביים`
+Yachting \n`כל מה שאתה צריך זה המכסה` \nשיט ביאכטה ביבשה.
+יאקים \n`היאק איטי אבל כדור הארץ סבלני`
+Yawning \n`הסיפוק שבפיהוק` \nמחקר פסיכולוגי על קנאת פיהוק.
+יטי \n`ראיון עם איש שלג`
+Yiddish \n`נו, ומונחים שימושיים אחרים` \nמראה מקומות.
+Yodeling \n`שירת יודל במלוא הריאות` \nמחקר של שירת יודל ככלי התקפי.
+Yorkshire Pudding \n`עדיין לא ממש פודינג` \nכתבות ומתכונים.
+Yo-yos \n`בסוף החבל` \nפוליטיקת יו-יואים.
+Yo-yos \n`ניתור ונימוסין` \nתרגילי יו-יו לרמת ביניים.
+Yo-yos \n`סחרור בקצה החוט` \nפילוסופיית יו-יו.
+זינז'אנתרופוס \n`שודדי הים של עידן הפלייסטוקן`
+Zip Codes \nSee Indexes
+רוכסנים \n`תיאוריית הרוכסן`
+זירקוניום \n`היסוד היפהפה ביותר`
+זואולוגיה \n`פשוט אחד מהפרימטים`
+זואולוגיה \n`חיות בגן חיות שהן יותר חכמות מבני אדם`
+הרים \n`המלכות של הרי הסיירה`
+Obscenity \n`&$*#!` \nסמלים השקולים למילים וביטויי תועבה.
+סרטים \n`המדריך השלם לקולות של סרטים מצוירים`
+שפשופי ראש \n`איך לתת שפשופי ראש מעולים`
+If you want to access the pause menu during a game, rotate the iPhone or iPod touch vertically.
