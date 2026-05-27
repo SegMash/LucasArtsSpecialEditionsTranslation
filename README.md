@@ -198,14 +198,20 @@ python scripts/text/build_translation.py  --report
 ```
 
 Reads `translations/en.speech.txt` + `translations/en.uitext.txt` and the
-pre-built mapping files:
+mapping files:
 
 | Mapping file | Encoding | Purpose |
 |---|---|---|
 | `translations/mapping.txt` | Windows-1255 | Main `english === hebrew` dictionary |
-| `translations/extra_mapping.txt` | UTF-8 | Secondary fallback, exact-match only |
+| `translations/*_mapping.txt` | UTF-8 | Auto-discovered secondary mappings, exact-match fallback (e.g. `extra_mapping.txt`, `uit_text_mapping.txt`, …) |
 
-For each English line it runs a 13-step lookup cascade (handles
+All files in `translations/` whose name matches `*_mapping.txt` are
+loaded automatically, in **alphabetical order**, after the primary
+`mapping.txt`.  On duplicate keys the first-loaded file wins, so name new
+files to control priority (or pass `--extra-mapping FILE [FILE …]` to
+override the auto-discovery with an explicit list).
+
+For each English line the script runs a 13-step lookup cascade (handles
 case / spaces / quotes / backticks / embedded `{tokens}` / multi-line
 strings / etc.) and writes:
 
@@ -221,6 +227,23 @@ spot (and to fix in step 2.3).
 
 Pass `--report` to also write `translations/missing_from_build.txt` listing
 every untranslated line, grouped by source file.
+
+#### Refreshing after the first hand-edit pass — `--merge`
+
+Once you've started hand-editing `mi2/he.*.txt`, a plain re-run would
+overwrite those edits.  Pass `--merge` (mutually exclusive with
+`--override`) to refresh **only the lines that are still English
+fallback**.  Any line that already differs from its English source is
+treated as a hand-edit and preserved verbatim:
+
+```sh
+python scripts/text/build_translation.py  --out-dir translations/mi2  --merge  --report
+```
+
+The run prints a `… hand-edits preserved` counter alongside the usual
+translated/fallback stats so you can see at a glance what changed.  Use
+this whenever you add a new mapping entry or a whole new `*_mapping.txt`
+file and want it picked up without losing manual work.
 
 ### Step 2.3 — Hand-edit the Hebrew files (optional but recommended)
 
@@ -343,8 +366,11 @@ build_hebrew_font.bat  extracted/fonts.bak  --output-dir extracted/fonts  --hebr
 
 # 3. Part 2 — text
 python scripts/text/extract_text.py        extracted/localization  -o translations
-python scripts/text/build_translation.py   --report
+python scripts/text/build_translation.py   --out-dir translations/mi2  --report
 #    (optionally hand-edit translations/mi2/he.*.txt here)
+#    (after adding new mapping entries, re-run with --merge to refresh
+#     only the untranslated lines while preserving your hand-edits:)
+#    python scripts/text/build_translation.py   --out-dir translations/mi2  --merge  --report
 python scripts/text/inject_translation.py  extracted/localization  --report
 
 # 4. Part 3 — EXE patch

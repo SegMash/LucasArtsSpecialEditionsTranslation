@@ -11,18 +11,23 @@ For each English line:
 Newlines (\\n / \\r) inside a message are kept ESCAPED in both the input and
 output .txt files: each message always occupies exactly one line.
 
-Output files are NOT overwritten by default — pass --override to replace.
+Output files are NOT overwritten by default — pass --override to replace,
+or --merge to refresh ONLY the English-fallback lines (i.e. preserve any
+hand-edits already in the target Hebrew file).
 
 Usage:
     python build_translation.py [-i <translations_dir>] [-o <translations_dir>]
                                 [--mapping FILE] [--extra-mapping FILE [FILE ...]]
-                                [--lang en] [--override]
+                                [--lang en] [--override | --merge]
 
 Default I/O:
   Inputs  : translations/en.speech.txt
             translations/en.uitext.txt
-            translations/mapping.txt          (Windows-1255)
-            translations/extra_mapping.txt    (UTF-8)
+            translations/mapping.txt                (Windows-1255, primary)
+            translations/*_mapping.txt              (UTF-8, all extras
+                                                     auto-discovered, sorted
+                                                     alphabetically — first file
+                                                     wins on duplicate keys)
   Outputs : translations/he.speech.txt
             translations/he.uitext.txt
             translations/missing_from_build.txt   (only if --report)
@@ -31,6 +36,7 @@ Default I/O:
 from __future__ import annotations
 
 import argparse
+import glob
 import io
 import os
 import sys
@@ -104,37 +110,58 @@ def _write_lines(path: str, lines: list[str]) -> None:
 def build_one(name: str,
               src_path: str,
               dst_path: str,
-              lookup: TranslationLookup) -> tuple[int, int]:
+              lookup: TranslationLookup,
+              merge: bool = False) -> tuple[int, int, int]:
     """Process one English file, write the matching Hebrew file.
 
-    Returns (translated_count, fallback_count).
+    When `merge` is True and `dst_path` already exists, any line in the target
+    that differs from the corresponding English line is treated as a hand-edit
+    and preserved verbatim.  Lines that are still English fallback are
+    re-looked-up via the cascade (so newly-added mapping entries pick them up).
+
+    Returns (translated_count, fallback_count, preserved_edits).  In non-merge
+    mode `preserved_edits` is always 0.
     """
     en_lines = _read_lines(src_path)
+
+    existing: list[str] = []
+    if merge and os.path.exists(dst_path):
+        existing = _read_lines(dst_path)
 
     out_lines: list[str] = []
     translated = 0
     fallback   = 0
+    preserved  = 0
 
-    for en_escaped in en_lines:
+    for i, en_escaped in enumerate(en_lines):
         if not en_escaped:
-            # Empty source line -> keep as empty target line.
             out_lines.append("")
             continue
-        # Restore real newlines before looking up.
+        # Preserve hand-edits in merge mode (line index matches between EN and HE).
+        if merge and i < len(existing):
+            cur = existing[i]
+            if cur and cur != en_escaped:
+                out_lines.append(cur)
+                translated += 1
+                preserved  += 1
+                continue
         en_real = unescape_newlines(en_escaped)
         he = lookup.lookup(en_real)
         if he:
             out_lines.append(escape_newlines(he))
             translated += 1
         else:
-            # No translation -> fall back to the English text verbatim.
             out_lines.append(en_escaped)
             fallback += 1
 
     _write_lines(dst_path, out_lines)
-    print(f"  {name}: {translated} translated, {fallback} English fallback "
-          f"({len(en_lines)} lines)  ->  {dst_path}")
-    return translated, fallback
+    msg = (f"  {name}: {translated} translated, {fallback} English fallback "
+           f"({len(en_lines)} lines)")
+    if merge:
+        msg += f", {preserved} hand-edits preserved"
+    msg += f"  ->  {dst_path}"
+    print(msg)
+    return translated, fallback, preserved
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -167,11 +194,13 @@ def main() -> int:
     p.add_argument(
         "--extra-mapping",
         nargs="+",
-        default=[os.path.join(BASE_DIR, "translations", "extra_mapping.txt")],
+        default=None,
         metavar="FILE",
         help="One or more secondary UTF-8 mapping files tried after the primary "
              "(first file takes priority on duplicate keys). "
-             "(default: translations/extra_mapping.txt)",
+             "Default: every translations/*_mapping.txt file, sorted "
+             "alphabetically (so e.g. extra_mapping.txt < uit_text_mapping.txt). "
+             "Pass this flag to override the auto-discovery with an explicit list.",
     )
     p.add_argument(
         "--lang",
@@ -183,10 +212,19 @@ def main() -> int:
         default="he",
         help="Output language prefix (default: he)",
     )
-    p.add_argument(
+    write_mode = p.add_mutually_exclusive_group()
+    write_mode.add_argument(
         "--override",
         action="store_true",
-        help="Overwrite existing output files (default: refuse if they exist)",
+        help="Overwrite existing output files completely (default: refuse if they exist).",
+    )
+    write_mode.add_argument(
+        "--merge",
+        action="store_true",
+        help="Refresh the existing output files in place, preserving any line "
+             "that already differs from the matching English source line "
+             "(treated as a hand-edit).  English-fallback lines are re-looked-up "
+             "with the current mapping tables.",
     )
     p.add_argument(
         "--report",
@@ -201,6 +239,16 @@ def main() -> int:
 
     in_dir  = args.in_dir.rstrip("\\/")
     out_dir = args.out_dir.rstrip("\\/")
+
+    # ── Auto-discover extra mapping files when --extra-mapping is not given ──
+    # All files matching translations/*_mapping.txt are loaded in alphabetical
+    # order.  The primary 'mapping.txt' is excluded by the underscore in the
+    # glob.  Pass --extra-mapping explicitly to override this behaviour.
+    if args.extra_mapping is None:
+        translations_dir = os.path.dirname(os.path.abspath(args.mapping))
+        discovered = sorted(glob.glob(os.path.join(translations_dir,
+                                                   "*_mapping.txt")))
+        args.extra_mapping = discovered
 
     src_speech = os.path.join(in_dir, f"{args.lang}.speech.txt")
     src_uitext = os.path.join(in_dir, f"{args.lang}.uitext.txt")
@@ -220,10 +268,11 @@ def main() -> int:
         print(f"ERROR: mapping file not found: {args.mapping}")
         return 1
 
-    # ── Validate outputs / override ─────────────────────────────────────────
+    # ── Validate outputs / override / merge ─────────────────────────────────
     existing_outputs = [p for p in (dst_speech, dst_uitext) if os.path.exists(p)]
-    if existing_outputs and not args.override:
-        print("ERROR: output file(s) already exist (pass --override to replace):")
+    if existing_outputs and not (args.override or args.merge):
+        print("ERROR: output file(s) already exist "
+              "(pass --override to replace, or --merge to preserve hand-edits):")
         for e in existing_outputs:
             print(f"  {e}")
         return 1
@@ -232,6 +281,12 @@ def main() -> int:
     print(f"In dir  : {in_dir}")
     print(f"Out dir : {out_dir}")
     print(f"Mapping : {args.mapping}")
+    if args.extra_mapping:
+        print(f"Extra mappings ({len(args.extra_mapping)}, in load order):")
+        for ep in args.extra_mapping:
+            print(f"  - {ep}")
+    else:
+        print("Extra mappings : (none)")
     print(f"Source language : {args.lang}")
     print(f"Target language : {args.target_lang}")
     print()
@@ -248,22 +303,28 @@ def main() -> int:
         print(f"Extra mapping loaded   : {m:,} entries  ({extra_path})")
 
     print()
-    print("Building Hebrew files ...")
+    if args.merge:
+        print("Building Hebrew files (merge mode — hand-edits preserved) ...")
+    else:
+        print("Building Hebrew files ...")
 
-    s_trans, s_fall = build_one("speech", src_speech, dst_speech, lookup)
-    u_trans, u_fall = build_one("uitext", src_uitext, dst_uitext, lookup)
+    s_trans, s_fall, s_pres = build_one(
+        "speech", src_speech, dst_speech, lookup, merge=args.merge)
+    u_trans, u_fall, u_pres = build_one(
+        "uitext", src_uitext, dst_uitext, lookup, merge=args.merge)
 
     total_lines  = s_trans + s_fall + u_trans + u_fall
     total_trans  = s_trans + u_trans
-    total_fall   = s_fall  + u_fall
     pct = total_trans * 100 // total_lines if total_lines else 0
 
     print()
     print("=" * 60)
     print("BUILD COMPLETE")
     print("=" * 60)
-    print(f"  Speech : {s_trans:,} translated, {s_fall:,} English fallback")
-    print(f"  Uitext : {u_trans:,} translated, {u_fall:,} English fallback")
+    print(f"  Speech : {s_trans:,} translated, {s_fall:,} English fallback"
+          + (f", {s_pres:,} hand-edits preserved" if args.merge else ""))
+    print(f"  Uitext : {u_trans:,} translated, {u_fall:,} English fallback"
+          + (f", {u_pres:,} hand-edits preserved" if args.merge else ""))
     print(f"  Overall coverage: {pct}% Hebrew  ({total_trans:,} / {total_lines:,})")
 
     # ── Optional missing-translations report ────────────────────────────────
