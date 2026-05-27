@@ -41,6 +41,14 @@ Options
                        faint(3,3,3,1) / dark(128,128,128,64) /
                        mid(200,200,200,157) / light(240,240,240,226) /
                        solid(255,255,255,255).
+    --border-mode M    For border fonts (output folder name contains "_bo_"),
+                       choose where to draw the 1-pixel black contour:
+                         outer (default): paint the transparent pixels touching
+                                          the letter black — letter body stays
+                                          bright, adds a 1-px halo (PNG is one
+                                          column wider in natural-width mode).
+                         inner          : paint the outermost letter pixels
+                                          black — same footprint, thinner body.
 """
 
 import sys
@@ -223,6 +231,21 @@ def main() -> None:
              "font atlas (faint/dark/mid/light/solid).",
     )
     parser.set_defaults(quantize=True)
+    parser.add_argument(
+        "--border-mode", choices=["inner", "outer"], default="outer",
+        help="For border fonts (output folder name contains '_bo_'), where to\n"
+             "paint the black 1-pixel contour:\n"
+             "  outer (default): recolour the TRANSPARENT pixels adjacent to\n"
+             "                   the letter black.  Letter body stays bright;\n"
+             "                   adds a 1-pixel halo around it.  In the natural-\n"
+             "                   width (left) mode an extra leading empty column\n"
+             "                   is preserved so the left halo has room to\n"
+             "                   appear, slightly widening each glyph PNG.\n"
+             "  inner          : recolour the outermost LETTER pixels black.\n"
+             "                   Footprint unchanged; original letter looks\n"
+             "                   slightly thinner because the border eats into\n"
+             "                   the glyph body.",
+    )
     args = parser.parse_args()
 
     num_letters = len(HEBREW_TO_CODE)
@@ -305,10 +328,11 @@ def main() -> None:
         (255, 255, 255, 255),   # solid
     ], dtype=np.int32)
 
-    # Auto-detect border fonts: fonts whose name contains "_bo_" should have
-    # each Hebrew glyph's inner contour (pixels inside the letter that touch
-    # a transparent pixel) painted black so the game renders a black outline.
+    # Auto-detect border fonts: fonts whose name contains "_bo_" get a black
+    # 1-pixel contour around each Hebrew glyph.  --border-mode controls whether
+    # the contour is painted INSIDE the letter (default) or OUTSIDE it (test).
     _is_border_font = "_bo_" in os.path.basename(os.path.abspath(out_dir)).lower()
+    _outer_border   = _is_border_font and args.border_mode == "outer"
 
     generated = 0
     for pos, ((letter, char_code), name) in enumerate(selected, start=letter_from):
@@ -335,16 +359,19 @@ def main() -> None:
             # ── Natural-width mode (left): pixels start at column 0, exactly
             #    1 empty (transparent) column on the right — matching the
             #    original atlas convention.
+            #    In outer-border mode we ALSO leave 1 empty column on the left
+            #    so the black halo has room to paint there.
             arr = np.array(raw_img)
             col_max_a = arr[:, :, 3].max(axis=0)   # max alpha per column
             if col_max_a.any():
                 first_col = int(np.argmax(col_max_a > 0))
                 last_col  = int(np.where(col_max_a > 0)[0][-1])
-                # Build new array: [first_col .. last_col] + 1 empty col
-                new_w   = last_col - first_col + 2   # active cols + 1 trailing empty
+                active_w  = last_col - first_col + 1
+                leading_pad = 1 if _outer_border else 0
+                new_w   = active_w + 1 + leading_pad   # active + 1 trailing + maybe 1 leading
                 new_arr = np.zeros((arr.shape[0], new_w, 4), dtype=arr.dtype)
-                new_arr[:, : new_w - 1, :] = arr[:, first_col : last_col + 1, :]
-                # last column stays all-zero (transparent)
+                new_arr[:, leading_pad : leading_pad + active_w, :] = arr[:, first_col : last_col + 1, :]
+                # First column (when leading_pad) and last column stay transparent.
                 img = Image.fromarray(new_arr)
             else:
                 img = raw_img   # blank glyph — leave as-is
@@ -361,31 +388,45 @@ def main() -> None:
                 arr[mask]  = _PALETTE[nearest]
             img = Image.fromarray(arr.astype(np.uint8))
 
-        # ── Black inner-contour border for _bo_ fonts ─────────────────────────
-        # Find every pixel that is part of the letter (alpha > 0) but has at
-        # least one transparent (alpha == 0) neighbour in the 4 cardinal
-        # directions.  Those boundary pixels are recoloured (0, 0, 0, 255) so
-        # the game draws a solid black outline without adding pixels outside the
-        # letter's existing footprint.  Applied AFTER quantize so the black
-        # colour is not snapped back to white by the palette mapping.
+        # ── Black contour for _bo_ fonts (inner or outer per --border-mode) ──
+        # Applied AFTER quantize so the solid-black colour is not snapped back
+        # to white by the 5-level palette mapping.
         if _is_border_font:
             arr  = np.array(img, dtype=np.uint8)
             a    = arr[:, :, 3].astype(bool)   # True where letter pixel exists
             h, w = a.shape
 
-            # Build a boolean mask: True where a neighbour (up/down/left/right)
-            # is outside the image OR is transparent.
-            adj_transp = np.zeros((h, w), dtype=bool)
-            adj_transp[0,  :]  = True          # top edge → above is outside
-            adj_transp[-1, :]  = True          # bottom edge → below is outside
-            adj_transp[:,  0]  = True          # left edge → left is outside
-            adj_transp[:, -1]  = True          # right edge → right is outside
-            adj_transp[1:,  :] |= ~a[:-1, :]  # above pixel is transparent
-            adj_transp[:-1, :] |= ~a[1:,  :]  # below pixel is transparent
-            adj_transp[:,  1:] |= ~a[:,  :-1]  # left pixel is transparent
-            adj_transp[:, :-1] |= ~a[:,  1:]   # right pixel is transparent
+            if args.border_mode == "outer":
+                # Outer contour: paint TRANSPARENT pixels that touch a letter
+                # pixel in any of the 4 cardinal directions.  Adds a 1-pixel
+                # black halo around the letter; leaves the letter body bright.
+                #
+                # If the letter touches the image edge (no transparent room on
+                # that side) the halo is clipped on that side — for the left
+                # edge the natural-width trimming above already reserves a
+                # leading empty column, so left/right are normally fine.
+                adj_letter = np.zeros((h, w), dtype=bool)
+                adj_letter[1:,  :] |= a[:-1, :]   # letter pixel above
+                adj_letter[:-1, :] |= a[1:,  :]   # letter pixel below
+                adj_letter[:,  1:] |= a[:,  :-1]  # letter pixel on the left
+                adj_letter[:, :-1] |= a[:,  1:]   # letter pixel on the right
+                border = (~a) & adj_letter
+            else:
+                # Inner contour (default): paint LETTER pixels that have at
+                # least one transparent neighbour (or sit on the image edge).
+                # The letter's footprint stays the same; the outline eats one
+                # pixel into the glyph body.
+                adj_transp = np.zeros((h, w), dtype=bool)
+                adj_transp[0,  :]  = True          # top edge → above is outside
+                adj_transp[-1, :]  = True          # bottom edge → below is outside
+                adj_transp[:,  0]  = True          # left edge → left is outside
+                adj_transp[:, -1]  = True          # right edge → right is outside
+                adj_transp[1:,  :] |= ~a[:-1, :]   # above pixel is transparent
+                adj_transp[:-1, :] |= ~a[1:,  :]   # below pixel is transparent
+                adj_transp[:,  1:] |= ~a[:,  :-1]  # left pixel is transparent
+                adj_transp[:, :-1] |= ~a[:,  1:]   # right pixel is transparent
+                border = a & adj_transp
 
-            border = a & adj_transp            # inner contour mask
             arr[border] = [0, 0, 0, 255]       # solid black
             img = Image.fromarray(arr)
 
@@ -396,7 +437,7 @@ def main() -> None:
         if args.align == "center":
             notes.append(f"centered in {target_px}px slot")
         if _is_border_font:
-            notes.append("black-border")
+            notes.append(f"{args.border_mode}-border")
         if args.quantize:
             notes.append("quantized")
         note_str = f"  [{', '.join(notes)}]" if notes else ""

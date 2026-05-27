@@ -22,7 +22,9 @@ Options
     --ttf PATH         Hebrew TTF for regular / italic fonts.
                        Default: C:\\Windows\\Fonts\\frank.ttf
     --ttf-bold PATH    Hebrew TTF for bold / bold-oblique fonts.
-                       Default: C:\\Windows\\Fonts\\FRANKB.TTF
+                       Default: C:\\Windows\\Fonts\\frank.ttf  (FRANKB.TTF
+                       renders too thick at small cell heights; reusing the
+                       regular face here looks better in-game.)
     --original-dir DIR Folder with the untouched original .font files used as
                        templates. Default: same as fonts_dir.
     --max-fraction N   Max Hebrew letter height as fraction of cell height.
@@ -30,13 +32,16 @@ Options
     --align MODE       'center' (default) or 'left'.  Use 'left' to place every
                        Hebrew letter starting at col 0, exactly like the original
                        Latin glyphs — recommended when the game hangs on startup.
+    --border-mode M    For border fonts (name contains _bo_) where to draw the
+                       1-pixel black contour: 'outer' (default — halo around the
+                       letter) or 'inner' (paint outermost letter pixels black).
     --clean            Delete the glyph subfolder after each font is built.
     --dry-run          Print what would be done without executing anything.
 
 Font-variant auto-detection
 ---------------------------
-    Name contains _b_ or _bo_  → bold TTF (FRANKB.TTF)
-    Everything else             → regular TTF (frank.ttf)
+    Name contains _b_ or _bo_  → bold TTF (--ttf-bold; default frank.ttf)
+    Everything else             → regular TTF (--ttf;       default frank.ttf)
 """
 
 import sys
@@ -50,7 +55,7 @@ import glob
 SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DEFAULT_TTF      = r"C:\Windows\Fonts\frank.ttf"
-DEFAULT_TTF_BOLD = r"C:\Windows\Fonts\FRANKB.TTF"
+DEFAULT_TTF_BOLD = r"C:\Windows\Fonts\frank.ttf"
 
 STEPS = [
     ("parse_font.py",             "Extract glyphs + manifest"),
@@ -132,7 +137,7 @@ def process_font(font_name: str, fonts_dir: str, output_dir: str,
         [font_file],
         # 2. generate_hebrew_glyphs
         [glyph_dir, "--font", ttf, "--max-fraction", str(args.max_fraction),
-         "--align", args.align]
+         "--align", args.align, "--border-mode", args.border_mode]
         + (["--test-line"] if args.test_line else [])
         + (["--no-quantize"] if not args.quantize else []),
         # 3. rebuild_manifest — preserve-positions mode (default):
@@ -214,6 +219,14 @@ def main() -> None:
                              "so rebuild_manifest correctly updates advance_x per letter. "
                              "'center': centre letter in original slot width — PNG width "
                              "stays the same, so advance_x is NOT recalculated.")
+    parser.add_argument("--border-mode", choices=["outer", "inner"], default="outer",
+                        help="For border fonts (font name contains '_bo_'), where the "
+                             "1-pixel black contour is painted. "
+                             "'outer' (default): paint the transparent pixels touching the "
+                             "letter — letter body stays bright, a 1-px halo is added. "
+                             "'inner': paint the outermost letter pixels black — same "
+                             "footprint, slightly thinner letter body. "
+                             "Ignored for non-border fonts.")
     parser.add_argument("--test-line", action="store_true",
                         help="DIAGNOSTIC: draw a white horizontal line at mid-height of every "
                              "glyph (x=0..width-2) to test whether the game requires a pixel "
@@ -268,6 +281,7 @@ def main() -> None:
     print(f"  TTF regular: {args.ttf}")
     print(f"  TTF bold   : {args.ttf_bold}")
     print(f"  Max height : {args.max_fraction*100:.0f}% of cell")
+    print(f"  Border mode: {args.border_mode}  (applies to *_bo_* fonts only)")
     if args.dry_run:
         print("  *** DRY RUN — no files will be written ***")
     print()

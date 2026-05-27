@@ -75,7 +75,11 @@ the matching `.png` is the texture atlas.
 The default scripts target Windows-installed Frank Ruehl fonts:
 
 * Regular / italic variants → `C:\Windows\Fonts\frank.ttf`
-* Bold / bold-oblique variants → `C:\Windows\Fonts\FRANKB.TTF`
+* Bold / bold-oblique variants → `C:\Windows\Fonts\frank.ttf`
+  (We default the bold variants to the regular Frank face as well —
+  `FRANKB.TTF` renders too thick at the small cell heights MI2 uses,
+  which makes Hebrew letters look smudged. The regular face has been
+  preferred in practice.)
 
 Pass `--ttf PATH` / `--ttf-bold PATH` to override these with any other Hebrew
 TTF (e.g. Open Sans Hebrew, David, Miriam, ...).
@@ -307,7 +311,7 @@ xcopy /E /I extracted/fonts  extracted/fonts.bak
 python scripts/fonts/build_hebrew_font.py  extracted/fonts.bak \
     --output-dir extracted/fonts \
     --ttf      "C:/Windows/Fonts/frank.ttf" \
-    --ttf-bold "C:/Windows/Fonts/FRANKB.TTF"
+    --ttf-bold "C:/Windows/Fonts/frank.ttf"
 
 # 3. Re-pack the modified files back into the game archive
 #    (use whichever repacker matches your extraction tool)

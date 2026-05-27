@@ -26,6 +26,11 @@ setlocal
 ::                               -> rebuild_manifest correctly updates advance_x.
 ::                       center: letter centred in original slot — PNG width unchanged
 ::                               -> advance_x is NOT recalculated (old spacing kept).
+::    --border-mode M    For border fonts (name contains _bo_) — where to draw the
+::                       1-pixel black contour:
+::                       outer (default): halo around the letter (body stays bright).
+::                       inner          : paint the outermost letter pixels black
+::                                        (same footprint, thinner letter body).
 ::    --no-quantize      Disable the default 5-level RGBA quantization
 ::                       (faint/dark/mid/light/solid) that matches the
 ::                       original font atlas's colour encoding.
@@ -53,6 +58,7 @@ if "%~1"=="" (
     echo                        ^(default 1, recommended: 1^)
     echo   --max-fraction N     letter height as fraction of cell ^(default 0.70^)
     echo   --align     MODE     'left' ^(default^) or 'center'
+    echo   --border-mode MODE   'outer' ^(default^) or 'inner' — applies to *_bo_* fonts
     echo   --clean              remove intermediate glyph folder when done
     echo   --dry-run            preview without writing files
     echo.
