@@ -129,16 +129,16 @@ Gamertag
 Completed
 View
 Gamer Card
-Empty
+קיר
 Autosave:
-Slot
+תצבשמ
 Warning - Autosave cannot be overwritten
-Part One
-Part Two
-Part Three
-The Last Part
-Play Time:
-Percent Complete:
+פרק I
+פרק II
+פרק III
+פרק IV
+:קחשמ ןמז
+:המלשה זוחא
 Disconnected from Xbox LIVE
 Press START
 Hold [Y] To Skip

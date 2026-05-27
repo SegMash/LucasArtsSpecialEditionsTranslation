@@ -148,14 +148,16 @@ canonical bytecode, which is regenerated on every patch):
   Total: 103 bytes
 """
 
-import os, struct, sys, ctypes
+import argparse, os, struct, sys, ctypes
 
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-EXE_PATH = os.path.join(os.path.dirname(__file__), '..', '..', 'Monkey2.exe')
-EXE_PATH = os.path.normpath(EXE_PATH)
-
+# NOTE: the EXE path is supplied at the command-line (positional argument).
+# All other constants below are specific to the Monkey Island 2 SE build:
+#   DrawString VA, wrapper cave VA, ring-buffer VAs, format-string VAs.
+# To patch a different LucasArts SE title (e.g. Monkey1) the addresses below
+# must be re-discovered for that EXE.
 IMAGE_BASE    = 0x00400000
 DRAWSTRING_VA = 0x004DBFA0
 CALL_SITE_LEN = 5
@@ -219,15 +221,16 @@ for _va, _orig, _new, _desc in FORMAT_SWAPS:
 # ---------------------------------------------------------------------------
 # PE helpers
 # ---------------------------------------------------------------------------
-def _load_exe():
-    with open(EXE_PATH, 'rb') as f:
+def _load_exe(exe_path: str) -> bytearray:
+    with open(exe_path, 'rb') as f:
         return bytearray(f.read())
 
-def _save_exe(data: bytearray):
-    attrs = ctypes.windll.kernel32.GetFileAttributesW(EXE_PATH)
-    if attrs & 1:  # FILE_ATTRIBUTE_READONLY
-        ctypes.windll.kernel32.SetFileAttributesW(EXE_PATH, attrs & ~1)
-    with open(EXE_PATH, 'wb') as f:
+def _save_exe(data: bytearray, exe_path: str) -> None:
+    if os.name == 'nt':
+        attrs = ctypes.windll.kernel32.GetFileAttributesW(exe_path)
+        if attrs != 0xFFFFFFFF and (attrs & 1):  # FILE_ATTRIBUTE_READONLY
+            ctypes.windll.kernel32.SetFileAttributesW(exe_path, attrs & ~1)
+    with open(exe_path, 'wb') as f:
         f.write(data)
 
 def _va_to_off(data: bytearray, va: int) -> int:
@@ -536,9 +539,11 @@ def _format_swap_status(data: bytearray, va: int, orig: bytes, new: bytes) -> st
 # ---------------------------------------------------------------------------
 # Apply patch
 # ---------------------------------------------------------------------------
-def apply_patch():
+def apply_patch(exe_path: str, force: bool = False) -> None:
+    exe_name = os.path.basename(exe_path)
     print('=== apply_reverse_patch  (string reversal for ALL DrawString calls) ===')
-    data = _load_exe()
+    print(f'    target: {exe_path}')
+    data = _load_exe(exe_path)
     dirty = False
 
     sites = _find_call_sites(data)
@@ -563,7 +568,7 @@ def apply_patch():
         if unexpected:
             for va, st in unexpected:
                 print(f'[!] Unexpected bytes at 0x{va:08X}: {st}')
-            if '--force' not in sys.argv:
+            if not force:
                 print('    (run with --force to patch anyway)')
                 return
 
@@ -572,7 +577,7 @@ def apply_patch():
         cave_region = data[cave_off:cave_off + wlen]
         if any(b != 0x90 for b in cave_region) and cave_region != _build_wrapper():
             print(f'[!] Cave at 0x{WRAPPER_VA:08X} is not clean NOPs.')
-            if '--force' not in sys.argv:
+            if not force:
                 print('    (run with --force to overwrite anyway)')
                 return
 
@@ -612,7 +617,7 @@ def apply_patch():
             dirty = True
         else:
             print(f'[!] Format block at 0x{va:08X} has unexpected bytes ({desc}): {st}')
-            if '--force' in sys.argv:
+            if force:
                 data[off:off + len(new)] = new
                 print(f'[+] Format swap at 0x{va:08X} force-overwritten')
                 dirty = True
@@ -620,8 +625,8 @@ def apply_patch():
                 print('    (skipping — run with --force to overwrite anyway)')
 
     if dirty:
-        _save_exe(data)
-        print('[+] Monkey2.exe saved.')
+        _save_exe(data, exe_path)
+        print(f'[+] {exe_name} saved.')
     else:
         print('[*] Nothing to do — EXE unchanged.')
     print()
@@ -636,9 +641,11 @@ def apply_patch():
 # ---------------------------------------------------------------------------
 # Restore / revert
 # ---------------------------------------------------------------------------
-def restore_patch():
+def restore_patch(exe_path: str) -> None:
+    exe_name = os.path.basename(exe_path)
     print('=== restore_reverse_patch  (reverting to original) ===')
-    data = _load_exe()
+    print(f'    target: {exe_path}')
+    data = _load_exe(exe_path)
 
     sites = _find_call_sites(data)
 
@@ -706,17 +713,17 @@ def restore_patch():
             print(f'[!] Format block at 0x{va:08X} has unexpected bytes ({desc}): {st}')
             print('    (left as-is)')
 
-    _save_exe(data)
-    print(f'[+] Monkey2.exe restored.  ({restored_count} site(s) reverted)')
+    _save_exe(data, exe_path)
+    print(f'[+] {exe_name} restored.  ({restored_count} site(s) reverted)')
 
 
 # ---------------------------------------------------------------------------
 # Diagnostics
 # ---------------------------------------------------------------------------
-def diagnose():
-    data = _load_exe()
+def diagnose(exe_path: str) -> None:
+    data = _load_exe(exe_path)
     print('=== diagnose ===')
-    print(f'EXE: {EXE_PATH}  ({len(data)} bytes)')
+    print(f'EXE: {exe_path}  ({len(data)} bytes)')
     print()
 
     def dump(label, va, n=16):
@@ -789,25 +796,81 @@ def diagnose():
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
-def _check_exe_not_running():
+def _check_exe_not_running(exe_path: str) -> None:
+    """If the target EXE is currently running, abort (Windows only)."""
+    if os.name != 'nt':
+        return
     import subprocess
-    r = subprocess.run(['tasklist', '/FI', 'IMAGENAME eq Monkey2.exe', '/NH'],
+    exe_name = os.path.basename(exe_path)
+    r = subprocess.run(['tasklist', '/FI', f'IMAGENAME eq {exe_name}', '/NH'],
                        capture_output=True, text=True)
-    if 'Monkey2.exe' in r.stdout:
-        print('[!] Monkey2.exe is currently running.  Close the game first.')
+    if exe_name.lower() in r.stdout.lower():
+        print(f'[!] {exe_name} is currently running.  Close the game first.')
         sys.exit(1)
 
+
+def _parse_args(argv: list[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        prog='apply_reverse_patch.py',
+        description=(
+            'Apply, restore, or diagnose the DrawString reversal patch on a '
+            'LucasArts Special Edition EXE.  The patch addresses are tuned for '
+            'Monkey Island 2 SE — patching a different title requires updating '
+            'the VAs at the top of this script.'
+        ),
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            'Examples:\n'
+            '  python apply_reverse_patch.py "C:\\Games\\MI2\\Monkey2.exe" --apply\n'
+            '  python apply_reverse_patch.py "C:\\Games\\MI2\\Monkey2.exe" --restore\n'
+            '  python apply_reverse_patch.py "C:\\Games\\MI2\\Monkey2.exe" --diagnose\n'
+            '  python apply_reverse_patch.py "C:\\Games\\MI2\\Monkey2.exe" --apply --force\n'
+        ),
+    )
+    parser.add_argument(
+        'exe_path',
+        help='Full path to the target EXE (e.g. C:\\Games\\MI2\\Monkey2.exe).',
+    )
+    action = parser.add_mutually_exclusive_group(required=True)
+    action.add_argument(
+        '--apply', action='store_true',
+        help='Apply the DrawString reversal wrapper, call-site redirects, '
+             'and the save/load format-string swaps.',
+    )
+    action.add_argument(
+        '--restore', action='store_true',
+        help='Revert all of the above to the original bytes.',
+    )
+    action.add_argument(
+        '--diagnose', action='store_true',
+        help='Print the current patch status without modifying the EXE.',
+    )
+    parser.add_argument(
+        '--force',
+        action='store_true',
+        help='Overwrite even when bytes do not match the expected pattern. '
+             'Only valid together with --apply.',
+    )
+
+    args = parser.parse_args(argv)
+    if args.force and not args.apply:
+        parser.error('--force is only valid together with --apply.')
+    return args
+
+
 if __name__ == '__main__':
-    _check_exe_not_running()
-    cmd = sys.argv[1] if len(sys.argv) > 1 else 'apply'
-    if cmd == 'apply':
-        apply_patch()
-    elif cmd in ('restore', 'revert'):
-        restore_patch()
-    elif cmd in ('diagnose', 'diag'):
-        diagnose()
-    else:
-        print('Usage:')
-        print('  python apply_reverse_patch.py apply      # apply the reversal patch')
-        print('  python apply_reverse_patch.py restore    # revert to original')
-        print('  python apply_reverse_patch.py diagnose   # show key bytes + patch status')
+    args = _parse_args(sys.argv[1:])
+
+    exe_path = os.path.abspath(args.exe_path)
+    if not os.path.isfile(exe_path):
+        print(f'[!] EXE not found: {exe_path}')
+        sys.exit(1)
+
+    _check_exe_not_running(exe_path)
+
+    if args.apply:
+        apply_patch(exe_path, force=args.force)
+    elif args.restore:
+        restore_patch(exe_path)
+    elif args.diagnose:
+        diagnose(exe_path)
