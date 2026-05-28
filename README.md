@@ -12,6 +12,102 @@ they produce a fully-Hebrew playable build.
 
 ---
 
+## Quick Start
+
+If you just want to install the Hebrew translation on a stock copy of
+**Monkey Island 2 SE**, follow these four steps. Detailed explanations,
+customisation options, and the macOS/Linux equivalents are in the rest of
+this README.
+
+### Prerequisites
+
+- **Python ≥ 3.9** with `Pillow` and `numpy`:
+  ```sh
+  pip install Pillow numpy
+  ```
+- **[QuickBMS](https://aluigi.altervista.org/quickbms.htm)** — download
+`quickbms.exe` and put it somewhere on your `PATH` (or remember the full
+path).
+- **Frank Ruehl Hebrew TTF** — `C:\Windows\Fonts\frank.ttf` ships
+pre-installed on Windows. Pass `--ttf PATH` / `--ttf-bold PATH` if you
+want to use another Hebrew font.
+
+### Step 0 — Extract `monkey2.pak` and back up the originals
+
+A QuickBMS script for MI2 SE is included at the repo root:
+`[monkey_island_2.bms](monkey_island_2.bms)`. It can both **extract** and
+**re-pack** the game's `.pak`. Extract first:
+
+```bat
+quickbms  monkey_island_2.bms  "C:\Path\To\Game\monkey2.pak"  extracted\
+```
+
+After extraction `extracted\` will contain `fonts\`, `localization\`,
+`Monkey2.exe`, and the rest of the game data.
+
+Then **back up the two files you are about to modify** so you can always
+roll back if something goes wrong:
+
+```bat
+copy "C:\Path\To\Game\Monkey2.exe"  "C:\Path\To\Game\Monkey2.exe.bak"
+copy "C:\Path\To\Game\monkey2.pak"  "C:\Path\To\Game\monkey2.pak.bak"
+```
+
+### Step 1 — Build Hebrew fonts
+
+```bat
+.\build_hebrew_font.bat  extracted\fonts  --hebrew-gap 1
+```
+
+Rebuilds every `.font` + `.png` pair in `extracted\fonts` with rendered
+Hebrew glyphs. `--hebrew-gap 1` adds one pixel of advance after each
+Hebrew letter, which keeps words readable because Hebrew letters are
+more "square" than Latin ones.
+
+### Step 2 — Inject Hebrew text
+
+```bat
+python scripts\text\inject_translation.py  extracted\localization  --he-dir .\translations\mi2  --report
+```
+
+Reads the line-synced Hebrew files shipped in this repo
+(`translations\mi2\he.speech.txt` and `he.uitext.txt`) and writes them
+into `en.speech.info` / `en.uitext.info` inside `extracted\localization`.
+The first run automatically creates `.bak` copies of the two `.info`
+files; every subsequent run starts by restoring from those backups, so
+you can re-inject as many times as you like.
+
+`--report` writes `translations\missing_translations.txt` listing any
+English lines that fell back to the source (untranslated) — useful for
+finding gaps to fill in `translations\mi2\he.*.txt`.
+
+### Step 3 — Patch the executable for right-to-left
+
+```bat
+python scripts\reverse-engineering\apply_reverse_patch.py  "C:\Path\To\Game\Monkey2.exe"  --apply
+```
+
+Patches `Monkey2.exe` so Hebrew text is rendered right-to-left, while
+date / time / percent strings on the save screen stay in the correct
+order. The patch is idempotent and can be reverted with `--restore`.
+
+### Step 4 — Re-pack the modified `extracted\` folder
+
+QuickBMS uses **reimport mode** (`-w -r -r`) to write changed files back
+into the original `.pak`. Use the same `.bms` script:
+
+```bat
+quickbms  -w  -r -r -r monkey_island_2.bms  "C:\Path\To\Game\monkey2.pak"  extracted\
+```
+
+(`-w` overwrites without prompts, `-r -r` enables reimport2 — needed
+because Hebrew strings change file sizes.)
+
+Launch the game — you should now see Hebrew everywhere. If anything
+looks wrong, restore the two `.bak` files from Step 0 and try again.
+
+---
+
 ## At a glance
 
 ```
@@ -129,14 +225,16 @@ build_hebrew_font.bat  "C:\extracted\fonts.bak"  MinisterT_24  --output-dir "C:\
 
 Other useful flags (passed straight through to the orchestrator):
 
-| Flag | Meaning |
-|---|---|
-| `--output-dir DIR` | Where to write rebuilt `.font` + `.png` files. Defaults to overwriting the input folder. |
-| `--ttf PATH` / `--ttf-bold PATH` | Override the default Hebrew TTF (Frank Ruehl on Windows) with any other Hebrew font. |
-| `--max-fraction N` | Cap Hebrew letter height at N × cell height (default `0.70`). Lower it if descenders clip. |
-| `--align left\|center` | Glyph placement inside its slot. `left` (default) matches the original atlas convention. |
-| `--clean` | Delete the intermediate glyph subfolder after each font is built. |
-| `--dry-run` | Print what would happen without writing anything. |
+
+| Flag                             | Meaning                                                                                    |
+| -------------------------------- | ------------------------------------------------------------------------------------------ |
+| `--output-dir DIR`               | Where to write rebuilt `.font` + `.png` files. Defaults to overwriting the input folder.   |
+| `--ttf PATH` / `--ttf-bold PATH` | Override the default Hebrew TTF (Frank Ruehl on Windows) with any other Hebrew font.       |
+| `--max-fraction N`               | Cap Hebrew letter height at N × cell height (default `0.70`). Lower it if descenders clip. |
+| `--align left|center`            | Glyph placement inside its slot. `left` (default) matches the original atlas convention.   |
+| `--clean`                        | Delete the intermediate glyph subfolder after each font is built.                          |
+| `--dry-run`                      | Print what would happen without writing anything.                                          |
+
 
 `build_hebrew_font.bat` with no arguments prints a short usage reminder.
 
@@ -152,7 +250,7 @@ Use this form on macOS / Linux, or anywhere else without `cmd.exe`.
 
 ### Behind the scenes
 
-**See [`scripts/fonts/README.md`](scripts/fonts/README.md)** for the full
+**See `[scripts/fonts/README.md](scripts/fonts/README.md)`** for the full
 4-step pipeline (`parse_font` → `generate_hebrew_glyphs` →
 `rebuild_manifest` → `create_font`), customisation options, per-script
 references, and troubleshooting.
@@ -163,10 +261,12 @@ references, and troubleshooting.
 
 The game stores all dialog and UI strings in two binary `.info` files:
 
-| File | Contains |
-|---|---|
-| `en.speech.info` | Spoken-line text (8 700+ records, one per voice line) |
+
+| File             | Contains                                                      |
+| ---------------- | ------------------------------------------------------------- |
+| `en.speech.info` | Spoken-line text (8 700+ records, one per voice line)         |
 | `en.uitext.info` | Menus, labels, tooltips (~1 270 records, KEY ↔ DISPLAY pairs) |
+
 
 Translating them is a **four-step pipeline** that keeps an English source
 and its Hebrew translation perfectly line-synchronised so you can
@@ -200,10 +300,12 @@ python scripts/text/build_translation.py  --report
 Reads `translations/en.speech.txt` + `translations/en.uitext.txt` and the
 mapping files:
 
-| Mapping file | Encoding | Purpose |
-|---|---|---|
-| `translations/mapping.txt` | Windows-1255 | Main `english === hebrew` dictionary |
-| `translations/*_mapping.txt` | UTF-8 | Auto-discovered secondary mappings, exact-match fallback (e.g. `extra_mapping.txt`, `uit_text_mapping.txt`, …) |
+
+| Mapping file                 | Encoding     | Purpose                                                                                                        |
+| ---------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------- |
+| `translations/mapping.txt`   | Windows-1255 | Main `english === hebrew` dictionary                                                                           |
+| `translations/*_mapping.txt` | UTF-8        | Auto-discovered secondary mappings, exact-match fallback (e.g. `extra_mapping.txt`, `uit_text_mapping.txt`, …) |
+
 
 All files in `translations/` whose name matches `*_mapping.txt` are
 loaded automatically, in **alphabetical order**, after the primary
@@ -252,11 +354,11 @@ the next step. Edit them directly to:
 
 - fill in lines that the mapping couldn't translate,
 - pick context-appropriate translations for ambiguous phrases (the
-  English `"Excuse me."` may need to be `סלח לי`, `סלחו לי`, `סליחה`,
-  or `סלחי לי` depending on speaker / situation — each occurrence is its
-  own line in the file, so each can be different),
+English `"Excuse me."` may need to be `סלח לי`, `סלחו לי`, `סליחה`,
+or `סלחי לי` depending on speaker / situation — each occurrence is its
+own line in the file, so each can be different),
 - tweak word choice or wording without worrying about whether other
-  occurrences will be affected.
+occurrences will be affected.
 
 Keep the line count unchanged. Newlines inside a message must stay
 escaped as `\n` / `\r` so each message still occupies one file line.
@@ -280,16 +382,16 @@ python scripts/text/inject_translation.py  <loc_dir>  --report
 The injector:
 
 1. Restores `en.speech.info` / `en.uitext.info` from their `.bak` files
-   (so it always starts from a clean slate, never compounding edits).
+  (so it always starts from a clean slate, never compounding edits).
 2. Reads `mi2/he.speech.txt` and `mi2/he.uitext.txt`.
 3. For every record:
-   - If the Hebrew line equals the English line (verbatim fallback) →
-     encodes the original ASCII reversed, so the engine's RTL patch
-     renders it left-to-right.
-   - Otherwise → encodes Hebrew via the custom single-byte encoding used
-     by the game (`scripts/fonts/hebrew_mapping.py`).
+  - If the Hebrew line equals the English line (verbatim fallback) →
+   encodes the original ASCII reversed, so the engine's RTL patch
+   renders it left-to-right.
+  - Otherwise → encodes Hebrew via the custom single-byte encoding used
+  by the game (`scripts/fonts/hebrew_mapping.py`).
 4. Rebuilds the `.info` files with **recomputed pointers** — no
-   truncation, no padding. Hebrew lines longer than the original English
+  truncation, no padding. Hebrew lines longer than the original English
    are handled correctly in both `.speech.info` and `.uitext.info`.
 
 Re-pack the modified `localization/` folder back into the game's `.pak`.
@@ -307,12 +409,12 @@ naïvely-stored Hebrew comes out mirrored. This part patches `Monkey2.exe`
 to:
 
 1. **Intercept every `DrawString` call** and byte-reverse the input so
-   Hebrew letters display in the correct right-to-left order.
+  Hebrew letters display in the correct right-to-left order.
 2. **Skip the reversal for strings that contain digits** (date / time /
-   percentage), so save-screen labels like `22:15:47`, `12/05/2026`, and
+  percentage), so save-screen labels like `22:15:47`, `12/05/2026`, and
    `37%` stay readable.
 3. **Swap a handful of save/load format strings** in place so the value
-   appears before the Hebrew label (`{0} {1}%` → `{1}% {0}`, etc.), and
+  appears before the Hebrew label (`{0} {1}%` → `{1}% {0}`, etc.), and
    convert the date format from US `MM-DD-YYYY` to Israeli `DD-MM-YYYY`.
 
 All patches are length-preserving and idempotent.
@@ -422,4 +524,5 @@ Issues and PRs welcome — particularly:
 - new mapping entries for currently-untranslated strings,
 - improved Hebrew translations for context-specific phrases,
 - adapting Parts 1 / 3 to other LucasArts Special Editions
-  (Monkey Island 1 SE, Indiana Jones, ...).
+(Monkey Island 1 SE, Indiana Jones, ...).
+
