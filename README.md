@@ -21,7 +21,7 @@ this README.
 
 ### Prerequisites
 
-- **Python ≥ 3.9** with `Pillow` and `numpy`:
+- **Python 3** with `Pillow` and `numpy` (verified on Python 3.13):
   ```sh
   pip install Pillow numpy
   ```
@@ -178,7 +178,7 @@ extracted/
 
 ## Python prerequisites
 
-Python ≥ 3.9 is required. Install dependencies once:
+Python 3 is required (verified on Python 3.13). Install dependencies once:
 
 ```sh
 pip install Pillow numpy
