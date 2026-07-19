@@ -6,6 +6,8 @@ __pycache__/
 fonts_mi1
 talkie
 *.7z
+installer/mi1/patches/*.pat
+installer/output/
 # C extensions
 *.so
 scripts/text/*.json
