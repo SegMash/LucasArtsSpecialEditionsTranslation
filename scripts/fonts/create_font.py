@@ -52,12 +52,15 @@ import argparse
 from PIL import Image
 
 # ── Constants (must match parse_font.py) ─────────────────────────────────────
-FILE_SIZE         = 19472
-NUM_GLYPHS_FIXED  = 155
+#FILE_SIZE         = 19472
+FILE_SIZE         = 19456
+#NUM_GLYPHS_FIXED  = 155
+NUM_GLYPHS_FIXED  = 154
 GLYPH_REC_OFFSET  = FILE_SIZE - NUM_GLYPHS_FIXED * 16   # 16992
 CHAR_TABLE_OFFSET = 90
 CHAR_TABLE_FIRST  = 31          # first codepoint in the primary char table
-CHAR_TABLE_COUNT  = 155         # covers codes 31..185
+#CHAR_TABLE_COUNT  = 155         # covers codes 31..185
+CHAR_TABLE_COUNT  = 154
 CHAR_TABLE_END    = CHAR_TABLE_OFFSET + CHAR_TABLE_COUNT * 2   # 400
 
 # Layout parameters

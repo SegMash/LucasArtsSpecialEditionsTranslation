@@ -299,6 +299,7 @@ def main() -> int:
         if not os.path.exists(extra_path):
             print(f"Extra mapping not found, skipping: {extra_path}")
             continue
+        print(f"extra_path={extra_path}")
         m = lookup.load_extra_mapping(extra_path)
         print(f"Extra mapping loaded   : {m:,} entries  ({extra_path})")
 
@@ -349,7 +350,7 @@ def main() -> int:
                 if label != current_label:
                     f.write(f"\n[{label.upper()}]\n")
                     current_label = label
-                f.write(f"{ln}\n")
+                f.write(f"{ln} === \n")
         print(f"  Missing-translations report: {args.report}")
         print(f"  ({len(missing):,} untranslated lines)")
 

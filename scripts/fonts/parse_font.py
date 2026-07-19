@@ -63,12 +63,16 @@ from PIL import Image
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-FILE_SIZE        = 19472
-NUM_GLYPHS       = 155
+#FILE_SIZE        = 19472
+#TODO - we can get the size automaticly
+FILE_SIZE        = 19456
+#NUM_GLYPHS       = 155
+NUM_GLYPHS       = 154
 GLYPH_REC_OFFSET = FILE_SIZE - NUM_GLYPHS * 16   # = 16992
 CHAR_TABLE_OFFSET = 90
 CHAR_TABLE_FIRST  = 31   # cp31 (special game char); cp32=SPACE, cp33='!'
-CHAR_TABLE_COUNT  = 155   # covers codes 31..185
+#CHAR_TABLE_COUNT  = 155   # covers codes 31..185
+CHAR_TABLE_COUNT  = 154   # covers codes 31..185
 CHAR_TABLE_END    = CHAR_TABLE_OFFSET + CHAR_TABLE_COUNT * 2   # = 400
 
 
@@ -291,7 +295,7 @@ def parse_font(font_path: str, tight_crop: bool = False,
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Extract individual glyph images from a Monkey Island 2 SE .font + .png pair."
+        description="Extract individual glyph images from a Monkey Island SE .font + .png pair."
     )
     parser.add_argument("font_path", help="Path to the .font file.")
     parser.add_argument(

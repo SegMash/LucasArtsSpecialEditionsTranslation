@@ -2,10 +2,13 @@
 __pycache__/
 *.py[codz]
 *$py.class
-
+*.exe
+fonts_mi1
+talkie
+*.7z
 # C extensions
 *.so
-
+scripts/text/*.json
 # Distribution / packaging
 .Python
 build/

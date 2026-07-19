@@ -131,7 +131,8 @@ class TranslationLookup:
                 loaded += 1
         return loaded
 
-    def load_extra_mapping(self, path: str, encoding: str = "utf-8") -> int:
+    #def load_extra_mapping(self, path: str, encoding: str = "utf-8") -> int:
+    def load_extra_mapping(self, path: str, encoding: str = "Windows-1255") -> int:
         """Load a secondary mapping file (UTF-8, exact-match fallback).
 
         Literal "\\n" / "\\r" in the file are converted to real newline /
