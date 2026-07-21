@@ -1,0 +1,684 @@
+PLAY NEW GAME === התחל משחק חדש
+Press === .
+for audio commentary === להערות המפתחים לחץ
+4 and 2 bottles of beer... === 4 ו-2 בקבוקי בירה...
+500 bottles of 8... === 500 בקבוקים של 8...
+Tenty-thousand bottles of 300... === עשרי-אלף בקבוקים של 300...
+{var:global_354}! === {var:global_354}!
+10372! === 10372!
+4...hiccup...one-ty...um... === 4... שיהוק ...אחת-עשרה... אממ...
+uh....500 hundred...uh... === אהה....500 מאות... אהה...
+10,000...uh.. 30...err... === 10,000... אהה.. 30... ארר...
+Tough guy, huh? === טיפוס קשוח, אה?
+Maybe I should cut you one out of cement! === אולי כדאי שאצוק לך אחד מבטון!
+I can't see a thing without me monocle! === אני לא רואה דבר בלי המונוקל שלי!
+Ha ha ha. Hilarious. === חה חה חה. קורע.
+Aw, isn't that cute. === אוו, איזה חמוד.
+I'm gonna tear you limb from limb! === אני אקרע אותך איבר-איבר!
+Give me money for the polish. === תן לי כסף עבור הפוליש.
+Here lies Daredevil \nJim McDow. \nHand of steel, leg of wood...... \nJim took every risk he could. \nA life of action--that was Jim's.\nToo bad he ran out of limbs. === כאן נח הנועז \nג'ים מקדו.\nיד מפלדה, רגל מעץ... \nג'ים לקח כל סיכון עד הקץ.\nחיי פעולה - כך חי לו ג'ים.\nחבל שנגמרו לו כל הגפיים.
+No man commanded Jean Louise. \nNot on land, and not on water. \nJean did whatever he did please, \nUntil he kissed the gunner's daughter. === איש לא פקד על ז'אן לואי. \nלא ביבשה, ולא בים.\nז'אן עשה ככל העולה על רוחו, \nעד ש"בת התותחן" חתמה את גורלו.
+Marco Largo LaGrande, \nHell on sea or sand. \nThe good news is, he's dead. \nThe bad news is, he bred. === מרקו לארגו לגרנד, \nגיהינום בים וביבשה.\nהחדשות הטובות הן שהוא מת. \nהחדשות הרעות הן שהוא התרבה.
+That's 1 ingredients and the doll. === זה מרכיב 1 והבובה.
+That's 1 ingredients. === זה מרכיב 1.
+You're already doing all that you can. === אתה כבר עושה כל מה שאתה יכול.
+Would you like my money? === תרצה את הכסף שלי?
+Oh, I beg to differ with you: === הו, אני חולק עליך:
+I think you're just trying to get your hands on my fishing pole. === אני חושב שאתה פשוט מנסה להניח את הידיים שלך על החכה שלי.
+...I'll GIVE you my prize-winning fishing pole. === ...אני אתן לך את החכה עטורת הפרסים שלי.
+I am really looking forward to making you eat my catch. === אני ממש מצפה לגרום לך לאכול את השלל שלי.
+Think I'll drop a line right here. === נראה לי שאזרוק חכה ממש פה.
+Do you have 'Fascinating Facts About Scurvy'? === יש לכם את "עובדות מרתקות על מחלת הצפדינה"?
+Do you have === יש לכם את
+I'd like 'Greatest Rock Musicians of the Renaissance'. === אני מעוניין ב"גדולי מוזיקאי הרוק של הרנסנס".
+I'd like === אני מעוניין ב
+Could you find === האם תוכל למצוא
+I need 'Hey You Kids, Get Off My Lawn'. === אני צריך את "היי אתם, ילדים, תסתלקו לי מהדשא".
+I need '1001 Pirate Songs, a Book You Shouldn't Have'. === אני צריך את "1001 שירי פיראטים, ספר שלא אמור להיות לך".
+I need === אני צריך את
+You already have four books checked out. === כבר שאלת ארבעה ספרים.
+You'll have to give some back. === תצטרך להחזיר כמה.
+Says here the Mad Monkey sank at {var:global_100}N, {var:global_483}W. === כתוב כאן שה-Mad Monkey טבעה ב-{var:global_100} צפון, {var:global_483} מערב.
+`Fascinating Facts About Scurvy` === עובדות מרתקות על מחלת הצפדינה
+`Greatest Rock Musicians of the Renaissance` === גדולי מוזיקאי הרוק של הרנסנס
+`Hey You Kids, Get Off My Lawn` === היי אתם, ילדים, תסתלקו לי מהדשא
+`Fascinating Facts About Scurvy`. Hmmm, I'll have to remember that. === עובדות מרתקות על מחלת הצפדינה. המממ, אצטרך לזכור את זה.
+`Greatest Rock Musicians of the Renaissance`. Hmmm, I'll have to remember that. === גדולי מוזיקאי הרוק של הרנסנס. המממ, אצטרך לזכור את זה.
+`Hey You Kids, Get Off My Lawn`. Hmmm, I'll have to remember that. === היי אתם, ילדים, תסתלקו לי מהדשא. המממ, אצטרך לזכור את זה.
+{string:global_43} === {string:global_43}
+It's a ticket to some circus show. The `Fettucini Brothers.` === זה כרטיס לאיזו הופעת קרקס. "האחים פטוצ'יני".
+Three days and Two nights at Fabulous Hook Island!' === שלושה ימים ושני לילות ב-Hook Island המופלא!
+We have {string:global_44}... === יש לנו את {string:global_44}...
+We have {string:global_44}! === יש לנו את {string:global_44}!
+I'd like {var:global_268} {string:global_34}. === אני אשמח ל-{var:global_268} {string:global_34}.
+I'd like {var:global_270} black. === אני אשמח ל-{var:global_270} שחור.
+I'd like {var:global_270} red. === אני אשמח ל-{var:global_270} אדום.
+I'd like {var:global_271} black. === אני אשמח ל-{var:global_271} שחור.
+I'd like {var:global_271} red. === אני אשמח ל-{var:global_271} אדום.
+I'd like {var:global_272} black. === אני אשמח ל-{var:global_272} שחור.
+I'd like {var:global_272} red. === אני אשמח ל-{var:global_272} אדום.
+I'd like {var:global_273} black. === אני אשמח ל-{var:global_273} שחור.
+I'd like {var:global_273} red. === אני אשמח ל-{var:global_273} אדום.
+I'd like {var:global_274} black. === אני אשמח ל-{var:global_274} שחור.
+I'd like {var:global_274} red. === אני אשמח ל-{var:global_274} אדום.
+{var:global_268} {string:global_34}. === {var:global_268} {string:global_34}.
+You can have {string:global_44}! === אתה יכול לקבל את {string:global_44}!
+I really want the {string:global_45}! === אני באמת רוצה את ה-{string:global_45}!
+He wants {string:global_44}! === הוא רוצה את {string:global_44}!
+{var:local_1} {string:global_35}. === {var:local_1} {string:global_35}.
+{var:global_269} {string:global_39}. === {var:global_269} {string:global_39}.
+...and {string:global_44}. === ...ואת {string:global_44}.
+{var:global_269} {string:global_39} it is. === {var:global_269} {string:global_39} הולך.
+You are starting to annoy me. === אתה מתחיל לעצבן אותי.
+The winning number will be {var:global_268} {string:global_34}. === המספר הזוכה יהיה {var:global_268} {string:global_34}.
+I already told you that ... === כבר אמרתי לך ש...
+I already told you that the number would be {var:global_268} {string:global_34}... === כבר אמרתי לך שהמספר יהיה {var:global_268} {string:global_34}...
+The winning number will be {var:global_269} {string:global_39}. === המספר הזוכה יהיה {var:global_269} {string:global_39}.
+That is a nice looking beard. === זה זקן שנראה טוב.
+The cover says Fascinating Facts About Scurvy. === על הכריכה כתוב "עובדות מרתקות על מחלת הצפדינה".
+The cover says Greatest Rock Musicians of the Renaissance. === על הכריכה כתוב "גדולי מוזיקאי הרוק של הרנסנס".
+The cover says Hey You Kids, Get Off My Lawn. === על הכריכה כתוב "היי אתם, ילדים, תסתלקו לי מהדשא".
+How'd you like a nice Fruit Punch? === מה דעתך על פונץ' פירות נחמד?
+I don't have that much. === אין לי כל כך הרבה.
+It's a plaque with an odd-looking gob of something on it. === זוהי לוחיות עם גוש משונה של משהו עליה.
+That'll be 20000 pieces o' eight. === זה יעלה 20,000 מטבעות שמונה.
+Can I sell back this parrot === אני יכול למכור בחזרה את התוכי הזה?
+Can I sell back this mirror === אני יכול למכור בחזרה את המראה הזאת?
+Can I sell back this sign === אני יכול למכור בחזרה את השלט הזה?
+Can I sell back this map piece === אני יכול למכור בחזרה את פיסת המפה הזאת?
+Can I sell back this rock and roll collector's plate === אני יכול למכור בחזרה את צלחת האספנים של הרוקנרול?
+Maybe I should cut you one out of cement! === אולי כדאי שאחצוב לך אחד מבטון!
+Here lies Daredevil \nJim McDow. \nHand of steel, leg of wood...... \nJim took every risk he could. \nA life of action--that was Jim's.\nToo bad he ran out of limbs. === כאן נח הנועז \nג'ים מקדו.\nיד מפלדה, רגל מעץ... \nג'ים לקח כל סיכון שנועץ.\nחיי פעולה - זה היה ג'ים.\nחבל שנגמרו לו כל הגפיים.
+No man commanded Jean Louise. \nNot on land, and not on water. \nJean did whatever he did please, \nUntil he kissed the gunner's daughter. === איש לא פקד על ז'אן לואי. \nלא ביבשה, ולא בים.\nז'אן עשה ככל העולה על רוחו, \nעד ש"בת התותחן" חתמה את גורלו.
+Marco Largo LaGrande, \nHell on sea or sand. \nThe good news is, he's dead. \nThe bad news is, he bred. === מרקו לארגו לגרנד, \nגיהינום בים וביבשה.\nהחדשות הטובות הן שהוא מת. \nהחדשות הרעות הן שהוא התרבה.
+Fascinating Facts About Scurvy === עובדות מרתקות על מחלת הצפדינה
+Greatest Rock Musicians of the Renaissance === גדולי מוזיקאי הרוק של הרנסנס
+Hey You Kids, Get Off My Lawn === היי אתם, ילדים, תסתלקו לי מהדשא
+Fascinating Facts About Scurvy. Hmmm, I'll have to remember that. === עובדות מרתקות על מחלת הצפדינה. המממ, אצטרך לזכור את זה.
+Greatest Rock Musicians of the Renaissance. Hmmm, I'll have to remember that. === גדולי מוזיקאי הרוק של הרנסנס. המממ, אצטרך לזכור את זה.
+Hey You Kids, Get Off My Lawn. Hmmm, I'll have to remember that. === היי אתם, ילדים, תסתלקו לי מהדשא. המממ, אצטרך לזכור את זה.
+It's a ticket to some circus show. The Fettucini Brothers. === זה כרטיס לאיזו הופעת קרקס. "האחים פטוצ'יני".
+You are starting to annoy me. === אתה מתחיל לעצבן אותי.
+The cover says `Fascinating Facts About Scurvy.` === על הכריכה כתוב "עובדות מרתקות על מחלת הצפדינה".
+The cover says `Greatest Rock Musicians of the Renaissance.` === על הכריכה כתוב "גדולי מוזיקאי הרוק של הרנסנס".
+The cover says `Hey You Kids, Get Off My Lawn.` === על הכריכה כתוב "היי אתם, ילדים, תסתלקו לי מהדשא".
+I'd like to buy Indy's whip. === אני רוצה לקנות את השוט של אינדי.
+Can I sell back this whale painting === אני יכול למכור בחזרה את ציור הלווייתן הזה?
+Can I sell back this feather pen === אני יכול למכור בחזרה את עט הנוצה הזה?
+Can I sell back this ship's horn === אני יכול למכור בחזרה את צופר הספינה הזה?
+Can I sell back this wreath === אני יכול למכור בחזרה את הזר הזה?
+Can I sell back this well-polished old saw === אני יכול למכור בחזרה את המסור הישן והמלוטש הזה?
+Can I sell back this `left turn` sign === אני יכול למכור בחזרה את השלט "פנייה שמאלה" הזה?
+Can I sell back this vase === אני יכול למכור בחזרה את הכד הזה?
+Elaine Marley? From Mêlée Island? === איליין מארלי? מהאי מיליי?
+It's not much of a name if you ask me. === זה לא ממש שם מוצלח, אם תשאלו אותי.
+Do you mean `Papier-Mâché` === אתה מתכוון ל"פפייה-מאשה"?
+Do you mean `Papier-Mâché' === אתה מתכוון ל"פפייה-מאשה"?
+To the salmon pate! === לחיי ממרח הסלמון!
+Pate! === ממרח!
+You know, I have work to do... === אתה יודע, יש לי עבודה לעשות...
+Go tell it to your mother. === לך תגיד את זה לאמא שלך.
+The rib bone's connected to the... === עצם הצלע מחוברת ל...
+head bone === עצם הראש
+arm bone === עצם הזרוע
+leg bone === עצם הרגל
+hip bone === עצם הירך
+rib bone === עצם הצלע
+The head bone is connected to the arm bone. === עצם הראש מחוברת לעצם הזרוע.
+The head bone is connected to the leg bone. === עצם הראש מחוברת לעצם הרגל.
+The head bone is connected to the hip bone. === עצם הראש מחוברת לעצם הירך.
+The head bone is connected to the rib bone. === עצם הראש מחוברת לעצם הצלע.
+The arm bone is connected to the head bone. === עצם הזרוע מחוברת לעצם הראש.
+The arm bone is connected to the leg bone. === עצם הזרוע מחוברת לעצם הרגל.
+<br/>The arm bone is connected to the hip bone. === עצם הזרוע מחוברת לעצם הירך.
+The arm bone is connected to the rib bone. === עצם הזרוע מחוברת לעצם הצלע.
+The leg bone is connected to the arm bone. === עצם הרגל מחוברת לעצם הזרוע.
+The leg bone is connected to the head bone. === עצם הרגל מחוברת לעצם הראש.
+The leg bone is connected to the hip bone. === עצם הרגל מחוברת לעצם הירך.
+The leg bone is connected to the rib bone. === עצם הרגל מחוברת לעצם הצלע.
+The hip bone is connected to the arm bone. === עצם הירך מחוברת לעצם הזרוע.
+The hip bone is connected to the leg bone. === עצם הירך מחוברת לעצם הרגל.
+The hip bone is connected to the head bone. === עצם הירך מחוברת לעצם הראש.
+The hip bone is connected to the rib bone. === עצם הירך מחוברת לעצם הצלע.
+The rib bone is connected to the arm bone. === עצם הצלע מחוברת לעצם הזרוע.
+The rib bone is connected to the leg bone. === עצם הצלע מחוברת לעצם הרגל.
+The rib bone is connected to the hip bone. === עצם הצלע מחוברת לעצם הירך.
+The rib bone is connected to the head bone. === עצם הצלע מחוברת לעצם הראש.
+...{string:global_47} bone connected to the {string:global_48} bone... === ...עצם ה-{string:global_47} מחוברת לעצם ה-{string:global_48}...
+You've allowed him to find the second map piece, haven't you!! === אפשרת לו למצוא את פיסת המפה השנייה, נכון?!
+Yes, I memorized the whole thing before he took it. === כן, שיננתי את כל העסק לפני שהוא לקח אותה.
+He's always envied my intellectual look. === הוא תמיד קינא במראה האינטלקטואלי שלי.
+I can't reach Wally from here. === אני לא יכול להגיע לוואלי מכאן.
+Hahahaha... === חהחהחהחה...
+Here lies Daredevil \nJim McDow. \nHand of steel, leg of wood...... \nJim took every risk he could. \nA life of action--that was Jim's.\nToo bad he ran out of limbs. === כאן נח הנועז \nג'ים מקדו.\nיד פלדה, רגל מעץ... \nג'ים לקח כל סיכון שרק הועז.\nחיי פעולה - אלו היו חייו של ג'ים.\nחבל שנגמרו לו כל הגפיים.
+No man commanded Jean Louise. \nNot on land, and not on water. \nJean did whatever he did please, \nUntil he kissed the gunner's daughter. === איש לא פקד על ז'אן לואי. \nלא ביבשה, ולא במי.\nז'אן עשה ככל העולה על רוחו, \nעד ש"בת התותחן" חתמה את גורלו.
+Marco Largo LaGrande, \nHell on sea or sand. \nThe good news is, he's dead. \nThe bad news is, he bred. === מרקו לארגו לגרנד, \nגיהינום בים וביבשה.\nהחדשות הטובות הן שהוא מת. \nהחדשות הרעות הן שהוא התרבה.
+Fascinating Facts About Scurvy === עובדות מרתקות על מחלת הצפדינה
+Greatest Rock Musicians of the Renaissance === גדולי מוזיקאי הרוק של הרנסנס
+Hey You Kids, Get Off My Lawn === היי אתם, ילדים, תסתלקו לי מהדשא
+Fascinating Facts About Scurvy. Hmmm, I'll have to remember that. === עובדות מרתקות על מחלת הצפדינה. המממ, אצטרך לזכור את זה.
+Greatest Rock Musicians of the Renaissance. Hmmm, I'll have to remember that. === גדולי מוזיקאי הרוק של הרנסנס. המממ, אצטרך לזכור את זה.
+Hey You Kids, Get Off My Lawn. Hmmm, I'll have to remember that. === היי אתם, ילדים, תסתלקו לי מהדשא. המממ, אצטרך לזכור את זה.
+It's a ticket to some circus show. The Fettucini Brothers. === זה כרטיס לאיזו הופעת קרקס. "האחים פטוצ'יני".
+The cover says Fascinating Facts About Scurvy. === על הכריכה כתוב "עובדות מרתקות על מחלת הצפדינה".
+The cover says Greatest Rock Musicians of the Renaissance. === על הכריכה כתוב "גדולי מוזיקאי הרוק של הרנסנס".
+The cover says Hey You Kids, Get Off My Lawn. === על הכריכה כתוב "היי אתם, ילדים, תסתלקו לי מהדשא".
+I'd like to buy Indy's whip™. === אני רוצה לקנות את השוט של אינדי™.
+Can I sell back this left turn sign === אני יכול למכור בחזרה את השלט "פנייה שמאלה" הזה?
+Elaine Marley? From Mêlée Island? === איליין מארלי? מהאי מיליי?
+Do you mean Papier-Mâché === אתה מתכוון ל"פפייה-מאשה"?
+...head bone... === ...עצם הראש...
+...arm bone... === ...עצם הזרוע...
+...leg bone... === ...עצם הרגל...
+...hip bone... === ...עצם הירך...
+...rib bone... === ...עצם הצלע...
+The arm bone is connected to the hip bone. === עצם הזרוע מחוברת לעצם הירך.
+You see that candle over there? === אתה רואה את הנר ההוא שם?
+I will take your bones... === אני אקח את העצמות שלך...
+How much wood would a woodchuck chuck, if a... === כמה עץ היה מכרסם הבונה, אילו...
+{string:global_33} === {string:global_33}
+{string:global_34} === {string:global_34}
+Because we had an extra disk. === בגלל שהיה לנו דיסק מיותר.
+{string:global_36} === {string:global_36}
+{string:global_37} === {string:global_37}
+This ship is so small, the rats are leaving it humpbacked. === הספינה הזו כל כך קטנה, שהחולדות עוזבות אותה כפופות.
+It's about as broken as it's gonna get. === זה שבור בערך כמה שזה יכול להיות.
+His stare is blank and glassy, I suspect that he's deranged... === המבט שלו חלול וזגוגי, אני חושד שהוא מעורער בדעתו...
+Yeow! === אייי!
+Boy, that look comfy! === וואו, זה נראה נוח!
+No chance, you'll just rip my lungs out when I get close. === אין סיכוי, אתה פשוט תתלוש לי את הריאות כשאני אתקרב.
+Huh? === הא?
+...and I brought a little surprise for you! === ...והבאתי לך הפתעה קטנה!
+Is this going to be anything like `pin the tail on the donkey`? === זה הולך להיות משהו כמו "נעץ את הזנב בחמור"?
+'- === '-
+9 === 9
+7 === 7
+j === j
+J === J
+Elaine Marley?  From Mêlée Island? === אילנה מארלי?  מהאי פלוגתא?
+Ron: My name's Ron Gilbert and I did pretty much everything on this game. I did all the art, the music, programming and the writing. === רון: שמי רון גילברט ואני עשיתי פלוס-מינוס הכל במשחק הזה. עשיתי את כל האמנות, המוזיקה, התכנות והכתיבה.
+Tim: So typical. === טים: כל כך טיפוסי.
+Dave: I'm Dave Grossman; I helped Ron do everything on this game. === דייב: אני דייב גרוסמן; עזרתי לרון לעשות הכל במשחק הזה.
+Dave: I helped to design puzzles and wrote lots of dialogue and programmed things and made little people walk around and created scenes. === דייב: עזרתי לעצב פאזלים וכתבתי המון דיאלוגים ותכנתתי דברים וגרמתי לאנשים קטנים להתהלך ויצרתי סצנות.
+Tim: My name's Tim Schafer, I helped get coffee for these guys. And then at night, I redid everything that they did. === טים: שמי טים שייפר, אני עזרתי להביא קפה לחבר'ה האלה. ואז בלילה, עשיתי מחדש כל מה שהם עשו.
+And I was an assistant designer-programmer, that's the official title. === והייתי עוזר מעצב-מתכנת, זה התואר הרשמי.
+Ron: That was part of the official title. === רון: זה היה חלק מהתואר הרשמי.
+Tim: Yeah. So we helped with puzzles and then wrote dialogue and then programmed. === טים: כן. אז עזרנו עם הפאזלים ואז כתבנו דיאלוגים ואז תכנתנו.
+Wow, we used to program. === וואו, פעם היינו מתכנתים.
+Ron: Mm hmm. I still program too. === רון: מה-הממ. אני עדיין מתכנת גם.
+Tim: What's happening? === טים: מה קורה?
+Dave: What was that sound? === דייב: מה היה הרעש הזה?
+Tim: Oh my god the game's starting! What an awesome game! === טים: או מיי גאד המשחק מתחיל! איזה משחק אדיר!
+Tim: Oh, we're going into Woodtick. Don't go on that bridge, there's a... don't! === טים: או, אנחנו נכנסים לוודטיק (Woodtick). אל תעלו על הגשר ההוא, יש שם... אל!
+Dave: I always liked this bit because the player always feels like they've done something wrong. === דייב: תמיד אהבתי את הקטע הזה כי השחקן תמיד מרגיש שהוא עשה משהו לא בסדר.
+Ron: Right, without knowing it. === רון: נכון, בלי לדעת את זה.
+Dave: Yeah. People would actually go back and try and play this again, to try \nand not get caught by him on the bridge. === דייב: כן. אנשים ממש היו חוזרים ומנסים לשחק בזה שוב, כדי לנסות \nולא להיתפס על ידיו על הגשר.
+Ron: Yeah, Largo LaGrande is named after where I grew up. === רון: כן, לארגו לגרנד קרוי על שם המקום שבו גדלתי.
+Tim: Largo? Key Largo? === טים: לארגו? קי לארגו?
+Ron: Nah, I grew up in Le Grande Oregon, so that's where I, or we, got his name. === רון: נה, גדלתי בלה-גרנד שבאורגון, אז משם אני, או אנחנו, לקחנו את השם שלו.
+Dave: Where did the Largo come from? === דייב: מאיפה הגיע ה"לארגו"?
+Ron: I don't know. That's how they used to call him back there. === רון: אני לא יודע. ככה היו קוראים לו שם פעם.
+Dave: They used to call him Largo? === דייב: היו קוראים לו לארגו?
+Tim: That was his nickname, "Hey Largo." === טים: זה היה הכינוי שלו, "היי לארגו".
+Ron: Largo from Le Grande. === רון: לארגו מלה-גרנד.
+Tim: Is that Bogart, Key Largo? === טים: האם זה בוגרט, מ"קי לארגו"?
+Ron: I always liked how he started out with a whole bunch of money so you kinda thought he had a bunch of stuff, and then it all like, completely goes away \nat the very beginning of the game. === רון: תמיד אהבתי איך שהוא התחיל עם ערימה של כסף כדי שאיכשהו תחשוב שיש לו המון דברים, ואז הכל כאילו, נעלם לחלוטיחן \nממש בתחילת המשחק.
+Tim: Yeah, that fit in with our running theme of mean, cruel things that we enjoyed. \nGive a player a bunch of money, and then take it away from them. === טים: כן, זה התאים לתמה החוזרת שלנו של דברים מרושעים ואכזריים שנהנינו מהם. \nלתת לשחקן המון כסף, ואז לקחת לו אותו.
+Ron: And then just take it all away from them immediately, yup. === רון: ואז פשוט לקחת להם הכל מיד, יאפ.
+Tim: I just wanna say how good looking Guybrush's hair is looking, in this game. === טים: אני רק רוצה לומר כמה טוב נראה השיער של גייבראש במשחק הזה.
+He has a new stylist in this game. But his eyes are in the... ok sorry. === יש לו סטייליסט חדש במשחק הזה. אבל העיניים שלו בתוך ה... אוקיי סליחה.
+Dave: Wasn't the money thing inspired by just how much time you spent in the first game having to get money, like it was a really big thing. \nLike, "Oh, you didn't have any money and you had to go to the circus and get a job and all that". It's like, this time; let's start them off with TONS of money. === דייב: עניין הכסף לא נבע פשוט מכמות הזמן שבזבזת במשחק הראשון על להשיג כסף, כאילו זה היה עניין ממש גדול. \nכאילו, "הו, לא היה לך כסף והיית צריך ללכת לקרקס ולמצוא עבודה וכל זה". אז הפעם; בואו נתחיל אותם עם טונות של כסף.
+Ron: More money than I know what to do. And then we're gonna take it all away. === רון: יותר כסף ממה שאני יודע מה לעשות איתו. ואז אנחנו הולכים לקחת את הכל.
+Tim: OK, here is the big premier of iMUSE. Right? === טים: אוקיי, הנה הבכורה הגדולה של iMUSE. נכון?
+Ron: Yes. === רון: כן.
+Tim: This is the biggest, and I think the biggest ever, most complicated piece of iMUSE music that was ever made. === טים: זה הקטע הגדול ביותר, ואני חושב שהגדול אי פעם, והמורכב ביותר של מוזיקת iMUSE שנוצר אי פעם.
+Ron: We had like, two, like, full time programmers who were doing nothing but programming the iMUSE transitions. === רון: היו לנו בערך שני מתכנתים במשרה מלאה שלא עשו כלום חוץ מלתכנת את המעברים של iMUSE.
+Tim: Cause like, it's a main theme outside and then every time you go into one of these inner locations, or inside the house, it would... \n...enable or disable instruments and it would change the theme a little bit. === טים: כי כאילו, יש תמה מרכזית בחוץ ואז בכל פעם שאתה נכנס לאחד המקומות הפנימיים האלה, או לתוך הבית, זה היה... \n...מפעיל או משבית כלי נגינה וזה היה משנה את התמה קצת.
+Ron: Right. Right. Yeah I know, iMUSE was like, absolutely amazing. === רון: נכון. נכון. כן אני יודע, iMUSE היה פשוט מדהים לחלוטין.
+Tim: But, they put a lot of work into it and they decided never to do it again. They were like, no one noticed! I noticed. === טים: אבל, הם השקיעו בזה המון עבודה והם החליטו לא לעשות את זה שוב לעולם. הם אמרו, אף אחד לא שם לב! אני שמתי לב.
+Ron: I did! === רון: אני שמתי לב!
+Tim: I think, this may be controversial too, but I think that the Special Edition for... \n...Monkey 2 is an improvement, like, as an old... Like, playing... I'm very nostalgic when I play the Special Edition for Monkey 1. === טים: אני חושב, וזה אולי יהיה שנוי במחלוקת, אבל אני חושב שהגרסה המיוחדת של... \n...אי הקופים 2 היא שיפור, כאילו, בתור אחד ישן... כאילו, לשחק... אני מאוד נוסטלגי כשאני משחק בגרסה המיוחדת של אי הקופים 1.
+I was kinda like, the old art is so charming, I always play it in the old art. The new art was really pretty but I was really drawn... But, Monkey 2... \n...I'm not saying that Monkey 2 looked bad, but we were just starting to use the scanner and so we hadn't cleaned up much stuff. === הייתי קצת כאילו, האמנות הישנה כל כך מקסימה, אני תמיד משחק בה. האמנות החדשה הייתה ממש יפה אבל ממש נמשכתי... אבל, אי הקופים 2... \n...אני לא אומר שאי הקופים 2 נראה רע, אבל בדיוק התחלנו להשתמש בסורק אז לא ניקינו הרבה דברים.
+So it's actually really nice to see it switch into that cleaned up view, because I \nthink, you know, in later games we would take all those stray pixels out and... === אז זה בעצם ממש נחמד לראות את המעבר למראה המנוקה הזה, כי אני \nחובה שאתה יודע, במשחקים מאוחרים יותר היינו מוציאים את כל הפיקסלים המיותרים האלה ו...
+Ron: Just smooth it all out. === רון: פשוט מחליקים הכל.
+Tim:...smooth it all out, yeah. === טים: ...מחליקים הכל, כן.
+Ron: I think some of that's an artifact of the markers, because you know, Peter Chan did everything with those markers. === רון: אני חושב שחלק מזה הוא תוצר לוואי של המרקרים, כי אתה יודע, פיטר צ'אן עשה הכל עם המרקרים האלה.
+Ron: It's all done with the markers, think that's a little of an artifact of that. === רון: הכל נעשה עם המרקרים, אני חושב שזה קצת תוצר לוואי של זה.
+Tim: That's my rounded way, roundabout compliment of the Monkey 2 Special Edition. === טים: זו הדרך המפותלת שלי, המחמאה העקיפה שלי לגרסה המיוחדת של אי הקופים 2.
+Tim: Largo reminds me of someone from like, old, like, Bowery Boys movies. You know what I mean? Bowery Boys. === טים: לארגו מזכיר לי מישהו מסרטי ה"באוורי בויז" (Bowery Boys) הישנים. אתה מבין למה אני מתכוון? באוורי בויז.
+Tim: Or Squiggy, from Laverne and Shirley. Oh my god! I just realized that's where I stole the intro to Full Throttle, like I pull... that's embarrassing... \n...where he pulls his nose down to the bar, it's totally, ugh... how embarrassing... \nI totally stole that whole quohog thing from Monkey 2. === טים: או סקוויגי, מ"לוורן ושירלי". או מיי גאד! בדיוק קלטתי שמשם גנבתי את הפתיח ל-"Full Throttle", כאילו אני מושך... זה מביך... \n...איפה שהוא מושך את האף שלו למטה לבר, זה לגמרי, אוף... כמה מביך... \nגנבתי לגמרי את כל עניין ה"קווהוג" (quohog) הזה מאי הקופים 2.
+Ron: Just also a lot of foreshadowing with the spitting, and the spitting contest... and all of those things in there. === רון: יש גם הרבה רמזים מקדימים עם היריקה, ותחרות היריקה... וכל הדברים האלה שם.
+Tim: Where's the spittoon? Oh no, there's spit over there on the left hand side. === טים: איפה המירקקה? או לא, יש יריקה שם בצד שמאל.
+Dave: Oh yeah. === דייב: הו כן.
+Tim: Did we do a close up of the spit flying, or did we cut that? === טים: עשינו קלוז-אפ על היריקה שעפה, או שחתכנו את זה?
+Ron: No that was there. === רון: לא, זה היה שם.
+Tim: That was there? === טים: זה היה שם?
+Ron: Oh, you weren't paying attention. === רון: הו, לא שמת לב.
+Tim: I was watching you guys, I was mesmerized. === טים: הסתכלתי עליכם, הייתי מהופנט.
+Dave: One of the greatest things about this game was the shirt that we did with... \n...the three dimensional puffy spit === דייב: אחד הדברים הכי גדולים במשחק הזה היה החולצה שעשינו עם... \n...היריקה התלת-ממדית התפוחה.
+Ron: Oh and that monkeys down the sleeve? === רון: אה והקופים האלה לאורך השרוול?
+Tim: It's a great day for spitting. === טים: זה יום נהדר ליריקות.
+Dave: That was the Monkey 1 shirt. === דייב: זאת הייתה החולצה של אי הקופים 1.
+Ron: Was that the Monkey 1 shirt? === רון: זאת הייתה החולצה של אי הקופים 1?
+Tim: Monkey 1 was a tasteful shirt that you could wear outside. The Monkey 2 shirt... === טים: אי הקופים 1 הייתה חולצה בטעם טוב שאפשר ללבוש בחוץ. החולצה של אי הקופים 2...
+Ron: No that was... === רון: לא, זה היה...
+Tim: ...you would just fold it up and put it away in a box because it was so gross... \n...and there were gobs of spit all over it. === טים: ...פשוט היית מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה... \n...והיו גושי יריקה על כולה.
+Ron: There were the puffy monkeys down the sleeve, was that Monkey 1? === רון: היו את הקופים התפוחים לאורך השרוול, זה היה אי הקופים 1?
+Dave: That was Monkey 1, yeah, the long sleeve one. === דייב: זה היה אי הקופים 1, כן, החולצה עם השרוול הארוך.
+Tim: Monkey 2 we did and we didn't get approval for it, and people at management... \n...were mad afterwards. They were like, that is the grossest shirt ever, I can't believe you made that. === טים: את אי הקופים 2 עשינו ולא קיבלנו אישור עליה, והאנשים בהנהלה... \n...כעסו אחר כך. הם אמרו, זאת החולצה הכי מגעילה אי פעם, אני לא מאמין שיצרתם את זה.
+Tim: I love Wally the cartographer. === טים: אני אוהב את וואלי הקרטוגרף.
+Dave: Wally has just taken so much abuse over the course of this series, it just seems to me. === דייב: וואלי פשוט ספג כל כך הרבה התעללות במהלך הסדרה הזאת, ככה זה נראה לי לפחות.
+Ron: Well you know, we cut that stuff at the end of the game with, you know, him on the raft and all that. === רון: ובכן אתה יודע, חתכנו את הקטעים האלה בסוף המשחק עם, אתה יודע, כשהוא על הרפסודה וכל זה.
+Tim: That's right, we cut the whole raft thing. === טים: זה נכון, חתכנו את כל עניין הרפסודה.
+Ron: I get a lot of email from people wanting to know what we were going to do.. \n...with Wally and that whole cut section. === רון: אני מקבל המון מיילים מאנשים שרוצים לדעת מה עמדנו לעשות... \n...עם וואלי וכל הקטע הזה שנחתך.
+Tim: Could you show what happens to him now? === טים: תוכל להראות מה קורה לו עכשיו?
+Tim: Because when you blow up out of the, you know, the what you might call it, you blow up out of the, and then you used to land in a raft. === טים: כי כשאתה מתפוצץ מחוץ ל-, אתה יודע, איך שלא קוראים לזה, אתה מתפוצץ החוצה מה-, ואז היית אמור לנחות בתוך רפסודה.
+Tim: So typical. === טים: כל כך טיפוסי.
+Dave: I'm Dave Grossman; I helped Ron do everything on this game. === דייב: אני דייב גרוסמן; עזרתי לרון לעשות הכל במשחק הזה.
+And I was an assistant designer-programmer, that's the official title. === והייתי עוזר מעצב-מתכנת, זה התואר הרשמי.
+Ron: That was part of the official title. === רון: זה היה חלק מהתואר הרשמי.
+Tim: Yeah. So we helped with puzzles and then wrote dialogue and then programmed. === טים: כן. אז עזרנו עם החידות ואז כתבנו דיאלוגים ואז תיכנתנו.
+Wow, we used to program. === וואו, פעם היינו מתכנתים.
+Ron: Mm hmm. I still program too. === רון: מה-הממ. אני עדיין מתכנת גם כן.
+Tim: What's happening? === טים: מה קורה?
+Dave: What was that sound? === דייב: מה היה הרעש הזה?
+Tim: Oh my god the game's starting! What an awesome game! === טים: אלוהים אדירים, המשחק מתחיל! איזה משחק אדיר!
+Ron: Right, without knowing it. === רון: נכון, בלי לדעת את זה.
+Dave: Yeah. People would actually go back and try and play this again, to try \nand not get caught by him on the bridge. === דייב: כן. אנשים באמת היו חוזרים ומנסים לשחק בזה שוב, כדי לנסות \nולא להיתפס על ידו על הגשר.
+Ron: Yeah, Largo LaGrande is named after where I grew up. === רון: כן, לארגו לגרנד נקרא על שם המקום שבו גדלתי.
+Tim: Largo? Key Largo? === טים: לארגו? קי לארגו?
+Ron: Nah, I grew up in Le Grande Oregon, so that's where I, or we, got his name. === רון: נה, גדלתי בלה גראנד, אורגון, אז משם אני, או אנחנו, קיבלנו את השם שלו.
+Dave: Where did the Largo come from? === דייב: מאיפה הגיע ה"לארגו"?
+Ron: I don't know. That's how they used to call him back there. === רון: אני לא יודע. ככה היו קוראים לו שם.
+Dave: They used to call him Largo? === דייב: הם היו קוראים לו לארגו?
+Tim: That was his nickname, "Hey Largo." === טים: זה היה הכינוי שלו, "היי לארגו".
+Ron: Largo from Le Grande. === רון: לארגו מלה גראנד.
+Tim: Is that Bogart, Key Largo? === טים: זה בוגארט, קי לארגו?
+Ron: I always liked how he started out with a whole bunch of money so you kinda thought he had a bunch of stuff, and then it all like, completely goes away \nat the very beginning of the game. === רון: תמיד אהבתי איך שהוא התחיל עם המון כסף אז כאילו חשבת שיש לו המון דברים, ואז הכל פשוט נעלם לגמרי \nממש בתחילת המשחק.
+Tim: Yeah, that fit in with our running theme of mean, cruel things that we enjoyed. === טים: כן, זה התאים למוטיב החוזר שלנו של דברים רעים ואכזריים שנהנינו מהם.
+Give a player a bunch of money, and then take it away from them. === לתת לשחקן המון כסף, ואז לקחת אותו ממנו.
+Ron: And then just take it all away from them immediately, yup. === רון: ואז פשוט לקחת להם הכל מיד, יאפ.
+Tim: I just wanna say how good looking Guybrush's hair is looking, in this game. === טים: אני רק רוצה להגיד כמה טוב השיער של גייבראש נראה במשחק הזה.
+He has a new stylist in this game. But his eyes are in the... ok sorry. === יש לו סטייליסט חדש במשחק הזה. אבל העיניים שלו נמצאות ב... אוקיי סליחה.
+Dave: Wasn't the money thing inspired by just how much time you spent in the first game having to get money, like it was a really big thing. === דייב: עניין הכסף לא היה בהשראת כל הזמן שבילית במשחק הראשון בלנסות להשיג כסף, כאילו זה היה עניין ממש גדול.
+Like, "Oh, you didn't have any money and you had to go to the circus and get a job and all that". It's like, this time; let's start them off with TONS of money. === כמו, "הו, לא היה לך שום כסף והיית צריך ללכת לקרקס ולמצוא עבודה וכל זה". זה כאילו, הפעם; בואו נתחיל אותם עם טונות של כסף.
+Tim: OK, here is the big premier of iMUSE. Right? === טים: אוקיי, הנה הבכורה הגדולה של iMUSE. נכון?
+Ron: Yes. === רון: כן.
+Tim: Cause like, it's a main theme outside and then every time you go into one of these inner locations, or inside the house, it would... === טים: כי כאילו, יש את המנגינה הראשית בחוץ ואז בכל פעם שאתה נכנס לאחד מהמקומות הפנימיים האלו, או לתוך הבית, זה היה...
+...enable or disable instruments and it would change the theme a little bit. === ...מפעיל או מכבה כלי נגינה וזה היה משנה את המנגינה קצת.
+Ron: Right. Right. Yeah I know, iMUSE was like, absolutely amazing. === רון: נכון. נכון. כן אני יודע, iMUSE היה פשוט מדהים.
+Tim: I think, this may be controversial too, but I think that the Special Edition for... === טים: אני חושב, אולי זה גם יהיה שנוי במחלוקת, אבל אני חושב שהגרסה המיוחדת של...
+...Monkey 2 is an improvement, like, as an old... Like, playing... I'm very nostalgic when I play the Special Edition for Monkey 1. === ...אי הקופים 2 היא שיפור, כאילו, בתור אחד מהדור הישן... כאילו, לשחק... אני מאוד נוסטלגי כשאני משחק בגרסה המיוחדת של אי הקופים 1.
+I was kinda like, the old art is so charming, I always play it in the old art. The new art was really pretty but I was really drawn... But, Monkey 2... === הייתי קצת בקטע של, האמנות הישנה כל כך מקסימה, אני תמיד משחק באמנות הישנה. האמנות החדשה הייתה ממש יפה אבל באמת נמשכתי... אבל, אי הקופים 2...
+...I'm not saying that Monkey 2 looked bad, but we were just starting to use the scanner and so we hadn't cleaned up much stuff. === ...אני לא אומר שאי הקופים 2 נראה רע, אבל רק התחלנו להשתמש בסורק אז לא ניקינו הרבה דברים.
+So it's actually really nice to see it switch into that cleaned up view, because I \nthink, you know, in later games we would take all those stray pixels out and... === אז זה בעצם ממש נחמד לראות את זה עובר למראה הנקי הזה, כי אני \nחושב שאתם יודעים, במשחקים מאוחרים יותר היינו מוציאים את כל הפיקסלים המיותרים האלה ו...
+Ron: Just smooth it all out. === רון: פשוט מחליקים את הכל.
+Tim:...smooth it all out, yeah. === טים: ...מחליקים את הכל, כן.
+Ron: It's all done with the markers, think that's a little of an artifact of that. === רון: הכל נעשה עם טושים, אני חושב שזה קצת שאריות של זה.
+Tim: That's my rounded way, roundabout compliment of the Monkey 2 Special Edition. === טים: זו הדרך המעגלית שלי, המחמאה העקיפה שלי לגרסה המיוחדת של אי הקופים 2.
+Tim: Or Squiggy, from Laverne and Shirley. Oh my god! I just realized that's where I stole the intro to Full Throttle, like I pull... that's embarrassing... === טים: או סקוויגי, מ"לוורן ושירלי". אלוהים אדירים! הרגע הבנתי שמשם גנבתי את הפתיח ל-Full Throttle, כאילו אני מושך... זה מביך...
+...where he pulls his nose down to the bar, it's totally, ugh... how embarrassing... \nI totally stole that whole quohog thing from Monkey 2. === ...איפה שהוא מושך את האף שלו למטה לבר, זה לגמרי, אוף... כמה מביך... \nלגמרי גנבתי את כל עניין הצדפות הזה מאי הקופים 2.
+Tim: Where's the spittoon? Oh no, there's spit over there on the left hand side. === טים: איפה המירקה? אוי לא, יש יריקה שם בצד שמאל.
+Dave: Oh yeah. === דייב: הו כן.
+Tim: Did we do a close up of the spit flying, or did we cut that? === טים: עשינו תקריב של היריקה עפה, או שחתכנו את זה?
+Ron: No that was there. === רון: לא, זה היה שם.
+Tim: That was there? === טים: זה היה שם?
+Ron: Oh, you weren't paying attention. === רון: הו, לא שמת לב.
+Tim: I was watching you guys, I was mesmerized. === טים: הסתכלתי עליכם, הייתי מהופנט.
+Dave: One of the greatest things about this game was the shirt that we did with... === דייב: אחד הדברים הכי גדולים במשחק הזה היה החולצה שעשינו עם...
+...the three dimensional puffy spit === ...היריקה התלת-ממדית התפוחה.
+Ron: Oh and that monkeys down the sleeve? === רון: הו והקופים האלה לאורך השרוול?
+Tim: It's a great day for spitting. === טים: זה יום נהדר ליריקות.
+Dave: That was the Monkey 1 shirt. === דייב: זו הייתה החולצה של אי הקופים 1.
+Ron: Was that the Monkey 1 shirt? === רון: זו הייתה החולצה של אי הקופים 1?
+Tim: Monkey 1 was a tasteful shirt that you could wear outside. The Monkey 2 shirt... === טים: אי הקופים 1 הייתה חולצה בטעם טוב שאפשר ללבוש בחוץ. החולצה של אי הקופים 2...
+Ron: No that was... === רון: לא, זה היה...
+Tim: ...you would just fold it up and put it away in a box because it was so gross... === טים: ...פשוט היית מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה...
+...and there were gobs of spit all over it. === ...והיו עליה גושי יריקה בכל מקום.
+Ron: There were the puffy monkeys down the sleeve, was that Monkey 1? === רון: היו שם קופים תפוחים לאורך השרוול, זה היה אי הקופים 1?
+Dave: That was Monkey 1, yeah, the long sleeve one. === דייב: זה היה אי הקופים 1, כן, החולצה עם השרוול הארוך.
+Tim: Monkey 2 we did and we didn't get approval for it, and people at management... === טים: את אי הקופים 2 עשינו ולא קיבלנו על זה אישור, ואנשים בהנהלה...
+...were mad afterwards. They were like, that is the grossest shirt ever, I can't believe you made that. === ...כעסו אחר כך. הם אמרו, זו החולצה הכי דוחה אי פעם, אני לא מאמין שיצרתם את זה.
+Tim: That's right, we cut the whole raft thing. === טים: זה נכון, חתכנו את כל עניין הרפסודה.
+Ron: I get a lot of email from people wanting to know what we were going to do.. === רון: אני מקבל הרבה אימיילים מאנשים שרוצים לדעת מה עמדנו לעשות...
+...with Wally and that whole cut section. === ...עם וואלי וכל הקטע הזה שנחתך.
+Tim: Could you show what happens to him now? === טים: אתה יכול להראות מה קורה לו עכשיו?
+Ron: Mm hmm. === רון: מה-הממ.
+Tim: I guess we'll find out. === טים: אני מניח שנגלה.
+Ron: I don't remember. === רון: אני לא זוכר.
+Tim: That's a good voice for him. Woah, could you guys hear my ... internal organs? === טים: זה קול טוב בשבילו. וואו, יכולתם לשמוע את... האיברים הפנימיים שלי?
+Ron: See now we steal his, err, we steal his monocle. === רון: תראו, עכשיו אנחנו גונבים לו את ה, אממ, אנחנו גונבים לו את המונוקל.
+Tim: We steal his monocle, and it's super sad, yeah!... === טים: אנחנו גונבים לו את המונוקל, וזה ממש עצוב, כן!...
+...we totally make him unable to do his job but because we needed the lens for our little... === ...אנחנו לגמרי הופכים אותו ללא מסוגל לעשות את העבודה שלו רק כי היינו צריכים את העדשה בשביל ה... הקטנה שלנו.
+Ron: Exactly. === רון: בדיוק.
+Dave: Yup. Gonna ruin everyone in this town before we're done. === דייב: יאפ. הולכים להרוס לכולם בעיר הזאת לפני שנסיים.
+Tim: Oh god I forgot about the graveyard! === טים: אלוהים, שכחתי מבית הקברות!
+Ron: This is like the greatest scene ever. === רון: זו כאילו הסצנה הכי גדולה אי פעם.
+Tim: Why are the bats making different sounds here? === טים: למה העטלפים משמיעים קולות שונים פה?
+Dave: Okay, so why... === דייב: אוקיי, אז למה...
+Tim: This is another thing we fought over. I thought the pants thing...I didn't think that was funny. === טים: זה עוד דבר שרבנו עליו. אני חשבתי שעניין המכנסיים... לא חשבתי שזה מצחיק.
+Ron: I think the pants thing was hilarious. === רון: אני חושב שעניין המכנסיים היה קורע.
+Tim: And he thought it was the best thing in the whole game. === טים: והוא חשב שזה הדבר הכי טוב בכל המשחק.
+Ron: I did. I did. And I still do. I still do. I actually use this as an example sometimes when I'm talking to people. === רון: חשבתי ככה. חשבתי ככה. ואני עדיין חושב ככה. אני עדיין חושב ככה. אני בעצם משתמש בזה כדוגמה לפעמים כשאני מדבר עם אנשים.
+Tim: So typical.\nDave: I'm Dave Grossman; I helped Ron do everything on this game. === טים: כל כך טיפוסי.\nדייב: אני דייב גרוסמן; עזרתי לרון לעשות הכל במשחק הזה.
+And I was an assistant designer-programmer, that's the official title.\nRon: That was part of the official title. === והייתי עוזר מעצב-מתכנת, זה התואר הרשמי.\nרון: זה היה חלק מהתואר הרשמי.
+Tim: Yeah. So we helped with puzzles and then wrote dialogue and then programmed.\nWow, we used to program. === טים: כן. אז עזרנו עם החידות ואז כתבנו דיאלוגים ואז תיכנתנו.\nוואו, פעם היינו מתכנתים.
+Ron: Mm hmm. I still program too.\nTim: What's happening? === רון: הממ הממ. אני עדיין מתכנת גם.\nטים: מה קורה?
+Dave: What was that sound?\nTim: Oh my god the game's starting! What an awesome game! === דייב: מה היה הרעש הזה?\nטים: אלוהים אדירים, המשחק מתחיל! איזה משחק אדיר!
+Ron: Right, without knowing it.\nDave: Yeah. People would actually go back and try and play this again, to try\nand not get caught by him on the bridge.\nRon: Yeah, Largo LaGrande is named after where I grew up. === רון: נכון, בלי לדעת את זה.\nדייב: כן. אנשים באמת היו חוזרים ומנסים לשחק בזה שוב, כדי לנסות\nולא להיתפס על ידיו על הגשר.\nרון: כן, לארגו לגרנד קרוי על שם המקום שבו גדלתי.
+Tim: Largo? Key Largo?\nRon: Nah, I grew up in Le Grande Oregon, so that's where I, or we, got his name. === טים: לארגו? קי לארגו?\nרון: נה, גדלתי בלה-גרנד, אורגון, אז משם אני, או אנחנו, קיבלנו את השם שלו.
+Dave: Where did the Largo come from?\nRon: I don't know. That's how they used to call him back there. === דייב: מאיפה הגיע ה"לארגו"?\nרון: אני לא יודע. ככה היו קוראים לו שם.
+Dave: They used to call him Largo?\nTim: That was his nickname, "Hey Largo." === דייב: היו קוראים לו לארגו?\nטים: זה היה הכינוי שלו, "היי לארגו".
+Ron: Largo from Le Grande.\nTim: Is that Bogart, Key Largo? === רון: לארגו מלה-גרנד.\nטים: זה בוגארט, "קי לארגו"?
+Ron: I always liked how he started out with a whole bunch of money so you kinda thought he had a bunch of stuff, and then it all like, completely goes away\nat the very beginning of the game.\nTim: Yeah, that fit in with our running theme of mean, cruel things that we enjoyed.\nGive a player a bunch of money, and then take it away from them.\nRon: And then just take it all away from them immediately, yup. === רון: תמיד אהבתי איך שהוא התחיל עם המון כסף, אז כאילו חשבת שיש לו המון דברים, ואז הכל פשוט נעלם לגמרי\nממש בתחילת המשחק.\nטים: כן, זה התאים למוטיב החוזר שלנו של דברים רעים ואכזריים שנהנינו מהם.\nלתת לשחקן המון כסף, ואז לקחת לו אותו.\nרון: ואז פשוט לקחת להם הכל מיד, יאפ.
+Tim: I just wanna say how good looking Guybrush's hair is looking, in this game.\nHe has a new stylist in this game. But his eyes are in the... ok sorry. === טים: אני רק רוצה להגיד כמה טוב השיער של גייבראש נראה במשחק הזה.\nיש לו מעצב שיער חדש במשחק הזה. אבל העיניים שלו נמצאות ב... אוקיי סליחה.
+Tim: OK, here is the big premier of iMUSE. Right? \nRon: Yes. === טים: אוקיי, הנה הבכורה הגדולה של iMUSE. נכון?\nרון: כן.
+...enable or disable instruments and it would change the theme a little bit.\nRon: Right. Right. Yeah I know, iMUSE was like, absolutely amazing. === ...להפעיל או להשבית כלי נגינה וזה היה משנה את התמה קצת.\nרון: נכון. נכון. כן אני יודע, iMUSE היה פשוט מדהים.
+So it's actually really nice to see it switch into that cleaned up view, because I \nthink, you know, in later games we would take all those stray pixels out and...\nRon: Just smooth it all out.\nTim:...smooth it all out, yeah. === אז זה באמת נחמד לראות את זה עובר לתצוגה הנקייה הזאת, כי אני\nחושב, אתה יודע, שבמשחקים מאוחרים יותר היינו מוציאים את כל הפיקסלים המיותרים ו...\nרון: פשוט מחליקים את הכל.\nטים: ...מחליקים את הכל, כן.
+Ron: It's all done with the markers, think that's a little of an artifact of that.\nTim: That's my rounded way, roundabout compliment of the Monkey 2 Special Edition. === רון: הכל נעשה עם הטושים, אני חושב שזה קצת שיירי לוואי של זה.\nטים: זו הדרך המפותלת שלי, המחמאה העקיפה שלי למהדורה המיוחדת של "אי הקופים 2".
+...where he pulls his nose down to the bar, it's totally, ugh... how embarrassing... \nI totally stole that whole quohog thing from Monkey 2. === ...שבו הוא מושך את האף שלו למטה לבר, זה לגמרי, איכס... כמה מביך...\nגנבתי לגמרי את כל עניין ה"קוהוג" הזה מ"אי הקופים 2".
+Tim: Where's the spittoon? Oh no, there's spit over there on the left hand side.\nDave: Oh yeah. === טים: איפה המירקקה? אוי לא, יש שם רוק בצד שמאל.\nדייב: אה, נכון.
+Tim: Did we do a close up of the spit flying, or did we cut that?\nRon: No that was there. === טים: עשינו קלוז-אפ על הרוק שעף, או שחתכנו את זה?\nרון: לא, זה היה שם.
+Tim: That was there?\nRon: Oh, you weren't paying attention. === טים: זה היה שם?\nרון: הו, לא שמת לב.
+Tim: I was watching you guys, I was mesmerized.\nDave: One of the greatest things about this game was the shirt that we did with... === טים: הסתכלתי עליכם, הייתי מהופנט.\nדייב: אחד הדברים הכי גדולים במשחק הזה היה החולצה שעשינו עם...
+...the three dimensional puffy spit\nRon: Oh and that monkeys down the sleeve? === ...הרוק התלת-ממדי התפוח\nרון: אה, והקופים האלה לאורך השרוול?
+Tim: It's a great day for spitting. \nDave: That was the Monkey 1 shirt. === טים: זה יום נהדר ליריקות.\nדייב: זאת הייתה החולצה של "אי הקופים 1".
+Ron: Was that the Monkey 1 shirt?\nTim: Monkey 1 was a tasteful shirt that you could wear outside. The Monkey 2 shirt... === רון: זאת הייתה החולצה של "אי הקופים 1"?\nטים: "אי הקופים 1" הייתה חולצה בטעם טוב שאפשר ללבוש בחוץ. החולצה של "אי הקופים 2"...
+Ron: No that was...\nTim: ...you would just fold it up and put it away in a box  because it was so gross...\n...and there were gobs of spit all over it. === רון: לא, זה היה...\nטים: ...היית פשוט מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה...\n...והיו גושי רוק בכל מקום עליה.
+Ron: There were the puffy monkeys down the sleeve, was that Monkey 1?\nDave: That was Monkey 1, yeah, the long sleeve one. === רון: היו את הקופים התפוחים לאורך השרוול, זה היה "אי הקופים 1"?\nדייב: זה היה "אי הקופים 1", כן, זאת עם השרוולים הארוכים.
+Tim: Monkey 2 we did and we didn't get approval for it, and people at management...\nTim: That's right, we cut the whole raft thing. === טים: את "אי הקופים 2" עשינו ולא קיבלנו אישור לזה, ואנשים בהנהלה...\nטים: נכון, חתכנו את כל עניין הרפסודה.
+Ron: I get a lot of email from people wanting to know what we were going to do..\n...with Wally and that whole cut section. === רון: אני מקבל המון אימיילים מאנשים שרוצים לדעת מה עמדנו לעשות..\n...עם וואלי וכל הקטע ההוא שנחתך.
+Tim: Could you show what happens to him now? === טים: אתה יכול להראות מה קורה לו עכשיו?
+Ron: Mm hmm.\nTim: I guess we'll find out. === רון: הממ הממ.\nטים: אני מניח שנגלה בקרוב.
+Ron: I don't remember.\nTim: That's a good voice for him. Woah, could you guys hear my ... internal organs? === רון: אני לא זוכר.\nטים: זה קול טוב עבורו. וואו, יכולתם לשמוע את ה... איברים הפנימיים שלי?
+Ron: See now we steal his, err, we steal his monocle.\nTim: We steal his monocle, and it's super sad, yeah!... === רון: תראו, עכשיו אנחנו גונבים לו את ה, אהה, אנחנו גונבים לו את המונוקל.\nטים: אנחנו גונבים לו את המונוקל, וזה סופר עצוב, כן!...
+Ron: Exactly.\nDave: Yup. Gonna ruin everyone in this town before we're done. === רון: בדיוק.\nדייב: יאפ. אנחנו הולכים להרוס לכולם בעיירה הזאת לפני שנסיים.
+Tim: Oh god I forgot about the graveyard! \nRon: This is like the greatest scene ever. === טים: אלוהים, שכחתי מבית הקברות!\nרון: זו הסצנה הכי גדולה אי פעם.
+Tim: Why are the bats making different sounds here? \nDave: Okay, so why... === טים: למה העטלפים משמיעים פה קולות אחרים?\nדייב: אוקיי, אז למה...
+Ron: I think the pants thing was hilarious.\nTim: And he thought it was the best thing in the whole game. === רון: אני חושב שעניין המכנסיים היה קורע.\nטים: והוא חשב שזה הדבר הכי טוב בכל המשחק.
+Tim: You used to think it was funny and now realize it's not funny? \nRon: No, it's like the pinnacle of humor. It's an un-top-able moment. === טים: פעם חשבת שזה מצחיק ועכשיו אתה מבין שזה לא מצחיק?\nרון: לא, זה שיא ההומור. זה רגע שאי אפשר להתעלות עליו.
+Ron: Right, without knowing it.\nDave: Yeah. People would actually go back and try and play this again, to try === רון: נכון, בלי לדעת את זה.\nדייב: כן. אנשים באמת היו חוזרים ומנסים לשחק בזה שוב, כדי לנסות
+and not get caught by him on the bridge.\nRon: Yeah, Largo LaGrande is named after where I grew up. === ולא להיתפס על ידיו על הגשר.\nרון: כן, לארגו לגרנד קרוי על שם המקום שבו גדלתי.
+Ron: I always liked how he started out with a whole bunch of money so you kinda thought he had a bunch of stuff, and then it all like, completely goes away === רון: תמיד אהבתי איך שהוא התחיל עם המון כסף, אז כאילו חשבת שיש לו המון דברים, ואז הכל פשוט נעלם לגמרי
+at the very beginning of the game.\nTim: Yeah, that fit in with our running theme of mean, cruel things that we enjoyed. === ממש בתחילת המשחק.\nטים: כן, זה התאים למוטיב החוזר שלנו של דברים רעים ואכזריים שנהנינו מהם.
+Give a player a bunch of money, and then take it away from them.\nRon: And then just take it all away from them immediately, yup. === לתת לשחקן המון כסף, ואז לקחת לו אותו.\nרון: ואז פשוט לקחת להם הכל מיד, יאפ.
+Ron: Just smooth it all out.\nTim:...smooth it all out, yeah. === רון: פשוט להחליק את הכל.\nטים: ...להחליק את הכל, כן.
+Ron: No that was...\nTim: ...you would just fold it up and put it away in a box because it was so gross... === רון: לא, זה היה...\nטים: ...היית פשוט מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה...
+...and there were gobs of spit all over it.\nRon: There were the puffy monkeys down the sleeve, was that Monkey 1? === ...והיו גושי רוק בכל מקום עליה.\nרון: היו את הקופים התפוחים לאורך השרוול, זה היה "אי הקופים 1"?
+Dave: That was Monkey 1, yeah, the long sleeve one. \nTim: Monkey 2 we did and we didn't get approval for it, and people at management... === דייב: זה היה "אי הקופים 1", כן, זאת עם השרוולים הארוכים. \nטים: את "אי הקופים 2" עשינו ולא קיבלנו אישור לזה, ואנשים בהנהלה...
+Tim: That's right, we cut the whole raft thing.\nRon: I get a lot of email from people wanting to know what we were going to do.. === טים: נכון, חתכנו את כל עניין הרפסודה.\nרון: אני מקבל המון אימיילים מאנשים שרוצים לדעת מה עמדנו לעשות..
+...with Wally and that whole cut section.\nTim: Could you show what happens to him now? === ...עם וואלי וכל הקטע ההוא שנחתך.\nטים: אתה יכול להראות מה קורה לו עכשיו?
+Ron: No that was...\nTim: ...you would just fold it up and put it away in a box because it was so gross... === רון: לא, זה היה...\nטים: ...היית פשוט מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה...
+Ron: Exactly.\nDave: Yup. Gonna ruin everyone in this town before we're done. === רון: בדיוק.\nדייב: יאפ. אנחנו הולכים להרוס לכולם בעיירה הזאת לפני שנסיים.
+Tim: But what, did he pull his belt off in order to dig... what, why did, why is...Why does that happen, Ron? Now, tell us! === טים: אבל מה, הוא הוריד את החגורה שלו כדי לחפור... מה, למה, למה זה קורה, רון? עכשיו, ספר לנו!
+Ron: Because...\nDave: It's because the game requires different levels of humor. You've got your... === רון: כי...\nדייב: זה בגלל שהמשחק דורש רמות שונות של הומור. יש לך את...
+...sophisticated, wry humor...\nTim: But why do his pants fall down? Did he take, did he use his belt to dig? === ...הומור מתוחכם וציני...\nטים: אבל למה המכנסיים שלו נופלות? הוא לקח, הוא השתמש בחגורה שלו כדי לחפור?
+Ron: You see, the problem is you're trying to justify it too much. It's just funny, just roll with it. === רון: אתה רואה, הבעיה היא שאתה מנסה להצדיק את זה יותר מדי. זה פשוט מצחיק, פשוט תזרמו עם זה.
+Dave: It's fantasy. About pants falling down.\nRon: It's just a stupid computer game, Tim. === דייב: זו פנטזיה. על מכנסיים נופלות.\nרון: זה סתם משחק מחשב טיפשי, טים.
+Tim: See that's the, see, I think that could have been a really deep moment, his pants fell for a reason. For example he was digging up... === טים: תראה, זה ה, תראה, אני חושב שזה היה יכול להיות רגע עמוק באמת, המכנסיים שלו נפלו מסיבה. למשל, הוא חפר...
+Dave: Gravity?\nTim: Oh, you win. It's hilarious. But I never liked any of those... I was against the... === דייב: כוח המשיכה?\nטים: הו, ניצחת. זה קורע. אבל מעולם לא אהבתי את כל אלה... התנגדתי ל...
+...insult sword fighting, remember? I was, like, people are gonna be really mad. === ...דו-קרב חרבות העלבות, זוכר? חשבתי, אנשים הולכים לכעוס ממש.
+Ron: You were?\nTim: Well, for the beginning of the meeting, you were, like, how about, I think it's === רון: היית?\nטים: ובכן, בהתחלה של הפגישה, אתה אמרת, מה דעתך, אני חושב שזה
+...action oriented if we actually put swordfighting in there, because it was going to be like, karataka, kartika, karateka. And umm, I think it's too... === ...אוריינטציית אקשן אם באמת נשים שם קרב חרבות, כי זה היה אמור להיות כמו, קרטקה, קרטקה, קרטקה. ואממ, אני חושב שזה יותר מדי...
+...too action-oriented, I think people would enjoy it more if it was just insults. Which I realized now is a great idea. At that time, I thought we were gonna get angry... === ...אוריינטציית אקשן, אני חושב שאנשים היו נהנים מזה יותר אם זה היו רק עלבונות. מה שהבנתי עכשיו שזה רעיון מעולה. באותו זמן, חשבתי שנקבל...
+...letters from people who want to use their sword. They, you know... But err, I saw the... I saw the light eventually. === ...מכתבים מאנשים שרוצים להשתמש בחרב שלהם. הם, אתה יודע... אבל ארר, ראיתי את... ראיתי את האור בסופו של דבר.
+Ron: Well that came from those, all those time we spent watching those movies, in the media room at the main house, was the way the pirates, you know, verbally... === רון: ובכן, זה הגיע מאותם, כל הזמן הזה שבזבזנו על צפייה בסרטים ההם, בחדר המדיה בבית הראשי, הדרך שבה הפיראטים, אתה יודע, ורבלית...
+...jousted with each other.\nTim: Mm hmm. === ...התמודדו זה עם זה.\nטים: הממ הממ.
+Dave: Yeah I remember you saying, it was just what they said that it was important and that the sword fighting always seemed like a kind of background activity. === דייב: כן אני זוכר שאמרת, זה היה רק מה שהם אמרו שזה היה חשוב וקרב החרבות תמיד נראה כמו פעילות רקע.
+Tim: Captain Dread! \nDave: It's a great name! === טים: קפטן דרד!\nדייב: זה שם מעולה!
+Ron: I never liked his name.\nTim: Captain Dread? That's a great name! === רון: מעולם לא אהבתי את השם שלו.\nטים: קפטן דרד? זה שם מעולה!
+Tim: It's both scary pirate name, and dreadlocks!\nRon: You're wrong. === טים: זה גם שם פיראט מפחיד, וגם ראסטות!\nרון: אתה טועה.
+Tim: Maybe you don't realize this but those big chunks of \nhair are called dreadlocks. === טים: אולי אתה לא מבין את זה אבל גושי השיער הגדולים האלה\nנקראים ראסטות.
+Ron: I think it was because the pun was too obvious. \nTim: Oh, there is something too obvious and not subtle enough in Monkey Island... === רון: אני חושב שזה היה בגלל שהמשחק מילים היה ברור מדי.\nטים: הו, יש משהו יותר מדי ברור ולא מספיק עדין ב"אי הקופים"...
+...for you, pants-dropper.\nRon: Right. Well it's because you're missing all the symbolism of the pants dropping. === ...בשבילך, נופל-המכנסיים.\nרון: נכון. ובכן, זה בגלל שאתה מפספס את כל הסמליות של נפילת המכנסיים.
+Tim: The thing I didn't like was that you never see his face except for the very beginning. His head is turned the whole time round. === טים: הדבר שלא אהבתי היה שלעולם לא רואים את הפנים שלו חוץ מההתחלה. הראש שלו מסובב כל הזמן.
+Tim: This is so disconcerting to see just the back of his head. He could just have his head, he could have his head just tilted a little bit like that. === טים: זה כל כך מטריד לראות רק את החלק האחורי של ראשו. הוא יכול היה פשוט להטות את הראש שלו קצת ככה.
+Tim: Oh that voodoo guy, I forgot about him. Oh geez. Oh, LeChuck's asymmetrical walking was the hardest thing to get right of any walk cycle, I think still to this... === טים: הו, ההוא של הוודו, שכחתי ממנו. הו ג'יז. הו, ההליכה הא-סימטרית של לה-צ'אק הייתה הדבר הכי קשה להשיג בכל מחזור הליכה, אני חושב עד היום...
+...day that was ever done. \nRon: Because he couldn't be flipped? === ...יום שנעשה אי פעם.\nרון: כי אי אפשר היה להפוך אותו?
+Tim: He couldn't be flipped, and he moved an uneven number of pixels every frame.\nDave: I like how much he spits when he talks too. More foreshadowing I guess. === טים: אי אפשר היה להפוך אותו, והוא זז מספר לא זוגי של פיקסלים בכל פריים.\nדייב: אני אוהב כמה הוא יורק כשהוא מדבר. יותר רמז מקדים אני מניח.
+Tim: I forgot that voodoo character. What does he do, that voodoo guy?\nDave: I don't know, I can't remember. === טים: שכחתי מהדמות הזו של הוודו. מה הוא עושה, ההוא של הוודו?\nדייב: אני לא יודע, אני לא זוכר.
+Ron: I actually don't remember him.\nTim: Dude I don't remember that guy at all! Does he? Let's cut him in the Special... === רון: אני בעצם לא זוכר אותו.\nטים: גבר, אני לא זוכר אותו בכלל! הוא? בואו נוריד אותו ב... המיוחד...
+...Edition, because he's...he's got a good voice though.\nDave: Yeah. === ...מהדורה, כי הוא... יש לו קול טוב. \nדייב: כן.
+Tim: Oh here comes this exciting sailing scene. Oh this was for the ship combat I worked so hard on! === טים: הו, הנה מגיעה סצנת השיט המרגשת הזו. הו, זה היה עבור קרב הספינות שעבדתי כל כך קשה עליו!
+Ron: No, that was on Monkey 1. That was on Monkey 1.\nTim: It was not in Monkey 1. === רון: לא, זה היה ב"אי הקופים 1". זה היה ב"אי הקופים 1".\nטים: זה לא היה ב"אי הקופים 1".
+Dave: That's right.\nTim: It was in the cutting room floor of Monkey 1, cause it was too good for that... === דייב: נכון.\nטים: זה היה ברצפת החיתוך של "אי הקופים 1", כי זה היה טוב מדי בשביל...
+...game. Okay "Jolly Rasta" that's not a good name. "Dread" is a good name but "Jolly Rasta" isn't. === ...משחק. אוקיי "ג'ולי ראסטה" זה לא שם טוב. "דרד" זה שם טוב אבל "ג'ולי ראסטה" לא.
+Ron: Jolly Rasta is a bad name. \nTim: It sounds like pasta. === רון: ג'ולי ראסטה זה שם גרוע.\nטים: זה נשמע כמו פסטה.
+Ron: It's a horrible name. \nDave: Should have been the "Jolly Pasta"? === רון: זה שם נורא.\nדייב: היה צריך להיות "ג'ולי פסטה"?
+Ron: No that was...\nTim: ...you would just fold it up and put it away in a box because it was so gross... === רון: לא, זה היה...\nטים: ...היית פשוט מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה...
+Ron: Exactly.\nDave: Yup. Gonna ruin everyone in this town before we're done. === רון: בדיוק.\nדייב: יאפ. אנחנו הולכים להרוס לכולם בעיירה הזאת לפני שנסיים.
+Tim: Yeah it should have been the "Jolly Pasta", should have been \nthe "Elbow Macaroni." === טים: כן, זה היה צריך להיות ה-"Jolly Pasta", זה היה צריך להיות\nה-"Elbow Macaroni".
+Dave: The thing I remember about Governor Phatt was just that, he was way bigger on screen than characters that we generally did. === דייב: הדבר שאני זוכר לגבי המושל פאט (Phatt) זה שהוא היה הרבה יותר גדול על המסך מהדמויות שבדרך כלל עשינו.
+Tim: He was like a small planet. \nDave: He didn't move around much, he was like yeah, just this enormous, guy. === טים: הוא היה כמו כוכב לכת קטן.\nדייב: הוא לא זז הרבה, הוא פשוט היה, כן, הבחור העצום הזה.
+Ron: You could have lived inside him. \nTim: We only animated his, like, mouth or something. === רון: היית יכול לגור בתוכו.\nטים: הנפשנו רק את ה, כאילו, פה שלו או משהו כזה.
+Dave: Yeah. Which is kinda whole jiggle-y thing. \nRon: One thing that I liked, I always liked about Monkey Island 1 and 2... === דייב: כן. שזה מין עניין מתנועע כזה.\nרון: דבר אחד שאהבתי, שתמיד אהבתי ב"אי הקופים" 1 ו-2...
+...was how you're kinda playing this game and almost when you think the game's over, it's like then kinda the real game starts. === ...היה איך שאתה סוג של משחק במשחק הזה וכמעט כשאתה חושב שהמשחק נגמר, אז כאילו מתחיל המשחק האמיתי.
+So it's like you're spending all this time on Scabb Island or on Melee Island and you think you're kinda completing the main objective of the... === אז זה כאילו שאתה מבלה את כל הזמן הזה ב-Scabb Island או ב-Melee Island ואתה חושב שאתה סוג של משלים את המטרה העיקרית של ה...
+...game and then the whole game kinda opens up after that. I always liked that.\nTim: And all of the err, RTS elements come in to it at that point. === ...משחק ואז כל המשחק פשוט נפתח אחרי זה. תמיד אהבתי את זה.\nטים: וכל ה, אהה, אלמנטים של ה-RTS נכנסים לעניין בנקודה הזו.
+Dave: This game's huge! \nRon: Yeah, and the first person shooter stuff, I don't know if people discovered that. === דייב: המשחק הזה ענקי!\nרון: כן, והקטעים של ה-First Person Shooter, אני לא יודע אם אנשים גילו את זה.
+Tim: I always loved this poster, I loved that, I always liked to do that I've always wanted to do that in other games... === טים: תמיד אהבתי את הפוסטר הזה, אהבתי את זה, תמיד אהבתי לעשות את זה ותמיד רציתי לעשות את זה במשחקים אחרים...
+Like, every game should have a poster that lists everything you've done.\nRon: Oh, All the bad things? === כאילו, בכל משחק צריך להיות פוסטר שמפרט את כל מה שעשית.\nרון: אה, כל הדברים הרעים?
+Tim: All the bad things you've done...\nRon: Stealing the monocle. === טים: כל הדברים הרעים שעשית...\nרון: לגנוב את המונוקל.
+Tim: In the voice of the character, in the voice of the, see we're obviously feeling bad about Guybrush's crimes, because we listed them here on this poster. === טים: בקול של הדמות, בקול של ה-, תראו אנחנו כמובן מרגישים רע לגבי הפשעים של גייבראש, כי פירטנו אותם כאן על הפוסטר הזה.
+Dave: We did that in, in Tales, in the 4th episode which is the Trial and Execution of Guybrush Threepwood. === דייב: עשינו את זה ב-"Tales", בפרק הרביעי שהוא "משפטו והוצאתו להורג של גייבראש ת'ריפווד".
+Tim: I've heard that's the...\nDave: You get... === טים: שמעתי שזה ה...\nדייב: אתה מקבל...
+Tim: the best one ... \nDave: Maybe the best one. === טים: הכי טוב... \nדייב: אולי הכי טוב.
+Dave: Err, but the funniest bit is you get put on trial and it lists out all of the stuff you did in the 1st episodes. === דייב: אהה, אבל הקטע הכי מצחיק הוא שאתה עומד למשפט וזה מפרט את כל הדברים שעשית בפרקים הראשונים.
+Dave: And that's all of the things you're under arrest for then. === דייב: ואלו כל הדברים שבגללם אתה נעצר אז.
+Ron: So this is also the big Pirates of the Caribbean ride rip-off moment, too. === רון: אז זה גם רגע החיקוי הגדול של המתקן "שודדי הקאריביים", גם כן.
+Dave: Yeah. Yeah we can't really complain about the movie ripping off the game...\nTim: Stealing this. === דייב: כן. כן אנחנו לא באמת יכולים להתלונן על זה שהסרט העתיק מהמשחק...\nטים: גנבו את זה.
+Ron: They were just giving us back for this, that's all there really was. \nTim: Yeah. === רון: הם רק החזירו לנו על זה, זה כל מה שזה באמת היה. \nטים: כן.
+Tim: And the dog's named Walt.\nDave: Is he? === טים: ולכלב קוראים וולט.\nדייב: באמת?
+Dave: That Steve Purcell's dog?\nRon: Why was our dog named Walt? === דייב: זה הכלב של סטיב פרסל?\nרון: למה לכלב שלנו קראו וולט?
+Tim: Is that not for Walt Disney? No. \nDave: Steve Purcell's dog was called Walt. I think that was... === טים: זה לא על שם וולט דיסני? לא. \nדייב: לכלב של סטיב פרסל קראו וולט. אני חושב שזה היה...
+Tim: Well that was probably named after Walt Disney. \nDave: That is possible. Walt was a, I remember, kind of a mean old dog who... === טים: נו, זה בטח היה על שם וולט דיסני. \nדייב: זה אפשרי. וולט היה, אני זוכר, מין כלב זקן ורע ש...
+...bit me once. \nTim: Dude, Walt's dead, don't make fun of Walt. === ...נשך אותי פעם. \nטים: בנאדם, וולט מת, אל תצחק על וולט.
+Ron: I like that the dog was named after Walt Disney, let's just go with that. \nTim: Yeah, it's a sweeter story. === רון: אני אוהב את זה שהכלב נקרא על שם וולט דיסני, בואו פשוט נזרום עם זה. \nטים: כן, זה סיפור מתוק יותר.
+Ron: It's always really hard, you know, to design these \npuzzle things where he's confined in one room. === רון: זה תמיד ממש קשה, אתה יודע, לעצב את ה\nחידות האלו שבהן הוא כלוא בחדר אחד.
+Because it's like everything on him, and you have to figure out how to do it, and all of the solutions or... === כי זה כאילו הכל נמצא עליו, ואתה צריך להבין איך לעשות את זה, וכל הפתרונות או...
+Tim: And if it's too hard, then it's just you're stuck in a tiny tiny room.\nRon: You're stuck, yeah. But if it's too easy, it's a gimme puzzle and it's just... === טים: ואם זה קשה מדי, אז אתה פשוט תקוע בחדר קטנטן.\nרון: אתה תקוע, כן. אבל אם זה קל מדי, זו חידת "מתנה" וזה פשוט...
+...not interesting.\nDave: Just, there is something comforting about the fact that, you know, you... === ...לא מעניין.\nדייב: פשוט, יש משהו מנחם בעובדה ש, אתה יודע, אתה...
+...can't go anywhere so you know all your assets are right there. There is some way out, like you, it's never like... === ...לא יכול ללכת לשום מקום אז אתה יודע שכל המשאבים שלך ממש שם. יש איזושהי דרך החוצה, כאילו אתה, זה לעולם לא כמו...
+Tim: Unless you were playing a Sierra game, then you could be a...\nDave:...game oh, I didn't pick something up three rooms away. I've gotta go get there. === טים: אלא אם כן שיחקת במשחק של Sierra, ואז יכולת להיות ב...\nדייב: ...משחק שבו "אוי, לא אספתי משהו שלושה חדרים אחורה. אני חייב ללכת להביא את זה".
+Tim: Pffft, Sierra...\nRon: Right, without the pencil. === טים: פפפפט, סיירה...\nרון: נכון, בלי העיפרון.
+Tim: What's this room? I don't remember this room! Did they add this for the Special Edition? === טים: מה זה החדר הזה? אני לא זוכר את החדר הזה! האם הם הוסיפו את זה למהדורה המיוחדת?
+Dave: Is this the game where we put in the "If this is three, then what's this?" puzzle? === דייב: האם זה המשחק שבו שמנו את החידה של "אם זה שלוש, אז מה זה?"
+Ron: Yes.\nDave: That was a mean, mean puzzle. === רון: כן.\nדייב: זאת הייתה חידה מרושעת, מרושעת.
+Tim: I have an apology for that, that came from my family. \nDave: Yeah? === טים: יש לי התנצלות על זה, זה הגיע מהמשפחה שלי. \nדייב: כן?
+Tim: That was a trick, a game, my brother played with me. If this is two, what's this? If this is four, what's this? === טים: זה היה טריק, משחק, שאחי שיחק איתי. "אם זה שתיים, מה זה? אם זה ארבע, מה זה?"
+Ron: I remember that we went round and round trying to find some clever \nthing to do that. I think that door existed for quite a while without any real... === רון: אני זוכר שהסתובבנו סחור סחור בניסיון למצוא איזה \nדבר חכם לעשות שם. אני חושב שהדלת הזאת הייתה קיימת לא מעט זמן בלי שום...
+...puzzle there. \nDave: There was like one of those "Insert Puzzle here" signs. === ...חידה אמיתית שם. \nדייב: היה שם כאילו אחד השלטים האלה של "הכנס חידה כאן".
+Ron: Yeah, right. \nDave: It's nice that we could actually do that on these games. Like, that's hard... === רון: כן, נכון. \nדייב: זה נחמד שבאמת יכולנו לעשות את זה במשחקים האלו. כאילו, זה קשה...
+...to do now, to design a game and say, "Well okay, here's a puzzle, we're just \ngonna put something in later and we'll think of it, you know, two months from... === ...לעשות עכשיו, לעצב משחק ולהגיד, "טוב אוקיי, הנה חידה, אנחנו פשוט \nנשים שם משהו אחר כך ונחשוב על זה, אתה יודע, בעוד חודשיים מה...
+...now while we're building the game we'll write some different dialogue for it." \nRon: Dialogue recording, voice recording, really, I think, killed all that... === ...עכשיו בזמן שאנחנו בונים את המשחק נכתוב לזה דיאלוג אחר". \nרון: הקלטות דיאלוגים, הקלטות קוליות, באמת, אני חושב, הרגו את כל ה...
+...spontaneity that we had in Monkey 1 and Monkey 2.\nDave: You just have to be spontaneous earlier. === ...ספונטניות שהייתה לנו ב"אי הקופים" 1 ו-2.\nדייב: אתה פשוט צריך להיות ספונטני מוקדם יותר.
+Ron: Yeah. \nDave: You don't have as much time to be spontaneous. === רון: כן. \nדייב: אין לך כל כך הרבה זמן להיות ספונטני.
+Ron: It's on the calendar, spontaneity ends here. \nDave: Right. === רון: זה ביומן, הספונטניות נגמרת כאן. \nדייב: נכון.
+Tim: I remember for a long time, the characters were the wrong scale in this room, and Guybrush was like, really tiny compared to this giant guy... === טים: אני זוכר שבמשך הרבה זמן, הדמויות היו בקנה מידה לא נכון בחדר הזה, וגייבראש היה כאילו, ממש פצפון לעומת הבחור הענק הזה...
+...sitting at the end of the dock!\nDave: You're right... you've an amazing memory. === ...שיושב בקצה המזח!\nדייב: אתה צודק... יש לך זיכרון מדהים.
+Tim: I only remembered the bad things. It was that way for a long time till someone pointed out and was like "That guy is 3 times as big as Guybrush". Oh, ... === טים: אני זוכר רק את הדברים הגרועים. זה היה ככה במשך זמן רב עד שמישהו העיר ואמר "הבחור הזה גדול פי 3 מגייבראש". או, ...
+...the library.\nDave: Didn't we have to make like a special big Guybrush to go in? === ...הספרייה.\nדייב: לא היינו צריכים להכין כאילו גייבראש גדול מיוחד שייכנס?
+Dave: In the room? \nRon: Yeah 'cos we didn't have that kinda scaling. We could scale down, but... === דייב: לתוך החדר? \nרון: כן, כי לא הייתה לנו יכולת שינוי קנה מידה כזאת. יכולנו להקטין, אבל...
+...we couldn't scale up.\nTim: But not up. === ...לא יכולנו להגדיל.\nטים: אבל לא להגדיל.
+Dave: Yeah, just turn into giant pixels anyway.\nRon: But we had all those extra floppy disks, so we could just. As much of... === דייב: כן, הופך לפיקסלים ענקיים בכל מקרה.\nרון: אבל היו לנו את כל התקליטונים הנוספים האלו, אז פשוט יכולנו. כמה ש...
+...that stuff as we wanted. === ...רצינו מהדברים האלה.
+Tim: Ok the library, is it true Dave, did you write all the books that are in here? All of the book titles? === טים: אוקיי הספרייה, זה נכון דייב, אתה כתבת את כל הספרים שיש פה? את כל שמות הספרים?
+Dave: I didn't! I did do a lot of 'em but I remember we, I think we... we put out a call. === דייב: לא! עשיתי הרבה מהם אבל אני זוכר ש, אני חושב ש... פרסמנו קריאה.
+Tim: To all of LucasArts?\nDave: To everybody like, err, hey! We need book titles and I think Captain... === טים: לכל LucasArts?\nדייב: לכולם, כאילו, אהה, היי! אנחנו צריכים שמות של ספרים ואני חושב שקפטן...
+...Tripps actually wrote up a large number of them.\nTim: Oh really? Some of them I didn't realize were references to other things... === ...טריפס (Tripps) באמת כתב מספר גדול מהם.\nטים: אה באמת? חלק מהם לא קלטתי שהם אזכורים לדברים אחרים...
+...in the game until I read them on, like, Monkey Island fan pages, like there were all these little hidden clues. === ...במשחק עד שקראתי עליהם, נגיד, בעמודי מעריצים של "אי הקופים", כאילו היו את כל הרמזים הנסתרים הקטנים האלה.
+Dave: Yeah there's all kinds of references and stuff like that. References are fun! === דייב: כן יש כל מיני אזכורים ודברים כאלה. אזכורים זה כיף!
+Tim: Yeah. What was the one? Something about the ending, something about LeChuck, and the fight that he had with Guybrush. === טים: כן. מה היה האחד ההוא? משהו על הסוף, משהו על לה-צ'אק, והקרב שהיה לו עם גייבראש.
+Dave: There's a reference to that in the library?\nTim: Yeah, what does LeChuck say was the root of their fight? As children... === דייב: יש אזכור לזה בספרייה?\nטים: כן, מה לה-צ'אק אומר שהיה שורש המריבה שלהם? כילדים...
+...like some, some... Embarassing that I don't know. \nDave: Do you remember?. === ...כמו איזה, איזה... מביך שאני לא יודע. \nדייב: אתה זוכר?.
+Ron: I don't remember...\nTim: The last scene when they were kids, and were like, we had this fight... === רון: אני לא זוכר...\nטים: הסצנה האחרונה כשהם היו ילדים, והיו כאילו, היה לנו את הריב הזה...
+...over something really trivial, and there's a reference to it in the library.\nRon: When you think they're kids, you mean. === ...על משהו ממש זניח, ויש אזכור לזה בספרייה.\nרון: כשאתה חושב שהם ילדים, אתה מתכוון.
+Tim: Oh, when the robots\nDave: Before the robots are programmed to think that they're kids. === טים: אה, כשהרובוטים\nדייב: לפני שהרובוטים תוכנתו לחשוב שהם ילדים.
+Ron: Right, right.\nTim: That's what I meant. And they don't realize that they're dead, and... === רון: נכון, נכון.\nטים: לזה התכוונתי. והם לא קולטים שהם מתים, ו...
+...that one cute little boy who can see dead people.\nDave: Yeah, that part. === ...הילד הקטן והחמוד ההוא שיכול לראות אנשים מתים.\nדייב: כן, החלק הזה.
+Tim: Ok, look at those references.\nRon: Yeah let's actually... === טים: אוקיי, תסתכלו על האזכורים האלה.\nרון: כן בואו באמת...
+Tim: It's Sherlock Holmes! \nRon: Lets go through all the library cards. === טים: זה שרלוק הולמס! \nרון: בואו נעבור על כל כרטיסי הספרייה.
+Tim: Yeah, could we look...\nRon: Lets go through them all === טים: כן, האם נוכל להסתכל...\nרון: בואו נעבור על כולם
+Dave: All of them? Aren't there like a hundred or...\nTim: What's 1060 West Addison? === דייב: על כולם? אין שם משהו כמו מאה או...\nטים: מה זה "1060 West Addison"?
+Dave: That is the address of Wrigley Fields.\nRon: Wrigley Fields. === דייב: זו הכתובת של ריגלי פילד (Wrigley Field).\nרון: ריגלי פילד.
+Dave: From the Blues Brothers.\nTim: Oh my god... yeah. === דייב: מ"האחים בלוז".\nטים: אלוהים אדירים... כן.
+Dave: That is in fact an explicit reference to a joke in which someone gives a false address. So, perfectly appropriate. === דייב: זה למעשה אזכור מפורש לבדיחה שבה מישהו נותן כתובת מזויפת. אז, זה מתאים בהחלט.
+Tim: Stan... Look we took the costume from the original game and painted it black. Same animation. === טים: סטן... תראו לקחנו את התלבושת מהמשחק המקורי וצבענו אותה בשחור. אותה אנימציה.
+Ron: It's that cost savings we had to do.\nDave: The pattern that moves with the coat was like, something that we did on... === רון: זה החיסכון בעלויות שהיינו צריכים לעשות.\nדייב: הדוגמה שזזה עם המעיל הייתה כאילו, משהו שעשינו ב...
+...the 2D games to save ourselves a lot of effort, but as soon as they started making them in 3D then it became really hard. === ...משחקי הדו-ממד כדי לחסוך לעצמנו המון מאמץ, אבל ברגע שהם התחילו להכין אותם בתלת-ממד אז זה נהיה ממש קשה.
+Ron: Right.\nTim: Wait how do we replicate that effect? === רון: נכון.\nטים: רגע איך אנחנו משחזרים את האפקט הזה?
+Dave: I love any game that has a spitting contest. \nTim: Look at that picture of the spit over there... the little banner with... === דייב: אני אוהב כל משחק שיש בו תחרות יריקות. \nטים: תראו את התמונה של הרוק שם... הכרזה הקטנה עם...
+...the spitting mouth.. ugh ... what a gross game. Who came up with the spitting contest?... === ...הפה היורק.. איכס... איזה משחק דוחה. מי הגה את רעיון תחרות היריקות?...
+...No one wants to own the spitting contest. No one's like "that's my baby. "\nRon: I think you programmed it though. === ...אף אחד לא רוצה לקחת אחריות על תחרות היריקות. אף אחד לא אומר "זה הבייבי שלי".\nרון: אני חושב שאתה תיכנתת את זה בכל זאת.
+Tim: No... Oh yeah I did, I did the programming of it. Cos it was really challenging. === טים: לא... אה רגע כן, עשיתי את זה, אני תיכנתתי את זה. כי זה היה ממש מאתגר.
+Dave: I liked the methods that were used to win; that was just cheat, cheat and cheat again basically. === דייב: אהבתי את השיטות ששימשו לניצחון; זה היה פשוט לרמות, לרמות ושוב לרמות, בעיקרון.
+Ron: It's your standard Guybrush adventure game. \nDave: Our games are forming the morals of the youth of today, the social... === רון: זה משחק ההרפתקאות הסטנדרטי שלך של גייבראש. \nדייב: המשחקים שלנו מעצבים את המוסר של הנוער של היום, החברתי...
+Tim: We're talking about pirates... can't teach positive moral values in a game about pirates. Pirates what do they do? They steal, they pillage... === טים: אנחנו מדברים על שודדי ים... אי אפשר ללמד ערכי מוסר חיוביים במשחק על שודדי ים. שודדי ים, מה הם עושים? הם גונבים, הם בוזזים...
+...and we're just lucky that they left out the third one.\nRon: You know, I did all those adventure games for kids at Humongous... === ...ואנחנו פשוט ברי מזל שהם השמיטו את הדבר השלישי.\nרון: אתם יודעים, עשיתי את כל משחקי ההרפתקאות האלה לילדים ב-Humongous...
+...Entertainment, we really had to come up with very contrived reasons why you weren't just stealing everything that you had to pick up. === ...Entertainment, באמת היינו צריכים להמציא סיבות ממש מאולצות למה אתה לא פשוט גונב כל דבר שאתה צריך לאסוף.
+Dave: I remember having to write a lot of lines for Pajama Sam about that\nand my take was always, Oh I found this I'd better try and find the owner and... === דייב: אני זוכר שהייתי צריך לכתוב המון שורות עבור פג'מה סאם (Pajama Sam) על זה\nוהגישה שלי תמיד הייתה, "הו מצאתי את זה, מוטב שאנסה למצוא את הבעלים ו..."
+...give it back. And so, I'm carrying around all these things that were going to \ngo back to somebody. Or if the person was there, he'd always ask to borrow it. === ...להחזיר את זה. וככה, אני מסתובב עם כל הדברים האלו שעומדים \nלחזור למישהו. או אם האדם היה שם, הוא תמיד היה מבקש לשאול את זה.
+... Can I borrow that?\nRon: Because adventure games just do not teach children good habits at all. === ... "אפשר לשאול את זה?"\nרון: כי משחקי הרפתקאות פשוט לא מלמדים ילדים הרגלים טובים בכלל.
+Tim: But playing them can teach you valuable things like reading, English.\nRon: Stealing. === טים: אבל לשחק בהם יכול ללמד אותך דברים בעלי ערך כמו קריאה, אנגלית.\nרון: גניבה.
+Tim: Pointing, clicking,\nRon: Spitting. === טים: הצבעה, לחיצה,\nרון: יריקה.
+Dave: Spitting?\nTim: Saving often! === דייב: יריקה?\nטים: לשמור את המשחק לעיתים קרובות!
+Tim: Do you remember how we designed the puzzles for this on the whiteboard and we purposely did the thing that we later thought made it too hard but we... === טים: אתם זוכרים איך עיצבנו את החידות לזה על הלוח הלבן ובכוונה עשינו את הדבר שאחר כך חשבנו שהפך את זה לקשה מדי אבל אנחנו...
+...put every island on the top and every puzzle chain on the side and then we made sure that there was an object on every island that you needed for every... === ...שמנו כל אי למעלה וכל שרשרת חידות בצד ואז וידאנו שיש חפץ בכל אי שהיית צריך לכל...
+...puzzle chain? So that if you wanted to solve any long puzzle chain you had to visit every single island so that's why if you actually play this game you had... === ...שרשרת חידות? כך שאם רצית לפתור כל שרשרת חידות ארוכה היית צריך לבקר בכל אי ואי, וזו הסיבה שאם אתה באמת משחק במשחק הזה היית צריך...
+...to go from island to island to island over and over and over again.\nRon: I remember in our discussions talking about, was that too annoying for... === ...לעבור מאי לאי לאי שוב ושוב ושוב.\nרון: אני זוכר שבדיונים שלנו דיברנו על זה, האם זה היה מעצבן מדי עבור...
+...players to constantly going from island to island to island to solve things?\nTim: And you said I don't care I said 40 hours. It's gonna be 40 hours. === ...שחקנים לעבור כל הזמן מאי לאי לאי כדי לפתור דברים?\nטים: ואתה אמרת "לא אכפת לי", אני אמרתי "40 שעות". זה הולך להיות 40 שעות.
+Ron: They've already bought it why do I care. \nTim: I think the phrase you used was player be damned, right? That was one... === רון: הם כבר קנו את זה, למה שיהיה לי אכפת. \nטים: אני חושב שהביטוי שהשתמשת בו היה "לעזאזל עם השחקן", נכון? זה היה אחד...
+... of the catch phrase \nRon: That's kind of my design philosophy really. === ...מביטויי המפתח.\nרון: זו בערך פילוסופיית העיצוב שלי, באמת.
+Tim: I worked on this part and there was a really funny bug where you make the chef mad at you and he chases you: around harassing you and I had a bug... === טים: אני עבדתי על החלק הזה והיה באג ממש מצחיק שבו אתה מעצבן את השף והוא רודף אחריך: סביב ומציק לך, והיה לי באג...
+...where I didn't get rid of the chef, and make him go back home if you'd left the area so he'd follow you around the map but the thing was we'd re-use... === ...שבו לא נפטרתי מהשף ולא גרמתי לו לחזור הביתה אם עזבת את האזור, אז הוא היה עוקב אחריך ברחבי המפה אבל העניין היה שהשתמשנו מחדש ב...
+...actor numbers and he was like actor number 12 or something, and that actor was like Captain Dread's ship on the map so like, Captain Dread's ship would... === ...מספרי שחקנים והוא היה נגיד שחקן מספר 12 או משהו כזה, והשחקן הזה היה נגיד הספינה של קפטן דרד (Dread) על המפה, אז הספינה של קפטן דרד הייתה...
+...follow you around the map yelling "You're some scum and I don't like you” every room you went into, a different random thing would just harass you and... === ...עוקבת אחריך ברחבי המפה וצועקת "אתה חתיכת זבל ואני לא אוהב אותך", בכל חדר שנכנסת אליו, משהו אקראי אחר היה פשוט מציק לך ו...
+...berate you.\nDave: Why didn't we leave that in? === ...גוער בך.\nדייב: למה לא השארנו את זה בפנים?
+Ron: No that was...\nTim: ...you would just fold it up and put it away in a box because it was so gross... === רון: לא, זה היה...\nטים: ...היית פשוט מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה...
+Ron: Exactly.\nDave: Yup. Gonna ruin everyone in this town before we're done. === רון: בדיוק.\nדייב: יאפ. אנחנו הולכים להרוס לכולם בעיירה הזאת לפני שנסיים.
+...like some, some... Embarassing that I don't know. \nDave: Do you remember?. === ...כמו איזה, איזה... מביך שאני לא יודע. \nדייב: אתה זוכר?.
+Dave: All of them? Aren't there like a hundred or...\nTim: What's 1060 West Addison? === דייב: כולם? אין שם איזה מאה או...\nטים: מה זה אדיסון מערב 1060?
+...follow you around the map yelling "You're some scum and I don't like you” every room you went into, a different random thing would just harass you and... === ...עוקב אחריך במפה וצועק "אתה חתיכת טינופת ואני לא אוהב אותך", בכל חדר שנכנסת אליו, משהו אקראי אחר היה פשוט מטריד אותך ו...
+Ron: Oh this I love. this was one of my favorite... my favorite parts here.\nTim: Wait wait when does this happen? === רון: או, את זה אני אוהב. זה היה אחד החלקים האהובים... האהובים עליי כאן.\nטים: רגע רגע, מתי זה קורה?
+Dave: When he jumps off the ship and goes down.\nRon: There was big tech here. === דייב: כשהוא קופץ מהספינה ויורד למטה.\nרון: הייתה כאן טכנולוגיה רצינית.
+Tim: Oh yeah, \nRon: Because we wanted it to seem like a long time. === טים: אה כן, \nרון: כי רצינו שזה ייראה כמו הרבה זמן.
+Tim: Oh, we did the scrolling...\nRon: With big scrolling...cause we didn't have vertical scrolling. === טים: אה, עשינו את הגלילה...\nרון: עם גלילה גדולה... כי לא הייתה לנו גלילה אנכית.
+Tim: And the camera angle change, there was a camera angle change, because you look up at the boat... === טים: והשינוי בזווית המצלמה, היה שם שינוי בזווית המצלמה, כי אתה מסתכל למעלה על הספינה...
+Ron: It looks like it.. It's not a real camera angle change. \nTim: Because there's no actual camera, because its 2D. === רון: זה נראה ככה.. זה לא באמת שינוי בזווית המצלמה. \nטים: כי אין באמת מצלמה, כי זה דו-ממד.
+Ron: This was all 3D, this was all 3D.\nDave: There was some color cycling in there, no? === רון: הכל היה תלת-ממד, הכל היה תלת-ממד.\nדייב: היה שם איזה "סבב צבעים" (color cycling), לא?
+Ron: Yeah, we did color cycling for the water, and then we just moved...\nDave: Because there was no way to do a full screen effect with the technology of... === רון: כן, עשינו סבב צבעים למים, ואז פשוט הזזנו...\nדייב: כי לא הייתה דרך לעשות אפקט מסך מלא עם הטכנולוגיה של...
+...the day, we ran on 286.\nTim: We actually had a red version of that, oh wait that was colour cycling, when... === ...אותם ימים, הרצנו את זה על 286.\nטים: למעשה הייתה לנו גרסה אדומה של זה, אה רגע זה היה סבב צבעים, כש...
+...we turned the forest red for the bone dance. \nRon: Must've been. === ...הפכנו את היער לאדום בשביל ריקוד העצמות. \nרון: כנראה שזה זה.
+Tim: I thought he was gonna kiss that monkey head. I remember Steve Purcell saying "What am I gonna do with 256 colors?" Like he went from Monkey 1 to... === טים: חשבתי שהוא עומד לנשק את ראש הקוף ההוא. אני זוכר את סטיב פרסל אומר "מה אני אעשה עם 256 צבעים?" כאילו הוא עבר מאי הקופים 1 ל...
+...2 and he's like "Too many colors! I cant take it!" For a long time all they did was add gradients; was like adding a gradient of colour in between everything. === ...2 והוא כזה "יותר מדי צבעים! אני לא יכול לעמוד בזה!" במשך הרבה זמן כל מה שהם עשו היה להוסיף מעברי צבע (gradients); זה היה כמו להוסיף מעבר צבע בין כל דבר.
+Dave: Steve has this amazing ability to take a block of 8 by 8 pixel block of 16 colours then make it look like anything. === דייב: לסטיב יש את היכולת המדהימה הזאת לקחת בלוק של 8 על 8 פיקסלים ב-16 צבעים ולגרום לו להיראות כמו כל דבר.
+Tim: And that stuff is now these days cooler looking. Like you know how 8 bit art in general looks really hip and stylish now... === טים: והדברים האלה נראים היום הרבה יותר מגניבים. כמו שאתה יודע איך אמנות 8-ביט נראית היום נורא אופנתית ומסוגננת...
+Dave: That's right, there's a whole new revival movement. \nTim: With that in between like VGA. I don't know that will ever look hip and cool... === דייב: נכון, יש תנועת תחייה שלמה. \nטים: עם ה-VGA הזה באמצע. אני לא יודע אם זה אי פעם ייראה אופנתי ומגניב...
+...in the same way that like EGA looked. Remember we had to go through the entire game and make it work in CGA? === ...באותו אופן שבו EGA נראה. זוכר שהיינו צריכים לעבור על כל המשחק ולגרום לו לעבוד ב-CGA?
+Dave: Yeah.\nTim: Because some people only used CGA that weird gross combination of pink... === דייב: כן.\nטים: כי חלק מהאנשים השתמשו רק ב-CGA, השילוב המוזר והמגעיל הזה של ורוד...
+...and green.\nDave: There was like 2 blues 2 pinks or something. === ...וירוק.\nדייב: היו שם איזה 2 כחולים, 2 ורודים או משהו כזה.
+Ron: It's like a cyan and a weird magenta.\nTim: But the game would work on our Hercules monitors too though. === רון: זה כמו ציאן ומג'נטה מוזרה.\nטים: אבל המשחק עבד גם על מסכי ה"הרקולס" שלנו.
+Dave: That's right those monochrome monitors... that was our undocumented support. === דייב: נכון, המסכים המונוכרומטיים האלה... זו הייתה התמיכה הלא-מתועדת שלנו.
+Ron: Yeah, we never shipped to work on the Hercules Monitors. But we always had those separate... === רון: כן, מעולם לא הוצאנו גרסה שתעבוד על מסכי הרקולס. אבל תמיד היו לנו את ה... נפרדים האלה...
+Tim: It did though.\nRon: We always had those separate Hercules Monitors...those were our debug windows. === טים: אבל זה עבד.\nרון: תמיד היו לנו את מסכי ההרקולס הנפרדים האלה... אלה היו חלונות הניפוי (debug) שלנו.
+Tim: And we had a separate mac for our email, we couldn't be bothered to read emails somehow and emails didn't work on PCs back then I guess. === טים: והיה לנו מק נפרד בשביל האימייל, איכשהו לא היה לנו כוח לקרוא אימיילים, ואימיילים לא עבדו על מחשבי PC אז, אני מניח.
+Ron: Why did we make this game so long? \nTim: It's insecurity, I think obviously we were insecure, and we wanted to... === רון: למה עשינו את המשחק הזה כל כך ארוך? \nטים: זה חוסר ביטחון, אני חושב שברור שהיינו חסרי ביטחון, ורצינו...
+...make it bigger, and we had like a size issue.\nRon: We had short game syndrome from the first one. === ...להגדיל אותו, והייתה לנו כאילו בעיית גודל.\nרון: היה לנו "תסמונת המשחק הקצר" מהראשון.
+Tim: No one ever complained about the first game, like nowadays, no matter what you do, people say your game is short. Back then, no one complained... === טים: אף אחד לא התלונן על המשחק הראשון, כאילו, היום לא משנה מה תעשה, אנשים יגידו שהמשחק שלך קצר. אז אף אחד לא התלונן...
+...did they complain about Monkey being short?\nRon: No, no, they didn't. === ...הם התלוננו ש"אי הקופים" קצר?\nרון: לא, לא, הם לא.
+Dave: Just management. \nRon: No, nobody complained about it. === דייב: רק ההנהלה. \nרון: לא, אף אחד לא התלונן על זה.
+Tim: Complained about it being long...\nRon: I just think we over designed it, and then we also cut, we also cut a lot out of the game. === טים: התלוננו על זה שהוא ארוך...\nרון: אני פשוט חושב שתכננו אותו יותר מדי, ואז גם חתכנו, חתכנו הרבה מהמשחק.
+Ron: I remember when you had that squirt bottle by your desk, and when people would come in and then they would talk to you for too long and... === רון: אני זוכר כשהיה לך את בקבוק השפריצר הזה ליד השולחן, וכשאנשים היו נכנסים ומדברים איתך יותר מדי זמן ו...
+...you would squirt them like we were cats.\nTim: And eventually everyone turned on me and they tackled me and like... === ...היית משפריץ עליהם כאילו היינו חתולים.\nטים: ובסופו של דבר כולם התהפכו עליי והסתערו עליי וכאילו...
+...Bret held me down underneath Tammy's desk and opened the lid on the squirt bottle and dumped it on my head. === ...ברט הצמיד אותי לרצפה מתחת לשולחן של תמי, פתח את המכסה של בקבוק השפריצר ושפך לי אותו על הראש.
+Ron: And then you went home pouting.\nTim: No, no I did not. === רון: ואז הלכת הביתה כועס וממורמר.\nטים: לא, לא, ממש לא.
+Ron: Yes you did, you went home mad.\nTim: Well I was pretty mad. I was like, can't you take a joke. === רון: בטח שכן, הלכת הביתה עצבני.\nטים: נו, הייתי די עצבני. הייתי כזה, מה, אתם לא מבינים בדיחות?
+Dave: Can't YOU take a joke? === דייב: אתה לא מבין בדיחות?
+Ron: See, this is another one of those puzzles where you're locked in one place.\nDave: Yeah I like those. === רון: תראו, זו עוד אחת מהחידות האלה שבהן אתה נעול במקום אחד.\nדייב: כן, אני אוהב כאלה.
+\nTim: I loved that bit of dialogue, I don't even know who wrote it, but he makes the bones... === \nטים: אהבתי את קטע הדיאלוג הזה, אני אפילו לא יודע מי כתב אותו, אבל הוא מכין את העצמות...
+...out of Guybrush's... He makes a chair out of his bones and he calls it a screaming chair because... I forget why, but it's awesome. === ...מהעצמות של גייבראש... הוא מכין כיסא מהעצמות שלו והוא קורא לו "כיסא צורח" כי... שכחתי למה, אבל זה אדיר.
+Ron: I think that came from that thing about HR Giger, he made a chair\nout of his dead girlfriend. === רון: אני חושב שזה הגיע מהעניין הזה עם ה.ר. גיגר, הוא הכין כיסא\nמהחברה המתה שלו.
+Tim: Wait, no no no that was the guy...\nRon: Or maybe it's a myth that he did but I remember talking about that and I... === טים: רגע, לא לא לא זה היה הבחור...\nרון: או שאולי זה מיתוס שהוא עשה את זה, אבל אני זוכר שדיברנו על זה ואני...
+...think that's why we did that.\nTim: I thought there was some other guy, wasn't it the guy who shot his wife... === ...חושב שזו הסיבה שעשינו את זה.\nטים: חשבתי שזה היה מישהו אחר, זה לא היה הבחור שירה באשתו...
+...with a bow and arrow and made chair and bones...? \nDave: Who shot his wife with a bow and arrow? === ...עם חץ וקשת והכין כיסא ועצמות...? \nדייב: מי ירה באשתו עם חץ וקשת?
+Ron: Robin Hood?\nTim: The guy from Naked Lunch. === רון: רובין הוד?\nטים: הבחור מ"ארוחה עירומה".
+Ron: No that was...\nTim: ...you would just fold it up and put it away in a box because it was so gross... === רון: לא, זה היה...\nטים: ...היית פשוט מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה...
+Ron: Exactly.\nDave: Yup. Gonna ruin everyone in this town before we're done. === רון: בדיוק.\nדייב: יאפ. אנחנו הולכים להרוס לכולם בעיירה הזאת לפני שנסיים.
+...like some, some... Embarassing that I don't know. \nDave: Do you remember?. === ...כמו איזה, איזה... מביך שאני לא יודע. \nדייב: אתה זוכר?.
+Dave: All of them? Aren't there like a hundred or...\nTim: What's 1060 West Addison? === דייב: את כולם? אין שם איזה מאה או...\nטים: מה זה אדיסון מערב 1060?
+...follow you around the map yelling "You're some scum and I don't like you” every room you went into, a different random thing would just harass you and... === ...עוקב אחריך במפה וצועק "אתה חתיכת חלאה ואני לא אוהב אותך" - בכל חדר שנכנסת אליו, משהו אקראי אחר פשוט היה מציק לך ו...
+Dave: Oh Burroughs. Was that a bow and arrow? I knew he shot her...\nTim: He shot her with a gun and then he made a chair out of her bones... === דייב: הו, בארוז. זה היה חץ וקשת? ידעתי שהוא ירה בה...\nטים: הוא ירה בה עם אקדח ואז הכין כיסא מהעצמות שלה...
+...That's pretty gruesome, he probably didn't do that\nDave: That's pretty gruesome... === ...זה די מזוויע, הוא כנראה לא באמת עשה את זה\nדייב: זה די מזוויע...
+Tim: That's probably something I'm misremembered.\nDave: That's highly unlikely. === טים: זה כנראה משהו שאני זוכר לא נכון.\nדייב: זה מאוד לא סביר.
+Ron: This is fun how you had to line everything up and get the spit that we used earlier. === רון: זה נחמד איך שהיית צריך לכוון את הכל ולהשיג את הרוק שהשתמשנו בו קודם.
+Tim: Oh my god we have brilliant foreshadowing.\nDave: Amazing. Got all these nice green liquid to kind of motivate you to do that. === טים: אלוהים אדירים, יש לנו פה רמזים מטרים גאוניים.\nדייב: מדהים. קיבלת את כל הנוזל הירוק הנחמד הזה כדי לתת לך מוטיבציה לעשות את זה.
+Tim: I used to sit next to Tabby Tosti, Tabby Tosti who ran the hint lines right outside my office, and I would listen to her give hints all day long. and it... === טים: פעם ישבתי ליד טאבי טוסטי, טאבי טוסטי שניהלה את קווי הרמזים ממש מחוץ למשרד שלי, והייתי מקשיב לה נותנת רמזים כל היום. וזה...
+...was just, it was like "take this, take the map and go back here bla bla bla" She would just tell it. she wouldn't give hints like "well what do you think it is?"... === ...פשוט היה, זה היה כמו "קח את זה, קח את המפה ותחזור לפה בלה בלה בלה". היא פשוט הייתה מגלה. היא לא הייתה נותנת רמזים כמו "נו, מה אתה חושב שזה?"...
+...she would just lay it out. \nDave: People were paying money, they just want the answer. === ...היא פשוט הייתה מניחה את זה מולם. \nדייב: אנשים שילמו כסף, הם פשוט רצו את התשובה.
+Tim: Yeah, I guess so, but she would always answer the phone the same way "Lucasarts hint line CAN I HELP YOU?" === טים: כן, אני מניח שכן, אבל היא תמיד הייתה עונה לטלפון באותה צורה "קו הרמזים של לוקאס-ארטס, אפשר לעזור לכם?"
+Ron: My favorite was when they would call for hints, and they would get the hint to do what to do, and then they would say, "and then what happens?" === רון: החלק האהוב עלי היה כשהם היו מתקשרים לרמזים, מקבלים את הרמז מה לעשות, ואז אומרים, "ואז מה קורה?"
+Dave: And you'll find out...\nRon: Or try this... === דייב: ואז תגלו...\nרון: או תנסו את זה...
+Tim: Do they still have hint lines?\nRon: Probably no... === טים: עדיין יש להם קווי רמזים?\nרון: כנראה שלא...
+Dave: I think the internet destroyed it, but, for one brief glorious moment of history, that was like the biggest money maker for the entire company I think,.. === דייב: אני חושב שהאינטרנט הרס את זה, אבל לרגע אחד קצר ומפואר בהיסטוריה, זה היה המנוע הכלכלי הכי גדול של כל החברה, אני חושב...
+...was the hint line. === ...זה היה קו הרמזים.
+Ron: This is where it all comes together and is explained fully. \nTim: I think people might not understand this ending, because you have to... === רון: זה המקום שבו הכל מתחבר ומוסבר במלואו. \nטים: אני חושב שאנשים אולי לא יבינו את הסוף הזה, כי צריך...
+...know a lot about numerology, and science, and there is a lot of physics references... === ...לדעת הרבה על נומרולוגיה, ומדע, ויש הרבה התייחסויות לפיזיקה...
+Ron: Food processing...\nTim: The Fibonacci sequence is incredibly important to this, all the clues. === רון: עיבוד מזון...\nטים: סדרת פיבונאצ'י חשובה פה להפליא לכל הרמזים.
+Dave: I remember we went back and forth alot, or round and round I guess a lot... === דייב: אני זוכר שהתלבטנו הרבה הלוך וחזור, או סחור-סחור אני מניח...
+...about the ending. You have it in your head and it was like, "I don't know,\nshould we really do this, and we were trying to think of something different... === ...בקשר לסוף. הוא היה לך בראש וזה היה כמו, "אני לא יודע,\nאנחנו באמת צריכים לעשות את זה?", וניסינו לחשוב על משהו שונה...
+...that was going to be better. I think I may have actually convinced you to do \nthe ending that we did, at dinner one night. It was like no, no. We should... === ...שיהיה טוב יותר. אני חושב שאולי באמת שכנעתי אותך לעשות\nאת הסוף שעשינו, בארוחת ערב לילה אחד. זה היה כמו לא, לא. אנחנו צריכים...
+...just do it, it will be great, it will be kind of ambigious and seventies like...\nRon: I remember we went round and round and round... === ...פשוט לעשות את זה, זה יהיה נהדר, זה יהיה די מעורפל ובסגנון שנות השבעים...\nרון: אני זוכר שהסתובבנו סחור-סחור שוב ושוב...
+Tim: I kind of remembered it more as an iterative thing that we like, we did...\n...one part and we're like let's add one more twist to it, and then let's add... === טים: אני זוכר את זה יותר כתהליך הדרגתי שכזה, שעשינו...\n...חלק אחד ואז אמרנו בואו נוסיף עוד תפנית, ואז בואו נוסיף...
+...another one again to make it like the first one didn't count, and let's add one more! It was hilarious. === ...עוד אחת שוב כדי שזה ירגיש כאילו הראשונה לא נחשבת, ובואו נוסיף עוד אחת! זה היה קורע.
+Ron: Well, I think this ending gets mentioned all the time on, you know, top ten\nbest endings of computer games, is the ending to Monkey Island 2. === רון: ובכן, אני חושב שהסוף הזה מוזכר כל הזמן ב, אתה יודע, רשימות עשרת\nהסופים הכי טובים של משחקי מחשב, הסוף של אי הקופים 2.
+Tim: I think they complained about it.\nDave: It also ended up in the top 10 worst endings, it's like a very controversial... === טים: אני חושב שהם התלוננו על זה.\nדייב: זה גם הגיע לעשרת הסופים הגרועים ביותר, זה סוף מאוד שנוי במחלוקת...
+...ending. People love it or they hate it.\nRon: But, see, isn't that perfect though? I'd almost rather pick something half... === ...אנשים אוהבים אותו או שונאים אותו.\nרון: אבל, תראה, זה לא מושלם ככה? כמעט הייתי מעדיף לבחור משהו שחצי...
+...the people loved and half the people hated, than something a bunch of people felt mediocre about. === ...מהאנשים אהבו וחצי מהאנשים שנאו, מאשר משהו שהרבה אנשים הרגישו לגביו בינוניות.
+Ron: Do you remember these rooms it was just one background that we turned on and off the doors? === רון: אתם זוכרים את החדרים האלה שזה היה פשוט רקע אחד שהדלקנו וכיבינו בו את הדלתות?
+Tim: Generic room technology from Indy 4?\nRon: Yeah I think we had a patent on that. === טים: טכנולוגיית החדרים הגנרית מאינדי 4?\nרון: כן, אני חושב שהיה לנו פטנט על זה.
+Tim: You can see it there when it flashes like that.\nRon: Yeah, see that's when it was weird when you cut from one to the other... === טים: אפשר לראות את זה שם כשזה מהבהב ככה.\nרון: כן, תראה, שם זה היה מוזר כשעברת מאחד לשני...
+...because certain things would not change and other things would change.\nTim: Cause originally, in Indy 4, where you go through the castle, and you go into... === ...כי דברים מסוימים לא השתנו ודברים אחרים כן.\nטים: כי במקור, באינדי 4, כשעוברים דרך הטירה, ונכנסים ל...
+...a room then go into a hallway, then you go into another room then you don't see it. === ...חדר ואז עוברים למסדרון, ואז נכנסים לעוד חדר ואז אתה לא רואה את זה.
+Ron: Right.\nTim: That was such a great game, is it Indy 3? Indy 3. === רון: נכון.\nטים: זה היה משחק כזה נהדר, זה היה אינדי 3? אינדי 3.
+Ron: Last Crusade.\nTim: Yeah, Last Crusade, that's when you go into the castle... === רון: "מסע הצלב האחרון".\nטים: כן, "מסע הצלב האחרון", שם הולכים לתוך הטירה...
+Ron: The Last Crusade was when we first started doing the dialogue\nchoice things, and I think in Monkey 1 it was almost like the whole concept was... === רון: "מסע הצלב האחרון" היה כשפתאום התחלנו לעשות את עניין בחירת\nהדיאלוגים, ואני חושב שב"אי הקופים 1" זה היה כמעט כאילו כל הקונספט...
+...proved out in a way and then I think we went nuts on Monkey Island 2 with the dialogues. === ...הוכח במידה מסוימת, ואז אני חושב שהשתגענו ב"אי הקופים 2" עם הדיאלוגים.
+Tim: When you hammer all the nails in Stan's coffin to trap him, I turned off Min Jiffies. There's a little SCUMM tip for you guys. === טים: כשאתה דופק את כל המסמרים בארון הקבורה של סטן כדי ללכוד אותו, כיביתי את ה-Min Jiffies. הנה לכם טיפ קטן למנוע ה-SCUMM.
+Ron: To sort of go really fast?\nTim: Turn off Min Jiffies so it would go really fast. But I think on a modern... === רון: כדי כאילו לעבור את זה ממש מהר?\nטים: מכבים את ה-Min Jiffies כדי שזה ירוץ ממש מהר. אבל אני חושב שבמחשב...
+...computer it would go so fast that it would break the speed of light...\nRon: Go back in time? === ...מודרני זה ירוץ כל כך מהר שזה ישבור את מהירות האור...\nרון: יחזור אחורה בזמן?
+Tim: Yeah it might cause a shift. \nRon: It would undo several puzzles that they had done previously. === טים: כן, זה עלול לגרום לתזוזה. \nרון: זה יבטל כמה חידות שהם כבר פתרו קודם לכן.
+Tim: Remember turning off Min Jiffies it was like a Keystone Kops effect.\nRon: Well if you held down the shift key, you know in the debug mode, if you... === טים: זוכרים שכיבוי ה-Min Jiffies נראה כמו אפקט של סרטי ה-Keystone Kops.\nרון: ובכן, אם היית מחזיק את מקש ה-Shift לחוץ, אתה יודע, במצב הדיבאג, אם היית...
+...held down the shift key, it would just turn off Min Jiffies so we could run around as fast as we want, yeah. === ...מחזיק את מקש ה-Shift לחוץ, זה פשוט היה מכבה את ה-Min Jiffies כדי שנוכל להתרוצץ מהר ככל שנרצה, כן.
+Tim: And so, when you can have the dialogue with Elaine, where you can either insult her, you had to grovel a bunch to win the puzzle they also get to have... === טים: ואז, כשמגיעים לדיאלוג עם איליין, שבו אפשר או להעליב אותה, היית צריך להתחנף המון כדי לנצח בחידה, הם גם יכולים...
+...the choice to insult her, I remember watching and this one woman who was playing it, and she couldn't figure it out, and 'I was like 'Hey, have you... === ...לבחור להעליב אותה. אני זוכר שראיתי אישה אחת ששיחקה בזה, והיא לא הצליחה להבין מה לעשות, ואמרתי לה "היי, האם...
+tried all the dialogues?' she's like 'Yeah, I've tried every dialogue option." \nI was like "What about that one there? There is a dialogue option about "Have... === ניסית את כל הדיאלוגים?" היא ענתה "כן, ניסיתי כל אפשרות דיאלוג." \nאמרתי לה "מה לגבי האופציה ההיא שם? יש שם אפשרות דיאלוג על 'האם...`
+...you gained weight?" And she was like, 'I'd never say THAT to her!'\nRon: That's too far, that was the line. === ...העלית במשקל?'" והיא אמרה, "בחיים לא הייתי אומרת לה דבר כזה!"\nרון: זה רחוק מדי, זה היה הקו האדום.
+Tim: Yeah, she was like, even to an imaginary video game character, I would never say "Have you gained weight" === טים: כן, היא ממש הרגישה שגם לדמות משחק דמיונית היא בחיים לא תגיד "העלית במשקל".
+Ron: These pants make me look fat. === רון: המכנסיים האלה גורמים לי להיראות שמן.
+Tim: How do you solve this puzzle? You blow the horn and that makes the canoneer fire his cannon? Why does he do that? === טים: איך פותרים את החידה הזאת? תוקעים בשופר וזה גורם לתותחן לירות בתותח? למה הוא עושה את זה?
+Ron: It's an adventure game, who knows? \nTim: And then you have to watch that girl's belt to see if the wind is blowing. === רון: זה משחק הרפתקאות, מי יודע? \nטים: ואז צריך להסתכל על החגורה של הבחורה ההיא כדי לראות אם נושבת רוח.
+Ron: To see if the wind... right... \nTim: Oh and you have to move the flags. === רון: כדי לראות אם הרוח... נכון... \nטים: אה, וצריך להזיז את הדגלים.
+Dave: You have to move the flags that's why you keep distracting people with the cannon, yeah? Yeah. === דייב: צריך להזיז את הדגלים, בגלל זה ממשיכים להסיח את דעתם של אנשים עם התותח, כן? כן.
+Tim: I like that new, save icon they have.\nDave: Oh so one of the things that you do is not cheating! === טים: אני אוהב את האייקון החדש של השמירה שיש להם.\nדייב: אה, אז אחד הדברים שאתה עושה זה לא לרמות!
+Tim: You distract a guy so you can move the flags, oh and then you're using wind. Which is also another thing a pirate has to do. As a sailor, understand\nthe wind. Understand the direction of the wind. \nDave: You'll notice though with the green stuff that you make and drink... === טים: אתה מסיח את דעתו של מישהו כדי שתוכל להזיז את הדגלים, אה, ואז אתה משתמש ברוח. שזה עוד דבר שפיראט צריך לעשות. בתור מלח, להבין\nאת הרוח. להבין את כיוון הרוח. \nדייב: תשים לב אבל שעם הדבר הירוק הזה שמכינים ושותים...
+...we sort of predicted the entire like all the other doping scandals in all the other sports. === ...כאילו חזינו את כל פרשיות הסמים בספורט למיניהן.
+Tim: Do you have to make special spit? \nRon: Was he juiced? Is Guybrush juiced in this? === טים: צריך להכין רוק מיוחד? \nרון: הוא היה על חומרים? גייבראש "מפוצץ" פה בחומרים?
+Dave: He's juiced, yeah. \nTim: Oh juiced... I thought you... === דייב: הוא מפוצץ, כן. \nטים: אה, מפוצץ... חשבתי שאתה...
+Dave: The recipe of the green gunk that makes your spit hang together better.\nTim: Why would that make your spit fly farther. === דייב: המתכון לג'יפה הירוקה שגורמת לרוק שלך להידבק טוב יותר.\nטים: למה שזה יגרום לרוק שלך לעוף רחוק יותר?
+Dave: It makes it hang together better. \nTim: Wouldn't that make it also heavier? === דייב: זה גורם לו להידבק טוב יותר. \nטים: זה לא יהפוך אותו גם לכבד יותר?
+Dave: Well, I'm not sure the weight of a glob of spit is the limiting factor there.You can spit it harder and...trust me, the last time I was in a spitting contest....\nRon: Dave's going to write the science of Monkey Island book... === דייב: ובכן, אני לא בטוח שמשקל של גוש רוק הוא הגורם המגביל שם. אתה יכול לירוק אותו חזק יותר ו... תאמין לי, בפעם האחרונה שהייתי בתחרות יריקות....\nרון: דייב עומד לכתוב את ספר "המדע של אי הקופים"...
+Dave: You know it vaporizes. That's the problem with chucking pumpkins too, is if you throw them too hard. === דייב: אתה יודע שזה מתאדה. זאת הבעיה גם עם הטלת דלועים, אם אתה זורק אותם חזק מדי.
+Tim: I like how, I think this is Peter Chan's own writing, the flags say "Spit" and "Fun." Why would you put that on a flag? "SPIT! FUN!" === טים: אני אוהב איך ש, אני חושב שזה כתב היד של פיטר צ'אן עצמו, על הדגלים כתוב "רוק" ו"כיף". למה שתכתוב את זה על דגל? "רוק! כיף!"
+Ron: That's why you don't let artists write. \nDave: And what would you put on them? === רון: בגלל זה לא נותנים לאמנים לכתוב. \nדייב: ומה אתה היית כותב עליהם?
+Ron: It would be "Fun" and "Spit". \nDave: Oh, well, that's much better. === רון: זה היה "כיף" ו"רוק". \nדייב: או, ובכן, זה הרבה יותר טוב.
+Ron: Yeah, it rolls better. === רון: כן, זה נשמע (מתגלגל) טוב יותר.
+Ron: No that was...\nTim: ...you would just fold it up and put it away in a box  because it was so gross... === רון: לא, זה היה...\nטים: ...היית פשוט מקפל אותה ושם אותה בקופסה כי היא הייתה כל כך דוחה...
+Ron:  Exactly.\nDave: Yup. Gonna ruin everyone in this town before we're done. === רון: בדיוק.\nדייב: יאפ. הולכים להרוס לכולם בעיירה הזאת לפני שנסיים.
+...like some, some...  Embarassing that I don't know. \nDave: Do you remember?. === ...כמו איזה, איזה... מביך שאני לא יודע. \nדייב: אתה זוכר?.
+Dave: All of them? Aren't there like a hundred or...\nTim:  What's 1060 West Addison? === דייב: את כולם? אין שם איזה מאה או...\nטים: מה זה וסט אדיסון 1060?
+...follow you around the map yelling "You're some scum and I don't like you every room you went into, a different random thing would just harass you and... === ...יעקוב אחריך ברחבי המפה ויצעק "אתה חתיכת טינופת ואני לא אוהב אותך", בכל חדר שנכנסת אליו, משהו אקראי אחר פשוט היה מטריד
+you and... === אותך ו...
+Tim: You distract a guy so you can move the flags, oh and then you're using wind. Which is also another thing a pirate has to do. As a sailor, understand === טים: אתה מסיח את דעתו של בחור כדי שתוכל להזיז את הדגלים, אה ואז אתה משתמש ברוח. שזה גם עוד דבר שפיראט צריך לעשות. כמלח, להבין
+the wind. Understand the direction of the wind. \nDave: You'll notice though with the green stuff that you make and drink... === את הרוח. להבין את כיוון הרוח. \nדייב: תשים לב אבל עם הדבר הירוק הזה שאתה מכין ושותה...
+Dave: Well, I'm not sure the weight of a glob of spit is the limiting factor there.You can spit it harder and...trust me, the last time I was in a spitting contest.... === דייב: ובכן, אני לא בטוח שמשקל של גוש רוק הוא הפקטור המגביל שם. אתה יכול לירוק אותו חזק יותר ו... תאמין לי, בפעם האחרונה שהייתי בתחרות יריקות....
+\nRon: Dave's going to write the science of Monkey Island book... === \nרון: דייב הולך לכתוב את ספר המדע של אי הקופים...

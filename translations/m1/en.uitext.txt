@@ -1,0 +1,511 @@
+Achievements
+Are you sure you want to load from this save slot?
+Are you sure you want to overwrite this save slot?  All progress in this save slot will be lost.
+Are you sure you want to quit to the main menu?
+Back
+Classic Edition Credits
+Continue Without Saving
+Controls
+Create New Save Data
+Do not turn off the Xbox 360 Console or remove the Storage Device whenever you see the icon above on screen.
+Exit Game
+Failed to Save
+Help & Options
+How To Play
+Leaderboards
+Load Game
+Loading game. Please don't turn off your Xbox 360 console.
+Monkey Island
+Music Volume
+No Storage device has been selected.  Please select a Storage device or choose to continue without saving.
+OK
+Please choose a Storage device with at least %iKB free or you will be unable to save.
+Quitting without saving will result in the loss of unsaved progress.
+Retry Load
+Resume Game
+Save Data was not found on the Storage device.  Would you like to create new save data or continue without saving?
+Save Game
+Saved game appears to be damaged and cannot be used.
+Saving content. Please don't turn off your console
+Select
+Select A Storage device
+Settings
+SFX Volume
+Special Edition Credits
+Subtitles
+Voice Volume
+Yes
+You are not signed into Xbox LIVE and can not access the Leaderboards.
+You do not have a valid Storage device selected. If you choose to proceed, you will be unable to save your progress in the game.
+You do not have an active gamer profile. Saving and achievements will be disabled. To create or load a gamer profile now, press the Xbox Guide button. Do you want to continue without saving and achievements?
+Cancel
+Exit
+Choose your language
+Autosave and Quit
+Quit Without Saving
+No
+Leaderboard
+ON
+OFF
+Play New Game
+Continue/Load
+Return To Game Library
+Unlock Full Game
+Press A button to view this leaderboard
+Please wait, now retrieving records from Xbox LIVE
+Total number of players:
+Friends
+Overall
+My Score
+Rank
+Gamertag
+Completed
+View
+Gamer Card
+Empty
+Autosave:
+Slot
+Warning - Autosave cannot be overwritten
+Part One: The Three Trials
+Part Two: The Journey
+Part Three: Under Monkey Island
+The Last Part: Guybrush Kicks Butt
+Play Time:
+Percent Complete:
+Disconnected from Xbox LIVE
+Press START
+Hold [Y] To Skip
+Hold [X] For Hint
+You are not yet ranked on the leaderboard for this game.
+Your friends are not yet ranked on the leaderboard for this game.
+There are no entries on this leaderboard.
+entries
+entry
+The data could not be saved on the selected storage device.
+Loading
+banana
+bananas
+beach
+bell
+big nose
+big stone head
+bloody hands
+books
+bowl of fruit
+brain
+breath mints
+brochure
+broken window
+cannibals
+cave
+cluster of eyeballs
+dock
+dog
+door
+eyeball
+eyes
+fabulous idol
+face
+friendly natives
+gaping hole
+ghost key
+gopher repellent
+head of the navigator
+heads
+heart
+Herman Toothrot
+hut
+jungle
+leaflet
+LeChuck
+lookout
+magic seltzer bottle
+Manual of Style
+mondo big rock
+mushroom
+necklace on Guybrush
+necklace on navigator
+note
+painting
+pamphlet
+path
+pirate
+pirates
+rock
+rubber chicken
+shovel
+sign
+staple remover
+storekeeper's note
+stump balm
+vase
+wax lips
+piece of eight
+pieces of eight
+100% Cotton T-shirt
+alley
+archway
+axe
+banana
+banana picker
+bananas
+barrel
+basket
+baskets
+beach
+big wooden door
+black chest
+boat
+boat
+bones
+bookmark
+bottle
+bowl-o-bones
+box full o' swords
+bridge
+brig
+broken bottle
+business card
+cabinet
+cable
+cake
+campsite
+cannon
+cannon ball
+cannon nozzle
+Captain's bed
+cauldron o' fear
+cave
+cell
+cereal
+chalice
+chest
+chests
+chicken
+chickens
+cinnamon sticks
+circus tent
+Citizen of Mle
+clearing
+cliffside
+clock
+cooking grease
+cooking pot
+corpse
+couch
+crack
+cupboard
+curtain
+dam
+deadly meat cleaver
+deadly piranha poodles
+deadly piranha poodles
+dish
+door
+door
+door
+doorway
+drawer
+drunk ghost
+dry river bed
+dusty book
+exit
+fabulous idol
+feather pen
+fine wine
+fireplace
+fish
+flaming mass
+footholds
+forest path
+fork
+fort
+fortune teller
+fuse
+ghost
+ghost chicken
+ghost dog
+ghost feather
+ghost guard
+ghost pigs
+ghost ship
+ghost tools
+giant piece of rope
+gigantic monkey ear
+gigantic monkey head
+glob of grease
+glowing crate
+Governor's mansion
+grim spectre
+grog machine
+gunpowder
+hacksaw
+handful of gunpowder
+handle
+hanging corpse
+hatch
+heap o' rocks
+house
+Hubert
+hunk of meat
+idol
+important-looking pirates
+ink
+island
+Jolly Roger
+jug o'grog
+jungle
+kegs
+key
+ladder
+LeChuck
+lever
+lights
+lock
+lookout
+lookout point
+loose board
+luscious, juicy bananas
+magnetic compass
+map
+marker
+memo
+memo
+Men of Low Moral Fiber (pirates)
+minutes
+monkey
+monkey grounds
+monkey head
+monkey head key
+Monkey Island
+mug
+mug
+mutinous crew
+Norbert
+nose
+note
+note under rock
+outside
+passage
+path
+path down
+path to jungle
+picture
+piece of paper
+pieces of eight
+plant and stump
+plants
+plaque
+pole
+pond
+poster
+pot
+pot o' stew
+primitive art
+prisoner
+pull cord
+punching bag
+r
+rat
+razor-sharp scissors
+red hot fire
+river fork
+rock
+rock and plant
+rock on top of note
+root beer
+rope
+rope ladder
+rowboat and oars
+rowboat
+rusty knife
+safe
+sandbag
+ship deck
+shore
+sign
+skull
+skulls
+sleeping ghost crew
+small key
+spyglass
+stairs
+statue
+storekeeper
+street
+stump
+sword
+Sword Master
+Sword Master's
+table
+the sun
+totem pole
+towering rock
+town
+trail
+tree
+troll
+trunk
+trunks
+T-shirt
+tunnel
+unhealthy-looking man
+village
+vines
+voodoo knickknacks
+voodoo love beads
+voodoo root
+wimpy little idol
+window
+X
+yellow petal
+Open
+Close
+Give
+Turn On
+Turn Off
+Push
+Pull
+Use
+Look at
+Walk to
+Pick up
+Talk to
+Hit
+Shove
+Taunt
+Tickle
+Prod
+Finger
+Fondle
+Tap
+Stroke
+Handle
+Feel
+Annoy
+Bother
+Poke
+Look and reach
+<ADVERTISEMENT>
+Receive
+Get
+Throw
+in
+with
+on
+to
+Deep In The Caribbean
+The Island of Mle
+Days pass
+Instant Replay
+Bloat
+Bob
+Stare
+Stink
+Float
+Rot
+Brine
+Drift
+Linger
+meat in stew
+stew meat
+meat with condiment
+file
+shredder
+stylish confetti
+heavily-armed clown
+throw
+fire
+rhinoceros toenails
+tremendous dangerous-looking yak
+heavy chair
+circus
+hypnotize
+cook
+squeaky door
+melting mug
+murderous winged devil
+ugly pirate
+stinking pirate
+blood thirsty pirate
+dirty rotten pirate
+used ship emporium
+noteworthy rock
+river
+vulture
+strong branch
+sturdy stump
+oars
+Tease
+hole
+pile of memos
+a few memos
+several memos
+a bunch of memos
+a pile of memos
+a whole lot of memos
+too many memos
+prize
+quarrelsome rhinoceros
+red button
+tremendous yak
+gopher
+another gopher
+gopher horde
+heavy chair
+funny little man
+sheriff
+Jab
+fish in stew
+stewed fish
+stewed meat
+piece of rope
+mug o' grog
+mug near death
+pewter wad
+hypnotize
+A long walk, a brief row,
+and a short hike later...
+sleeping piranha poodles
+Would you like to overwrite previous Monkey Island data?
+Classic Edition is only available in English.
+Audio Options
+Video Options
+Saving
+Cursor
+Primary Select
+Default Select
+Hint
+Skip Cutscene
+Verbs
+Inventory
+Menu
+Dialogue selection
+Open
+Use
+Pick Up
+Push
+Pull
+Close
+Look At
+Talk To
+Subtitle Speed(Classic)
+Or
+Verb Shortcuts
+(Classic)
+Version Hotswap
+Give
+Resolution
+Full Screen
+Apply
+Special Effects
+Sound device failed to initialize or not found.
+Your machine failed to meet the minimum specification requirements.
+Graphics card does not meet the requirements.
+Processor does not meet the requirements.
+Application will now exit.
+Code:
+flint
+Blimp-Cam
+spicy stew
+Fettucini Brothers

@@ -14,6 +14,7 @@ _mod = _il.module_from_spec(_spec)
 _spec.loader.exec_module(_mod)  # type: ignore[union-attr]
 HEBREW_TO_CODE: dict[str, int] = _mod.HEBREW_TO_CODE
 _TOKEN_RE = re.compile(r'(\{[^}]+\}|`[^`]*`)')
+_REVERSE_PREFIX = "[REVERSE]"
 _encode_warnings: list[str] = []
 
 
@@ -22,8 +23,17 @@ def auto_int(x):
 
 
 def encode_he_text(text: str, reverse_for_ltr: bool = REVERSE_FOR_LTR) -> bytes:
-    """Encode a Hebrew/mixed string to the game's custom single-byte encoding."""
-    print(text)
+    """Encode a Hebrew/mixed string to the game's custom single-byte encoding.
+
+    A leading [REVERSE] marker forces reverse_for_ltr=True for that string
+    (reverse at inject time, no 0xF0 prefix) and is stripped before encoding.
+    """
+    if text.startswith(_REVERSE_PREFIX):
+        text = text[len(_REVERSE_PREFIX):]
+        print(f"REVERSE: {text}")
+        reverse_for_ltr = True
+
+    #print(text)
     segments = _TOKEN_RE.split(text)
 
     if reverse_for_ltr:

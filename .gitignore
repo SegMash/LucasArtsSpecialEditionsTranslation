@@ -224,8 +224,9 @@ __marimo__/
 .streamlit/secrets.toml
 # Translations workspace: ignore the working/intermediate files but keep the
 # hand-edited synced Hebrew sources for each game under translations/<game>/
-translations/*
 !translations/mi2/
 translations/mi2/*
+!translations/mi2/he.speech.txt
+!translations/mi2/he.uitext.txt
 !translations/mi2/he.speech.txt
 !translations/mi2/he.uitext.txt

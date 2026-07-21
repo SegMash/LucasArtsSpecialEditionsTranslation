@@ -1,0 +1,13 @@
+Missing translations report (build_translation.py)
+Mapping        : .\translations\m1\mapping.txt
+Extra mapping  : C:\WS\LucasArtsSpecialEditionsTranslation\translations\m1\extra_mapping.txt
+Total missing  : 6
+======================================================================
+
+[SPEECH]
+{verb:local_1} === 
+{verb:local_1} === 
+{verb:local_1} === 
+{verb:local_1} === 
+{verb:global_100} === 
+(tm). === 

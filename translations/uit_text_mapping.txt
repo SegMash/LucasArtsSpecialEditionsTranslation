@@ -1,0 +1,171 @@
+Are you sure you want to load from this save slot? === האם אתה בטוח שברצונך לטעון ממשבצת שמירה זו?
+Are you sure you want to overwrite this save slot? All progress in this save slot will be lost. === האם אתה בטוח שברצונך לדרוס את משבצת השמירה הזו? כל ההתקדמות במשבצת זו תאבד.
+Are you sure you want to quit to the main menu? === האם אתה בטוח שברצונך לצאת לתפריט הראשי?
+Continue Without Saving === המשך ללא שמירה
+Create New Save Data === צור נתוני שמירה חדשים
+Do not turn off the Xbox 360 console or remove the storage device whenever you see the icon above on screen. === אל תכבה את קונסולת ה-Xbox 360 ואל תסיר את התקן האחסון בכל פעם שאתה רואה את הסמל שלמעלה על המסך.
+Exit Game === יציאה מהמשחק
+Failed to Save === השמירה נכשלה
+Loading game. Please don't turn off your Xbox 360 console. === טוען משחק. אנא אל תכבה את קונסולת ה-Xbox 360 שלך.
+Monkey Island === אי הקופים
+Music Volume === עוצמת מוזיקה
+No storage device has been selected. Please select a Storage device or choose to continue without saving. === לא נבחר התקן אחסון. אנא בחר התקן אחסון או בחר להמשיך ללא שמירה.
+Please choose a storage device with at least %iKB free or you will be unable to save. === אנא בחר התקן אחסון עם לפחות %iKB פנויים, אחרת לא תוכל לשמור.
+Quitting without saving will result in the loss of unsaved progress. === יציאה ללא שמירה תגרום לאובדן התקדמות שלא נשמרה.
+Retry Load === נסה לטעון שוב
+Save Data was not found on the storage device. Would you like to create new save data or continue without saving? === נתוני שמירה לא נמצאו בהתקן האחסון. האם תרצה ליצור נתוני שמירה חדשים או להמשיך ללא שמירה?
+Saving content. Please do not turn off your console. === שומר תוכן. אנא אל תכבה את הקונסולה.
+Select === בחר
+Select A storage device === בחר התקן אחסון
+SFX Volume === עוצמת אפקטים (SFX)
+Subtitles in Special Edition === כתוביות במהדורה המיוחדת
+Voice Volume === עוצמת קולות
+You are not signed into Xbox LIVE and cannot access the Leaderboards. === אינך מחובר ל-Xbox LIVE ולא ניתן לגשת ללוחות הניקוד.
+You do not have a valid storage device selected. If you choose to proceed, you will be unable to save your progress in the game. === לא בחרת התקן אחסון תקף. אם תבחר להמשיך, לא תוכל לשמור את התקדמותך במשחק.
+You do not have an active gamer profile. Saving and achievements will be disabled. To create or load a gamer profile now, press the Xbox Guide button. Do you want to continue without saving and achievements? === אין לך פרופיל שחקן פעיל. אפשרויות השמירה וההישגים יבוטלו. כדי ליצור או לטעון פרופיל שחקן כעת, לחץ על כפתור ה-Xbox Guide. האם ברצונך להמשיך ללא שמירה והישגים?
+Exit === יציאה
+Choose your language === בחר שפה
+Autosave and Quit === שמירה אוטומטית ויציאה
+Quit Without Saving === צא ללא שמירה
+Leaderboard === לוח ניקוד
+Unlock Full Game === פתח את המשחק המלא
+Press A button to view this leaderboard === לחץ על כפתור A כדי לצפות בלוח ניקוד זה
+Retrieving records, please wait === מאחזר רשומות, אנא המתן
+Total number of players: === מספר שחקנים כולל:
+Friends === חברים
+Overall === כללי
+My Score === הניקוד שלי
+Rank === דירוג
+Gamertag === תג שחקן (Gamertag)
+Completed === הושלם
+View === צפה
+Gamer Card === כרטיס שחקן
+#### השורה הבאה בכוונה הפוכה
+Empty === קיר
+Autosave: === שמירה אוטומטית:
+#### השורה הבאה בכוונה הפוכה
+Slot === תצבשמ
+Warning - Autosave cannot be overwritten === אזהרה - לא ניתן לדרוס שמירה אוטומטית
+Part One === פרק I
+Part Two === פרק II
+Part Three === פרק III
+The Last Part === פרק IV
+Play Time: === :קחשמ ןמז
+#### השורה הבאה בכוונה הפוכה
+Percent Complete: === :המלשה זוחא
+Disconnected from Xbox LIVE === נותק מ-Xbox LIVE
+Press START === לחץ על START
+You will lose any unsaved progress. Are you sure you want to load from this save slot? === כל התקדמות שלא נשמרה תאבד. האם אתה בטוח שברצונך לטעון ממשבצת שמירה זו?
+Classic Edition is only available in English. === המהדורה הקלאסית זמינה באנגלית בלבד.
+KEYBOARD SHORTCUTS === קיצורי מקלדת
+Keyboard Shortcuts === קיצורי מקלדת
+Most of the actions you perform in Monkey Island 2 Special Edition can be entered with the keyboard. === ניתן לבצע את רוב הפעולות ב"אי הקופים 2: המהדורה המיוחדת" באמצעות המקלדת.
+INVENTORY === חפצים
+inventory === חפצים
+Hint === רמז
+HINT === רמז
+View Profile === הצג פרופיל
+CONTINUE GAME === המשך במשחק
+Cancel Button === כפתור ביטול
+FULL SCREEN === מסך מלא
+PIRATE DICTIONARY === מילון פיראטים
+PRESS FOR RANKING === לחץ לדירוג
+Left Button:\nWalk To / Use Inventory Item / Dialogue Selection\nWheel:\nClick once to:\nOpen / Close inventory menu\nScroll Through:\ninventory menu\nLeft + Right Button:\nObject Highlight\nRight Button:\nOpen Verb Action dial / Perform Action / Look at Inventory Item\nHint Button\nMove Cursor === כפתור שמאלי:\nללכת אל / להשתמש בחפץ / בחירת דיאלוג\nגלגלת:\nלחץ פעם אחת כדי:\nלפתוח / לסגור תפריט חפצים\nלגלול בתוך:\nתפריט חפצים\nכפתור שמאלי + ימני:\nהדגשת אובייקט\nכפתור ימני:\nפתיחת גלגל פעולות / ביצוע פעולה / הסתכלות על חפץ\nכפתור רמז\nהזזת הסמן
+OVERALL === כללי
+Close Inventory === סגור חפצים
+No objects available === אין אובייקטים זמינים
+Choose a different storage device. === בחר התקן אחסון אחר.
+The selected storage device has been removed. === התקן האחסון הנבחר הוסר.
+The save file appears to be damaged and cannot be loaded. === נראה שקובץ השמירה פגום ולא ניתן לטעון אותו.
+The save file appears to be damaged and cannot be loaded. Damaged save file will be overwritten automatically. === נראה שקובץ השמירה פגום ולא ניתן לטעון אותו. קובץ השמירה הפגום יידרס באופן אוטומטי.
+Retry saving === נסה לשמור שוב
+The selected storage device has been removed. Autosaving is now disabled. You must select a storage device to re-enable autosaving. === התקן האחסון הנבחר הוסר. שמירה אוטומטית מבוטלת כעת. עליך לבחור התקן אחסון כדי להפעיל מחדש את השמירה האוטומטית.
+CLICK ON THE IMAGE FOR FULL SCREEN === לחץ על התמונה למסך מלא
+Return to Game Library === חזור לספריית המשחקים
+Exit to Main Menu === צא לתפריט הראשי
+ONLINE ID === מזהה מקוון
+Time of Completion === זמן סיום
+Time Score === ניקוד זמן
+Number of Items Collected === מספר חפצים שנאספו
+Number of Hints Used === מספר רמזים שנעשה בהם שימוש
+Score === ניקוד
+This game saves automatically at certain points. Do not switch off the power when the HDD access indicator is flashing. === המשחק שומר אוטומטית בנקודות מסוימות. אל תכבה את המכשיר כאשר נורית הגישה לכונן הקשיח מהבהבת.
+Special Effects === אפקטים מיוחדים
+Resolution === רזולוציה
+Full Screen === מסך מלא
+Apply === החל
+SAVING CONTENT === שומר תוכן
+Online service is disabled on your PlayStation®Network account due to parental control restrictions. === השירות המקוון מבוטל בחשבון ה-PlayStation®Network שלך עקב הגבלות בקרת הורים.
+and a dime === ועשרה סנט
+and === ו-
+N === צ
+S === ד
+W === מ
+Sorry, no hints available at this time... === מצטערים, אין רמזים זמינים כרגע...
+All unsaved progress will be lost. Are you sure you want to continue? === כל התקדמות שלא נשמרה תאבד. האם אתה בטוח שברצונך להמשיך?
+A network error has occurred. Returning to the main menu. === שגיאת רשת התרחשה. חוזר לתפריט הראשי.
+Settings === הגדרות
+If you want to access the pause menu during a game, rotate the iPhone or iPod touch vertically. === אם ברצונך לגשת לתפריט ההפסקה במהלך המשחק, סובב את ה-iPhone או ה-iPod touch למצב אנכי.
+Concept Art Unlocked === אמנות קונספט נפתחה
+Adult Entertainment \nZelda Carbuncle Tells All \nMemoirs of a woman of \ndubious pleasure. === בידור למבוגרים \n"זלדה קרבנקל מספרת הכל" \nזכרונותיה של אישה בעלת \nעונג מפוקפק.
+Animatronics \nAnimatronics \nby Walt Whimsy === אנימטרוניקה \n"אנימטרוניקה" \nמאת וולט ווימזי
+Animatronics \nUnder the Surface \nby Walt Whimsy === אנימטרוניקה \n"מתחת לפני השטח" \nמאת וולט ווימזי
+Annotation \nSee Footnoting === הערות שוליים \nראה "הערות שוליים"
+Archaeology \nX Never Marks the Spot \nby I. Jones === ארכאולוגיה \n"ה-X לעולם לא מסמן את המקום" \nמאת א. ג'ונס
+Art \nVagueness as an Art Form \n === אמנות \n"ערפול כצורת אמנות" \n
+Art/Philosophy \nIdealism or Surrealism? \nPhilosophy/art textbook. === אמנות/פילוסופיה \n"אידיאליזם או סוריאליזם?" \nספר לימוד בפילוסופיה/אמנות.
+Beverages \nBeverages for Everyone \n === משקאות \n"משקאות לכולם" \n
+Big Whoop \nSee: Treasure === ביג וופ \nראה: אוצר
+Biography \nBoth Hands Empty \nThe Herman Toothrot story. === ביוגרפיה \n"שתי ידיים ריקות" \nסיפורו של הרמן טות'רוט.
+Biography \nBoth Hands Moving \nThe Stan story. === ביוגרפיה \n"שתי ידיים בתנועה" \nסיפורו של סטאן.
+Biography \nBoth Heads Empty \nThe Fettucini Brothers story. === ביוגרפיה \n"שני ראשים ריקים" \nסיפורם של האחים פטוצ'יני.
+Biography \nA Fistful of Barnacles \nJournal of \nCaptain Twiddlymore. === ביוגרפיה \n"בעבור חופן ברנאקלים" \nיומנו של \nקפטן טווידלימור.
+Biography \nLick the Silver Spoon \nby L. Phatt === ביוגרפיה \n"ללקק את כפית הכסף" \nמאת ל. פאט
+Biography \nMe and Blackbeard === ביוגרפיה \n"אני ושחור-הזקן"
+Biography \nThe Time \nI Blew Up LeChuck \nQuestionable memoirs \nof Guybrush Threepwood === ביוגרפיה \n"הפעם שבה \nפוצצתי את לה-צ'אק" \nזכרונותיו המפוקפקים \nשל גייברש ת'ריפווד
+Biography \nYikes! \nMemoirs of Captain Gilbert === ביוגרפיה \n"אמא'לה!" \nזכרונותיו של קפטן גילברט
+Body \nUnusual Birthmarks \n === גוף \n"סימני לידה חריגים" \n
+Breakfast \nBreakfast at Meathook's === ארוחת בוקר \n"ארוחת בוקר אצל מית'הוק"
+Business \nHow to Make Friends \nand Influence People \nby Bluebeard === עסקים \n"כיצד לרכוש ידידים \nולהשפיע על אנשים" \nמאת כחול-זקן
+Cannibalism \nHow to Serve \nYour Fellow Man \nby Lemonhead === קניבליזם \n"איך להגיש את \nרעך (כמנה עיקרית)" \nמאת לימונדהד
+Cannibalism \nSee Also: Self-Help === קניבליזם \nראה גם: עזרה עצמית
+Catalogs \nSee Subheadings === קטלוגים \nראה כותרות משנה
+Cheese \nGuide to Cheeses of the World \nReference === גבינה \n"מדריך לגבינות העולם" \nספר עיון
+Children's Books \nThe Sinister Beast \nUnder the Bed === ספרי ילדים \n"המפלצת המרושעת \nשמתחת למיטה"
+Children's Books \nTreasury of \nPirate Children's Stories === ספרי ילדים \n"אוצר סיפורי ילדים \nשל פיראטים"
+Circuses \nAlfredo and Bill's \nExcellent Adventure \nFiction === קרקסים \n"ההרפתקה המצוינת \nשל אלפרדו וביל" \nסיפורת
+Circuses \nDamn the Human Torpedo \nThe origin of the human \ncannonball trick. === קרקסים \n"לעזאזל עם הטורפדו האנושי" \nמקורו של תעלול \nהאדם-פגז.
+Classics \nGreat Expectorations \nby Captain Loogie === קלאסיקות \n"יריקות גדולות" \nמאת קפטן לוגי
+Collectables \nJunk, Junk, and \nMore Junk \nA guide to collectable \nmemorabilia. === פריטי אספנות \n"גרוטאות, גרוטאות, \nועוד גרוטאות" \nמדריך למזכרות לאספנים.
+Cooking \nNoteworthy Pirate Foods === בישול \n"מאכלי פיראטים ראויים לציון"
+Cooking \nViscous Fluids You Can \nMake at Home === בישול \n"נוזלים צמיגיים שאפשר \nלהכין בבית"
+Crafts \nCrochet Eyepatches \nfor Fun and Profit === עבודות יד \n"סריגת רטיות לעין \nלהנאה ולרווח"
+Cross-Reference \nSee Referential Obscurantism === הפניה \nראה "ערפול הפנייתי"
+Cryptography \nThe Code in My Nose \nUnique message drops \nthrough history. === קריפטוגרפיה \n"הקוד שבתוך האף" \nדרכים ייחודיות להעברת \nמסרים לאורך ההיסטוריה.
+Dewey Decimal System \nSee Organizational Schema === שיטת דיואי \nראה "סכימת ארגון"
+Disaster \nGreat Shipwrecks \nof Our Century \nFrom the Lime-Life \nDisaster series. === אסונות \n"הטביעות הגדולות \nשל המאה שלנו" \nמסדרת אסונות "ליים-לייף".
+Disease \nFascinating Facts \nAbout Scurvy === מחלות \n"עובדות מרתקות \nעל צפדינה"
+Disease \nShipboard Diseases === מחלות \n"מחלות על סיפון האונייה"
+Dogs \nDog English Dictionary \nReference === כלבים \n"מילון כלבית-אנגלית" \nספר עיון
+Education \nPreparing for the \nPirate Aptitude Test \nby S. Karpman === חינוך \n"הכנה למבחן \nהתאמה לפיראטים" \nמאת ס. קרפמן
+Entertainment \nQuiet on the Set === בידור \n"שקט על הסט"
+Entomology \nTomato Worms \nAn owner's manual. === אנטומולוגיה (חקר החרקים) \n"תולעי עגבניות" \nמדריך למשתמש.
+Etymology \nOrigins of Pirate Words === אטימולוגיה \n"מקורן של מילים של פיראטים"
+Eyesight \nSee: Vision === ראייה \nראה: חזון
+Farthington Dynasty \nSee: Games === שושלת פארת'ינגטון \nראה: משחקים
+Fashion \nSummer Swashbuckling \nFashions \nThree years of the \npopular periodical === אופנה \n"אופנת קיץ להרפתקנים" \nשלוש שנים של \nכתב העת הפופולרי
+Fiction \nE Ticket === סיפורת \n"כרטיס E"
+Fiction \nFive More Than I Needed === סיפורת \n"חמישה יותר ממה שהייתי צריך"
+Fiction \nHedgehog Days === סיפורת \n"ימי הקיפוד"
+Fiction \nNot So Much \nas a Doubloon \nAn anthology of short fiction === סיפורת \n"אפילו לא דובלון" \nאנתולוגיה של סיפורים קצרים
+Fiction \nVery Very Short Stories === סיפורת \n"סיפורים קצרים מאוד מאוד"
+Finance \nEasy Ways to Make Money === כספים \n"דרכים קלות להרוויח כסף"
+Fish \nBig Book of Fish \nIllustrated guide to \nfish of the world. === דגים \n"ספר הדגים הגדול" \nמדריך מאויר לדיגי העולם.
+Fishing \nLimpet Fishing: \nThe Lost Art === דיג \n"דיג צלחיות: \nהאמנות האבודה"
+Food \nI Married A Muenster \nby S. Cheese === אוכל \n"התחתנתי עם גבינת מנסטר" \nמאת ס. צ'יז
+Food \nLife-Size and Larger === אוכל \n"בגודל טבעי ויותר מכך"
+Food \nRats as a Protein Source === אוכל \n"חולדות כמקור לחלבון"
+Food Also \nSee: Cannibalism === אוכל נוסף \nראה: קניבליזם
+Footnoting \nSee Vicious Pedantry === הערות שוליים \nראה "פדנטיות מרושעת"
+Games \nHal Barwood on Monkey 2 \nA critical review. === משחקים \n"האל בארווד על אי הקופים 2" \nביקורת נוקבת.
+Games \nFan-Tan Fanatic \nby Elroy T. Funbun === משחקים \n"חובב פאן-טאן מושבע" \nמאת אלרוי ט. פאנבאן

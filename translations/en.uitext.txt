@@ -1,0 +1,1266 @@
+PLAY NEW GAME
+CONTINUE/LOAD GAME
+HELP AND OPTIONS
+BONUS FEATURES
+LEADERBOARDS
+ACHIEVEMENTS
+RETURN TO GAME LIBRARY
+PIRATE PERFORMANCE
+HOW TO PLAY
+CONTROLS
+VIDEO SETTINGS
+CLASSIC EDITION CREDITS
+SPECIAL EDITION CREDITS
+MANUAL
+POINT AND CLICK
+ON
+OFF
+back tunnel
+DIRECT INPUT
+TRACKPAD
+GAME CONTROLS
+SUBTITLES IN SPECIAL EDITION
+VOICES IN CLASSIC EDITION
+THE ART OF MONKEY ISLAND
+NAVIGATING GUYBRUSH\nWhen Manual Control is selected, use the <leftstick> to move Guybrush.\nWhen Point and Click Control is selecetd, use the <left or rightstick> to move the cursor.\nMove the cursor where you would like Guy-brush to go and press the <A> Button.
+INTERACTING WITH THE ENVIRONMENT\nThe cursor allows you to interact with the environment.\nUse the <rightstick> to move the cursor over objects in the environment.
+VERB ACTIONS\nWhen an object is selected, press and hold the <Right Trigger> to bring up the list of verb actions that can be performed with it.\nUse the <left or right stick> to select a verb icon.\nRelease the <Right Trigger> when a verb icon is highlighted to perform that action.
+OBJECT HIGHLIGHTING\nTo help you identifty interactive objects more quickly, press the <left button> to highlight them.
+INVENTORY MENU\nTo bring up the inventory menu, press and hold the <Left trigger> . Release the <Left Trigger> to close the inventory menu.\nUse the <left or rightstick> to highlight an item and press the <Right Trigger>  to select it.\nSome items can be combined with other items. Highlight another item when one item is selected and press the <Right Trigger> to combine them.
+USING INVENTORY ITEMS\nWhen an inventory item is selected, it will appear inside the cursor. \nMove the cursor over an object or character in the environment and press <Right Trigger> to use the inventory item with it.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by holding down the <x> button. Once you have held the button down long enough, the hint will appear.\nThese will start off being slight clues, and if you require further help you can press <X button> again for a more detailed decription of what you should do next.\n
+VERB ICONS
+POINT AND CLICK CONTROLS\nleft trigger:\nShow / Hide Inventory Menu\nright trigger:\nShow / Hide Action dial / Perform Action\nleft bumper:\nHighlight Interactive Objects\nright bumper:\nTrigger Audio Commentary\nMove cursor (Navigate Action Dial / Select Dialog)\n"Look At" inventory item / Walk to location\nTrigger Hint\nSwitch to Classic Mode\nMove cursor\nMake Guybrush Walk (Navigate Action Dial / Select Dialog)\nMANUAL CONTROLS\nOptions Menu
+POINT AND CLICK CONTROLS\nL2 button:\nShow / Hide Inventory Menu\nR2 button:\nShow / Hide Action dial / Perform Action\nL1 button:\nHighlight Interactive Objects\nR1 button:\nTrigger Audio Commentary\nMove cursor (Navigate Action Dial / Select Dialog)\n"Look At" inventory item / Walk to location\nTrigger Hint\nSwitch to Classic Mode\nMove cursor\nMake Guybrush Walk (Navigate Action Dial / Select Dialog)\nMANUAL CONTROLS\nOptions Menu
+CONTROLS\nGameplay screen:\nTouch anywhere to interact\nCursor:\nNavigate / Select objects\nVerb Icons:\nTap to select\nInventory Icon:\nTap to open / close
+INTERACTING WITH THE ENVIRONMENT\nThe cursor allows you to interact with the environment. Point the cursor over objects in the environment to select them.
+VERB ACTIONS\nWhen an object is selected, press and hold the Right Mouse Button to bring up the list of verb actions that can be performed with it.\nPoint the cursor to select a verb icon. \nRelease the Right Mouse Button when a verb icon is highlighted to perform that action.
+OBJECT HIGHLIGHTING\nTo help you identify interactive objects more quickly, press the Left and Right Mouse Buttons together to highlight them.
+INVENTORY MENU\nTo bring up the inventory menu, click the mouse wheel.\nPoint the cursor at an item to highlight it and press the Left Mouse Button to select it.\nSome items can be combined with other items. Highlight another item when one item is selected and press the Left Mouse Button to combine them.
+USING INVENTORY ITEMS\nWhen an inventory item is selected, it will appear inside the cursor. \nMove the cursor over objects or characters in the environment and press the Left Mouse Button to use the inventory item with it.
+USING THE HINT SYSTEM (Exactly as written in Monkey 1)\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by pressing the H key.  \nThese will start off being slight clues, and if you require further help you can press H again for a more detailed description of what you should do next.
+NAVIGATING GUYBRUSH\nUse the mouse to point the cursor where you would like Guybrush to go and press the Left Mouse Button to make Guybrush walk there.
+HOW TO PLAY\nNAVIGATING GUYBRUSH\nWhen Trackpad Control is selected, move the cursor where you want Guybrush to go and then tap the screen.\nWhen Direct Control is selected, touch the game screen where you want Guybrush to go. When you lift your finger, Guybrush will walk there.
+HOW TO PLAY\nNAVIGATING GUYBRUSH\nWhen Trackpad Control is selected, move the cursor where you want Guybrush to go and then tap the screen.\nWhen Direct Control is selected, touch the game screen where you want Guybrush to go. When you lift your finger, Guybrush will walk there.
+INTERACTING WITH THE ENVIRONMENT\nWhen Trackpad Control is selected, select a verb icon from the keyboard at the bottom of the screen and move the cursor over an interactive object. Tap anywhere on the screen to perform this action.\nWhen Direct Control is selected, select a verb icon from the keyboard at the bottom of the screen and touch an interactive object. Lift your finger off the screen to perform this action.
+OBJECT HIGHLIGHTING\nTo help you identify useful items more quickly, place two fingers on the screen at the same time and then lift them to highlight interactive objects.
+INVENTORY MENU (I)\nTo open and close the ivnentory menu, tap on the inventory icon at the lower right.\nYou can perform different actions with the inventory items. Select a verb from the keyboard at the bottom of the screen and then tap on an inventory item to aplpy the verb to it.
+INVENTORY MENU (II)\nSome items can be combined with other items. Tap the "use" verb icon at the bottom of the screen and then tap on two different inventory items to combine them.
+USING INVENTORY ITEMS IN THE ENVIRONMENT\nOnce you have selected an inventory item, touch an object in the environment to use the inventory item with it.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by shaking the Iphone or Ipod touch. \nThese will start off being slight clues, and if you require further help you can shake your device again for a more detailed description of what you should do next.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by placing three fingers on the screen at the same time. \nThese will start off being slight clues, and if you require further help you can place three fingers on the screen again for a more detailed description of what you should do next.
+AUDIO COMMENTARY\nAt certain points in the game, you can listen to the original developers of the Monkey Island game discuss the game's development. To play the Audio Commentary, touch the microphone icon at the top right of the screen when it lights up.
+PAUSE MENU\nTo access the Pause Menu, touch the compass icon at the top left of the screen.
+CONTROLS
+OBJECT HIGHLIGHTING
+CLASSIC MODE VOICE DIALOG
+SUBTITLES
+MUSIC VOLUME
+SFX VOLUME
+DIALOG VOLUME
+DEVELOPER'S COMMENTARY
+Walk to
+Give
+Open
+Close
+Pick up
+Look at
+Talk to
+Use
+Push
+Pull
+Emit
+Spit
+Squirt
+Gob
+Loogie
+Hawk
+Gleek
+Looch
+Spurt
+RESUME GAME
+SAVE GAME
+LOAD GAME
+EXIT TO MAIN MENU
+QUIT GAME
+Are you sure you want to load from this save slot?
+Are you sure you want to overwrite this save slot?  All progress in this save slot will be lost.
+Are you sure you want to quit to the main menu?
+Continue Without Saving
+Create New Save Data
+Do not turn off the Xbox 360 console or remove the storage device whenever you see the icon above on screen.
+Exit Game
+Failed to Save
+Loading game. Please don't turn off your Xbox 360 console.
+Monkey Island
+Music Volume
+No storage device has been selected.  Please select a Storage device or choose to continue without saving.
+OK
+Please choose a storage device with at least %iKB free or you will be unable to save.
+Quitting without saving will result in the loss of unsaved progress.
+Retry Load
+Save Data was not found on the storage device.  Would you like to create new save data or continue without saving?
+Saving content. Please do not turn off your console.
+Select
+Select A storage device
+SFX Volume
+Subtitles in Special Edition
+Voice Volume
+Yes
+You are not signed into Xbox LIVE and cannot access the Leaderboards.
+You do not have a valid storage device selected. If you choose to proceed, you will be unable to save your progress in the game.
+You do not have an active gamer profile. Saving and achievements will be disabled. To create or load a gamer profile now, press the Xbox Guide button. Do you want to continue without saving and achievements?
+Cancel
+Exit
+Choose your language
+Autosave and Quit
+Quit Without Saving
+No
+Leaderboard
+Unlock Full Game
+Press A button to view this leaderboard
+Retrieving records, please wait
+Total number of players:
+Friends
+Overall
+My Score
+Rank
+Gamertag
+Completed
+View
+Gamer Card
+Empty
+Autosave:
+Slot
+Warning - Autosave cannot be overwritten
+Part One
+Part Two
+Part Three
+The Last Part
+Play Time:
+Percent Complete:
+Disconnected from Xbox LIVE
+Press START
+Hold [Y] To Skip
+Hold [X] For Hint
+You are not yet ranked on the leaderboard for this game.
+Your friends are not yet ranked on the leaderboard for this game.
+There are no entries on this leaderboard.
+entries
+entry
+The data could not be saved on the selected storage device.
+Loading...
+Gentleman o' Fortune
+Jolly Roger
+Swifty Scallywag
+Playful Picaroon
+Steady Helmsman
+Grog Guzzler
+Land Lubber
+Squiffy Sprog
+This is a term of distinction for pirates! It is reserved for those pirates who are both wealthy and honorable.
+The Jolly Roger refers to the skull and crossbones found on the pirate flag! Anyone given this title is a true pirate.
+A scallywag is a bad person. A scoundrel. Considered to be clever and dangerous.
+The term Picaroon, is from the Spanish word for rascal. It is meant to describe pirates in a way that is satirical or humorous.
+The Helmsman is the Captain's attendant, who is tasked with rowing him to and from the ship.
+Grog is a pirate's favorite drink. Although the type of alcohol used to make it may vary, more often than not it contains large quantities of rum.
+"Lubber" was an old English word for a big, slow, clumsy person, and this term was aimed at those persons on ship who were not very skilled or at ease with ship life, as if to say, "You were no better on the land."
+A squiffy is a buffoon. A sprog is an untrained recruit. When someone calls you this, you should expect to be walking the plank very soon.
+CONGRATULATIONS! YOU'RE A:
+Cursor Speed
+Fast
+Normal
+Voices in Classic Edition
+Touch the screen anywhere and move the cursor as you would with a trackpad.\n\nThe cursor will allow you to interact with the environment.\n\nYou can adjust the speed of the cursor in the settings menu.\n
+On
+Off
+SETTINGS
+Buy Full Game
+Buy Full Game
+##### pieces o' eight######
+%namount-of-money% pieces o' eight
+%namount-of-money% pieces o' eight and %nnumber-of-coins% dimes
+%namount-of-money% pieces o' eight and a dime
+%nnumber-of-coins% dimes
+
+
+
+remains
+dynamite
+`left turn` sign
+`The Jolly Rasta`
+1/%ntimes-drunk-near-grog% bottle o' near-grog
+2 pieces of eight
+advertisement
+alarm
+alley
+alligator
+anchor
+antique dealer
+appendix infections
+archway
+arrow
+Ash-2-life
+ashes
+Augustus DeWaat
+back tunnel
+bag
+balloon
+balloon in box
+balloon
+banana
+banner
+banners
+Barbie Q. Fish
+barkeeper
+barrel
+barrels
+barrels o' rum
+barrier
+Bart
+bat wax
+beach
+bed
+bed table
+bell
+bellows
+big sign
+Big Tree
+Big X
+bird
+blue drink
+bone
+bones
+Bonnie Bird
+books
+Booty Island
+booze
+bottle o' near-grog
+bottle
+bottles
+bottles o' rum
+bowl
+Bowling Boy
+bowswain's wheel
+box
+box of cracker mix
+box
+box
+box
+box
+boxes
+breath o' dog
+Bri Dog
+brick
+broken bottle
+broken grog machine
+broken oar
+broken sign
+brown drink
+bucket o' mud
+bucket
+bust
+butt slide
+cabin door
+calendar
+call box
+call button
+candle
+canned goods
+Cannibal Moe
+cannon
+cannon balls
+Captain Dread
+Captain Dread's map
+Captain Kate
+captured rat
+card catalog
+Caroline Crocodile
+cartographer
+cartographer behind bars
+cash register
+cat de-wormer
+cave
+Caveman Fred
+cell door
+Cemetery
+cemetery
+chair
+changing screen
+cheaply made costume
+cheese grater?
+Cheese Squigglies
+chest
+churned thymus
+circus ticket
+clean laundry
+clean, white hankie
+clean, white shirt
+clean, white, folded shirt
+Cliff
+cliff side
+coat
+coffin
+coffin nail
+coffin
+coin
+coin return
+coin
+coins
+cook
+Cosmic Clown
+Cottage
+cottage
+couch
+cracker
+crate
+crates
+crates o' rum
+crazy straw
+crispy beard bits
+cross
+crosses
+crowbar
+crowbar 'n' rope
+crowd
+crypt
+crypt key
+Dad's remains
+dead prisoner
+dealer
+dime
+divan
+dock
+dog
+doggie door
+dolls
+door
+doorway
+dragon's teeth
+drawer
+Dread's Ship
+Dred
+Dred's Ship
+dress
+dresser
+dressing screen
+east
+Eau d'Mojo
+elephant drool
+elevator door
+empty box
+empty drinking mug
+empty grog mug
+examining table
+exit
+exit to passage
+eye patches
+Famous Pirate Quotations
+fault line
+feather pen
+feet
+Fink
+fish
+fish eyes
+fish plaque
+fisherman
+fishing pole
+flag
+floor indicator
+fruit cocktail
+furnace
+gaping hole
+garbage can
+gardener
+gate
+generic voodoo Kewpie doll
+glass o' distilled water
+glass o' water
+Golden Tongue
+gorilla envelope
+Governor Phatt
+Governor's Mansion
+grasshopper tongues
+grave
+graves
+green drink
+grog mug with colored-drink
+grog mug with near-grog
+gross skulls
+grotesque statue
+ground
+grounds
+guard
+Guard Kiosk
+guest registry
+hammer
+hand and map
+hastily scratched message
+hatch
+helium balloon
+helium surgical glove
+helium tank
+hemorrhoid specimens
+Herman Toothrot
+hole
+hole in the ground
+hole
+hook
+houseboat
+hub cap
+hub caps
+huge door
+hypodermic syringe
+Indy's whip
+innkeeper
+insect lungs
+invitation
+jail cell
+jar
+jar
+jar
+jar
+jar
+jar
+Joanne Lizard
+Jojo
+jugular vein fragments
+juju bag
+jungle
+key
+keyhole
+killer cooties
+kiosk
+knife
+knob
+ladder
+land
+Largo LaGrande
+laundry claim ticket
+laundry guy
+leaflet
+LeChuck's voodoo throne
+leftovers
+Leggy Duck
+lever
+librarian
+light switch
+Light
+Light
+liquor cabinet
+liquor cabinette
+lit dynamite
+liverwurst
+log
+love bomb
+Mêlée Monkey
+Mad Marty
+Mad Marty
+manila envelope
+Mansion
+mansion
+Mansion
+map
+map piece
+map piece
+marinated fingertips
+martini glass
+martini glass
+mask
+massive door
+massive locks
+matches
+medical drawer
+Men of Low Moral Fiber (pirates)
+metronome
+Mighty Moose
+mirror
+mirror frame
+mirror
+model lighthouse
+model lighthouse lens
+Mom's remains
+monkey head
+monocle
+more jungle
+more voodoo crap
+mug o' grog
+mug o' grog
+mug o' grog
+nailed up sign
+nails
+nector o' spider
+newly discovered gaping hole
+north
+oar
+ocean
+old man
+oozing lizard tails
+orange drink
+organ
+outhouse
+outside
+oven
+painting
+paintings
+pan
+pancreas o' porcupine
+paper
+parrot
+parrot chow
+party guest
+party guests
+passage
+path
+pearly-white bra
+peg leg
+Peninsula
+Phatt Island
+piano
+picture
+piece o' eight
+piece o' eight and %nnumber-of-coins% dimes
+piece o' eight and a dime
+pier
+pile
+pile of paper
+pillar
+pins
+pirate hat
+pirate hats
+pit
+plain old sign
+plank
+plaque
+pond
+porthole
+Possible Hidden Treasure
+poster
+pump
+punching bag
+purple drink
+quiche
+railroad track
+red drink
+reinforced oar
+reptilian brain cells
+Rhinoceros Ted
+riches
+Rickety Rabbit
+rock
+rock and roll collector's plate
+rock hard mattress
+root beer
+rope
+Sailor Pat
+Purple Tentacle
+Scabb Island
+shack
+shack
+shakey bucket on door jamb
+shield
+ship
+shipping crate
+ship's horn
+shore
+shortcut
+shovel
+shutters
+side of house
+sign
+sign
+sign-o-splinters
+skeleton in bathtub
+skink toes
+skull
+slot on door
+small key
+small picture frame
+Small Structure
+smashed-up treasure chest
+spider lungs
+spit dripping down wall
+spit encrusted paper
+spit on paper
+spit plaque
+stairs
+stairs master
+stairway
+stick
+sticker
+still
+stone 1
+stone 2
+stone 3
+stone 4
+stone 5
+stone 6
+stone 7
+stool
+stove
+street
+string
+stuff
+stuff in trash can
+styrofoam head
+Sumi Frog
+surgical glove
+surgical glove
+surgical gloves
+Swamp
+swamp worms
+sword sheath?
+table
+telescope
+temporary library card
+Tender Touch
+The Mysterious Island of Cleptomaniac Parrots
+the surface
+ticket
+tiki lights
+tissue o' serpent
+tomb
+tombstone
+tombstones
+top of cliff
+toupee
+trap door
+trapped, cowering rat
+trash can
+treasure chest
+treasure hunter
+tree
+tunnel
+twisted metal rods
+udder grease
+ugly bone thing
+ugly green head
+underwear
+upper deck
+upstairs
+used hankie
+vanilla envelope
+vase
+venom o' jackalope
+vichyssoise avec rat
+vichyssoise avec rat hairs
+vichyssoise
+Ville de la Booty
+voodoo doll
+voodoo key to jail
+voodoo recipe book
+voodoo shopping list
+Wally
+Walt
+wart remover
+wash basin
+Waterfall
+waterfall
+weekend getaway at Hook Island
+weenie hut
+well-polished old saw
+west
+whale painting
+Wharf
+wharf
+wheel
+wheel-o-death
+wig dandruff
+window
+woman in big hat
+wood polish
+wooden sign
+woods
+woodsmith
+Woodtick
+workbench
+wreath
+Wunky Elephant
+xeroxed nosehairs
+yak lips
+yellow drink
+yet, another sign
+zit puss
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+empty
+in
+on
+to
+with
+Row to
+Concept Art Unlocked
+Press
+for audio commentary
+Adult Entertainment \n`Zelda Carbuncle Tells All` \nMemoirs of a woman of \ndubious pleasure.
+Animatronics \n`Animatronics` \nby Walt Whimsy
+Animatronics \n`Under the Surface` \nby Walt Whimsy
+Annotation \nSee Footnoting
+Archaeology \n`X Never Marks the Spot` \nby I. Jones
+Art \n`Vagueness as an Art Form` \n
+Art/Philosophy \n`Idealism or Surrealism?` \nPhilosophy/art textbook.
+Beverages \n`Beverages for Everyone` \n
+Big Whoop \nSee: Treasure
+Biography \n`Both Hands Empty` \nThe Herman Toothrot story.
+Biography \n`Both Hands Moving` \nThe Stan story.
+Biography \n`Both Heads Empty` \nThe Fettucini Brothers story.
+Biography \n`A Fistful of Barnacles` \nJournal of \nCaptain Twiddlymore.
+Biography \n`Lick the Silver Spoon` \nby L. Phatt
+Biography \n`Me and Blackbeard`
+Biography \n`The Time \nI Blew Up LeChuck` \nQuestionable memoirs \nof Guybrush Threepwood
+Biography \n`Yikes!` \nMemoirs of Captain Gilbert
+Body \n`Unusual Birthmarks` \n
+Breakfast \n`Breakfast at Meathook's`
+Business \n`How to Make Friends \nand Influence People` \nby Bluebeard
+Cannibalism  \n`How to Serve \nYour Fellow Man` \nby Lemonhead
+Cannibalism \nSee Also:  Self-Help
+Catalogs \nSee Subheadings
+Cheese \n`Guide to Cheeses of the World` \nReference
+Children's Books  \n`The Sinister Beast \nUnder the Bed`
+Children's Books \n`Treasury of \nPirate Children's Stories`
+Circuses \n`Alfredo and Bill's \nExcellent Adventure` \nFiction
+Circuses \n`Damn the Human Torpedo` \nThe origin of the human \ncannonball trick.
+Classics  \n`Great Expectorations` \nby Captain Loogie
+Collectables \n`Junk, Junk, and \nMore Junk` \nA guide to collectable \nmemorabilia.
+Cooking \n`Noteworthy Pirate Foods`
+Cooking \n`Viscous Fluids You Can \nMake at Home`
+Crafts \n`Crochet Eyepatches \nfor Fun and Profit`
+Cross-Reference \nSee Referential Obscurantism
+Cryptography \n`The Code in My Nose` \nUnique message drops \nthrough history.
+Dewey Decimal System \nSee Organizational Schema
+Disaster \n`Great Shipwrecks \nof Our Century` \nFrom the Lime-Life \nDisaster series.
+Disease \n`Fascinating Facts \nAbout Scurvy`
+Disease \n`Shipboard Diseases`
+Dogs \n`Dog English Dictionary` \nReference
+Education \n`Preparing for the \nPirate Aptitude Test` \nby S. Karpman
+Entertainment \n`Quiet on the Set`
+Entomology \n`Tomato Worms` \nAn owner's manual.
+Etymology \n`Origins of Pirate Words`
+Eyesight \nSee: Vision
+Farthington Dynasty \nSee: Games
+Fashion \n`Summer Swashbuckling \nFashions` \nThree years of the \npopular periodical
+Fiction \n`E Ticket`
+Fiction \n`Five More Than I Needed`
+Fiction \n`Hedgehog Days`
+Fiction \n`Not So Much \nas a Doubloon` \nAn anthology of short fiction
+Fiction \n`Very Very Short Stories`
+Finance \n`Easy Ways to Make Money`
+Fish \n`Big Book of Fish` \nIllustrated guide to \nfish of the world.
+Fishing \n`Limpet Fishing: \nThe Lost Art`
+Food \n`I Married A Muenster` \nby S. Cheese
+Food \n`Life-Size and Larger`
+Food \n`Rats as a Protein Source`
+Food Also \nSee: Cannibalism
+Footnoting \nSee Vicious Pedantry
+Games \n`Hal Barwood on Monkey 2` \nA critical review.
+Games \n`Fan-Tan Fanatic` \nby Elroy T. Funbun
+Games \n`Kings of Shuffleboard` \nAn account of the \nFarthington Dynasty.
+Genealogy \n`My Mother the Cart` \nStrange but true tales.
+Genetics \n`How to Make a Jackalope`
+Geometry \n`Properties of the Elliptic \nHyperboloid`
+Ghost Pirate LeChuck \n`When I Blew Up LeChuck` \nOne of Threepwood's worst.
+Ghost Pirate LeChuck \n`Where I Blew Up LeChuck` \nOne of Threepwood's worst.
+Ghost Pirate LeChuck \n`Why I Blew Up LeChuck` \nOne of Threepwood's worst.
+Godiva, Lady \n`The Shirt Off My Back` \nBiography, \nSee also Adult Entertainment
+Grave Robbing \n`Popular Punishments for \nGrave Robbers`
+Grog, Addiction to \n`I Am Blackbeard's Liver` \nThe Horrifying True Story \nof a Confessed Grogaholic
+Groupings \nSee Catalogs
+Headings \nSee Cross-Reference
+History \n`Careful With \nThose Cannonballs!` \nLegend of the \nGlass-Bottomed Armada
+History \nSee Also: Scabb Island
+Hogwash \n`Rememberance of Molly`
+Humor \n`Bad Puns For Bad Pirates` \nby N. Falstein
+Humor \n`Dumb Pirate Jokes`
+Humor, Gallows \n`So You're Going \nTo Be Executed...` \nDozens of things to say \non the chopping block.
+Ice Cream \n`Pirates' Favorite \nIce Cream Flavors`
+Idols \n`Tikis of the South Pacific` \nReference
+Igloos \n`Igloo Construction \nMade Easy`
+Imaginary Numbers \n`The New Tax Laws` \nLight fiction.
+Indexes \nSee Indices
+Indian Burns \n`How to Give \nGreat Indian Burns`
+Indices \nSee Titles
+Inferiority \n`The Complex Complex`
+Internal Revenue Service \nSee Imaginary Numbers.
+Jackalope \nSee Genetics
+Jelly \n`The Story of Jelly`
+Jellyfish \n`Our Spineless Cousins`
+Justice \n`Kangaroo Court` \nCritique of the modern \njudicial system.
+Juvenile Behavior \n`Cow-Tipping Enthusiast` \nCollected essays on \nform and style.
+Karate \nSee Martial Arts
+Karma \n`My Karma Just Ran Over \nYour Dogma` \nsee also: Philosophy
+Keelhauling \n`Keelhauling: Methodology \nand Practice`
+Ketchup \nSee Vegetables
+Kidneys \n`The Little Organ \nThat Could` \nPop-up book of kidney functions.
+Kleptomania \n`Kleptomania`
+Labyrinths \nSee Zip Codes
+Language \n`Hip Lingo for Pirates` \nA dictionary of modern \nslang terms.
+Lice \n`Louse Ranching For \nFun and Profit`
+Lunch \n`Afternoon at Meathook's`
+Lyrics \n`Rock and Raunch` \nBanned record albums \nof the past decade.
+Magic \nSee Voodoo
+Manatees \n`Damp Damsels of the Deep`
+Manatees \n`The Sailor and the Sea Cow` \n-- A Fable
+Martial Arts \n`Theory and Practice of \nBone Breakage`
+Mathematics \n`Cubic Lemniscate Formulas`
+Maze Construction \nSee Annotation
+Military \n`The Steath Sailer: \nWhy It Won't Sail`
+Money \n`Make Easy Money at Home`
+Music \n`Elvis Lives` \nPredictions of future music \nby Nottruedamus
+Music \n`Greatest Rock Musicians \nof the Renaissance`
+Music \n`Volume First`
+Music \n`World's Worst Pirate Songs`
+Music \n`Xylophone For Beginners`
+Mystery \n`How Much Wood?` \nFrom the \nwoodchuck mystery series.
+Narcissism \n`Feeling Good \nAbout Narcissism`
+Narcolepsy \n`Confessions of a Narcoleptic`
+New Age \n`Dynanetics \nby L. Ron Gilbert`
+Night \n`Sounds From \nUnder the Bed`
+Normality \n`A White Picket Fence` \nSociological study.
+Noses \n`Honk If You Have To` \nColds, allergies, \nand other ailments.
+Nostalgia \n`Soda Fountains of My Youth` \nby Ponce de Leon
+Numerology \n`Numerology for Beginners`
+Nylon \n`Use of Nylon by Pirates`
+Obesity \n`More of Me to Love` \nBy L. Phatt
+Okra \n`Favorite Gumbo Recipes` \nSee also Food.
+Olives \n`Scourge of the Pizza` \nExamination of forced \nolive consumption.
+Optimism \n`There's Always A Rainbow`
+Orangutans \n`Our Hairy Cousins` \n
+Organizational Schema \nSee Labyrinths
+Origami \n`Paper Buffalo` \nAdvanced origami designs.
+Orthopedics \n`Hear the Sound of \nMy Feet Talking`
+Philosophy \n`Deliberance` \nA philosophical treatise.
+Philosophy \n`Rastafarian Philosophy`
+Pillaging \n`All about Pillaging` \nFrom the popular \nHow-To series.
+Pillaging \n`Masters of Pillaging` \nInterviews with \nsome of the best.
+Piracy \n`Pirating Primer` \nFor the novice pirate.
+Poetry \n`Three Sheets to the Wind` \nPoetry by pirates.
+Quotations \n`Famous Pirate Quotations`
+Ranching \nSee Lice
+Recursion \nSee Recursion
+Recipes, Voodoo \n`The Joy of Hex` \n101 essential voodoo recipes.
+Referential Obscurantism \nSee Groupings
+Romance \n`Amour's Agonizing Adieu` \nby Melanie Leary
+Romance \n`Desire's \nDistasteful \nDenouement` \nby Melanie Leary
+Romance \n`Fascination's Final Frenzy` \nby Melanie Leary
+Romance \n`Love's Lingering Lassitude` \nby Melanie Leary
+Romance \n`Next To Nothing` \nby E. Marley, \nan account of her time with \nGuybrush Threepwood.
+Romance  \n`Passion's Persistent Presence` \nby Melanie Leary
+Romance \n`Romance's \nWretched Residue` \nby Melanie Leary
+Romance \n`Sin's Sordid Swan Song` \nby Melanie Leary
+Romance \n`Yearning's \nYellowing Yesterdays` \nby Melanie Leary
+Sailing \n`If I Only \nHad A Drain` \nPerils of showering \naboard ship.
+Sailing \n`Safe Sailing`
+Salmon \n`Lox and Locks` \nModern problems \nfacing salmon.
+Scabb Island \n`Scabb Island History` \nAn Introduction
+Self-Help \n`Pirates Who \nLove Too Much`
+Self-Help \n`Not Eating People \nand Feeling Good About It` \nConfessions of \nan Ex-Cannibal
+Sharks \n`Killers of the Deep` \nA study of Caribbean sharks.
+Shipbuilding \n`Modern Shipbuilding` \nby G. Steele
+Shipwrecks \nSee: Disaster
+Sin \n`The Hidden Sins of Calculus`
+Sin \n`Top Seven Deadly Sins`
+Slang, Pirate \n`Shiver Me Timbers` \nSee also: Language
+Sociology \n`Social Darwinism and \nSocial Disease` \nComparative social theory.
+Solitaire \n`A Million and One Ways \nto Play Solitaire` \nby Herman Toothrot
+Spiritual \n`Gift of the Lizard People`
+Spiritual \n`Over the Crow's Nest`
+Stupidity \n`Walk Thru Walls: \nThe Intelligence Avoider` \nAn analysis of the system, \npat pending.
+Subheadings \nSee Maze Construction
+Subtraction \n`Subtraction: Addition's \nTricky Partner`
+Surgery \n`Operating Without A Net` \nTechniques for safe surgery.
+Tattoos \n`Why Chicks Dig Tattoos`
+Tattoos \n`Tattoo-Related \nSkin Infections`
+Tattoos \n`A Child's First \nBook of Tattoos`
+Tea \n`Tea Party Massacre` \nby Louisa de la Cruz
+Theater \n`Beyond Hearts \nand Question Marks` \nShadow Puppetry for the \nTwo-Hook Pirate
+Three-Headed Monkey \n`The Pride of Loch Ness`
+Titles \nSee Headings
+Toast \n`Thirty Things That Taste \nTerrific On Toast` \n
+Toenails \n`Modern Toenail Collector` \nPeriodical compendium.
+Toys \n`Collectable Toy Trucks`
+Travel \n`The Caribbean on \nNo Dollars \nA Day` \nA pirate handbook.
+Treasure \n`Big Whoop: \nUnclaimed Bonanza \nor Myth?`
+Tree Surgery \n`Anaesthetics For \nDeciduous Trees`
+Trilogies \n`Why People Shouldn't \nWrite Trilogies` \nby Simon Finkleberth
+Trilogies \n`Why People Won't \nRead Trilogies` \nby Simon Finkleberth
+Trilogies \n`Why People Write \nTrilogies Anyway` \nby Simon Finkleberth
+Tripe \n`Dessert Recipes \nfor Tripe Lovers`
+Ulcers \n`Why You Shouldn't Worry \nAbout Ulcers`
+Umbrellas \n`Giant Umbrellas and \nOther Bits of Art`
+Underwear \n`Wedgies: Harmless Fun Or \nSadistic Torture?`
+Vegetables \n`Vegetables Children Will Eat`
+Vicarious Living \n`Popular Spectator Sports`
+Vices \n`101 Vices` \nby J.P. Ampleform
+Vicious Pedantry \nSee Dewey Decimal System
+Violins \n`Thirty Non-Musical Uses \nFor Your Violin`
+Viruses \n`Things You Can Catch By \nReading a Library Book`
+Vision \n`Patches`
+Volcanoes \n`Warm All Year Round` \nReal estate handbook.
+Voodoo \nSee: Recipes, Voodoo
+Vulgarity \n`Gross Things to \nSay at Parties`
+Waiting \n`Is It Soup Yet?` \nA jillion things to do while \nwaiting in line.
+Wallpaper \n`Anywhere But My Room` \nDesigns featuring cute \ncartoon characters.
+Wallpaper \n`Impact of Yellow on \nSmall Children` \nPsychological study.
+Wallpaper \n`Living in Lime` \nOne thousand \nlime green designs.
+Waltzes \n`Dancing On Three Legs`
+Warthogs \n`The Misunderstood Pet`
+Wealth \n`Opulence as a Social Art` \nby L. Phatt
+Wild Animals \n`Meet Mr. Tiger` \nPop-up book.
+Wine \n`Sniffing the Cork` \nHow-to for the wine snob.
+Woodworking \n`Out On a Plank`
+Xanthippe \n`Life Cycle of the Shrew`
+Xenophobia \n`Hey You Kids, Get Off \nMy Lawn`
+Xylophone \nSee: Music
+Yacht Clubs \n`Pirate's Guide to Caribbean \nYacht Clubs`
+Yachting \n`All You Need is the Cap` \nYachting on land.
+Yaks \n`The Yak is Slow But \nthe Earth Is Patient`
+Yawning \n`The Yearn to Yawn` \nPsychological study \nof yawn envy.
+Yeti \n`Interview With A Snowman`
+Yiddish \n`Feh, and Other Useful Terms` \nReference.
+Yodeling \n`Yodeling from the Top \nof the Lungs` \nA study of yodeling as \nan offensive weapon.
+Yorkshire Pudding \n`Not Quite Really Pudding` \nArticles and recipes.
+Yo-yos \n`At the End of the Rope` \nYo-yo politics.
+Yo-yos \n`Bouncing and Behaving` \nIntermediate yo-yo tricks.
+Yo-yos \n`Spinning at the \nEnd of a String` \nYo-yo philosophy.
+Zinjanthropus \n`Pirates of the Pleistocene`
+Zip Codes \nSee Indexes
+Zippers \n`Zipper Theory`
+Zirconium \n`The Most Beautiful Element`
+Zoology \n`Just one of the Primates`
+Zoology \n`Zoo Animals More \nIntelligent Than Humans`
+Mountains \n`The Majesty of the Sierras`
+Obscenity \n`&$*#!` \nSymbolic equivalents \nof obscene words \nand phrases.
+Noises \n`A Definitive Guide to \nCartoon Noises`
+Noogies \n`How to Give \nGreat Noogies`
+GAME SETTINGS
+AUDIO SETTINGS
+Monkey Island 2 Special Edition\nLeChuck's Revenge
+Part One: The Largo Embargo
+Part Two: Four Map Pieces
+Part Three: LeChuck's Fortress
+Part Four: Dinky Island
+%d%% complete
+Verse 1:
+Verse 2:
+Verse 3:
+Verse 4:
+VIEW PROFILE
+XBLA LEADERBOARDS
+MY FRIENDS
+MY SCORE
+GAMERTAG
+SCORE
+You will lose any unsaved progress. Are you sure you want to load from this save slot?
+Classic Edition is only available in English.
+KEYBOARD SHORTCUTS
+Keyboard Shortcuts
+Most of the actions you perform in Monkey Island 2 Special Edition can be entered with the keyboard.
+INVENTORY
+inventory
+Hint
+HINT
+View Profile
+CONTINUE GAME
+Cancel Button
+FULL SCREEN
+TRACKPAD
+PIRATE DICTIONARY
+PRESS FOR RANKING
+Left Button:\nWalk To / Use Inventory Item / Dialogue Selection\nWheel:\nClick once to:\nOpen / Close inventory menu\nScroll Through:\ninventory menu\nLeft + Right Button:\nObject Highlight\nRight Button:\nOpen Verb Action dial / Perform Action / Look at Inventory Item\nHint Button\nMove Cursor
+OVERALL
+Close Inventory
+No objects available
+Choose a different storage device.
+The selected storage device has been removed.
+The save file appears to be damaged and cannot be loaded.
+The save file appears to be damaged and cannot be loaded. Damaged save file will be overwritten automatically.
+Retry saving
+pieces o' eight
+The selected storage device has been removed. Autosaving is now disabled. You must select a storage device to re-enable autosaving.
+shopkeeper
+spitmaster
+CLICK ON THE IMAGE FOR FULL SCREEN
+Return to Game Library
+Exit to Main Menu
+ONLINE ID
+Time of Completion
+Time Score
+Number of Items Collected
+Number of Hints Used
+Score
+This game saves automatically at certain points. Do not switch off the power when the HDD access indicator is flashing.
+Special Effects
+Resolution
+Full Screen
+Apply
+SAVING CONTENT
+Online service is disabled on your PlayStation®Network account due to parental control restrictions.
+dimes
+and a dime
+and
+Swim to
+N
+S
+E
+W
+Sorry, no hints available at this time...
+All unsaved progress will be lost. Are you sure you want to continue?
+A network error has occurred. Returning to the main menu.
+Settings
+Adult Entertainment \n`Zelda Carbuncle Tells All` \nMemoirs of a woman of \ndubious pleasure.
+Animatronics \n`Animatronics` \nby Walt Whimsy
+Animatronics \n`Under the Surface` \nby Walt Whimsy
+Annotation \nSee Footnoting
+Archaeology \n`X Never Marks the Spot` \nby I. Jones
+Art \n`Vagueness as an Art Form` \n
+Art/Philosophy \n`Idealism or Surrealism?` \nPhilosophy/art textbook.
+Beverages \n`Beverages for Everyone` \n
+Big Whoop \nSee: Treasure
+Biography \n`Both Hands Empty` \nThe Herman Toothrot story.
+Biography \n`Both Hands Moving` \nThe Stan story.
+Biography \n`Both Heads Empty` \nThe Fettucini Brothers story.
+Biography \n`A Fistful of Barnacles` \nJournal of \nCaptain Twiddlymore.
+Biography \n`Lick the Silver Spoon` \nby L. Phatt
+Biography \n`Me and Blackbeard`
+Biography \n`The Time \nI Blew Up LeChuck` \nQuestionable memoirs \nof Guybrush Threepwood
+Biography \n`Yikes!` \nMemoirs of Captain Gilbert
+Body \n`Unusual Birthmarks` \n
+Breakfast \n`Breakfast at Meathook's`
+Business \n`How to Make Friends \nand Influence People` \nby Bluebeard
+Cannibalism  \n`How to Serve \nYour Fellow Man` \nby Lemonhead
+Cannibalism \nSee Also:  Self-Help
+Catalogs \nSee Subheadings
+Cheese \n`Guide to Cheeses of the World` \nReference
+Children's Books  \n`The Sinister Beast \nUnder the Bed`
+Children's Books \n`Treasury of \nPirate Children's Stories`
+Circuses \n`Alfredo and Bill's \nExcellent Adventure` \nFiction
+Circuses \n`Damn the Human Torpedo` \nThe origin of the human \ncannonball trick.
+Classics  \n`Great Expectorations` \nby Captain Loogie
+Collectables \n`Junk, Junk, and \nMore Junk` \nA guide to collectable \nmemorabilia.
+Cooking \n`Noteworthy Pirate Foods`
+Cooking \n`Viscous Fluids You Can \nMake at Home`
+Crafts \n`Crochet Eyepatches \nfor Fun and Profit`
+Cross-Reference \nSee Referential Obscurantism
+Cryptography \n`The Code in My Nose` \nUnique message drops \nthrough history.
+Dewey Decimal System \nSee Organizational Schema
+Disaster \n`Great Shipwrecks \nof Our Century` \nFrom the Lime-Life \nDisaster series.
+Disease \n`Fascinating Facts \nAbout Scurvy`
+Disease \n`Shipboard Diseases`
+Dogs \n`Dog English Dictionary` \nReference
+Education \n`Preparing for the \nPirate Aptitude Test` \nby S. Karpman
+Entertainment \n`Quiet on the Set`
+Entomology \n`Tomato Worms` \nAn owner's manual.
+Etymology \n`Origins of Pirate Words`
+Eyesight \nSee: Vision
+Farthington Dynasty \nSee: Games
+Fashion \n`Summer Swashbuckling \nFashions` \nThree years of the \npopular periodical
+Fiction \n`E Ticket`
+Fiction \n`Five More Than I Needed`
+Fiction \n`Hedgehog Days`
+Fiction \n`Not So Much \nas a Doubloon` \nAn anthology of short fiction
+Fiction \n`Very Very Short Stories`
+Finance \n`Easy Ways to Make Money`
+Fish \n`Big Book of Fish` \nIllustrated guide to \nfish of the world.
+Fishing \n`Limpet Fishing: \nThe Lost Art`
+Food \n`I Married A Muenster` \nby S. Cheese
+Food \n`Life-Size and Larger`
+Food \n`Rats as a Protein Source`
+Food Also \nSee: Cannibalism
+Footnoting \nSee Vicious Pedantry
+Games \n`Hal Barwood on Monkey 2` \nA critical review.
+Games \n`Fan-Tan Fanatic` \nby Elroy T. Funbun
+Games \n`Kings of Shuffleboard` \nAn account of the \nFarthington Dynasty.
+Genealogy \n`My Mother the Cart` \nStrange but true tales.
+Genetics \n`How to Make a Jackalope`
+Geometry \n`Properties of the Elliptic \nHyperboloid`
+Ghost Pirate LeChuck \n`When I Blew Up LeChuck` \nOne of Threepwood's worst.
+Ghost Pirate LeChuck \n`Where I Blew Up LeChuck` \nOne of Threepwood's worst.
+Ghost Pirate LeChuck \n`Why I Blew Up LeChuck` \nOne of Threepwood's worst.
+Godiva, Lady \n`The Shirt Off My Back` \nBiography, \nSee also Adult Entertainment
+Grave Robbing \n`Popular Punishments for \nGrave Robbers`
+Grog, Addiction to \n`I Am Blackbeard's Liver` \nThe Horrifying True Story \nof a Confessed Grogaholic
+Groupings \nSee Catalogs
+Headings \nSee Cross-Reference
+History \n`Careful With \nThose Cannonballs!` \nLegend of the \nGlass-Bottomed Armada
+History \nSee Also: Scabb Island
+Hogwash \n`Rememberance of Molly`
+Humor \n`Bad Puns For Bad Pirates` \nby N. Falstein
+Humor \n`Dumb Pirate Jokes`
+Humor, Gallows \n`So You're Going \nTo Be Executed...` \nDozens of things to say \non the chopping block.
+Ice Cream \n`Pirates' Favorite \nIce Cream Flavors`
+Idols \n`Tikis of the South Pacific` \nReference
+Igloos \n`Igloo Construction \nMade Easy`
+Imaginary Numbers \n`The New Tax Laws` \nLight fiction.
+Indexes \nSee Indices
+Indian Burns \n`How to Give \nGreat Indian Burns`
+Indices \nSee Titles
+Inferiority \n`The Complex Complex`
+Internal Revenue Service \nSee Imaginary Numbers.
+Jackalope \nSee Genetics
+Jelly \n`The Story of Jelly`
+Jellyfish \n`Our Spineless Cousins`
+Justice \n`Kangaroo Court` \nCritique of the modern \njudicial system.
+Juvenile Behavior \n`Cow-Tipping Enthusiast` \nCollected essays on \nform and style.
+Karate \nSee Martial Arts
+Karma \n`My Karma Just Ran Over \nYour Dogma` \nsee also: Philosophy
+Keelhauling \n`Keelhauling: Methodology \nand Practice`
+Ketchup \nSee Vegetables
+Kidneys \n`The Little Organ \nThat Could` \nPop-up book of kidney functions.
+Kleptomania \n`Kleptomania`
+Labyrinths \nSee Zip Codes
+Language \n`Hip Lingo for Pirates` \nA dictionary of modern \nslang terms.
+Lice \n`Louse Ranching For \nFun and Profit`
+Lunch \n`Afternoon at Meathook's`
+Lyrics \n`Rock and Raunch` \nBanned record albums \nof the past decade.
+Magic \nSee Voodoo
+Manatees \n`Damp Damsels of the Deep`
+Manatees \n`The Sailor and the Sea Cow` \n-- A Fable
+Martial Arts \n`Theory and Practice of \nBone Breakage`
+Mathematics \n`Cubic Lemniscate Formulas`
+Maze Construction \nSee Annotation
+Military \n`The Steath Sailer: \nWhy It Won't Sail`
+Money \n`Make Easy Money at Home`
+Music \n`Elvis Lives` \nPredictions of future music \nby Nottruedamus
+Music \n`Greatest Rock Musicians \nof the Renaissance`
+Music \n`Volume First`
+Music \n`World's Worst Pirate Songs`
+Music \n`Xylophone For Beginners`
+Mystery \n`How Much Wood?` \nFrom the \nwoodchuck mystery series.
+Narcissism \n`Feeling Good \nAbout Narcissism`
+Narcolepsy \n`Confessions of a Narcoleptic`
+New Age \n`Dynanetics \nby L. Ron Gilbert`
+Night \n`Sounds From \nUnder the Bed`
+Normality \n`A White Picket Fence` \nSociological study.
+Noses \n`Honk If You Have To` \nColds, allergies, \nand other ailments.
+Nostalgia \n`Soda Fountains of My Youth` \nby Ponce de Leon
+Numerology \n`Numerology for Beginners`
+Nylon \n`Use of Nylon by Pirates`
+Obesity \n`More of Me to Love` \nBy L. Phatt
+Okra \n`Favorite Gumbo Recipes` \nSee also Food.
+Olives \n`Scourge of the Pizza` \nExamination of forced \nolive consumption.
+Optimism \n`There's Always A Rainbow`
+Orangutans \n`Our Hairy Cousins` \n
+Organizational Schema \nSee Labyrinths
+Origami \n`Paper Buffalo` \nAdvanced origami designs.
+Orthopedics \n`Hear the Sound of \nMy Feet Talking`
+Philosophy \n`Deliberance` \nA philosophical treatise.
+Philosophy \n`Rastafarian Philosophy`
+Pillaging \n`All about Pillaging` \nFrom the popular \nHow-To series.
+Pillaging \n`Masters of Pillaging` \nInterviews with \nsome of the best.
+Piracy \n`Pirating Primer` \nFor the novice pirate.
+Poetry \n`Three Sheets to the Wind` \nPoetry by pirates.
+Quotations \n`Famous Pirate Quotations`
+Ranching \nSee Lice
+Recursion \nSee Recursion
+Recipes, Voodoo \n`The Joy of Hex` \n101 essential voodoo recipes.
+Referential Obscurantism \nSee Groupings
+Romance \n`Amour's Agonizing Adieu` \nby Melanie Leary
+Romance \n`Desire's \nDistasteful \nDenouement` \nby Melanie Leary
+Romance \n`Fascination's Final Frenzy` \nby Melanie Leary
+Romance \n`Love's Lingering Lassitude` \nby Melanie Leary
+Romance \n`Next To Nothing` \nby E. Marley, \nan account of her time with \nGuybrush Threepwood.
+Romance  \n`Passion's Persistent Presence` \nby Melanie Leary
+Romance \n`Romance's \nWretched Residue` \nby Melanie Leary
+Romance \n`Sin's Sordid Swan Song` \nby Melanie Leary
+Romance \n`Yearning's \nYellowing Yesterdays` \nby Melanie Leary
+Sailing \n`If I Only \nHad A Drain` \nPerils of showering \naboard ship.
+Sailing \n`Safe Sailing`
+Salmon \n`Lox and Locks` \nModern problems \nfacing salmon.
+Scabb Island \n`Scabb Island History` \nAn Introduction
+Self-Help \n`Pirates Who \nLove Too Much`
+Self-Help \n`Not Eating People \nand Feeling Good About It` \nConfessions of \nan Ex-Cannibal
+Sharks \n`Killers of the Deep` \nA study of Caribbean sharks.
+Shipbuilding \n`Modern Shipbuilding` \nby G. Steele
+Shipwrecks \nSee: Disaster
+Sin \n`The Hidden Sins of Calculus`
+Sin \n`Top Seven Deadly Sins`
+Slang, Pirate \n`Shiver Me Timbers` \nSee also: Language
+Sociology \n`Social Darwinism and \nSocial Disease` \nComparative social theory.
+Solitaire \n`A Million and One Ways \nto Play Solitaire` \nby Herman Toothrot
+Spiritual \n`Gift of the Lizard People`
+Spiritual \n`Over the Crow's Nest`
+Stupidity \n`Walk Thru Walls: \nThe Intelligence Avoider` \nAn analysis of the system, \npat pending.
+Subheadings \nSee Maze Construction
+Subtraction \n`Subtraction: Addition's \nTricky Partner`
+Surgery \n`Operating Without A Net` \nTechniques for safe surgery.
+Tattoos \n`Why Chicks Dig Tattoos`
+Tattoos \n`Tattoo-Related \nSkin Infections`
+Tattoos \n`A Child's First \nBook of Tattoos`
+Tea \n`Tea Party Massacre` \nby Louisa de la Cruz
+Theater \n`Beyond Hearts \nand Question Marks` \nShadow Puppetry for the \nTwo-Hook Pirate
+Three-Headed Monkey \n`The Pride of Loch Ness`
+Titles \nSee Headings
+Toast \n`Thirty Things That Taste \nTerrific On Toast` \n
+Toenails \n`Modern Toenail Collector` \nPeriodical compendium.
+Toys \n`Collectable Toy Trucks`
+Travel \n`The Caribbean on \nNo Dollars \nA Day` \nA pirate handbook.
+Treasure \n`Big Whoop: \nUnclaimed Bonanza \nor Myth?`
+Tree Surgery \n`Anaesthetics For \nDeciduous Trees`
+Trilogies \n`Why People Shouldn't \nWrite Trilogies` \nby Simon Finkleberth
+Trilogies \n`Why People Won't \nRead Trilogies` \nby Simon Finkleberth
+Trilogies \n`Why People Write \nTrilogies Anyway` \nby Simon Finkleberth
+Tripe \n`Dessert Recipes \nfor Tripe Lovers`
+Ulcers \n`Why You Shouldn't Worry \nAbout Ulcers`
+Umbrellas \n`Giant Umbrellas and \nOther Bits of Art`
+Underwear \n`Wedgies: Harmless Fun Or \nSadistic Torture?`
+Vegetables \n`Vegetables Children Will Eat`
+Vicarious Living \n`Popular Spectator Sports`
+Vices \n`101 Vices` \nby J.P. Ampleform
+Vicious Pedantry \nSee Dewey Decimal System
+Violins \n`Thirty Non-Musical Uses \nFor Your Violin`
+Viruses \n`Things You Can Catch By \nReading a Library Book`
+Vision \n`Patches`
+Volcanoes \n`Warm All Year Round` \nReal estate handbook.
+Voodoo \nSee: Recipes, Voodoo
+Vulgarity \n`Gross Things to \nSay at Parties`
+Waiting \n`Is It Soup Yet?` \nA jillion things to do while \nwaiting in line.
+Wallpaper \n`Anywhere But My Room` \nDesigns featuring cute \ncartoon characters.
+Wallpaper \n`Impact of Yellow on \nSmall Children` \nPsychological study.
+Wallpaper \n`Living in Lime` \nOne thousand \nlime green designs.
+Waltzes \n`Dancing On Three Legs`
+Warthogs \n`The Misunderstood Pet`
+Wealth \n`Opulence as a Social Art` \nby L. Phatt
+Wild Animals \n`Meet Mr. Tiger` \nPop-up book.
+Wine \n`Sniffing the Cork` \nHow-to for the wine snob.
+Woodworking \n`Out On a Plank`
+Xanthippe \n`Life Cycle of the Shrew`
+Xenophobia \n`Hey You Kids, Get Off \nMy Lawn`
+Xylophone \nSee: Music
+Yacht Clubs \n`Pirate's Guide to Caribbean \nYacht Clubs`
+Yachting \n`All You Need is the Cap` \nYachting on land.
+Yaks \n`The Yak is Slow But \nthe Earth Is Patient`
+Yawning \n`The Yearn to Yawn` \nPsychological study \nof yawn envy.
+Yeti \n`Interview With A Snowman`
+Yiddish \n`Feh, and Other Useful Terms` \nReference.
+Yodeling \n`Yodeling from the Top \nof the Lungs` \nA study of yodeling as \nan offensive weapon.
+Yorkshire Pudding \n`Not Quite Really Pudding` \nArticles and recipes.
+Yo-yos \n`At the End of the Rope` \nYo-yo politics.
+Yo-yos \n`Bouncing and Behaving` \nIntermediate yo-yo tricks.
+Yo-yos \n`Spinning at the \nEnd of a String` \nYo-yo philosophy.
+Zinjanthropus \n`Pirates of the Pleistocene`
+Zip Codes \nSee Indexes
+Zippers \n`Zipper Theory`
+Zirconium \n`The Most Beautiful Element`
+Zoology \n`Just one of the Primates`
+Zoology \n`Zoo Animals More \nIntelligent Than Humans`
+Mountains \n`The Majesty of the Sierras`
+Obscenity \n`&$*#!` \nSymbolic equivalents \nof obscene words \nand phrases.
+Noises \n`A Definitive Guide to \nCartoon Noises`
+Noogies \n`How to Give \nGreat Noogies`
+If you want to access the pause menu during a game, rotate the iPhone or iPod touch vertically.

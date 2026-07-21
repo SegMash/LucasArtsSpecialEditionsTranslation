@@ -1,0 +1,511 @@
+Achievements
+Are you sure you want to load from this save slot?
+Are you sure you want to overwrite this save slot?  All progress in this save slot will be lost.
+Are you sure you want to quit to the main menu?
+Back
+Classic Edition Credits
+Continue Without Saving
+Controls
+Create New Save Data
+Do not turn off the Xbox 360 Console or remove the Storage Device whenever you see the icon above on screen.
+Exit Game
+Failed to Save
+Help & Options
+How To Play
+Leaderboards
+Load Game
+Loading game. Please don't turn off your Xbox 360 console.
+אי הקופים
+Music Volume
+No Storage device has been selected.  Please select a Storage device or choose to continue without saving.
+אישור
+Please choose a Storage device with at least %iKB free or you will be unable to save.
+Quitting without saving will result in the loss of unsaved progress.
+Retry Load
+Resume Game
+Save Data was not found on the Storage device.  Would you like to create new save data or continue without saving?
+Save Game
+Saved game appears to be damaged and cannot be used.
+Saving content. Please don't turn off your console
+Select
+Select A Storage device
+Settings
+SFX Volume
+Special Edition Credits
+Subtitles
+Voice Volume
+כן.
+You are not signed into Xbox LIVE and can not access the Leaderboards.
+You do not have a valid Storage device selected. If you choose to proceed, you will be unable to save your progress in the game.
+You do not have an active gamer profile. Saving and achievements will be disabled. To create or load a gamer profile now, press the Xbox Guide button. Do you want to continue without saving and achievements?
+ביטול
+יציאה
+Choose your language
+Autosave and Quit
+Quit Without Saving
+לא.
+Leaderboard
+על
+OFF
+Play New Game
+Continue/Load
+Return To Game Library
+Unlock Full Game
+Press A button to view this leaderboard
+Please wait, now retrieving records from Xbox LIVE
+Total number of players:
+Friends
+Overall
+My Score
+Rank
+Gamertag
+Completed
+View
+Gamer Card
+Empty
+Autosave:
+Slot
+Warning - Autosave cannot be overwritten
+Part One: The Three Trials
+Part Two: The Journey
+Part Three: Under Monkey Island
+The Last Part: Guybrush Kicks Butt
+Play Time:
+Percent Complete:
+Disconnected from Xbox LIVE
+Press START
+Hold [Y] To Skip
+Hold [X] For Hint
+You are not yet ranked on the leaderboard for this game.
+Your friends are not yet ranked on the leaderboard for this game.
+There are no entries on this leaderboard.
+entries
+entry
+The data could not be saved on the selected storage device.
+Loading
+בננה
+בננות
+חוף
+פעמון
+אף גדול
+ראש אבן גדול
+ידיים מוכתמות בדם
+ספרים
+קערת פירות
+מוח
+סוכריות מנטה
+חוברת
+חלון שבור
+קניבלים
+מערה
+צרור של גלגלי-עיניים
+רציף
+כלב
+דלת
+עין
+עיניים
+פסל מהמם
+פנים
+ילידים ידידותיים
+חור פעור
+ghost key
+דוחה חולדים
+ראש הנווט
+ראשים
+לב
+חיליק שנאלח
+צריף
+יער-גשם
+עלון
+לה-צ'אק
+תצפיתן
+בקבוק גזוז קסום
+מדריך הסגנון
+mondo big rock
+פטריה
+שרשרת על ברנשצבע
+שרשרת על הנווט
+פתק
+ציור
+ספרון
+שביל
+שודד-ים
+שודדי ים
+סלע
+תרנגולת גומי
+את חפירה
+שלט
+חולץ סיכות
+פתק מהחנווני
+stump balm
+אגרטל
+שפתיים משעווה
+piece of eight
+מטבעות כסף
+חולצה מ-%100 כותנה
+סמטה
+קשת
+גרזן
+בננה
+קוטף בננות
+בננות
+חבית
+סל
+סלים
+חוף
+דלת עץ גדולה
+תיבה שחורה
+סירה
+סירה
+עצמות
+סימניה
+בקבוק
+קערת-עצמות
+box full o' swords
+גשר
+תא מעצר
+בקבוק שבור
+כרטיס ביקור
+ארון
+כבל
+עוגה
+מחנה
+תותח
+פגז
+פתח התותח
+מיטת הקברניט
+קדרת הפחד
+מערה
+תא
+דגני בוקר
+גביע
+תיבה
+תיבות
+תרנגולת
+תרנגולות
+מקלות קינמון
+אוהל קרקס
+Citizen of Mle
+קרחת יער
+צוק
+שעון
+שמן בישול
+סיר בישול
+גופה
+ספה
+סדק
+ארון
+וילון
+סכר
+קופיץ קטלני
+כלבי פיראנה-פודל קטלניים
+כלבי פיראנה-פודל קטלניים
+צלחת
+דלת
+דלת
+דלת
+פתח
+מגירה
+רוח רפאים שיכורה
+אפיק נחל אכזב
+ספר מאובק
+יציאה
+פסל מהמם
+עט נוצה
+יין משובח
+אח
+דג
+גוש בוער
+מאחזי רגל
+שביל ביער
+צומת
+מצודה
+מגדת עתידות
+פתיל
+רוח
+תרנגולי רפאים
+כלב רפאים
+נוצת רפאים
+שומר רפאים
+חזירי רפאים
+ספינת רפאים
+כלי רפאים
+חתיכה ענקית של חבל
+אוזן קוף ענקית
+ראש קוף ענקי
+גוש שומן
+תיבה זוהרת
+אחוזת המושלת
+מלאך המוות
+מכונת גרוג
+אבק שריפה
+מסור
+חופן אבק שריפה
+ידית
+גופה תלויה
+פתח
+ערימת סלעים
+בית
+Hubert
+נתח בשר
+פסל
+שודדים חשובים-למראה
+דיו
+אי
+דגל שודדי-ים
+קנקן גרוג
+יער-גשם
+חביות
+מפתח
+סולם
+לה-צ'אק
+מנוף
+אורות
+מנעול
+תצפיתן
+תצפית
+לוח רופף
+בננות מגרות ועסיסיות
+מצפן מגנטי
+מפה
+סמן
+תזכיר
+תזכיר
+אנשים עם אמות מוסר נמוכות )שודדי ים(
+פרוטוקול
+קוף
+אדמת הקופים
+ראש קוף
+מפתח לראש הקוף
+אי הקופים
+ספל
+ספל
+צוות מרדני
+Norbert
+אף
+פתק
+פתק תחת הסלע
+החוץ
+מעבר
+שביל
+שביל למטה
+שביל אל היער הטרופי
+תמונה
+פיסת נייר
+מטבעות כסף
+צמח וגזע
+פרחים
+לוח
+מוט
+אגם
+כרזה
+סיר
+סיר קדירה
+אמנות פרימיטיבית
+אסיר
+חבל משיכה
+punching bag
+r
+חולדה
+מספריים חדים כתער
+אש חמה מאוד
+שפך נהר
+סלע
+סלע וצמח
+סלע מעל פתק
+בירת שורשים
+חבל
+סולם חבלים
+סירה ומשוטים
+סירה
+סכין חלוד
+כספת
+sandbag
+סיפון הספינה
+גדה
+שלט
+גולגולת
+גולגולות
+צוות רפאים ישן
+מפתח קטן
+משקפת
+מדרגות
+פסל
+חנווני
+רחוב
+גזע עץ
+חרב
+מומחית החרב
+מומחית חרב
+שולחן
+השמש
+עמוד טוטם
+סלע מתנשא
+עיירה
+שביל
+עץ
+טרול
+ארגז
+ארגזים
+חולצה
+תעלה
+אדם לא-בריא במראו
+כפר
+גפן
+חפצי נוי של וודו
+חרוזי אהבה של וודו
+שורש וודו
+פסל חנון קטן
+חלון
+X
+עלה כותרת צהוב
+פתח
+סגור
+תן
+Turn On
+Turn Off
+דחוף
+משוך
+הפעל
+הסתכל על
+לך אל
+הרם
+דבר עם
+Hit
+Shove
+Taunt
+דגדג
+תחוב
+Finger
+Fondle
+הקש
+לטף
+ידית
+משש
+Annoy
+הצק
+תקע
+Look and reach
+>פרסומת<
+Receive
+Get
+זרוק
+ב
+עם
+על
+ל
+עמוק באיים הקריביים
+The Island of Mle
+Days pass
+שידור חוזר
+התנפח
+התנדנד
+Stare
+Stink
+צוף
+הירקב
+Brine
+Drift
+Linger
+בשר בצלי
+stew meat
+בשר בעשבי תיבול
+פצירה
+מגרסה
+קונפטי מסוגנן
+ליצן חמוש-היטב
+זרוק
+אש
+ציפורני קרנף
+יאק רב-ממדים מסוכן למראה
+כסא כבד
+קרקס
+הפנט
+טבח
+דלת חורקת
+ספל נמס
+שטן מכונף רצחני
+שודד מכוער
+שודד מסריח
+שודד צמא דם
+שודד רקוב ומטונף
+כל-בו אניות יד שניה
+סלע ראוי לציון
+נחל
+קונדור
+ענף חזק
+גדם חסון
+משוטים
+גרה
+חור
+pile of memos
+כמה תזכירים
+תזכירים אחדים
+צרור של תזכירים
+ערימה של תזכירים
+הרבה תזכירים
+יותר מדי תזכירים
+פרס
+קרנף חם-מזג
+כפתור אדום
+יאק עצום
+חולד
+עוד חולד
+חמולה של חולדים
+כסא כבד
+איש קטן ומצחיק
+שריף
+נעץ
+דג בצלי
+דג צלוי
+בשר צלוי
+חתיכת חבל
+ספל גרוג
+ספל על סף מוות
+גוש בדיל
+הפנט
+A long walk, a brief row,
+and a short hike later...
+כלבי פיראנה-פודל מנמנמים
+Would you like to overwrite previous Monkey Island data?
+Classic Edition is only available in English.
+Audio Options
+Video Options
+Saving
+Cursor
+Primary Select
+Default Select
+Hint
+Skip Cutscene
+Verbs
+Inventory
+Menu
+Dialogue selection
+פתח
+הפעל
+הרם
+דחוף
+משוך
+סגור
+הסתכל על
+דבר עם
+Subtitle Speed(Classic)
+Or
+Verb Shortcuts
+(Classic)
+Version Hotswap
+תן
+Resolution
+Full Screen
+Apply
+Special Effects
+Sound device failed to initialize or not found.
+Your machine failed to meet the minimum specification requirements.
+Graphics card does not meet the requirements.
+Processor does not meet the requirements.
+Application will now exit.
+Code:
+צור
+מצלמה אווירית
+קדירה פיקנטית
+האחים פטוצ'יני
