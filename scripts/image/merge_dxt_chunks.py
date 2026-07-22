@@ -10,7 +10,8 @@ an image id and the pixel offset of each tile:
 
 Any number of tiles per image is supported; the canvas is the bounding box of
 the tiles that are present.  Multiple images in one directory each produce
-their own PNG.  .dxt files without "chunk" in the name are ignored.
+their own PNG.  Standalone .dxt files (no "chunk" in the name) are decoded
+directly to PNG without merging.
 
 Each .dxt file has a 12-byte header:
     bytes 0-3:  magic "DXT1" or "DXT5"
@@ -22,11 +23,11 @@ followed by raw block data:
 
 Usage:
     python merge_dxt_chunks.py images/en/96_part1
-    python merge_dxt_chunks.py images/en/96_part1 --out path/to/outdir
+    python merge_dxt_chunks.py images/en              # all subdirectories
+    python merge_dxt_chunks.py rooms/images
 
-Default output directory replaces the path segment "en" with "he", e.g.
-    images/en/96_part1  ->  images/he/96_part1/layer0.png
-                            images/he/96_part1/layer1.png  (if present)
+All PNGs are written flat under images/he/, with path parts joined by "__":
+    rooms/images/10_logo/extra_fog_f0  ->  images/he/rooms__images__10_logo__extra_fog_f0.png
 """
 
 from __future__ import annotations
@@ -46,11 +47,13 @@ BLOCK_DIM = 4
 DXT1_BLOCK_SIZE = 8
 DXT5_BLOCK_SIZE = 16
 
-# Only "..._chunk_X_Y.dxt" tiles are used; other .dxt files are ignored.
+# Only "..._chunk_X_Y.dxt" tiles are used as merge groups; other .dxt files
+# are decoded as standalone whole images.
 CHUNK_RE = re.compile(
     r"^(?P<name>.+?)_chunk_(?P<x>\d+)_(?P<y>\d+)\.dxt$",
     re.IGNORECASE,
 )
+DEFAULT_OUT_DIR = Path("images") / "he"
 
 
 def rgb565_to_rgb(c: int) -> tuple[int, int, int]:
@@ -187,7 +190,7 @@ def decode_dxt(path: Path) -> tuple[np.ndarray, int, int]:
 
 
 def parse_chunk_filename(path: Path) -> tuple[str, int, int] | None:
-    """Return (image_name, x, y) for a chunk file, or None to skip it."""
+    """Return (image_name, x, y) for a chunk file, or None if not a chunk."""
     if "chunk" not in path.name.lower():
         return None
     match = CHUNK_RE.match(path.name)
@@ -221,40 +224,71 @@ def merge_chunks(chunks: list[tuple[int, int, Path]]) -> Image.Image:
 
 
 def group_chunks(directory: Path) -> dict[str, list[tuple[int, int, Path]]]:
-    """Group chunk .dxt files in a directory by image name.
-
-    Files without "chunk" in the name are skipped.
-    """
+    """Group chunk .dxt files in a directory by image name."""
     groups: dict[str, list[tuple[int, int, Path]]] = defaultdict(list)
     for path in sorted(directory.glob("*.dxt")):
         parsed = parse_chunk_filename(path)
         if parsed is None:
-            print(f"  Skipping {path.name} (no 'chunk' in name)")
             continue
         name, x, y = parsed
         groups[name].append((x, y, path))
-    if not groups:
-        raise FileNotFoundError(f"No chunk .dxt files found in {directory}")
     return dict(groups)
 
 
-def default_out_dir(directory: Path) -> Path:
-    """Map images/en/<name> -> images/he/<name> (replace first 'en' segment)."""
-    parts: list[str] = []
-    replaced = False
-    for part in directory.parts:
-        if not replaced and part == "en":
-            parts.append("he")
-            replaced = True
-        else:
-            parts.append(part)
-    return Path(*parts)
+def list_standalone_dxts(directory: Path) -> list[Path]:
+    """Return .dxt files that are not chunk tiles (decode as whole images)."""
+    return [
+        path
+        for path in sorted(directory.glob("*.dxt"))
+        if parse_chunk_filename(path) is None
+    ]
 
 
-def merge_dxt_directory(directory: Path, out_dir: Path) -> list[Path]:
-    """Merge every image group in directory; write PNGs into out_dir."""
+def find_dxt_directories(root: Path) -> list[Path]:
+    """Return root and/or subdirectories that contain any processable .dxt."""
+    candidates = [root, *[p for p in root.rglob("*") if p.is_dir()]]
+    found: list[Path] = []
+    seen: set[Path] = set()
+    for directory in candidates:
+        resolved = directory.resolve()
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        if group_chunks(directory) or list_standalone_dxts(directory):
+            found.append(directory)
+    return found
+
+
+def path_relative_to_cwd(path: Path) -> Path:
+    """Return path relative to the process cwd when possible."""
+    try:
+        return path.resolve().relative_to(Path.cwd().resolve())
+    except ValueError:
+        return Path(*path.parts)
+
+
+def flat_png_name(dxt_dir: Path, image_name: str) -> str:
+    """Build a flat filename from directory path parts + image name.
+
+    Example:
+        rooms/images/10_logo + extra_fog_f0
+        -> rooms__images__10_logo__extra_fog_f0.png
+    """
+    parts = [*path_relative_to_cwd(dxt_dir).parts, image_name]
+    return "__".join(parts) + ".png"
+
+
+def process_dxt_directory(directory: Path, out_dir: Path) -> list[Path]:
+    """Merge chunk groups and decode standalone .dxt files into out_dir."""
     groups = group_chunks(directory)
-    print(f"Found {len(groups)} image(s) in {directory}")
+    standalone = list_standalone_dxts(directory)
+    if not groups and not standalone:
+        raise FileNotFoundError(f"No .dxt files found in {directory}")
+
+    print(
+        f"Found {len(groups)} chunk image(s) and {len(standalone)} standalone "
+        f".dxt file(s) in {directory}"
+    )
 
     out_dir.mkdir(parents=True, exist_ok=True)
     written: list[Path] = []
@@ -262,7 +296,17 @@ def merge_dxt_directory(directory: Path, out_dir: Path) -> list[Path]:
     for name, chunks in sorted(groups.items()):
         print(f"  Image '{name}' ({len(chunks)} chunk(s))")
         image = merge_chunks(chunks)
-        out_path = out_dir / f"{name}.png"
+        out_path = out_dir / flat_png_name(directory, name)
+        image.save(out_path)
+        written.append(out_path)
+        print(f"  Wrote {out_path}")
+
+    for path in standalone:
+        print(f"  Standalone '{path.name}'")
+        rgba, width, height = decode_dxt(path)
+        print(f"    {width}x{height}")
+        image = Image.fromarray(rgba, mode="RGBA")
+        out_path = out_dir / flat_png_name(directory, path.stem)
         image.save(out_path)
         written.append(out_path)
         print(f"  Wrote {out_path}")
@@ -273,20 +317,21 @@ def merge_dxt_directory(directory: Path, out_dir: Path) -> list[Path]:
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "Merge tiled DXT1/DXT5 chunk files from a directory into PNG image(s). "
-            "Multiple images (e.g. layer0, layer1) each get their own PNG."
+            "Convert DXT1/DXT5 files to PNG. Chunk tiles are merged; standalone "
+            ".dxt files are decoded directly. Scans the given directory and all "
+            "subdirectories. Output PNGs are written flat under images/he/."
         )
     )
     parser.add_argument(
         "directory",
         type=Path,
-        help="Directory containing the .dxt chunk files",
+        help="Directory (or parent of directories) containing .dxt files",
     )
     parser.add_argument(
         "--out",
         type=Path,
-        default=None,
-        help='Output directory (default: replace "en" with "he" in the path)',
+        default=DEFAULT_OUT_DIR,
+        help=f"Output directory (default: {DEFAULT_OUT_DIR.as_posix()})",
     )
     args = parser.parse_args()
 
@@ -295,15 +340,25 @@ def main() -> None:
         print(f"Error: '{directory}' is not a directory.", file=sys.stderr)
         sys.exit(1)
 
-    out_dir = args.out if args.out is not None else default_out_dir(directory)
+    dxt_dirs = find_dxt_directories(directory)
+    if not dxt_dirs:
+        print(f"Error: No .dxt files found under {directory}", file=sys.stderr)
+        sys.exit(1)
 
+    out_dir = args.out
+    print(
+        f"Scanning {directory}: {len(dxt_dirs)} folder(s) with .dxt files "
+        f"-> {out_dir}"
+    )
+    written: list[Path] = []
     try:
-        written = merge_dxt_directory(directory, out_dir)
+        for dxt_dir in dxt_dirs:
+            written.extend(process_dxt_directory(dxt_dir, out_dir))
     except (ValueError, FileNotFoundError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         sys.exit(1)
 
-    print(f"Done: {len(written)} PNG(s)")
+    print(f"Done: {len(written)} PNG(s) from {len(dxt_dirs)} folder(s)")
 
 
 if __name__ == "__main__":
