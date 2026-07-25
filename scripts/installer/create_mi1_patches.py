@@ -19,8 +19,9 @@ DEFAULT_PATCHED_DIR = r"C:\GOG Games\Monkey Island 1 SE"
 DEFAULT_OUT_DIR = os.path.join(BASE_DIR, "installer", "mi1", "patches")
 DEFAULT_GENPAT = r"C:\Program Files (x86)\NSIS\Bin\GenPat.exe"
 
+# Files included in the patch set. Uncomment "MISE.exe" when an exe patch is needed again.
 PATCH_TARGETS = (
-    "MISE.exe",
+    # "MISE.exe",
     "Monkey1.pak",
 )
 

@@ -19,7 +19,7 @@ Unicode true
 
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEPAGE_TITLE "Monkey Island 1 SE Hebrew Patch"
-!define MUI_WELCOMEPAGE_TEXT "This installer patches a vanilla GOG Monkey Island 1 Special Edition installation with the Hebrew translation.$\r$\n$\r$\nThe installer updates MISE.exe and Monkey1.pak, copies Hebrew speech/UI text files, sets the game language to Hebrew, and creates an uninstaller in the game folder."
+!define MUI_WELCOMEPAGE_TEXT "This installer patches a vanilla GOG Monkey Island 1 Special Edition installation with the Hebrew translation.$\r$\n$\r$\nThe installer updates Monkey1.pak, copies Hebrew speech/UI text files, sets the game language to Hebrew, and creates an uninstaller in the game folder."
 !define MUI_PAGE_CUSTOMFUNCTION_PRE DirectoryPre
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
@@ -78,8 +78,9 @@ FunctionEnd
 Section "Hebrew patch" SecPatch
   Call VerifyGameFiles
 
-  DetailPrint "Patching MISE.exe..."
-  !insertmacro VPatchFile "patches\MISE.exe.pat" "$INSTDIR\MISE.exe" "$INSTDIR\MISE.exe.tmp"
+  ; Uncomment when MISE.exe patch is included again:
+  ; DetailPrint "Patching MISE.exe..."
+  ; !insertmacro VPatchFile "patches\MISE.exe.pat" "$INSTDIR\MISE.exe" "$INSTDIR\MISE.exe.tmp"
 
   DetailPrint "Patching Monkey1.pak (this may take a while)..."
   !insertmacro VPatchFile "patches\Monkey1.pak.pat" "$INSTDIR\Monkey1.pak" "$INSTDIR\Monkey1.pak.tmp"
@@ -103,8 +104,9 @@ SectionEnd
 Section "Uninstall"
   Call un.VerifyGameFiles
 
-  DetailPrint "Reverting MISE.exe..."
-  !insertmacro VPatchFile "patches\MISE.exe.revert.pat" "$INSTDIR\MISE.exe" "$INSTDIR\MISE.exe.tmp"
+  ; Uncomment when MISE.exe patch is included again:
+  ; DetailPrint "Reverting MISE.exe..."
+  ; !insertmacro VPatchFile "patches\MISE.exe.revert.pat" "$INSTDIR\MISE.exe" "$INSTDIR\MISE.exe.tmp"
 
   DetailPrint "Reverting Monkey1.pak (this may take a while)..."
   !insertmacro VPatchFile "patches\Monkey1.pak.revert.pat" "$INSTDIR\Monkey1.pak" "$INSTDIR\Monkey1.pak.tmp"
