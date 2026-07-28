@@ -43,7 +43,7 @@ if not exist "translations\m1\en.uiText.info" (
 if not exist "installer\output" mkdir "installer\output"
 
 echo [*] Compiling NSIS installer...
-makensis.exe "installer\mi1\mi1_hebrew_installer.nsi"
+"C:\Program Files (x86)\NSIS\Bin\makensis.exe" "installer\mi1\mi1_hebrew_installer.nsi"
 if errorlevel 1 exit /b 1
 
 echo [+] Done: installer\output\MI1_Hebrew_Patch_Setup.exe

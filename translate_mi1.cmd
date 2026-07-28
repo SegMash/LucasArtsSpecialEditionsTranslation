@@ -8,6 +8,7 @@ python.exe .\scripts\text\inject_translation_mi1.py --reverse-for-ltr --txt .\tr
 python.exe .\scripts\text\inject_translation_mi1.py --reverse-for-ltr --txt .\translations\m1\heb\he.uitext.txt --bin .\translations\m1\en.uiText.info --out .\translations\m1\heb\uiText.info --start 0x400 --jump 0x600
 copy /y .\translations\m1\heb\speech.info "C:\GOG Games\Monkey Island 1 SE\audio\"
 copy /y .\translations\m1\heb\uiText.info "C:\GOG Games\Monkey Island 1 SE\localization\"
+mkdir fonts_mi1
 for %%A in ("%FONT_SRC%\*.font") do (
     set "F=%%~nA"
     set "skip=0"
@@ -34,3 +35,4 @@ quickbms.exe -w -r -r -r monkey_island_2.bms ..\Monkey1.pak extracted
 cd "C:\WS\LucasArtsSpecialEditionsTranslation"
 python.exe .\scripts\reverse-engineering\apply_mi1_verbline_rtl.py
 python.exe .\scripts\reverse-engineering\apply_mi1_merge_to_object.py
+python.exe .\scripts\reverse-engineering\apply_mi1_dynamic_text_translate.py
