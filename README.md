@@ -1,3 +1,22 @@
+# Monkey Island 1 SE Hebrew Translation
+## Quick start
+
+Preperations:
+1. Your game should be here: C:\GOG Games\Monkey Island 1 SE
+2. Extract monkey1.pak with quickbms C:\GOG Games\Monkey Island 1 SE\quickbms\extracted\
+3. Backup "audio/speech.info" and "localization/uiText.info"
+
+First run the command "translate_mi1.cmd"
+Then the command "build_patch.cmd"
+And then "build_installer.cmd"
+Now you can take the installer\output\MI1_Hebrew_Patch_Setup.exe and install it on your any mi1 game.
+
+## What the patch does:
+1. Replaces the dialog and UI strings with their Hebrew translations.
+2. Patches the executable so Hebrew text reads right-to-left on screen.
+3. Replaces the bitmap fonts with Hebrew letters.
+
+
 # LucasArts Special Editions — Hebrew Translation
 
 Tools and assets for translating LucasArts *Special Edition* re-releases
@@ -525,4 +544,5 @@ Issues and PRs welcome — particularly:
 - improved Hebrew translations for context-specific phrases,
 - adapting Parts 1 / 3 to other LucasArts Special Editions
 (Monkey Island 1 SE, Indiana Jones, ...).
+
 
