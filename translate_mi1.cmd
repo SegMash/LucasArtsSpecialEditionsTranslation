@@ -30,6 +30,7 @@ for %%A in ("%FONT_SRC%\*.font") do (
     )
 )
 endlocal
+translate_graphics.cmd
 cd "C:\GOG Games\Monkey Island 1 SE\quickbms"
 quickbms.exe -w -r -r -r monkey_island_2.bms ..\Monkey1.pak extracted
 cd "C:\WS\LucasArtsSpecialEditionsTranslation"

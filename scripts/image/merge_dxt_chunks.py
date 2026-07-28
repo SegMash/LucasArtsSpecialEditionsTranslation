@@ -23,11 +23,11 @@ followed by raw block data:
 
 Usage:
     python merge_dxt_chunks.py images/en/96_part1
-    python merge_dxt_chunks.py images/en              # all subdirectories
+    python merge_dxt_chunks.py extracted/art              # all subdirectories
     python merge_dxt_chunks.py rooms/images
 
-All PNGs are written flat under images/he/, with path parts joined by "__":
-    rooms/images/10_logo/extra_fog_f0  ->  images/he/rooms__images__10_logo__extra_fog_f0.png
+All PNGs are written flat under images/en/, with path parts joined by "__":
+    rooms/images/10_logo/extra_fog_f0  ->  images/en/rooms__images__10_logo__extra_fog_f0.png
 """
 
 from __future__ import annotations
@@ -53,7 +53,7 @@ CHUNK_RE = re.compile(
     r"^(?P<name>.+?)_chunk_(?P<x>\d+)_(?P<y>\d+)\.dxt$",
     re.IGNORECASE,
 )
-DEFAULT_OUT_DIR = Path("images") / "he"
+DEFAULT_OUT_DIR = Path("images") / "en"
 
 
 def rgb565_to_rgb(c: int) -> tuple[int, int, int]:
@@ -319,7 +319,7 @@ def main() -> None:
         description=(
             "Convert DXT1/DXT5 files to PNG. Chunk tiles are merged; standalone "
             ".dxt files are decoded directly. Scans the given directory and all "
-            "subdirectories. Output PNGs are written flat under images/he/."
+            "subdirectories. Output PNGs are written flat under images/en/."
         )
     )
     parser.add_argument(
