@@ -44,6 +44,16 @@ except ImportError:
     print("[-] keystone-engine is required:  pip install keystone-engine", file=sys.stderr)
     raise
 
+try:
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+    from capstone.x86 import X86_OP_IMM, X86_OP_MEM
+except ImportError:
+    Cs = None
+    CS_ARCH_X86 = None
+    CS_MODE_32 = None
+    X86_OP_IMM = None
+    X86_OP_MEM = None
+
 IMAGE_BASE = 0x00400000
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 GAME_EXE = r"C:\GOG Games\Monkey Island 1 SE\MISE.exe"
@@ -75,6 +85,101 @@ def _asm(ks: Ks, asm: str, va: int) -> bytes:
     lines = [ln for ln in lines if ln.strip()]
     encoding, _ = ks.asm("\n".join(lines), va)
     return bytes(encoding)
+
+
+def _get_text_section(pe: pefile.PE) -> pefile.SectionStructure:
+    for section in pe.sections:
+        if b".text" in section.Name:
+            return section
+    raise RuntimeError("No .text section found")
+
+
+def _decode_e9_target(src_va: int, instr5: bytes) -> int:
+    if len(instr5) != 5 or instr5[0] != 0xE9:
+        raise ValueError("Expected E9 rel32 jmp")
+    rel = struct.unpack("<i", instr5[1:5])[0]
+    return src_va + 5 + rel
+
+
+def _find_builder_tail_jmp(pe: pefile.PE, data: bytearray) -> int:
+    section = _get_text_section(pe)
+    text_off = section.PointerToRawData
+    text_size = section.SizeOfRawData
+    text_va = IMAGE_BASE + section.VirtualAddress
+    text_data = bytes(data[text_off:text_off + text_size])
+
+    if Cs is not None:
+        md = Cs(CS_ARCH_X86, CS_MODE_32)
+        md.detail = True
+        insns = list(md.disasm(text_data, text_va))
+
+        def mov_abs_imm(insn):
+            if insn.mnemonic != "mov" or len(insn.operands) != 2:
+                return None
+            op0, op1 = insn.operands
+            if op0.type != X86_OP_MEM or op1.type != X86_OP_IMM:
+                return None
+            if op0.mem.base != 0 or op0.mem.index != 0:
+                return None
+            return op0.mem.disp & 0xFFFFFFFF
+
+        for i, insn in enumerate(insns):
+            dest = mov_abs_imm(insn)
+            if dest is None:
+                continue
+            seen = 1
+            for j in range(i + 1, min(i + 40, len(insns))):
+                if insns[j].address - insn.address > 0x160:
+                    break
+                if mov_abs_imm(insns[j]) == dest:
+                    seen += 1
+                    if seen == 4:
+                        for k in range(j + 1, min(j + 12, len(insns))):
+                            if insns[k].mnemonic == "jmp" and insns[k].op_str.startswith("0x"):
+                                hook_site_va = insns[k].address
+                                hook_off = hook_site_va - text_va
+                                if 0 <= hook_off <= len(text_data) - 5 and text_data[hook_off] == 0xE9:
+                                    return hook_site_va
+                        break
+
+    prefix = b"\xB8\x6B\x00\x00\x00\xC7\x05"
+    start = 0
+    while True:
+        pos = text_data.find(prefix, start)
+        if pos == -1:
+            break
+        ok = True
+        checks = [
+            (0, b"\xB8\x6B\x00\x00\x00"),
+            (5, b"\xC7\x05"),
+            (15, b"\xE8"),
+            (20, b"\xB8\x6C\x00\x00\x00"),
+            (25, b"\xC7\x05"),
+            (35, b"\xE8"),
+            (40, b"\xB8\x6D\x00\x00\x00"),
+            (45, b"\xC7\x05"),
+            (55, b"\xE8"),
+            (60, b"\xC7\x05"),
+            (70, b"\xB8\x6E\x00\x00\x00"),
+            (75, b"\xE9"),
+        ]
+        for off, sig in checks:
+            if text_data[pos + off:pos + off + len(sig)] != sig:
+                ok = False
+                break
+        if ok:
+            return text_va + pos + 75
+        start = pos + 1
+    raise RuntimeError("Could not locate builder tail jump in .text")
+
+
+def _looks_like_reversal_cave(data: bytearray, off_fn, cave_va: int) -> bool:
+    try:
+        o = off_fn(cave_va)
+    except Exception:  # noqa: BLE001
+        return False
+    head = bytes(data[o:o + 7])
+    return len(head) == 7 and head[0] == 0xE8 and head[5] == 0x60 and head[6] == 0x9C
 
 
 def robust_write(path: str, payload: bytes, attempts: int = 12) -> bool:
@@ -227,17 +332,22 @@ def main() -> int:
     # patch is required: it reverses component order so the object precedes the
     # preposition in memory, which is what makes the space-before-prep the one
     # to delete.
-    rev_off = off(REVERSAL_HOOK_SITE)
+    try:
+        rev_hook_site = _find_builder_tail_jmp(pe, data)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[-] Could not locate the stage-1 builder hook site: {exc}", file=sys.stderr)
+        return 1
+    rev_off = off(rev_hook_site)
     rev_bytes = bytes(data[rev_off:rev_off + 5])
-    rev_target = None
-    if rev_bytes[0] == 0xE9:
-        rev_target = REVERSAL_HOOK_SITE + 5 + struct.unpack("<i", rev_bytes[1:5])[0]
-
-    if rev_target is None or rev_target == REVERSAL_VANILLA_TARGET:
-        print("[-] Reversal patch NOT present (0x0047C3DB still targets the "
-              "vanilla builder 0x497CE0). This merge must layer on top of the "
-              "reversal patch. Run apply_mi1_verbline_rtl.py first, then point "
-              "--input at the reversal-patched exe.", file=sys.stderr)
+    if len(rev_bytes) != 5 or rev_bytes[0] != 0xE9:
+        print(f"[-] Stage 1 hook site is not a JMP rel32 (E9): {rev_hook_site:#010x} {rev_bytes.hex()}",
+              file=sys.stderr)
+        return 1
+    rev_target = _decode_e9_target(rev_hook_site, rev_bytes)
+    if not _looks_like_reversal_cave(data, off, rev_target):
+        print("[-] Stage 1 (reversal) patch NOT present. Run apply_mi1_verbline_rtl.py first, then run this script "
+              "with --input pointing at the stage-1 patched exe.",
+              file=sys.stderr)
         return 1
 
     avoid = (rev_target, rev_target + 0x120)
