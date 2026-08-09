@@ -117,8 +117,8 @@ TARGET_LANG = "en"
 
 # Load hebrew_mapping by absolute file path (custom single-byte encoding table).
 import importlib.util as _il
-_mapping_path = os.path.join(BASE_DIR, "scripts", "fonts", "hebrew_mapping.py")
-_spec = _il.spec_from_file_location("hebrew_mapping", _mapping_path)
+_mapping_path = os.path.join(BASE_DIR, "scripts", "fonts", "hebrew_mapping_mi2.py")
+_spec = _il.spec_from_file_location("hebrew_mapping_mi2", _mapping_path)
 _mod = _il.module_from_spec(_spec)
 _spec.loader.exec_module(_mod)  # type: ignore[union-attr]
 HEBREW_TO_CODE: dict[str, int] = _mod.HEBREW_TO_CODE
@@ -599,7 +599,7 @@ def main() -> int:
         unique_unknown = sorted(set(_encode_warnings))
         print(f"\n  WARNING: {len(_encode_warnings)} characters skipped (no mapping).")
         print(f"  Unique unknown chars: {unique_unknown}")
-        print(f"  Add them to HEBREW_TO_CODE in scripts/fonts/hebrew_mapping.py if needed.")
+        print(f"  Add them to HEBREW_TO_CODE in scripts/fonts/hebrew_mapping_mi2.py if needed.")
 
     if _args.report:
         _write_report(_args.report, s_missing, u_missing)

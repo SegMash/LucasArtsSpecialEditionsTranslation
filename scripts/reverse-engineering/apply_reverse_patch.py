@@ -159,27 +159,16 @@ import argparse, os, struct, sys, ctypes
 # To patch a different LucasArts SE title (e.g. Monkey1) the addresses below
 # must be re-discovered for that EXE.
 IMAGE_BASE    = 0x00400000
-#DRAWSTRING_VA = 0x004DBFA0
-#DRAWSTRING_VA = 0x0046F530
-#DRAWSTRING_VA = 0x00485900
-#DRAWSTRING_VA = 0x004B63C0
-#DRAWSTRING_VA = 0x00485900
-DRAWSTRING_VA = 0x0046F530 
-#DRAWSTRING_VA = 0x00486A30
-#MIN_TEXT_LEN    = 10            # אורך מינימלי להיפוך (ננסה כעת 4 תווים)
-CALL_SITE_LEN = 5   
+DRAWSTRING_VA = 0x004DBFA0
+CALL_SITE_LEN = 5
 
-#WRAPPER_VA    = 0x00403851   # 252-byte free NOP area in .text
-WRAPPER_VA    = 0x4D9CF7   # 252-byte free NOP area in .text
-WRAPPER_GAME_VA = WRAPPER_VA + 150
+WRAPPER_VA    = 0x00403851   # 252-byte free NOP area in .text
 WRAPPER_LEN   = None         # computed dynamically from _build_wrapper()
 
 # Ring buffer in .data (writable)
-#RING_IDX_VA   = 0x005350E8   # 4 bytes: current ring slot counter (0..3)
-RING_IDX_VA   = 0x00511090   # 4 bytes: current ring slot counter (0..3)
-#RING_BUF_VA   = 0x005350EC   # 4 slots × 128 bytes = 512 bytes of slot buffers
-RING_BUF_VA   = RING_IDX_VA + 4   # 4 slots × 128 bytes = 512 bytes of slot buffers
-RING_SLOTS    = 32
+RING_IDX_VA   = 0x005350E8   # 4 bytes: current ring slot counter (0..3)
+RING_BUF_VA   = 0x005350EC   # 4 slots × 128 bytes = 512 bytes of slot buffers
+RING_SLOTS    = 4
 RING_SLOT_SZ  = 128
 RING_DATA_LEN = 4 + RING_SLOTS * RING_SLOT_SZ  # 516 bytes total
 
@@ -263,15 +252,7 @@ def _rel32(src_va: int, dst_va: int) -> bytes:
     return struct.pack('<i', offset)
 
 
-
 def _find_call_sites(data: bytearray) -> list[int]:
-    """Scan the .text section and isolate only the two proven high-level call-sites."""
-    # משאירים באופן קשיח את שתי הכתובות הראשיות שחקרנו בדיבאגר
-    precise_sites = [0x00485CCC, 0x00486722]
-    print(f"[*] Targeting {len(precise_sites)} precise high-level call-sites (Menu + Game Scene).")
-    return sorted(precise_sites)
-
-def _find_call_sites_old(data: bytearray) -> list[int]:
     """Scan the .text section for every CALL DrawString (E8 rel32) instruction.
 
     Returns a sorted list of virtual addresses of matching CALL instructions.
@@ -305,32 +286,6 @@ def _find_call_sites_old(data: bytearray) -> list[int]:
         if src_va + 5 + rel == DRAWSTRING_VA:
             sites.append(src_va)
 
-       
-        if 0x0043CDD6 in sites:
-            sites.remove(0x0043CDD6)
-            print("[*] Excluded potential sprite call-site: 0x0043CDD6")
-
-        if 0x0043CF10 in sites:
-            sites.remove(0x0043CF10)
-            print("[*] Excluded potential sprite call-site: 0x0043CF10")
-        
-        if 0x0043E2AE in sites:
-            sites.remove(0x0043E2AE)
-            print("[*] Excluded potential sprite call-site: 0x0043E2AE")
-        
-        #if 0x00485CCC in sites:
-        #    sites.remove(0x00485CCC)
-        #    print("[*] Excluded potential sprite call-site: 0x00485CCC")
-
-        if 0x004866E2 in sites: ###No affect- can removed.
-            sites.remove(0x004866E2)
-            print("[*] Excluded potential sprite call-site: 0x004866E2")
-        
-        #if 0x00486722 in sites: ###Game text and glich!
-        #    sites.remove(0x00486722)
-        #    print("[*] Excluded potential sprite call-site: 0x00486722")
-
-    print(f"[*] Auto-discovered {len(sites)} genuine text call-sites for the new DrawString address.")
     return sorted(sites)
 
 
@@ -347,237 +302,202 @@ def _patched_call_bytes(site_va: int) -> bytes:
 # Build wrapper bytecode
 # ---------------------------------------------------------------------------
 def _build_wrapper() -> bytes:
-    """Build the clean string-reversal wrapper for the high-level Menu call-site (Tail-call JMP)."""
-    idx_le = struct.pack('<I', RING_IDX_VA)
-    buf_le = struct.pack('<I', RING_BUF_VA)
+    """Build the string-reversal wrapper.
 
-    code = bytearray()
-    code += bytes([0x50, 0x51, 0x56, 0x57])  # push eax; push ecx; push esi; push edi
+    ROOT CAUSE OF THE ORIGINAL strlen BUG
+    --------------------------------------
+    The engine passes DrawString a (ptr, char_count) pair.  The ptr for the
+    first line points at the very start of the full message buffer, which is
+    only null-terminated at the very end—not between lines.  Using strlen
+    therefore overcounts: for a 10-char first line followed by 82 more chars,
+    strlen returns 92, and the wrapper reversed the *entire* buffer into the
+    first line's slot.  The reversed 92-char string ends with the reversed
+    first-line text, which is exactly the "second-line data injected into the
+    first line" symptom.
 
-    # Ring slot management (Modulo 32)
-    code += bytes([0xA1]) + idx_le            # mov eax, [RING_IDX_VA]
-    code += bytes([0x40])                     # inc eax
-    code += bytes([0x83, 0xE0, 0x1F])         # and eax, 31
-    code += bytes([0xA3]) + idx_le            # mov [RING_IDX_VA], eax
-    code += bytes([0xC1, 0xE0, 0x07])         # shl eax, 7
-    code += bytes([0x05]) + buf_le            # add eax, RING_BUF_VA
-    code += bytes([0x89, 0xC7])               # mov edi, eax
+    FIX: prefer the char_count from arg4 ([esp+0x20] after the 4 pushes).
+    Fall back to strlen only when arg4 is outside [1..127] (handles arg4=-1
+    "draw full string" sentinel and other edge cases).  The clamp now uses an
+    unsigned JBE so that 0xFFFFFFFF (-1) is correctly treated as > 127.
 
-    # Load string pointer (arg3) from the proven offset 0x1C
-    code += bytes([0x8B, 0x74, 0x24, 0x1C])  # mov esi, [esp+0x1C]
-
-    # Protect against Null
-    code += bytes([0x85, 0xF6])              # test esi, esi
-    je_skip = len(code)
-    code += bytes([0x74, 0x00])              # je skip_reversal
-
-    # Determine length via strlen
-    code += bytes([0x31, 0xC9])              # xor ecx, ecx
-    sloop = len(code)                        # strlen_loop
-    code += bytes([0x80, 0x3C, 0x0E, 0x00]) # cmp byte [esi+ecx], 0
-    je_done = len(code)
-    code += bytes([0x74, 0x00])              # je  count_ready
-    code += bytes([0x41])                    # inc ecx
-    back = -(len(code) + 2 - sloop)
-    code += bytes([0xEB, back & 0xFF])       # jmp strlen_loop
-
-    # count_ready
-    count_ready_off = len(code)
-    code[je_done   + 1] = count_ready_off - (je_done   + 2)
-
-    # Skip if empty
-    code += bytes([0x85, 0xC9])              # test ecx, ecx
-    je_skip_empty = len(code)
-    code += bytes([0x74, 0x00])              # je skip_reversal
-
-    # Digit filter
-    code += bytes([0x50, 0x51, 0x89, 0xF2])  # push eax; push ecx; mov edx, esi
-    sloop2 = len(code)                       # scan_loop
-    code += bytes([0x85, 0xC9])              # test ecx, ecx
-    jz_do_rev = len(code)
-    code += bytes([0x74, 0x00])              # jz do_reverse
-    code += bytes([0x8A, 0x02, 0x3C, 0x30])  # mov al, [edx]; cmp al, '0'
-    jb_next = len(code)
-    code += bytes([0x72, 0x00])              # jb scan_next
-    code += bytes([0x3C, 0x39])              # cmp al, '9'
-    jbe_no_rev = len(code)
-    code += bytes([0x76, 0x00])              # jbe no_reverse
-    scan_next_off = len(code)                # scan_next
-    code[jb_next + 1] = scan_next_off - (jb_next + 2)
-    code += bytes([0x42, 0x49])              # inc edx; dec ecx
-    back2 = -(len(code) + 2 - sloop2)
-    code += bytes([0xEB, back2 & 0xFF])      # jmp scan_loop
-
-    # no_reverse
-    no_reverse_off = len(code)
-    code[jbe_no_rev + 1] = no_reverse_off - (jbe_no_rev + 2)
-    code += bytes([0x59, 0x58])              # pop ecx; pop eax
-    jmp_skip = len(code)
-    code += bytes([0xEB, 0x00])              # jmp skip_reversal
-
-    # do_reverse
-    do_reverse_off = len(code)
-    code[jz_do_rev + 1] = do_reverse_off - (jz_do_rev + 2)
-    code += bytes([0x59, 0x58])              # pop ecx; pop eax
-
-    # Clamp to 127
-    code += bytes([0x83, 0xF9, 0x7F])        # cmp ecx, 127
-    jbe_nc = len(code)
-    code += bytes([0x76, 0x00])              # jbe no_clamp
-    code += bytes([0xB9, 0x7F, 0x00, 0x00, 0x00]) # mov ecx, 127
-    no_clamp_off = len(code)
-    code[jbe_nc + 1] = no_clamp_off - (jbe_nc + 2)
-
-    # Reconstruct stack argument
-    code += bytes([0x89, 0x44, 0x24, 0x1C])  # mov [esp+0x1C], eax
-    code += bytes([0x8D, 0x74, 0x0E, 0xFF])  # lea esi, [esi+ecx-1]
-
-    # copy_loop
-    cloop = len(code)
-    code += bytes([0x8A, 0x06, 0x88, 0x07, 0x4E, 0x47, 0x49]) 
-    back3 = -(len(code) + 2 - cloop)
-    code += bytes([0x75, back3 & 0xFF])      # jnz copy_loop
-    code += bytes([0xC6, 0x07, 0x00])        # mov byte [edi], 0
-
-    # skip_reversal
-    skip_off = len(code)
-    code[je_skip       + 1] = skip_off - (je_skip + 2)
-    code[je_skip_empty + 1] = skip_off - (je_skip_empty + 2)
-    code[jmp_skip      + 1] = skip_off - (jmp_skip + 2)
-
-    code += bytes([0x5F, 0x5E, 0x59, 0x58])  # pop edi; pop esi; pop ecx; pop eax
-
-    # Tail-call JMP to the original DrawString function
-    jmp_pos = len(code)
-    ds_rel = struct.pack('<i', DRAWSTRING_VA - (WRAPPER_VA + jmp_pos + 5))
-    code += bytes([0xE9]) + ds_rel
-
-    return bytes(code)
-
-
-
-def _build_game_wrapper() -> bytes:
-    """Build the protected string-reversal wrapper for the active Game Hook (Tail-call JMP).
-    Uses a highly isolated scratchpad environment to keep ECX/EDX safe from corruption during bypass.
+    STACK LAYOUT after push eax/ecx/esi/edi (16 bytes below entry ESP):
+      [esp+0x00] saved edi
+      [esp+0x04] saved esi
+      [esp+0x08] saved ecx
+      [esp+0x0C] saved eax
+      [esp+0x10] return address
+      [esp+0x14] arg1  SpriteFont*
+      [esp+0x18] arg2  parent context
+      [esp+0x1C] arg3  string ptr        ← read + replaced with slot addr
+      [esp+0x20] arg4  char count        ← used as length when valid
     """
     idx_le = struct.pack('<I', RING_IDX_VA)
     buf_le = struct.pack('<I', RING_BUF_VA)
 
     code = bytearray()
-    
-    # --- PROLOGUE: Save volatile registers immediately to survive fastcall environments ---
-    code += bytes([0x50, 0x51, 0x52, 0x56, 0x57])  # push eax; push ecx; push edx; push esi; push edi
 
-    # --- Load string pointer from the offset (0x18 original + 0x14 push allocation = 0x2C) ---
-    code += bytes([0x8B, 0x74, 0x24, 0x2C])  # mov esi, [esp+0x2C]
+    # --- Prologue: save registers (identical caller-side ABI as before) ---
+    code += bytes([0x50, 0x51, 0x56, 0x57])  # push eax; push ecx; push esi; push edi
 
-    # --- PROTECT AGAINST NULL POINTERS ---
-    code += bytes([0x85, 0xF6])              # test esi, esi
+    # --- Ring slot management ---
+    code += bytes([0xA1]) + idx_le            # mov eax, [RING_IDX_VA]
+    code += bytes([0x40])                     # inc eax
+    code += bytes([0x83, 0xE0, 0x03])         # and eax, 3  (mod 4)
+    code += bytes([0xA3]) + idx_le            # mov [RING_IDX_VA], eax
+    code += bytes([0xC1, 0xE0, 0x07])         # shl eax, 7  (× 128)
+    code += bytes([0x05]) + buf_le            # add eax, RING_BUF_VA  (slot address)
+    code += bytes([0x89, 0xC7])               # mov edi, eax
+
+    # --- Load string pointer (arg3) ---
+    code += bytes([0x8B, 0x74, 0x24, 0x1C])  # mov esi, [esp+0x1C]
+
+    # --- Determine string length ---
+    # Try arg4 (char count) first; fall back to strlen if arg4 is not in [1..127].
+    # EDX is caller-saved (volatile), so no push/pop needed.
+    code += bytes([0x8B, 0x54, 0x24, 0x20])  # mov edx, [esp+0x20]  (arg4)
+    code += bytes([0x85, 0xD2])              # test edx, edx
+
+    jle_strlen = len(code)
+    code += bytes([0x7E, 0x00])              # jle do_strlen  (arg4 <= 0)
+
+    code += bytes([0x83, 0xFA, 0x7F])        # cmp edx, 127
+
+    jg_strlen = len(code)
+    code += bytes([0x7F, 0x00])              # jg  do_strlen  (arg4 > 127, incl. -1)
+
+    code += bytes([0x89, 0xD1])              # mov ecx, edx   (use arg4 as length)
+
+    jmp_ready = len(code)
+    code += bytes([0xEB, 0x00])              # jmp count_ready
+
+    # do_strlen: (fallback — only reached when arg4 is unusable)
+    do_strlen_off = len(code)
+    code[jle_strlen + 1] = do_strlen_off - (jle_strlen + 2)
+    code[jg_strlen  + 1] = do_strlen_off - (jg_strlen  + 2)
+
+    code += bytes([0x31, 0xC9])              # xor ecx, ecx
+
+    sloop = len(code)                        # strlen_loop:
+    code += bytes([0x80, 0x3C, 0x0E, 0x00]) # cmp byte [esi+ecx], 0
+
+    je_done = len(code)
+    code += bytes([0x74, 0x00])              # je  count_ready
+
+    code += bytes([0x41])                    # inc ecx
+    back = -(len(code) + 2 - sloop)
+    code += bytes([0xEB, back & 0xFF])       # jmp strlen_loop
+
+    # count_ready: (ecx = string length, from arg4 or strlen)
+    count_ready_off = len(code)
+    code[jmp_ready + 1] = count_ready_off - (jmp_ready + 2)
+    code[je_done   + 1] = count_ready_off - (je_done   + 2)
+
+    # --- Skip if empty ---
+    code += bytes([0x85, 0xC9])              # test ecx, ecx
+
     je_skip = len(code)
     code += bytes([0x74, 0x00])              # je skip_reversal
 
-    # --- Calculate explicit string length via temporary counter (leaves ECX untouched) ---
-    code += bytes([0x31, 0xC0])              # xor eax, eax
-    sloop_len = len(code)                     # strlen_loop
-    code += bytes([0x80, 0x3C, 0x06, 0x00]) # cmp byte [esi+eax], 0
-    je_done_len = len(code)
-    code += bytes([0x74, 0x00])              # je len_ready
-    code += bytes([0x40])                    # inc eax
-    code += bytes([0x83, 0xF8, 0x7F])        # cmp eax, 127
-    jg_len_ready = len(code)
-    code += bytes([0x7F, 0x00])              # jg len_ready
-    back_len = -(len(code) + 2 - sloop_len)
-    code += bytes([0xEB, back_len & 0xFF])   # jmp strlen_loop
+    # --- Content scan: SKIP REVERSAL if the string contains any digit (0-9).
+    #     This covers all runtime-generated date / time / percentage strings
+    #     ("22:15:47", "12/05/2026", "37%"), AND any mixed Hebrew+digit label
+    #     that the translator pre-reverses in the mapping file.  Pure-text
+    #     strings (Hebrew dialog, English fallback) contain no digits and are
+    #     reversed by the wrapper as before.
+    #
+    #     Detection rule (per byte):
+    #       - byte in [0x30..0x39]      -> digit found -> SKIP REVERSAL
+    #       - otherwise                 -> keep scanning
+    #     If we reach the end with no digit, fall through to the reversal.
+    #
+    #     EAX (slot addr) and ECX (length) must be preserved across the scan;
+    #     EDX is used as the scratch scan pointer.
+    code += bytes([0x50])                    # push eax           (save slot addr)
+    code += bytes([0x51])                    # push ecx           (save length)
+    code += bytes([0x89, 0xF2])              # mov  edx, esi      (edx = scratch ptr)
 
-    # len_ready: (EAX now holds string length)
-    len_ready_off = len(code)
-    code[je_done_len + 1] = len_ready_off - (je_done_len + 2)
-    code[jg_len_ready + 1] = len_ready_off - (jg_len_ready + 2)
-
-    # --- SMART LENGTH FILTER: If length <= 10 -> Guybrush binary data -> SKIP REVERSAL ---
-    code += bytes([0x83, 0xF8, 10])          # cmp eax, 10
-    je_len_skip = len(code)
-    code += bytes([0x76, 0x00])              # jbe skip_reversal (early structural exit)
-
-    # --- From this point on, it is guaranteed valid text. We can perform ring management ---
-    code += bytes([0x89, 0xC1])              # mov ecx, eax (Transfer length to ECX for the reversal engine)
-    
-    # Reconstruct slot assignment
-    idx_le_reload = struct.pack('<I', RING_IDX_VA)
-    code += bytes([0xA1]) + idx_le_reload    # mov eax, [RING_IDX_VA]
-    code += bytes([0x40])                     # inc eax
-    code += bytes([0x83, 0xE0, 0x1F])         # and eax, 31
-    code += bytes([0xA3]) + idx_le_reload    # mov [RING_IDX_VA], eax
-    code += bytes([0xC1, 0xE0, 0x07])         # shl eax, 7
-    code += bytes([0x05]) + buf_le            # add eax, RING_BUF_VA
-    code += bytes([0x89, 0xC7])               # mov edi, eax
-
-    # --- Digit filter ---
-    code += bytes([0x50, 0x51, 0x89, 0xF2])  # push eax; push ecx; mov edx, esi
-    sloop2 = len(code)                       # digit_scan_loop
+    scan_loop_off = len(code)                # scan_loop:
     code += bytes([0x85, 0xC9])              # test ecx, ecx
-    jz_do_rev = len(code)
-    code += bytes([0x74, 0x00])              # jz do_reverse
-    code += bytes([0x8A, 0x02, 0x3C, 0x30])  # mov al, [edx]; cmp al, '0'
-    jb_next = len(code)
-    code += bytes([0x72, 0x00])              # jb scan_next
-    code += bytes([0x3C, 0x39])              # cmp al, '9'
-    jbe_no_rev = len(code)
-    code += bytes([0x76, 0x00])              # jbe no_reverse
-    scan_next_off = len(code)                # scan_next
-    code[jb_next + 1] = scan_next_off - (jb_next + 2)
-    code += bytes([0x42, 0x49])              # inc edx; dec ecx
-    back2 = -(len(code) + 2 - sloop2)
-    code += bytes([0xEB, back2 & 0xFF])      # jmp scan_loop
 
-    # no_reverse
+    jz_do_rev = len(code)
+    code += bytes([0x74, 0x00])              # jz   do_reverse    (no digit found)
+
+    code += bytes([0x8A, 0x02])              # mov  al, [edx]
+    code += bytes([0x3C, 0x30])              # cmp  al, '0'
+
+    jb_next = len(code)
+    code += bytes([0x72, 0x00])              # jb   scan_next     (al < '0' -> not a digit)
+
+    code += bytes([0x3C, 0x39])              # cmp  al, '9'
+
+    jbe_no_rev = len(code)
+    code += bytes([0x76, 0x00])              # jbe  no_reverse    ('0' <= al <= '9')
+
+    scan_next_off = len(code)                # scan_next:
+    code[jb_next + 1] = scan_next_off - (jb_next + 2)
+    code += bytes([0x42])                    # inc  edx
+    code += bytes([0x49])                    # dec  ecx
+    back_to_loop = -(len(code) + 2 - scan_loop_off)
+    code += bytes([0xEB, back_to_loop & 0xFF])  # jmp  scan_loop
+
+    # no_reverse: digit found -> skip reversal entirely
     no_reverse_off = len(code)
     code[jbe_no_rev + 1] = no_reverse_off - (jbe_no_rev + 2)
-    code += bytes([0x59, 0x58])              # pop ecx; pop eax
+    code += bytes([0x59])                    # pop  ecx
+    code += bytes([0x58])                    # pop  eax
     jmp_skip = len(code)
-    code += bytes([0xEB, 0x00])              # jmp skip_reversal
+    code += bytes([0xEB, 0x00])              # jmp  skip_reversal (patched at the end)
 
-    # do_reverse
+    # do_reverse: scanned whole string, no digit -> fall through to the reversal
     do_reverse_off = len(code)
     code[jz_do_rev + 1] = do_reverse_off - (jz_do_rev + 2)
-    code += bytes([0x59, 0x58])              # pop ecx; pop eax
+    code += bytes([0x59])                    # pop  ecx
+    code += bytes([0x58])                    # pop  eax
 
-    # --- Clamp to 127 ---
+    # --- Clamp to 127 (unsigned JBE so 0xFFFFFFFF is treated as > 127) ---
     code += bytes([0x83, 0xF9, 0x7F])        # cmp ecx, 127
+
     jbe_nc = len(code)
     code += bytes([0x76, 0x00])              # jbe no_clamp
-    code += bytes([0xB9, 0x7F, 0x00, 0x00, 0x00]) # mov ecx, 127
+
+    code += bytes([0xB9, 0x7F, 0x00, 0x00, 0x00])  # mov ecx, 127  (full 32-bit clear)
+
+    # no_clamp:
     no_clamp_off = len(code)
     code[jbe_nc + 1] = no_clamp_off - (jbe_nc + 2)
 
-    # Replace the string argument back on stack at offset 0x2C
-    code += bytes([0x89, 0x44, 0x24, 0x2C])  # mov [esp+0x2C], eax
+    # Replace the string-ptr argument on the stack with the slot address
+    code += bytes([0x89, 0x44, 0x24, 0x1C])  # mov [esp+0x1C], eax
+
+    # Point ESI at the last byte of the source string (copy backwards)
     code += bytes([0x8D, 0x74, 0x0E, 0xFF])  # lea esi, [esi+ecx-1]
 
-    # copy_loop
+    # copy_loop:
     cloop = len(code)
-    code += bytes([0x8A, 0x06, 0x88, 0x07, 0x4E, 0x47, 0x49]) 
-    back3 = -(len(code) + 2 - cloop)
-    code += bytes([0x75, back3 & 0xFF])      # jnz copy_loop
-    code += bytes([0xC6, 0x07, 0x00])        # mov byte [edi], 0
+    code += bytes([0x8A, 0x06])              # mov al, [esi]
+    code += bytes([0x88, 0x07])              # mov [edi], al
+    code += bytes([0x4E])                    # dec esi
+    code += bytes([0x47])                    # inc edi
+    code += bytes([0x49])                    # dec ecx
+    back2 = -(len(code) + 2 - cloop)
+    code += bytes([0x75, back2 & 0xFF])      # jnz copy_loop
+
+    code += bytes([0xC6, 0x07, 0x00])        # mov byte [edi], 0  (null-terminate)
 
     # skip_reversal:
     skip_off = len(code)
-    code[je_skip] = skip_off - (je_skip + 2)
-    code[je_len_skip + 1] = skip_off - (je_len_skip + 2)
-    code[jmp_skip    + 1] = skip_off - (jmp_skip + 2)
+    code[je_skip   + 1] = skip_off - (je_skip   + 2)
+    code[jmp_skip  + 1] = skip_off - (jmp_skip  + 2)
 
-    # --- EPILOGUE: Restore context to keep fastcall assumptions safe ---
-    code += bytes([0x5F, 0x5E, 0x5A, 0x59, 0x58])  # pop edi; pop esi; pop edx; pop ecx; pop eax
+    # --- Epilogue ---
+    code += bytes([0x5F, 0x5E, 0x59, 0x58])  # pop edi; pop esi; pop ecx; pop eax
 
-    # Tail-call JMP back to DrawString (0x0046F530)
+    # Tail-call DrawString (JMP, not CALL, so it returns directly to the original caller)
     jmp_pos = len(code)
-    ds_rel = struct.pack('<i', DRAWSTRING_VA - (WRAPPER_GAME_VA + jmp_pos + 5))
+    ds_rel = struct.pack('<i', DRAWSTRING_VA - (WRAPPER_VA + jmp_pos + 5))
     code += bytes([0xE9]) + ds_rel
 
     return bytes(code)
-
-
 
 
 def _wrapper_len() -> int:
@@ -621,205 +541,101 @@ def _format_swap_status(data: bytearray, va: int, orig: bytes, new: bytes) -> st
 # ---------------------------------------------------------------------------
 def apply_patch(exe_path: str, force: bool = False) -> None:
     exe_name = os.path.basename(exe_path)
-    print('=== apply_reverse_patch  (Dual Tail-Call Patch) ===')
+    print('=== apply_reverse_patch  (string reversal for ALL DrawString calls) ===')
     print(f'    target: {exe_path}')
     data = _load_exe(exe_path)
     dirty = False
 
     sites = _find_call_sites(data)
-    print()
-
-    # 1. כתיבת ה-Wrapper הראשון (לתפריט - אופסט 0x1C המקורי שעבד מעולה)
-    wlen     = len(_build_wrapper())
-    cave_off = _va_to_off(data, WRAPPER_VA)
-    cave_region = data[cave_off:cave_off + wlen]
-    if any(b != 0x00 and b != 0x90 for b in cave_region) and not force:
-        print(f'[!] Cave at 0x{WRAPPER_VA:08X} is not clean. Use --force to overwrite.')
-        return
-
-    data[cave_off:cave_off + wlen] = _build_wrapper()
-    print(f'[+] Menu Reversal Wrapper written at 0x{WRAPPER_VA:08X} ({wlen} bytes)')
-
-    # 2. כתיבת ה-Wrapper השני (למשחק - אופסט 0x18 החדש והמוגן עם מסנן האורך)
-    #wlen_game     = len(_build_game_wrapper())
-    #cave_game_off = _va_to_off(data, WRAPPER_GAME_VA)
-    #data[cave_game_off:cave_game_off + wlen_game] = _build_game_wrapper()
-    #print(f'[+] Game Reversal Wrapper written at 0x{WRAPPER_GAME_VA:08X} ({wlen_game} bytes)')
-
-    # 3. איפוס ה-Ring Buffer ב-.data (מורחב ל-32 סלוטים)
-    ring_off = _va_to_off(data, RING_IDX_VA)
-    data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
-    print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X} ({RING_DATA_LEN} bytes)')
-
-    # 4. הזרקת פקודות ה-CALL הייעודיות לכל אתר קריאה
-    patched_count = 0
-    for site_va in sites:
-        off = _va_to_off(data, site_va)
-        
-        if site_va == 0x00485CCC:
-            # מנתבים את התפריט ל-Wrapper הסטנדרטי והמוכח
-            new_bytes = b'\xE8' + _rel32(site_va, WRAPPER_VA)
-            data[off:off + 5] = new_bytes
-            print(f'[+] Patched Menu Hook at 0x{site_va:08X} -> CALL 0x{WRAPPER_VA:08X}')
-            patched_count += 1
-            
-        elif site_va == 0x00486722:
-            # מנתבים את המשחק ל-Wrapper המוגן עם מסנן האורך (אופסט 0x18)
-            new_bytes = b'\xE8' + _rel32(site_va, WRAPPER_GAME_VA)
-            data[off:off + 5] = new_bytes
-            print(f'[+] Patched Game Hook at 0x{site_va:08X} -> CALL 0x{WRAPPER_GAME_VA:08X}')
-            patched_count += 1
-
-    if patched_count > 0:
-        dirty = True
-        print(f'[+] {patched_count} high-level call-site(s) patched.')
-
-    if dirty:
-        _save_exe(data, exe_path)
-        print(f'[+] {exe_name} successfully saved with separate Menu and Game wrappers.')
-    else:
-        print('[*] Nothing to do — EXE unchanged.')
-    print()
-
-
-
-
-
-def apply_patch_old(exe_path: str, force: bool = False) -> None:
-    exe_name = os.path.basename(exe_path)
-    print('=== apply_reverse_patch  (Dual Tail-Call Patch) ===')
-    print(f'    target: {exe_path}')
-    data = _load_exe(exe_path)
-
-    sites = _find_call_sites(data)
-    print()
-
-    # 1. כתיבת ה-Wrapper הראשון (לתפריט - אופסט 0x1C)
-    wlen     = len(_build_wrapper())
-    cave_off = _va_to_off(data, WRAPPER_VA)
-    data[cave_off:cave_off + wlen] = _build_wrapper()
-    print(f'[+] Menu Reversal Wrapper written at 0x{WRAPPER_VA:08X}')
-
-    # 2. כתיבת ה-Wrapper השני (למשחק - אופסט 0x18)
-    wlen_game     = len(_build_game_wrapper())
-    cave_game_off = _va_to_off(data, WRAPPER_GAME_VA)
-    data[cave_game_off:cave_game_off + wlen_game] = _build_game_wrapper()
-    print(f'[+] Game Reversal Wrapper written at 0x{WRAPPER_GAME_VA:08X}')
-
-    # 3. איפוס ה-Ring Buffer
-    ring_off = _va_to_off(data, RING_IDX_VA)
-    data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
-    print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X}')
-
-    # 4. הזרקת ה-CALL-ים הראשיים
-    patched_count = 0
-    for site_va in sites:
-        off = _va_to_off(data, site_va)
-        
-        if site_va == 0x00485CCC:
-            new_bytes = b'\xE8' + _rel32(site_va, WRAPPER_VA)
-            data[off:off + 5] = new_bytes
-            print(f'[+] Patched Menu Hook at 0x{site_va:08X} -> CALL 0x{WRAPPER_VA:08X}')
-            patched_count += 1
-            
-        #elif site_va == 0x00486722:
-        #    new_bytes = b'\xE8' + _rel32(site_va, WRAPPER_GAME_VA)
-        #    data[off:off + 5] = new_bytes
-        #    print(f'[+] Patched Game Hook at 0x{site_va:08X} -> CALL 0x{WRAPPER_GAME_VA:08X}')
-        #    patched_count += 1
-
-    if patched_count > 0:
-        _save_exe(data, exe_path)
-        print(f'[+] {exe_name} successfully saved with dual wrappers.')
-
-
-def apply_patch_new(exe_path: str, force: bool = False) -> None:
-    exe_name = os.path.basename(exe_path)
-    print('=== apply_reverse_patch  (Multi-Wrapper High-Level Patch) ===')
-    print(f'    target: {exe_path}')
-    data = _load_exe(exe_path)
-    dirty = False
-
-    sites = _find_call_sites(data)
-    print(f'[*] Found {len(sites)} precise high-level text call-site(s):')
+    print(f'[*] Found {len(sites)} DrawString call-site(s):')
     for s in sites:
-        print(f'      0x{s:08X}')
+        print(f'      0x{s:08X}  ({_site_status(data, s)})')
     print()
 
-    # בדיקת מוגנות עבור המערה הראשונה (מערת התפריט)
-    wlen     = len(_build_wrapper())
-    cave_off = _va_to_off(data, WRAPPER_VA)
-    cave_region = data[cave_off:cave_off + wlen]
-    if any(b != 0x00 and b != 0x90 for b in cave_region) and not force:
-        print(f'[!] Cave at 0x{WRAPPER_VA:08X} is not clean. Use --force to overwrite.')
-        return
+    statuses = [_site_status(data, s) for s in sites]
+    all_patched = bool(sites) and all(st == 'patched' for st in statuses)
+    no_sites    = not sites
 
-    # 1. כתיבת ה-Wrapper הראשון (עבור התפריט ב-0x00485CCC)
-    wrapper = _build_wrapper()
-    data[cave_off:cave_off + wlen] = wrapper
-    print(f'[+] Menu Wrapper written at 0x{WRAPPER_VA:08X} ({wlen} bytes)')
+    if no_sites:
+        print('[!] No CALL DrawString instructions found in .text.')
+        print('    (this is expected when the wrapper has already redirected every site;')
+        print('     skipping wrapper/call-site step, will still attempt the format swap)')
+    elif all_patched:
+        print('[!] All call-sites already patched — skipping wrapper/call-site step.')
+    else:
+        unexpected = [(s, st) for s, st in zip(sites, statuses)
+                      if st not in ('original', 'patched')]
+        if unexpected:
+            for va, st in unexpected:
+                print(f'[!] Unexpected bytes at 0x{va:08X}: {st}')
+            if not force:
+                print('    (run with --force to patch anyway)')
+                return
 
-    # 2. כתיבת ה-Wrapper השני (עבור המשחק ב-0x00486722)
-    wlen_game     = len(_build_game_wrapper())
-    cave_game_off = _va_to_off(data, WRAPPER_GAME_VA)
-    game_wrapper  = _build_game_wrapper()
-    data[cave_game_off:cave_game_off + wlen_game] = game_wrapper
-    print(f'[+] Game Wrapper written at 0x{WRAPPER_GAME_VA:08X} ({wlen_game} bytes)')
+        wlen     = _wrapper_len()
+        cave_off = _va_to_off(data, WRAPPER_VA)
+        cave_region = data[cave_off:cave_off + wlen]
+        if any(b != 0x90 for b in cave_region) and cave_region != _build_wrapper():
+            print(f'[!] Cave at 0x{WRAPPER_VA:08X} is not clean NOPs.')
+            if not force:
+                print('    (run with --force to overwrite anyway)')
+                return
 
-    # 3. איפוס זיכרון ה-Ring Buffer ב-.data
-    ring_off = _va_to_off(data, RING_IDX_VA)
-    data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
-    print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X} ({RING_DATA_LEN} bytes)')
+        wrapper = _build_wrapper()
+        data[cave_off:cave_off + wlen] = wrapper
+        print(f'[+] Wrapper written at 0x{WRAPPER_VA:08X} ({wlen} bytes)')
+        print(f'    {wrapper.hex()}')
 
-    # 4. הזרקת ה-CALL-ים הייעודיים ומעבר מכתובות קבועות לניתובים נפרדים
-    patched_count = 0
-    for site_va in sites:
-        off = _va_to_off(data, site_va)
-        
-        # ניתוח והפרדת כוחות: כל קריאה מנותבת ל-Wrapper הייעודי לה
-        if site_va == 0x00485CCC:
-            dst_va = WRAPPER_VA
-            desc = "Menu Reversal"
-        elif site_va == 0x00486722:
-            dst_va = WRAPPER_GAME_VA
-            desc = "Game Scene Reversal (Stack Protected)"
-        else:
-            continue # הגנה מפני קריאות לא מזוהות
-            
-        new_bytes = b'\xE8' + _rel32(site_va, dst_va)
-        data[off:off + 5] = new_bytes
-        print(f'[+] Patched 0x{site_va:08X} -> CALL 0x{dst_va:08X} ({desc})')
-        patched_count += 1
-        
-    print(f'[+] {patched_count} high-level call-site(s) patched.')
-    dirty = True
+        ring_off = _va_to_off(data, RING_IDX_VA)
+        data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
+        print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X} ({RING_DATA_LEN} bytes)')
 
-    # --- שמירת מחרוזות הפורמט (שמירה/טעינה) ---
+        patched_count = 0
+        for site_va in sites:
+            if _site_status(data, site_va) == 'patched':
+                print(f'    0x{site_va:08X}  already patched, skipping')
+                continue
+            off      = _va_to_off(data, site_va)
+            new_bytes = _patched_call_bytes(site_va)
+            data[off:off + 5] = new_bytes
+            print(f'[+] Patched 0x{site_va:08X}  -> {new_bytes.hex()}')
+            patched_count += 1
+        print(f'[+] {patched_count} call-site(s) patched.')
+        dirty = True
+
+    # --- Save/load format-string swaps (length-preserving in-place rewrites) ---
     for va, orig, new, desc in FORMAT_SWAPS:
-        try:
-            off = _va_to_off(data, va)
-            st  = _format_swap_status(data, va, orig, new)
-            if st == 'patched':
-                print(f'    0x{va:08X}  format swap already patched ({desc}), skipping')
-            elif st == 'original':
+        off = _va_to_off(data, va)
+        st  = _format_swap_status(data, va, orig, new)
+        if st == 'patched':
+            print(f'    0x{va:08X}  format swap already patched ({desc}), skipping')
+        elif st == 'original':
+            data[off:off + len(new)] = new
+            print(f'[+] Format swap at 0x{va:08X} applied ({len(new)} bytes — {desc})')
+            print(f'    {orig!r}')
+            print(f' -> {new!r}')
+            dirty = True
+        else:
+            print(f'[!] Format block at 0x{va:08X} has unexpected bytes ({desc}): {st}')
+            if force:
                 data[off:off + len(new)] = new
-                print(f'[+] Format swap at 0x{va:08X} applied ({desc})')
+                print(f'[+] Format swap at 0x{va:08X} force-overwritten')
                 dirty = True
             else:
-                if force:
-                    data[off:off + len(new)] = new
-                    print(f'[+] Format swap at 0x{va:08X} force-overwritten ({desc})')
-                    dirty = True
-        except ValueError:
-            print(f'[!] Format swap address 0x{va:08X} not found in this EXE version. Skipping.')
+                print('    (skipping — run with --force to overwrite anyway)')
 
     if dirty:
         _save_exe(data, exe_path)
-        print(f'[+] {exe_name} successfully saved with dual wrappers.')
+        print(f'[+] {exe_name} saved.')
     else:
         print('[*] Nothing to do — EXE unchanged.')
     print()
-
+    print('EXPECTED BEHAVIOUR')
+    print('  Every DrawString call goes through the reversal wrapper.')
+    print('  Each call gets its own ring slot (4 slots × 128 bytes).')
+    print('  Strings containing digits (date/time/percent/mixed-Hebrew labels)')
+    print('  are passed through unchanged; pure-text strings are reversed.')
+    print('  Save/load percent + time formats now place the value before the label.')
 
 
 # ---------------------------------------------------------------------------
@@ -1050,7 +866,7 @@ if __name__ == '__main__':
         print(f'[!] EXE not found: {exe_path}')
         sys.exit(1)
 
-    #_check_exe_not_running(exe_path)
+    _check_exe_not_running(exe_path)
 
     if args.apply:
         apply_patch(exe_path, force=args.force)

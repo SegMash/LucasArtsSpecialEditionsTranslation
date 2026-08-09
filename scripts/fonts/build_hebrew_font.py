@@ -134,9 +134,9 @@ def process_font(font_name: str, fonts_dir: str, output_dir: str,
 
     step_args = [
         # 1. parse_font
-        [font_file],
+        [args.game, font_file],
         # 2. generate_hebrew_glyphs
-        [glyph_dir, "--font", ttf, "--max-fraction", str(args.max_fraction),
+        [args.game, glyph_dir, "--font", ttf, "--max-fraction", str(args.max_fraction),
          "--align", args.align, "--border-mode", args.border_mode]
         + (["--test-line"] if args.test_line else [])
         + (["--no-quantize"] if not args.quantize else []),
@@ -145,11 +145,11 @@ def process_font(font_name: str, fonts_dir: str, output_dir: str,
         #    x_left / x_right of ALL glyphs stay at original parsed positions.
         #    This prevents non-Hebrew glyph positions from shifting, which can
         #    cause the game engine to misinterpret the atlas layout.
-        [glyph_dir, "--hebrew-gap", str(args.hebrew_gap)],
+        [args.game, glyph_dir, "--hebrew-gap", str(args.hebrew_gap)],
         # 4. create_font — NO --repack: use preserve-original mode.
         #    x_right of Hebrew glyphs is auto-adjusted to match their PNG widths;
         #    non-Hebrew glyph positions are byte-identical to the original font.
-        [glyph_dir, output_dir,
+        [args.game,  glyph_dir, output_dir,
          "--template", template_file],
     ]
 
@@ -188,6 +188,11 @@ def main() -> None:
         description="Build Hebrew-enabled fonts for Monkey Island 2 SE.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
+    )
+    parser.add_argument(
+        "game",
+        choices=["mi1", "mi2"],
+        help="Monkey Island version to process (mi1 or mi2).",
     )
     parser.add_argument("fonts_dir",
                         help="Folder containing the .font files.")
@@ -275,6 +280,7 @@ def main() -> None:
     print("║         Hebrew Font Builder — Monkey Island 2 SE     ║")
     print("╚══════════════════════════════════════════════════════╝")
     print()
+    print(f"  Game       : {args.game}")
     print(f"  Fonts dir  : {fonts_dir}")
     print(f"  Originals  : {original_dir}")
     print(f"  Output dir : {output_dir}")

@@ -61,7 +61,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 # ── Import the mapping defined in the same scripts/ folder ───────────────────
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hebrew_mapping import HEBREW_TO_CODE, _CODE_TO_GLYPH
+
+
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
 DEFAULT_FONT    = r"C:\Windows\Fonts\frank.ttf"
@@ -122,7 +123,7 @@ def find_best_size(font_path: str, test_letter: str, cell_h: int, max_frac: floa
     return best
 
 
-def compute_baseline(font: ImageFont.FreeTypeFont,
+def compute_baseline(HEBREW_TO_CODE: dict[str, int], font: ImageFont.FreeTypeFont,
                      cell_h: int) -> tuple[int, int, int]:
     """
     Measure ascent / descent across ALL Hebrew letters and compute a shared
@@ -188,6 +189,11 @@ def main() -> None:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
+        "game",
+        choices=["mi1", "mi2"],
+        help="Game version to use.  Default: mi2.",
+    )
+    parser.add_argument(
         "glyph_dir",
         help=(
             "Folder with glyph_manifest.csv.  Hebrew PNGs are written here by default, "
@@ -247,6 +253,10 @@ def main() -> None:
              "                   the glyph body.",
     )
     args = parser.parse_args()
+    if args.game == "mi1":
+        from hebrew_mapping import HEBREW_TO_CODE, _CODE_TO_GLYPH
+    else:
+        from hebrew_mapping_mi2 import HEBREW_TO_CODE, _CODE_TO_GLYPH
 
     num_letters = len(HEBREW_TO_CODE)
     letter_from = max(1, args.letter_from)
@@ -295,7 +305,7 @@ def main() -> None:
     #   - ל (tall ascender) sits near the top
     #   - regular body letters are on the baseline
     #   - ן / ך / ף / ץ (descenders) dip below
-    baseline_y, max_ascent, max_descent = compute_baseline(font, cell_h)
+    baseline_y, max_ascent, max_descent = compute_baseline(HEBREW_TO_CODE, font, cell_h)
     band = max_ascent + max_descent
     print(f"Baseline        : y={baseline_y}  "
           f"(ascent={max_ascent}, descent={max_descent}, "

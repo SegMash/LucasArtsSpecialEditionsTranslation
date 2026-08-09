@@ -24,7 +24,7 @@ for %%A in ("%FONT_SRC%\*.font") do (
         :: העתקת קובצי המקור הנקיים
         copy /y "%FONT_SRC%\!F!.*" fonts_mi1\
         :: הרצת סקריפט הפייתון לבניית הפונט בעברית
-        python.exe .\scripts\fonts\build_hebrew_font.py .\fonts_mi1 !F! --hebrew-gap 1 --ttf .\frank.ttf --ttf-bold .\frank.ttf
+        python.exe .\scripts\fonts\build_hebrew_font.py mi1 .\fonts_mi1 !F! --hebrew-gap 1 --ttf .\frank.ttf --ttf-bold .\frank.ttf
         :: העתקת הפונט הבנוי החדש אל תיקיית היעד של המשחק
         copy /y "fonts_mi1\!F!.*" "C:\GOG Games\Monkey Island 1 SE\quickbms\extracted\fonts\"
     )

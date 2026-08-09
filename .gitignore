@@ -1,11 +1,14 @@
 # Byte-compiled / optimized / DLL files
-art/
+.vs
+/art/
 images/en/*.png
+images_mi2/en
 __pycache__/
 *.py[codz]
 *$py.class
 *.exe
 fonts_mi1
+fonts_mi2
 talkie
 *.7z
 installer/mi1/patches/*.pat

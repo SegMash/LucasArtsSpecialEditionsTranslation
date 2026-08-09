@@ -51,6 +51,7 @@ if "%~1"=="" (
     echo   build_hebrew_font.bat "quickbms\output\fonts" --hebrew-gap 1
     echo.
     echo Common options:
+    echo   --game       GAME     Monkey Island version to process (mi1 or mi2)
     echo   --output-dir DIR     where to write rebuilt .font + .png
     echo   --ttf       PATH     Hebrew TTF ^(regular/italic^)
     echo   --ttf-bold  PATH     Hebrew TTF ^(bold/bold-oblique^)

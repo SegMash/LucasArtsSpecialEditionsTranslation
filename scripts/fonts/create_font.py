@@ -52,16 +52,9 @@ import argparse
 from PIL import Image
 
 # ── Constants (must match parse_font.py) ─────────────────────────────────────
-#FILE_SIZE         = 19472
-FILE_SIZE         = 19456
-#NUM_GLYPHS_FIXED  = 155
-NUM_GLYPHS_FIXED  = 154
-GLYPH_REC_OFFSET  = FILE_SIZE - NUM_GLYPHS_FIXED * 16   # 16992
 CHAR_TABLE_OFFSET = 90
 CHAR_TABLE_FIRST  = 31          # first codepoint in the primary char table
-#CHAR_TABLE_COUNT  = 155         # covers codes 31..185
-CHAR_TABLE_COUNT  = 154
-CHAR_TABLE_END    = CHAR_TABLE_OFFSET + CHAR_TABLE_COUNT * 2   # 400
+
 
 # Layout parameters
 # GLYPH_GAP=0: tightly packed — the x_right+1 crop convention already keeps
@@ -395,6 +388,11 @@ if __name__ == "__main__":
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
+        "game",
+        choices=["mi1", "mi2"],
+        help="Monkey Island version to process (mi1 or mi2).",
+    )
+    parser.add_argument(
         "glyph_dir",
         help="Folder with NNN.png glyph files and glyph_manifest.csv.",
     )
@@ -435,5 +433,18 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     stem = args.name or os.path.basename(os.path.abspath(args.glyph_dir))
+    if args.game == "mi1":
+        FILE_SIZE         = 19456
+        CHAR_TABLE_COUNT  = 154
+    elif args.game == "mi2":
+        FILE_SIZE         = 19472
+        CHAR_TABLE_COUNT  = 155
+    else:
+        print(f"ERROR: unknown game: {args.game}")
+        sys.exit(1)
+    NUM_GLYPHS_FIXED = CHAR_TABLE_COUNT
+    GLYPH_REC_OFFSET  = FILE_SIZE - NUM_GLYPHS_FIXED * 16   # 16992
+    CHAR_TABLE_COUNT  = NUM_GLYPHS_FIXED
+    CHAR_TABLE_END    = CHAR_TABLE_OFFSET + CHAR_TABLE_COUNT * 2   # 400
     pack_font(args.glyph_dir, args.output_dir, stem, args.template,
               atlas_width_hint=args.atlas_width, repack=args.repack)

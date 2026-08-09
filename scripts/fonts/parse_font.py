@@ -63,17 +63,9 @@ from PIL import Image
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-#FILE_SIZE        = 19472
-#TODO - we can get the size automaticly
-FILE_SIZE        = 19456
-#NUM_GLYPHS       = 155
-NUM_GLYPHS       = 154
-GLYPH_REC_OFFSET = FILE_SIZE - NUM_GLYPHS * 16   # = 16992
 CHAR_TABLE_OFFSET = 90
 CHAR_TABLE_FIRST  = 31   # cp31 (special game char); cp32=SPACE, cp33='!'
-#CHAR_TABLE_COUNT  = 155   # covers codes 31..185
-CHAR_TABLE_COUNT  = 154   # covers codes 31..185
-CHAR_TABLE_END    = CHAR_TABLE_OFFSET + CHAR_TABLE_COUNT * 2   # = 400
+
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -297,6 +289,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Extract individual glyph images from a Monkey Island SE .font + .png pair."
     )
+    parser.add_argument(
+        "game",
+        choices=["mi1", "mi2"],
+        help="Monkey Island version to process (mi1 or mi2).",
+    )
     parser.add_argument("font_path", help="Path to the .font file.")
     parser.add_argument(
         "--tight", action="store_true",
@@ -308,4 +305,17 @@ if __name__ == "__main__":
         help="Do not write a PNG file for empty (fully transparent) glyphs.",
     )
     args = parser.parse_args()
+    if args.game == "mi1":
+        FILE_SIZE         = 19456
+        CHAR_TABLE_COUNT  = 154
+    elif args.game == "mi2":
+        FILE_SIZE         = 19472
+        CHAR_TABLE_COUNT  = 155
+    else:
+        print(f"ERROR: unknown game: {args.game}")
+        sys.exit(1)
+    NUM_GLYPHS = CHAR_TABLE_COUNT
+    GLYPH_REC_OFFSET = FILE_SIZE - CHAR_TABLE_COUNT * 16   # = 16992
+    CHAR_TABLE_COUNT  = 154   # covers codes 31..185
+    CHAR_TABLE_END    = CHAR_TABLE_OFFSET + CHAR_TABLE_COUNT * 2   # = 400
     parse_font(args.font_path, tight_crop=args.tight, skip_empty=args.skip_empty)

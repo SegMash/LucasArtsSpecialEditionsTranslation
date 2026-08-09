@@ -58,7 +58,7 @@ import argparse
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from hebrew_mapping import HEBREW_TO_GLYPH
+
 
 
 def png_width(path: str, fallback: int) -> int:
@@ -73,6 +73,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Update glyph_manifest.csv after generating Hebrew glyphs.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "game",
+        choices=["mi1", "mi2"],
+        help="Game version to use.  Default: mi2.",
     )
     parser.add_argument(
         "glyph_dir",
@@ -94,6 +99,12 @@ def main() -> None:
              "between letters; decrease for tighter packing.",
     )
     args = parser.parse_args()
+    if args.game == "mi1":
+        from hebrew_mapping import HEBREW_TO_GLYPH
+    else:
+        from hebrew_mapping_mi2 import HEBREW_TO_GLYPH
+
+
 
     glyph_dir = args.glyph_dir
     csv_path  = os.path.join(glyph_dir, "glyph_manifest.csv")
