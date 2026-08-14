@@ -1,9 +1,9 @@
 Records that fell back to English (inject_translation.py)
 He dir  : .\translations\mi2
-Loc dir : c:\GOG Games\Monkey Island 2 SE\quickbms\extracted\localization
-Total missing (unique): 56
+Loc dir : C:\GOG Games\Monkey Island 2 SE\localization
+Total missing (unique): 195
   speech : 41
-  uitext : 57
+  uitext : 192
 ======================================================================
 
 [SPEECH]
@@ -36,32 +36,171 @@ D
 I
 
 [UITEXT]
+CONTINUE/LOAD GAME
+HELP AND OPTIONS
+BONUS FEATURES
+LEADERBOARDS
+ACHIEVEMENTS
+RETURN TO GAME LIBRARY
+PIRATE PERFORMANCE
+HOW TO PLAY
+CONTROLS
+VIDEO SETTINGS
+CLASSIC EDITION CREDITS
+SPECIAL EDITION CREDITS
+MANUAL
+POINT AND CLICK
+OFF
+DIRECT INPUT
+TRACKPAD
+GAME CONTROLS
+SUBTITLES IN SPECIAL EDITION
+VOICES IN CLASSIC EDITION
+THE ART OF MONKEY ISLAND
+NAVIGATING GUYBRUSH\nWhen Manual Control is selected, use the <leftstick> to move Guybrush.\nWhen Point and Click Control is selecetd, use the <left or rightstick> to move the cursor.\nMove the cursor where you would like Guy-brush to go and press the <A> Button.
+INTERACTING WITH THE ENVIRONMENT\nThe cursor allows you to interact with the environment.\nUse the <rightstick> to move the cursor over objects in the environment.
+VERB ACTIONS\nWhen an object is selected, press and hold the <Right Trigger> to bring up the list of verb actions that can be performed with it.\nUse the <left or right stick> to select a verb icon.\nRelease the <Right Trigger> when a verb icon is highlighted to perform that action.
+OBJECT HIGHLIGHTING\nTo help you identifty interactive objects more quickly, press the <left button> to highlight them.
+INVENTORY MENU\nTo bring up the inventory menu, press and hold the <Left trigger> . Release the <Left Trigger> to close the inventory menu.\nUse the <left or rightstick> to highlight an item and press the <Right Trigger>  to select it.\nSome items can be combined with other items. Highlight another item when one item is selected and press the <Right Trigger> to combine them.
+USING INVENTORY ITEMS\nWhen an inventory item is selected, it will appear inside the cursor. \nMove the cursor over an object or character in the environment and press <Right Trigger> to use the inventory item with it.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by holding down the <x> button. Once you have held the button down long enough, the hint will appear.\nThese will start off being slight clues, and if you require further help you can press <X button> again for a more detailed decription of what you should do next.\n
+VERB ICONS
+POINT AND CLICK CONTROLS\nleft trigger:\nShow / Hide Inventory Menu\nright trigger:\nShow / Hide Action dial / Perform Action\nleft bumper:\nHighlight Interactive Objects\nright bumper:\nTrigger Audio Commentary\nMove cursor (Navigate Action Dial / Select Dialog)\n"Look At" inventory item / Walk to location\nTrigger Hint\nSwitch to Classic Mode\nMove cursor\nMake Guybrush Walk (Navigate Action Dial / Select Dialog)\nMANUAL CONTROLS\nOptions Menu
+POINT AND CLICK CONTROLS\nL2 button:\nShow / Hide Inventory Menu\nR2 button:\nShow / Hide Action dial / Perform Action\nL1 button:\nHighlight Interactive Objects\nR1 button:\nTrigger Audio Commentary\nMove cursor (Navigate Action Dial / Select Dialog)\n"Look At" inventory item / Walk to location\nTrigger Hint\nSwitch to Classic Mode\nMove cursor\nMake Guybrush Walk (Navigate Action Dial / Select Dialog)\nMANUAL CONTROLS\nOptions Menu
+CONTROLS\nGameplay screen:\nTouch anywhere to interact\nCursor:\nNavigate / Select objects\nVerb Icons:\nTap to select\nInventory Icon:\nTap to open / close
+INTERACTING WITH THE ENVIRONMENT\nThe cursor allows you to interact with the environment. Point the cursor over objects in the environment to select them.
+VERB ACTIONS\nWhen an object is selected, press and hold the Right Mouse Button to bring up the list of verb actions that can be performed with it.\nPoint the cursor to select a verb icon. \nRelease the Right Mouse Button when a verb icon is highlighted to perform that action.
+OBJECT HIGHLIGHTING\nTo help you identify interactive objects more quickly, press the Left and Right Mouse Buttons together to highlight them.
+INVENTORY MENU\nTo bring up the inventory menu, click the mouse wheel.\nPoint the cursor at an item to highlight it and press the Left Mouse Button to select it.\nSome items can be combined with other items. Highlight another item when one item is selected and press the Left Mouse Button to combine them.
+USING INVENTORY ITEMS\nWhen an inventory item is selected, it will appear inside the cursor. \nMove the cursor over objects or characters in the environment and press the Left Mouse Button to use the inventory item with it.
+USING THE HINT SYSTEM (Exactly as written in Monkey 1)\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by pressing the H key.  \nThese will start off being slight clues, and if you require further help you can press H again for a more detailed description of what you should do next.
+NAVIGATING GUYBRUSH\nUse the mouse to point the cursor where you would like Guybrush to go and press the Left Mouse Button to make Guybrush walk there.
+HOW TO PLAY\nNAVIGATING GUYBRUSH\nWhen Trackpad Control is selected, move the cursor where you want Guybrush to go and then tap the screen.\nWhen Direct Control is selected, touch the game screen where you want Guybrush to go. When you lift your finger, Guybrush will walk there.
+INTERACTING WITH THE ENVIRONMENT\nWhen Trackpad Control is selected, select a verb icon from the keyboard at the bottom of the screen and move the cursor over an interactive object. Tap anywhere on the screen to perform this action.\nWhen Direct Control is selected, select a verb icon from the keyboard at the bottom of the screen and touch an interactive object. Lift your finger off the screen to perform this action.
+OBJECT HIGHLIGHTING\nTo help you identify useful items more quickly, place two fingers on the screen at the same time and then lift them to highlight interactive objects.
+INVENTORY MENU (I)\nTo open and close the ivnentory menu, tap on the inventory icon at the lower right.\nYou can perform different actions with the inventory items. Select a verb from the keyboard at the bottom of the screen and then tap on an inventory item to aplpy the verb to it.
+INVENTORY MENU (II)\nSome items can be combined with other items. Tap the "use" verb icon at the bottom of the screen and then tap on two different inventory items to combine them.
+USING INVENTORY ITEMS IN THE ENVIRONMENT\nOnce you have selected an inventory item, touch an object in the environment to use the inventory item with it.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by shaking the Iphone or Ipod touch. \nThese will start off being slight clues, and if you require further help you can shake your device again for a more detailed description of what you should do next.
+USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by placing three fingers on the screen at the same time. \nThese will start off being slight clues, and if you require further help you can place three fingers on the screen again for a more detailed description of what you should do next.
+AUDIO COMMENTARY\nAt certain points in the game, you can listen to the original developers of the Monkey Island game discuss the game's development. To play the Audio Commentary, touch the microphone icon at the top right of the screen when it lights up.
+PAUSE MENU\nTo access the Pause Menu, touch the compass icon at the top left of the screen.
+OBJECT HIGHLIGHTING
+CLASSIC MODE VOICE DIALOG
+SUBTITLES
+MUSIC VOLUME
+SFX VOLUME
+DIALOG VOLUME
+DEVELOPER'S COMMENTARY
+RESUME GAME
+SAVE GAME
+LOAD GAME
+EXIT TO MAIN MENU
+QUIT GAME
+Hold [Y] To Skip
+Hold [X] For Hint
+You are not yet ranked on the leaderboard for this game.
+Your friends are not yet ranked on the leaderboard for this game.
+There are no entries on this leaderboard.
+entries
+entry
+The data could not be saved on the selected storage device.
+Loading...
+Gentleman o' Fortune
+Jolly Roger
+Swifty Scallywag
+Playful Picaroon
+Steady Helmsman
+Grog Guzzler
+Land Lubber
+Squiffy Sprog
+This is a term of distinction for pirates! It is reserved for those pirates who are both wealthy and honorable.
+The Jolly Roger refers to the skull and crossbones found on the pirate flag! Anyone given this title is a true pirate.
+A scallywag is a bad person. A scoundrel. Considered to be clever and dangerous.
+The term Picaroon, is from the Spanish word for rascal. It is meant to describe pirates in a way that is satirical or humorous.
+The Helmsman is the Captain's attendant, who is tasked with rowing him to and from the ship.
+Grog is a pirate's favorite drink. Although the type of alcohol used to make it may vary, more often than not it contains large quantities of rum.
+"Lubber" was an old English word for a big, slow, clumsy person, and this term was aimed at those persons on ship who were not very skilled or at ease with ship life, as if to say, "You were no better on the land."
+A squiffy is a buffoon. A sprog is an untrained recruit. When someone calls you this, you should expect to be walking the plank very soon.
+CONGRATULATIONS! YOU'RE A:
+Cursor Speed
+Fast
+Normal
+Voices in Classic Edition
+Touch the screen anywhere and move the cursor as you would with a trackpad.\n\nThe cursor will allow you to interact with the environment.\n\nYou can adjust the speed of the cursor in the settings menu.\n
+Off
+SETTINGS
+Buy Full Game
+%namount-of-money% pieces o' eight
+%namount-of-money% pieces o' eight and %nnumber-of-coins% dimes
+%namount-of-money% pieces o' eight and a dime
+%nnumber-of-coins% dimes
 `The Jolly Rasta`
-.
-Cannibalism \nSee Also:  Self-Help
-Groupings \nSee Catalogs
-Headings \nSee Cross-Reference
-History \nSee Also: Scabb Island
-Indexes \nSee Indices
-Indices \nSee Titles
-Internal Revenue Service \nSee Imaginary Numbers.
-Jackalope \nSee Genetics
-Jelly \n`The Story of Jelly`
-Karate \nSee Martial Arts
-Ketchup \nSee Vegetables
-Labyrinths \nSee Zip Codes
-Magic \nSee Voodoo
-Maze Construction \nSee Annotation
-Music \n`Greatest Rock Musicians \nof the Renaissance`
-Organizational Schema \nSee Labyrinths
-Ranching \nSee Lice
-Recursion \nSee Recursion
-Referential Obscurantism \nSee Groupings
-Shipwrecks \nSee: Disaster
-Subheadings \nSee Maze Construction
-Titles \nSee Headings
-Vicious Pedantry \nSee Dewey Decimal System
-Voodoo \nSee: Recipes, Voodoo
-Xenophobia \n`Hey You Kids, Get Off \nMy Lawn`
-Xylophone \nSee: Music
-Zip Codes \nSee Indexes
+1/%ntimes-drunk-near-grog% bottle o' near-grog
+2 pieces of eight
+appendix infections
+breath o' dog
+churned thymus
+dock
+dragon's teeth
+Dred
+Dred's Ship
+elephant drool
+exit
+fish eyes
+furnace
+grasshopper tongues
+hemorrhoid specimens
+insect lungs
+jugular vein fragments
+killer cooties
+Light
+liquor cabinette
+liverwurst
+Mêlée Monkey
+marinated fingertips
+nector o' spider
+oozing lizard tails
+pancreas o' porcupine
+picture
+piece o' eight and %nnumber-of-coins% dimes
+pit
+porthole
+Possible Hidden Treasure
+quiche
+reptilian brain cells
+Purple Tentacle
+stairs master
+stone 1
+stone 2
+stone 3
+stone 4
+stone 5
+stone 6
+stone 7
+swamp worms
+The Mysterious Island of Cleptomaniac Parrots
+tissue o' serpent
+treasure hunter
+udder grease
+venom o' jackalope
+voodoo recipe book
+wig dandruff
+xeroxed nosehairs
+yak lips
+zit puss
+empty
+GAME SETTINGS
+AUDIO SETTINGS
+Monkey Island 2 Special Edition\nLeChuck's Revenge
+Part One: The Largo Embargo
+Part Two: Four Map Pieces
+Part Three: LeChuck's Fortress
+Part Four: Dinky Island
+%d%% complete
+VIEW PROFILE
+XBLA LEADERBOARDS
+MY FRIENDS
+MY SCORE
+GAMERTAG
+SCORE

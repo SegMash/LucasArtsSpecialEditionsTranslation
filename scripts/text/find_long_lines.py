@@ -22,6 +22,9 @@ def find_long_lines(path: Path, max_len: int) -> list[tuple[int, int, str]]:
             text = line.rstrip("\r\n")
             length = len(text)
             if length > max_len:
+                #If line contains \n ignore it
+                if '\\n' in text:
+                    continue
                 results.append((i, length, text))
     return results
 

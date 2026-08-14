@@ -127,7 +127,8 @@ RECORD_SIZE = 32        # speech.info: 8 × uint32 per record
 UITEXT_RECORD_SIZE = 8  # uitext.info: 2 × uint32 per record (KEY, DISPLAY_TEXT)
 
 # Hebrew text stored in logical order; the engine patch reverses each line.
-REVERSE_FOR_LTR = False
+#REVERSE_FOR_LTR = False
+REVERSE_FOR_LTR = True
 
 # Regex that matches "protected" segments which must NOT be reversed:
 import re
@@ -159,9 +160,31 @@ def _is_english_fallback(he_text: str, en_text: str) -> bool:
 
 def encode_he_text(text: str) -> bytes:
     """Encode a Hebrew/mixed string to the game's custom single-byte encoding."""
+    #If text contains digits or prefix is {REVERSE}
+    #if not _TOKEN_RE.search(text) and (any(ch.isdigit() for ch in text) or text.startswith("[REVERSE]")):
+    #    # Remove {REVERSE} prefix
+    #    text = text.replace("[REVERSE]", "")
+    #    text = text[::-1]
+    #    #Loop all words and reverse the numbers again
+    #    #segments should be split by space
+    #    segments = text.split(" ")
+    #    text = " ".join([seg[::-1] if any(ch.isdigit() for ch in seg) else seg for seg in segments])
+
+    #New logic:
+    # If text contains \n -
+    #   Split the text into segments by \n
+    #   Switch the segements order.
+    #   Build the text back.
+
+    if "\n" in text:
+        segments = text.split("\n")
+        segments = segments[::-1]
+        text = "\n".join(segments)
     segments = _TOKEN_RE.split(text)
 
+    #If REVERSE_FOR_LTR or segment contains numbers
     if REVERSE_FOR_LTR:
+        # Reverse the segments
         segments = segments[::-1]
 
     def _encode_chars(chars: list[str]) -> None:
@@ -569,7 +592,7 @@ def main() -> int:
     print()
 
     print("Restoring .info files from backups...")
-    restore_from_bak()
+    #restore_from_bak() #No need - restore from extract_orig
     print()
 
     print(f"Loading {he_speech_path} ...")

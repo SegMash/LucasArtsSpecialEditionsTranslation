@@ -2,10 +2,14 @@
 setlocal EnableDelayedExpansion
 set "GAME_DIR=C:\GOG Games\Monkey Island 2 SE"
 set "FONT_SRC=%GAME_DIR%\quickbms\extracted_orig\fonts"
-set "LOCAL_DEST=%GAME_DIR%\quickbms\extracted\localization"
-copy /y "%LOCAL_DEST%\en.speech.info"  "%LOCAL_DEST%\en.speech.info.bak"  
-copy /y "%LOCAL_DEST%\en.uitext.info"  "%LOCAL_DEST%\en.uitext.info.bak"  
+set "LOCAL_DEST=%GAME_DIR%\localization"
+set "LOC_BACK=%GAME_DIR%\quickbms\extracted_orig\localization"
+copy /y "%LOC_BACK%\en.speech.info"  "%LOCAL_DEST%\en.speech.info"
+copy /y "%LOC_BACK%\en.uiText.info"  "%LOCAL_DEST%\en.uiText.info"
 python scripts\text\inject_translation.py  "%LOCAL_DEST%"  --he-dir .\translations\mi2  --report
+REM python scripts\reverse-engineering\apply_reverse_patch.py "%GAME_DIR%\Monkey2.exe" --restore
+REM python scripts\reverse-engineering\apply_reverse_patch.py "%GAME_DIR%\Monkey2.exe" --apply
+exit
 
 mkdir fonts_mi2
 for %%A in ("%FONT_SRC%\*.font") do (
@@ -28,4 +32,4 @@ for %%A in ("%FONT_SRC%\*.font") do (
         copy /y "fonts_mi2\!F!.*" "%GAME_DIR%\quickbms\extracted\fonts\"
     )
 )
-python scripts\reverse-engineering\apply_reverse_patch.py "%GAME_DIR%\Monkey2.exe" --apply
+

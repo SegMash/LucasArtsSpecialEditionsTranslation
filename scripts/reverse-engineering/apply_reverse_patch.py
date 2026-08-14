@@ -582,12 +582,12 @@ def apply_patch(exe_path: str, force: bool = False) -> None:
                 return
 
         wrapper = _build_wrapper()
-        data[cave_off:cave_off + wlen] = wrapper
+        #data[cave_off:cave_off + wlen] = wrapper
         print(f'[+] Wrapper written at 0x{WRAPPER_VA:08X} ({wlen} bytes)')
         print(f'    {wrapper.hex()}')
 
         ring_off = _va_to_off(data, RING_IDX_VA)
-        data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
+        #data[ring_off:ring_off + RING_DATA_LEN] = b'\x00' * RING_DATA_LEN
         print(f'[+] Ring buffer zeroed at 0x{RING_IDX_VA:08X} ({RING_DATA_LEN} bytes)')
 
         patched_count = 0
@@ -597,7 +597,7 @@ def apply_patch(exe_path: str, force: bool = False) -> None:
                 continue
             off      = _va_to_off(data, site_va)
             new_bytes = _patched_call_bytes(site_va)
-            data[off:off + 5] = new_bytes
+            #data[off:off + 5] = new_bytes
             print(f'[+] Patched 0x{site_va:08X}  -> {new_bytes.hex()}')
             patched_count += 1
         print(f'[+] {patched_count} call-site(s) patched.')

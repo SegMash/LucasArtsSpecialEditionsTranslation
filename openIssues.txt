@@ -1,3 +1,16 @@
 Translate 4 parts
 Translate Stan's sign.
 Private Property
+
+MI2:
+1. Part-1
+2. Part-2
+3. Part-3
+4. PArt-4
+5. Menu items
+6. Map of scabb island
+7. swamp (International House of MOJO)
+
+6. 2_scabb-isl
+7. 3_sky (VGA - take from hebrew)
+8. menu__en files.
