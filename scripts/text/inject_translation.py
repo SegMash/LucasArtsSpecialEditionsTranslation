@@ -127,8 +127,8 @@ RECORD_SIZE = 32        # speech.info: 8 × uint32 per record
 UITEXT_RECORD_SIZE = 8  # uitext.info: 2 × uint32 per record (KEY, DISPLAY_TEXT)
 
 # Hebrew text stored in logical order; the engine patch reverses each line.
-#REVERSE_FOR_LTR = False
-REVERSE_FOR_LTR = True
+REVERSE_FOR_LTR = False
+#REVERSE_FOR_LTR = True
 
 # Regex that matches "protected" segments which must NOT be reversed:
 import re

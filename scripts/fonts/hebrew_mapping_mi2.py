@@ -70,6 +70,7 @@ HEBREW_TO_CODE: dict[str, int] = {
     "צ": 238,   # Tsadi #12  #EE
     #"ק": 240,   # Qof #22
     "ק": 241,   # Qof #22 #F1
+    " ": 32
 }
 
 # ── Reverse mapping: char code → Hebrew letter ────────────────────────────────
@@ -113,6 +114,7 @@ _CODE_TO_GLYPH: dict[int, int] = {
     237: 137,
     238: 138,
     241: 140,
+    #32: 32
 }
 
 HEBREW_TO_GLYPH: dict[str, int] = {
@@ -144,6 +146,13 @@ def decode(codes: list[int]) -> str:
     return "".join(CODE_TO_HEBREW.get(c, chr(c)) for c in codes)
 
 
+def hebrew_to_c_literal(word: str) -> str:
+    missing = [ch for ch in word if ch not in HEBREW_TO_CODE]
+    if missing:
+        raise ValueError(f"No mapping for character(s) {missing!r} in word {word!r}")
+    escaped = "".join(f"\\x{HEBREW_TO_CODE[ch]:02X}" for ch in word)
+    return f'"{escaped}"'
+
 if __name__ == "__main__":
     print("Hebrew ↔ Char-code mapping")
     print(f"{'Letter':<8} {'Name':<16} {'Code':>5} {'Glyph':>6}")
@@ -162,3 +171,12 @@ if __name__ == "__main__":
     encoded = encode(test)
     print(f'encode("{test}") = {encoded}')
     print(f'decode({encoded}) = "{decode(encoded)}"')
+
+    WORDS = [
+        "מטבעות כסף",
+        "אחוז השלמה"
+    ]
+    for word in WORDS:
+        reversed_word=word[::-1]  # reverse for right-to-left display
+        print(f'Original: "{word}" → Reversed: "{reversed_word}"')
+        print(f'hebrew_to_c_literal("{word}") = {hebrew_to_c_literal(reversed_word)}')
