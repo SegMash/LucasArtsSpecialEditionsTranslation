@@ -1,9 +1,9 @@
 Records that fell back to English (inject_translation.py)
 He dir  : .\translations\mi2
 Loc dir : C:\GOG Games\Monkey Island 2 SE\localization
-Total missing (unique): 195
+Total missing (unique): 190
   speech : 41
-  uitext : 192
+  uitext : 187
 ======================================================================
 
 [SPEECH]
@@ -85,9 +85,6 @@ USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Is
 USING THE HINT SYSTEM\nIf you are ever unsure about what to do next in Monkey Island 2 Special Edition, you can bring up the hints by placing three fingers on the screen at the same time. \nThese will start off being slight clues, and if you require further help you can place three fingers on the screen again for a more detailed description of what you should do next.
 AUDIO COMMENTARY\nAt certain points in the game, you can listen to the original developers of the Monkey Island game discuss the game's development. To play the Audio Commentary, touch the microphone icon at the top right of the screen when it lights up.
 PAUSE MENU\nTo access the Pause Menu, touch the compass icon at the top left of the screen.
-OBJECT HIGHLIGHTING
-CLASSIC MODE VOICE DIALOG
-SUBTITLES
 MUSIC VOLUME
 SFX VOLUME
 DIALOG VOLUME
@@ -184,13 +181,11 @@ tissue o' serpent
 treasure hunter
 udder grease
 venom o' jackalope
-voodoo recipe book
 wig dandruff
 xeroxed nosehairs
 yak lips
 zit puss
 empty
-GAME SETTINGS
 AUDIO SETTINGS
 Monkey Island 2 Special Edition\nLeChuck's Revenge
 Part One: The Largo Embargo

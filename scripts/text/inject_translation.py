@@ -158,17 +158,105 @@ def _is_english_fallback(he_text: str, en_text: str) -> bool:
 
 # ── Encoding ─────────────────────────────────────────────────────────────────
 
+def _is_english_word(word: str) -> bool:
+    """A word is "English" when it contains no character above code 190.
+
+    Hebrew characters in the game's custom single-byte font live above code
+    190, so a token whose code points all stay <= 190 is treated as Latin text.
+    """
+    return bool(word) and not any(ord(ch) > 190 for ch in word) and not all('0' <= ch <= '9' or ch == '.' or ch =="," for ch in word)
+    #return bool(word) and all('a' <= ch.lower() <= 'z' for ch in word)
+
+
+def _is_pure_english_line(line: str) -> bool:
+
+    """True when a whole line is pure English and must NOT be reversed.
+
+    The game engine renders each '\n'-separated line independently.  A line is
+    left completely untouched when it contains at least one English letter
+    (a-z/A-Z) yet no Hebrew letter (no character above code 190).  Such a line
+    is already LTR-orientated and reversing it would only flip it backwards.
+    """
+    if not any('a' <= ch.lower() <= 'z' for ch in line):
+        return False
+    return not any(ord(ch) > 190 for ch in line)
+
+
+def _reverse_english_in_line(line: str) -> str:
+    """Reverse each contiguous run of English words within a single line.
+
+    A run of English words is reversed character-by-character, which both
+    reverses the order of the words inside the run and reverses every word
+    itself.  Hebrew parts stay in place.
+    """
+    parts = re.split(r"(\s+)", line)
+    words = parts[0::2]
+    seps = [""] + parts[1::2]  # seps[k] = whitespace immediately before words[k]
+
+    result: list[str] = []
+    i = 0
+    n = len(words)
+    while i < n:
+        if _is_english_word(words[i]):
+            # Coalesce the maximal run of consecutive English words.
+            j = i
+            while j < n and _is_english_word(words[j]):
+                if "98" in words[j]:
+                    print(f"  [DEBUG] Found 98 in: {words[j]}")  
+                j += 1
+
+            result.append(seps[i])
+            run: list[str] = []
+            for k in range(i, j):
+                run.append(words[k])
+                if k + 1 < j:
+                    run.append(seps[k + 1])
+
+            section="".join(run)[::-1]
+            result.append(section)
+            i = j
+        else:
+            #if words[i] ends with '.' and starts with a digit then - move the '.' to the start of the words[i]
+            if words[i] and words[i][-1] == '.' and words[i][0].isdigit():
+                words[i] = '.' + words[i][:-1]
+            if "1060" in words[i]:  
+                print(f"  [DEBUG] Found 1060 in: {words[i]}")
+            result.append(seps[i])
+            result.append(words[i])
+            i += 1
+    return "".join(result)
+
+
+def _reverse_english_parts(text: str) -> str:
+    """Reverse English parts embedded in Hebrew lines, processing line by line.
+
+    Each '\n'-separated line is handled on its own.  Lines that are pure
+    English (at least one a-z/A-Z letter and no Hebrew letter) are left
+    completely untouched.  For the remaining lines, each contiguous run of
+    English words is reversed character-by-character.
+    """
+    return "\n".join(
+        line if _is_pure_english_line(line) else _reverse_english_in_line(line)
+        for line in text.split("\n")
+    )
+
+
 def encode_he_text(text: str) -> bytes:
     """Encode a Hebrew/mixed string to the game's custom single-byte encoding."""
+    # When the whole line is NOT reversed for LTR, English words embedded in the
+    # Hebrew text must be reversed themselves (word order + each word), otherwise
+    # they would render backwards once the engine reverses the line.  A word is
+    # "English" when it contains no character whose code point is above 190.
+    if not REVERSE_FOR_LTR:
+        text = _reverse_english_parts(text)
+
     #If text contains digits or prefix is {REVERSE}
-    #if not _TOKEN_RE.search(text) and (any(ch.isdigit() for ch in text) or text.startswith("[REVERSE]")):
-    #    # Remove {REVERSE} prefix
-    #    text = text.replace("[REVERSE]", "")
-    #    text = text[::-1]
-    #    #Loop all words and reverse the numbers again
-    #    #segments should be split by space
-    #    segments = text.split(" ")
-    #    text = " ".join([seg[::-1] if any(ch.isdigit() for ch in seg) else seg for seg in segments])
+    if not _TOKEN_RE.search(text) and (any(ch.isdigit() for ch in text) and ("מטבעות כסף" not in text or ",000" in text) or text.startswith("[REVERSE]")):
+        text = text.replace("[REVERSE]", "")
+        segments = text.split(" ")
+        text = " ".join([seg[::-1] if any(ch.isdigit()  for ch in seg) else seg for seg in segments])
+        if "000" in text:
+            print(f"  [DEBUG] Reversed digits in: {text}")
 
     #New logic:
     # If text contains \n -
@@ -176,10 +264,10 @@ def encode_he_text(text: str) -> bytes:
     #   Switch the segements order.
     #   Build the text back.
 
-    if "\n" in text:
-        segments = text.split("\n")
-        segments = segments[::-1]
-        text = "\n".join(segments)
+    #if "\n" in text:
+    #    segments = text.split("\n")
+    #    segments = segments[::-1]
+    #    text = "\n".join(segments)
     segments = _TOKEN_RE.split(text)
 
     #If REVERSE_FOR_LTR or segment contains numbers
@@ -332,7 +420,8 @@ def rebuild_speech(he_lines: list[str]) -> tuple[int, int, int, list[str]]:
             he_raw = he_lines[i] if i < len(he_lines) else ""
             he_text = _unescape_newlines(he_raw)
             if _is_english_fallback(he_text, s1):
-                encoded = reverse_ascii_bytes(r1) if not REVERSE_FOR_LTR else r1
+                #encoded = reverse_ascii_bytes(r1) if not REVERSE_FOR_LTR else r1
+                encoded = r1
                 fallback += 1
                 missing_strings.append(s1)
             else:
@@ -447,7 +536,8 @@ def rebuild_uitext(he_lines: list[str]) -> tuple[int, int, list[str]]:
             he_raw = he_lines[i] if i < len(he_lines) else ""
             he_text = _unescape_newlines(he_raw)
             if _is_english_fallback(he_text, disp):
-                encoded = reverse_ascii_bytes(r_disp) if not REVERSE_FOR_LTR else r_disp
+                #encoded = reverse_ascii_bytes(r_disp) if not REVERSE_FOR_LTR else r_disp
+                encoded = r_disp
                 fallback += 1
                 missing_strings.append(disp)
             else:

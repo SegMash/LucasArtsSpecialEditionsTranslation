@@ -114,7 +114,7 @@ _CODE_TO_GLYPH: dict[int, int] = {
     237: 137,
     238: 138,
     241: 140,
-    #32: 32
+    32: 32
 }
 
 HEBREW_TO_GLYPH: dict[str, int] = {

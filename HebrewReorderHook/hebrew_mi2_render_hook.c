@@ -257,7 +257,11 @@ static void InitPatterns(void) {
         /* 3) save percent+time block -> reverse percentage.           */
         (const BYTE*)"\x25\x64\x25\x2E\x2A",
         /* 4) plain time "74:51:22" -> reverse all 3 numbers.             */
-        (const BYTE*)"\x2E\x2A\x25\x64\x3A\x25\x64\x3A\x25\x64\x2E\x2A"
+        (const BYTE*)"\x2E\x2A\x25\x64\x3A\x25\x64\x3A\x25\x64\x2E\x2A",
+        /* 5) map coordinates "מ%d צ%d"*/
+        (const BYTE*)"\xD1\x25\x64\x20\xEE\x25\x64",
+        /* 6) !508 !42 ..."*/
+        (const BYTE*)"\x21\x25\x64"
     };
     /* Auto-count the entries actually listed above.  Each pattern MUST be
        added here, and the count is derived automatically so a newly added
@@ -360,10 +364,10 @@ static int FixLamedAttachment(char* buf, int* len) {
     if (n < 3) return 0;
 
     /* DEBUG: print the whole buffer as hex bytes (before compaction). */
-    printf("Check Lamed (len=%d): ", n);
+    /*printf("Check Lamed (len=%d): ", n);
     for (int i = 0; i < n; i++)
         printf("%02X ", (BYTE)buf[i]);
-    printf("\n");
+    printf("\n");*/
 
     int r = 0;   /* read pointer  */
     int w = 0;   /* write pointer (w <= r, so compaction is safe) */
@@ -423,6 +427,31 @@ static const char* ReverseStringIfNeeded(const char* src, int len, char* slotAdd
 
     if (len == 0) {
         return src;              /* empty string: nothing to do */
+    }
+
+    /* The string is NOT reversed (returned as-is) when either:
+         - it has no byte above 190 (no Hebrew glyphs), or
+         - it contains at least one English letter (a-z / A-Z, upper or
+           lower case).
+       So we only reverse when the string carries Hebrew content (a byte
+       > 190) AND has no English letter at all.  English letter test uses
+       the ASCII ranges; Hebrew glyphs (bytes > 190) and digits/punctuation
+       never count as English letters. */
+    {
+        int hasRtlByte = 0;
+        int hasLetter  = 0;
+        const unsigned char* s = (const unsigned char*)src;
+        for (int i = 0; i < len; i++) {
+            BYTE b = s[i];
+            if (b > 190) {
+                hasRtlByte = 1;
+            } else if ((b >= 'a' && b <= 'z') || (b >= 'A' && b <= 'Z')) {
+                hasLetter = 1;
+            }
+        }
+        if (!hasRtlByte && hasLetter) {
+            return src;   /* condition to NOT reverse is met: keep original */
+        }
     }
 
     /* 1) Whole-string reverse copy into the slot. */
@@ -762,12 +791,12 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
     switch (reason) {
     case DLL_PROCESS_ATTACH:
         DisableThreadLibraryCalls(hModule);
-        CreateDebugConsole();
+        //CreateDebugConsole();
         InstallHook();
         break;
     case DLL_PROCESS_DETACH:
         RemoveHook();
-        FreeDebugConsole();
+        //FreeDebugConsole();
         break;
     }
     return TRUE;
