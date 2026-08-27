@@ -9,6 +9,7 @@ copy /y "%LOC_BACK%\en.uiText.info"  "%LOCAL_DEST%\en.uiText.info"
 python scripts\text\inject_translation.py  "%LOCAL_DEST%"  --he-dir .\translations\mi2  --report
 REM python scripts\reverse-engineering\apply_reverse_patch.py "%GAME_DIR%\Monkey2.exe" --restore
 REM python scripts\reverse-engineering\apply_reverse_patch.py "%GAME_DIR%\Monkey2.exe" --apply
+.\installer\mi2\build_installer.cmd
 exit
 
 mkdir fonts_mi2
