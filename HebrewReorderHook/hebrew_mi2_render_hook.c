@@ -1,42 +1,38 @@
 /*
  * hebrew_mi2_render_hook.c
  * -----------------------------------------------------------------
- * DLL to be injected into Monkey Island 2: SE's process (Monkey2.exe).
+ * 32-bit x86 Proxy DLL for Monkey Island 2: SE (Monkey2.exe).
  *
- * PURPOSE
- * -------
- * This is a C / in-memory reimplementation of the patch that
- * scripts/reverse-engineering/apply_reverse_patch.py used to apply to the
- * EXE (it redirected every `CALL DrawString` to a wrapper cave).  Instead of
- * editing the EXE on disk, this DLL does the same at runtime:
+ * WHY A PROXY (version.dll) BUILD?
+ * --------------------------------
+ * This project was originally built to "HebrewReorderHook.dll" and injected
+ * manually.  This build instead compiles to "version.dll" and is dropped
+ * straight into the game's directory, so Windows auto-loads it the moment
+ * the game starts (Proxy DLL / DLL Hijacking).  The game already imports the
+ * system version.dll, and Windows searches the application directory for it
+ * FIRST.  Because the DLL *looks* like the standard version-resource DLL and
+ * forwards every real export to the actual system version.dll, there is no
+ * CreateRemoteThread / WriteProcessMemory injection step to trigger an
+ * antivirus alert.
  *
- *   1. It scans .text for every `CALL DrawString` (E8 rel32) and redirects
- *      each one to our ReversalWrapper (exactly like python's per-site CALL
- *      redirect).  DrawString's own prologue is left untouched, so each
- *      caller keeps its own register conventions intact (the Python script
- *      does this too - it never patched DrawString's body).
- *   2. The wrapper reads arg3 (string ptr) and arg4 (char count) from the
- *      caller's stack, calls OnDrawString(), replaces arg3 with the reversed
- *      slot pointer, then tail-JMPs into the real DrawString.
- *   3. Default: the whole string is copied in reverse into the current ring
- *      slot (RTL display).  Unlike the original apply_reverse_patch.py there
- *      is NO digit content filter - every string is reversed.
- *   4. PATTERN REVERSAL: after reversing, the display-order buffer is checked
- *      against the byte-encoded patterns in g_patterns[].  When one matches,
- *      each embedded number is reversed a SECOND time so it displays in its
- *      correct digit order.  e.g. "תן 614 מטבעות כסף למוכר" -> whole-reverse
- *      flips "614" to "416", and the second pass restores it to "614" while
- *      the surrounding Hebrew text stays reversed for RTL.  Patterns match on
- *      the GAME FONT CODE PAGE bytes, not UTF-8 (see g_patterns[]).
- *   5. It also applies the runtime version of python's FORMAT_SWAPS on the
- *      save/load screen (length-preserving in-place rewrites).
- *   6. Hebrew grammar: the standalone preposition "ל" is re-attached to the
- *      following word (" ל " -> "ל ", removing one space), so "give X to
- *      someone" reads with the ל joined to the recipient.  This shortens the
- *      string, so it is compacted in place and null-terminated at the new end.
+ * THE TWO RESPONSIBILITIES OF THIS DLL
+ *   1. PROXY  - A faithful stand-in for the system version.dll.  Every
+ *      version.dll export is a __declspec(naked) thunk that tail-JMPs into
+ *      the real, dynamically loaded version.dll function (Dynamic Proxying,
+ *      NOT static #pragma comment(linker,...) forwarding).
+ *   2. HOOK   - The Hebrew string-reversal machinery (memory scan, call-site
+ *      redirect, format-string rewrites) runs on a worker thread started with
+ *      CreateThread from DllMain, so DLL load never blocks game startup.
  *
- * Because this is a live code hook (not a static EXE patch) nothing on disk
- * is modified, and all redirections are reverted on DLL detach.
+ * DYNAMIC SYSTEM-DIR DETECTION
+ * ----------------------------
+ * The game is 32-bit but may run on 64-bit Windows.  The real version.dll
+ * lives in:
+ *       32-bit Windows  : C:\Windows\System32
+ *       64-bit Windows  : C:\Windows\SysWOW64   (the 32-bit copy)
+ * We detect it at load time with GetSystemWow64Directory (resolved via
+ * GetProcAddress because it is absent on native 32-bit Windows) and fall
+ * back to GetSystemDirectory, so the path is always correct.
  *
  * DRAWSTRING SIGNATURE (only used for the tail-jump target)
  *   DrawString(SpriteFont* font, void* parent, const char* text, int charCount)
@@ -44,10 +40,12 @@
  *
  * !!! VALUE YOU MUST VERIFY YOURSELF BEFORE TRUSTING THIS CODE !!!
  *   - DRAWSTRING_VA (0x004DBFA0) must be confirmed in YOUR Monkey2.exe build.
- *     Re-extract it from your disassembler if it differs.
  *
- * Build: 32-bit DLL (matches the 32-bit game process).
- *   MSVC:   cl /LD hebrew_mi2_render_hook.c
+ * Build (32-bit proxy, output "version.dll"):
+ *   Each proxy thunk is exported via a #pragma comment(linker, "/export:...")
+ *   emitted right where the thunk is defined, using the exact version.dll
+ *   export name.  Set the project Output (+ TargetName) to "version".
+ *   Command line:  cl /LD hebrew_mi2_render_hook.c /Fe:version.dll
  * -----------------------------------------------------------------
  */
 
@@ -63,6 +61,180 @@
 /* Config: addresses you must confirm in your debugger                */
 /* ================================================================== */
 #define DRAWSTRING_VA  0x004DBFA0   /* DrawString function entry point */
+
+/* ================================================================== */
+/* SECTION 1 - DYNAMIC PROXY LAYER                                    */
+/* ================================================================== */
+
+/* A tiny "dir\file" path builder (independent of shlwapi).  Returns TRUE
+   and writes the joined path into `out` (a `cap`-wide buffer). */
+static BOOL PathAppendW(wchar_t* out, const wchar_t* dir,
+                        DWORD cap, const wchar_t* file) {
+    size_t d = wcslen(dir);
+    size_t f = wcslen(file);
+    if (d + 1 + f + 1 > cap) return FALSE;   /* dir + '\' + file + '\0' */
+    memcpy(out, dir, d * sizeof(wchar_t));
+    out[d] = L'\\';
+    memcpy(out + d + 1, file, (f + 1) * sizeof(wchar_t)); /* include NUL */
+    return TRUE;
+}
+
+/*
+ * Build the full path to the REAL system version.dll.
+ * Returns TRUE and fills `out` (a `cap`-size buffer) on success.
+ *
+ * Because the game is 32-bit, on 64-bit Windows the 32-bit copy of
+ * version.dll lives in the WOW64 redirection directory (SysWOW64).
+ * GetSystemWow64Directory is resolved dynamically (it does not exist on
+ * native 32-bit Windows); if it is unavailable or returns 0 we fall back to
+ * GetSystemDirectory, which is correct for a genuinely 32-bit OS.
+ */
+static BOOL GetSystemDllPath(wchar_t* out, DWORD cap) {
+    if (!out || cap < 1) return FALSE;
+
+    wchar_t sysDir[MAX_PATH];
+    DWORD   len = 0;
+
+    /* 1) Prefer the 32-bit system dir on 64-bit Windows. */
+    HMODULE hKernel = GetModuleHandleW(L"kernel32.dll");
+    typedef UINT(WINAPI *fnGetSysWow64)(LPWSTR, UINT);
+    fnGetSysWow64 pGetSysWow64 = NULL;
+    if (hKernel) {
+        pGetSysWow64 = (fnGetSysWow64)GetProcAddress(
+            hKernel, "GetSystemWow64DirectoryW");
+    }
+    if (pGetSysWow64) {
+        len = pGetSysWow64(sysDir, MAX_PATH);
+    }
+
+    /* 2) Fall back to the ordinary system dir (native 32-bit, or if the
+          WOW64 call failed / returned 0). */
+    if (len == 0 || len >= MAX_PATH) {
+        len = GetSystemDirectoryW(sysDir, MAX_PATH);
+    }
+    if (len == 0 || len >= MAX_PATH) return FALSE;
+
+    /* 3) sysDir\version.dll */
+    return PathAppendW(out, sysDir, cap, L"version.dll");
+}
+
+/* Handle to the real system version.dll. */
+static HMODULE g_hRealVersion = NULL;
+
+/*
+ * Macro: define one naked forwarder thunk plus its function-pointer slot.
+ *
+ * Each thunk does `jmp dword ptr [slot]` - an absolute indirect jump through
+ * the slot.  The caller's arguments are left untouched on the stack, so the
+ * real (stdcall) function we land in handles them exactly as it would have
+ * if the game had called the system version.dll directly.  This is the
+ * canonical, cheap "forwarding" implementation and it is why no return-value
+ * fix-up is ever required.
+ */
+/*
+ * NOTE on function naming:
+ * -----------------------------------
+ * The real export names (GetFileVersionInfoA, VerQueryValueW, ...) are also
+ * declared in the Windows SDK header <winver.h>, which is pulled in through
+ * <windows.h>.  If we named our C functions the same, we would get C2373
+ * ("redefinition; different type modifiers") because our __declspec(naked)
+ * void-returning thunks clash with the SDK's WINAPI (stdcall) BOOL-returning
+ * prototypes.  We therefore give every internal thunk a `_fwd` suffix and
+ * map it to the public export name with a /export linker directive
+ * ("/export:GetFileVersionInfoA=_GetFileVersionInfoA_fwd", where the `_`
+ * prefix is the standard 32-bit cdecl name decoration).
+ */
+/* Stringize helper needed to build the /export linker directive. */
+#define EXPORT_STR2(x) #x
+#define EXPORT_STR(x)  EXPORT_STR2(x)
+
+/*
+ * Define one naked proxy thunk plus its function-pointer slot, and emit a
+ * linker /export that publishes the PUBLIC version.dll name mapped onto the
+ * internal `_X_fwd` symbol (leading underscore = 32-bit cdecl decoration).
+ *
+ * Why a /export linker directive instead of only the .def / __declspec(dllexport):
+ *   - In Release builds the linker's /OPT:REF would otherwise dead-strip a
+ *     naked thunk that nothing in the TU calls, turning the .def alias into
+ *     an "unresolved external symbol" (LNK2001).  Wording the export as an
+ *     /export directive here ROOTS the thunk (the directive references it)
+ *     so it is always emitted, in every configuration and toolset.
+ *   - The /export names our OWN thunk (not a statically-linked system
+ *     function), so nothing is linked against version.lib and the dynamic
+ *     proxying design is preserved.
+ */
+#define DEFINE_VERSION_PROXY(exportname)                                        \
+    static FARPROC pfn_##exportname = NULL;                                     \
+    __declspec(naked) void exportname##_fwd(void) {                             \
+        __asm { jmp dword ptr [pfn_##exportname] }                              \
+    }                                                                           \
+    __pragma(comment(linker, "/export:" EXPORT_STR(exportname)                  \
+                             "=_" EXPORT_STR(exportname) "_fwd"))
+
+/* Instantiate a thunk + slot + /export for every real version.dll export. */
+DEFINE_VERSION_PROXY(GetFileVersionInfoA)
+DEFINE_VERSION_PROXY(GetFileVersionInfoByHandle)
+DEFINE_VERSION_PROXY(GetFileVersionInfoExA)
+DEFINE_VERSION_PROXY(GetFileVersionInfoExW)
+DEFINE_VERSION_PROXY(GetFileVersionInfoSizeA)
+DEFINE_VERSION_PROXY(GetFileVersionInfoSizeExA)
+DEFINE_VERSION_PROXY(GetFileVersionInfoSizeExW)
+DEFINE_VERSION_PROXY(GetFileVersionInfoSizeW)
+DEFINE_VERSION_PROXY(GetFileVersionInfoW)
+DEFINE_VERSION_PROXY(VerFindFileA)
+DEFINE_VERSION_PROXY(VerFindFileW)
+DEFINE_VERSION_PROXY(VerInstallFileA)
+DEFINE_VERSION_PROXY(VerInstallFileW)
+DEFINE_VERSION_PROXY(VerLanguageNameA)
+DEFINE_VERSION_PROXY(VerLanguageNameW)
+DEFINE_VERSION_PROXY(VerQueryValueA)
+DEFINE_VERSION_PROXY(VerQueryValueW)
+
+/*
+ * Wire every forwarder slot to the matching exported function of the real
+ * system version.dll.  This MUST run in DllMain synchronously so the proxy
+ * is fully functional before the game can call any of these functions.
+ * Returns FALSE if the real DLL could not be resolved (the proxy still
+ * loads, but version-resource calls would have no backing function).
+ */
+static BOOL InitVersionProxy(void) {
+    wchar_t realPath[MAX_PATH];
+    if (!GetSystemDllPath(realPath, MAX_PATH)) {
+        return FALSE;
+    }
+
+    g_hRealVersion = LoadLibraryW(realPath);
+    if (!g_hRealVersion) {
+        return FALSE;
+    }
+
+    /* Fetch and store each forwarded address. */
+#define BIND_VERSION_PROXY(exportname) do {                                    \
+        pfn_##exportname = GetProcAddress(g_hRealVersion, #exportname);        \
+    } while (0)
+
+    BIND_VERSION_PROXY(GetFileVersionInfoA);
+    BIND_VERSION_PROXY(GetFileVersionInfoByHandle);
+    BIND_VERSION_PROXY(GetFileVersionInfoExA);
+    BIND_VERSION_PROXY(GetFileVersionInfoExW);
+    BIND_VERSION_PROXY(GetFileVersionInfoSizeA);
+    BIND_VERSION_PROXY(GetFileVersionInfoSizeExA);
+    BIND_VERSION_PROXY(GetFileVersionInfoSizeExW);
+    BIND_VERSION_PROXY(GetFileVersionInfoSizeW);
+    BIND_VERSION_PROXY(GetFileVersionInfoW);
+    BIND_VERSION_PROXY(VerFindFileA);
+    BIND_VERSION_PROXY(VerFindFileW);
+    BIND_VERSION_PROXY(VerInstallFileA);
+    BIND_VERSION_PROXY(VerInstallFileW);
+    BIND_VERSION_PROXY(VerLanguageNameA);
+    BIND_VERSION_PROXY(VerLanguageNameW);
+    BIND_VERSION_PROXY(VerQueryValueA);
+    BIND_VERSION_PROXY(VerQueryValueW);
+
+#undef BIND_VERSION_PROXY
+
+    return TRUE;
+}
 
 /* ------------------------------------------------------------------ */
 /* Ring buffer for string slots (function-local statics in the DLL).  */
@@ -774,6 +946,21 @@ static void RemoveHook(void) {
     g_hookInstalled = 0;
 }
 
+/*
+ * Worker thread started from DllMain.  All the expensive / potentially slow
+ * work (EnumerateCallSites memory scan, VirtualProtect, format-swap writes)
+ * is performed here so that DLL load never blocks the game while the OS
+ * loader lock is held.  The proxy (InitVersionProxy) is already resolved, so
+ * the game's version-resource calls keep working regardless.
+ */
+static DWORD WINAPI HookWorkerThread(LPVOID lpParam) {
+    (void)lpParam;   /* unreferenced formal parameter */
+    printf("[+] HebrewReorderHook: hook worker thread started\n");
+    InstallHook();
+    printf("[+] HebrewReorderHook: hook installed\n");
+    return 0;
+}
+
 void CreateDebugConsole(void) {
     if (AllocConsole()) {
         FILE* fp;
@@ -792,11 +979,31 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
     case DLL_PROCESS_ATTACH:
         DisableThreadLibraryCalls(hModule);
         //CreateDebugConsole();
-        InstallHook();
+
+        /* 1) Bring up the DYNAMIC PROXY synchronously so the game's very
+              first version-resource call is forwarded to the real DLL. */
+        if (InitVersionProxy()) {
+            /* 2) Defer the Hebrew hook wiring to a worker thread so we
+                  return from DllMain immediately.  The proxy above is
+                  already fully functional, which is exactly what the OS
+                  needs right away. */
+            HANDLE hThread = CreateThread(NULL, 0, HookWorkerThread,
+                                          NULL, 0, NULL);
+            if (hThread) {
+                CloseHandle(hThread);   /* keep the thread alive; do not wait */
+            }
+        }
         break;
+
     case DLL_PROCESS_DETACH:
         RemoveHook();
         //FreeDebugConsole();
+
+        /* It is intentionally NOT safe to call FreeLibrary on g_hRealVersion
+           here: during process teardown the loader lock / shutdown order may
+           make it fragile, and version-resource calls can still be made until
+           the very end.  Leaving the system DLL loaded is the conservative,
+           crash-free choice for a proxy. */
         break;
     }
     return TRUE;

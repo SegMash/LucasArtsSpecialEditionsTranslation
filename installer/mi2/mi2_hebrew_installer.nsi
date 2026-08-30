@@ -54,6 +54,9 @@ FunctionEnd
 Section "Hebrew translation" SecTranslation
   Call VerifyGameFiles
 
+  ; Never abort the whole install because of a single locked/in-use file.
+  SetOverwrite try
+
   DetailPrint "Installing Hebrew resource folders..."
   SetOutPath "$INSTDIR\fonts"
   File /r "C:\GOG Games\Monkey Island 2 SE\fonts\*.*"
@@ -71,6 +74,13 @@ Section "Hebrew translation" SecTranslation
   SetOutPath "$INSTDIR"
   File "C:\GOG Games\Monkey Island 2 SE\HebrewReorderHook.dll"
   File "C:\GOG Games\Monkey Island 2 SE\MI2HebrewLoader.exe"
+
+  ; Make sure the loader was actually copied. If it is missing it was almost
+  ; certainly locked/in-use because a previous MI2HebrewLoader.exe instance is
+  ; still running - surface a clear message instead of failing silently.
+  IfFileExists "$INSTDIR\MI2HebrewLoader.exe" loader_ok
+    MessageBox MB_ICONEXCLAMATION "MI2HebrewLoader.exe was not copied because it is currently in use.$\n$\nClose any running MI2HebrewLoader instance and re-run the installer to update it."
+  loader_ok:
 
   DetailPrint "Creating uninstaller..."
   WriteUninstaller "$INSTDIR\${UNINSTALLER_NAME}"
@@ -97,3 +107,9 @@ SectionEnd
 Function .onInstSuccess
   DetailPrint "Installation complete."
 FunctionEnd
+
+; Never let the installer exit silently on failure.
+Function .onInstFailed
+  MessageBox MB_ICONEXCLAMATION "The installation was not completed.$\n$\nPlease try again."
+FunctionEnd
+

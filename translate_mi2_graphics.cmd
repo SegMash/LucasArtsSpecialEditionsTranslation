@@ -2,6 +2,9 @@
 setlocal EnableDelayedExpansion
 REM Generate hebrew dxt files based on png files.
 set "PNG_SRC_DIR=images_mi2\processed"
+set "DXT_TARGET_DIR=C:\GOG Games\Monkey Island 2 SE\rooms\images
+python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__rooms__images__2_scabb-isl__layer1.png" --name layer1 --chunks 2 --gzip --target "%DXT_TARGET_DIR%\2_scabb-isl"
+exit
 set "DXT_TARGET_DIR=C:\GOG Games\Monkey Island 2 SE\ui
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__ui__backgroundmapmenu__en_mapmainmenu_bundle_pk_a01.png" --name en_mapmainmenu_bundle_pk_a01 --chunks 0 --gzip --target "%DXT_TARGET_DIR%\backgroundmapmenu"
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__ui__backgroundmapmenu__en_mapmainmenu_bundle_pk_a00.png" --name en_mapmainmenu_bundle_pk_a00 --chunks 0 --gzip --target "%DXT_TARGET_DIR%\backgroundmapmenu"
@@ -12,6 +15,7 @@ python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images
 
 
 set "DXT_TARGET_DIR=C:\GOG Games\Monkey Island 2 SE\rooms\images
+python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__rooms__images__2_scabb-isl__layer1.png" --name layer1 --chunks 2 --gzip --target "%DXT_TARGET_DIR%\2_scabb-isl"
 for %%A in ("%PNG_SRC_DIR%\*_part*.png") do (
     set "F=%%~nA"
     set "target_dir="
