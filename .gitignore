@@ -237,6 +237,15 @@ translations/mi2/*
 HebrewReorderHook/**
 !HebrewReorderHook/*.c
 !HebrewReorderHook/*.h
+!HebrewReorderHook/*.vcxproj*
+!HebrewReorderHook/*.def
 MI2HebrewLoader/**
 !MI2HebrewLoader/*.c
 !MI2HebrewLoader/*.h
+!MI2HebrewLoader/*.vcxproj*
+!MI2HebrewLoader/*.def
+HebrewMI1Hook/**
+!HebrewMI1Hook/*.c
+!HebrewMI1Hook/*.h
+!HebrewMI1Hook/*.vcxproj*
+!HebrewMI1Hook/*.def

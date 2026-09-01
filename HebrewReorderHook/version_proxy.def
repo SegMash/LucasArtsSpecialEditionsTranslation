@@ -1,0 +1,27 @@
+LIBRARY version
+
+; Public export name = internal naked thunk symbol.
+; The internal symbols are the __declspec(naked) functions defined in
+; hebrew_mi2_render_hook.c with the `_fwd` suffix.  They are 32-bit cdecl, so
+; their linker symbols carry the leading underscore decoration.  The name on
+; the LEFT is what callers of version.dll actually import; the right-hand side
+; is the module-local symbol being exported.
+
+EXPORTS
+    GetFileVersionInfoA   = _GetFileVersionInfoA_fwd
+    GetFileVersionInfoByHandle = _GetFileVersionInfoByHandle_fwd
+    GetFileVersionInfoExA = _GetFileVersionInfoExA_fwd
+    GetFileVersionInfoExW = _GetFileVersionInfoExW_fwd
+    GetFileVersionInfoSizeA = _GetFileVersionInfoSizeA_fwd
+    GetFileVersionInfoSizeExA = _GetFileVersionInfoSizeExA_fwd
+    GetFileVersionInfoSizeExW = _GetFileVersionInfoSizeExW_fwd
+    GetFileVersionInfoSizeW = _GetFileVersionInfoSizeW_fwd
+    GetFileVersionInfoW   = _GetFileVersionInfoW_fwd
+    VerFindFileA          = _VerFindFileA_fwd
+    VerFindFileW          = _VerFindFileW_fwd
+    VerInstallFileA       = _VerInstallFileA_fwd
+    VerInstallFileW       = _VerInstallFileW_fwd
+    VerLanguageNameA      = _VerLanguageNameA_fwd
+    VerLanguageNameW      = _VerLanguageNameW_fwd
+    VerQueryValueA        = _VerQueryValueA_fwd
+    VerQueryValueW        = _VerQueryValueW_fwd
