@@ -342,19 +342,65 @@ static const char GUYBRUSH_EN[] = "Guybrush";
 #define HEB_PLURAL_SZ    10
 #define HEB_SINGULAR_SZ  11
 
-/* Pre-encoded (reversed-for-LTR) Hebrew byte strings, byte-for-byte identical
-   to apply_mi1_dynamic_text_translate.py HEB_PLURAL / HEB_SINGULAR /
-   GUYBRUSH_HEB.  Shorter than the English keys, so the remainder is padded
-   with spaces at run time to keep the NUL terminator / buffer length stable. */
+/* Hebrew (reversed-for-LTR) payloads -- byte-for-byte identical to
+   apply_mi1_dynamic_text_translate.py. */
 static const BYTE enc_plural_heb[HEB_PLURAL_SZ] = {
-    0xE6, 0xED, 0xCD, 0x20, 0xE5, 0xC7, 0xEB, 0xE5, 0xE9, 0xCF
+    0xE6, 0xF1, 0xC7, 0x20, 0xE1, 0xCD, 0xEB, 0xE5, 0xE9, 0xD1
 };
 static const BYTE enc_singular_heb[HEB_SINGULAR_SZ] = {
-    0xE6, 0xED, 0xCD, 0x20, 0xEA, 0xE4, 0x20, 0xEB, 0xE5, 0xE9, 0xCF
+    0xE6, 0xF1, 0xC7, 0x20, 0xEA, 0xE0, 0x20, 0xEB, 0xE5, 0xE9, 0xD1
 };
 static const BYTE enc_guybrush_heb[GUYBRUSH_LEN] = {
     0x20, 0xEB, 0xE5, 0xBA, 0xE0, 0xD2, 0xDF, 0xE5
 };
+
+/* Pre-encoded (reversed-for-LTR) Hebrew byte strings, byte-for-byte identical
+   to apply_mi1_dynamic_text_translate.py HEB_PLURAL / HEB_SINGULAR /
+   GUYBRUSH_HEB.  Shorter than the English keys; LocalizeShiftPad() mirrors the
+   Python cave: it writes the Hebrew, then LEFT-SHIFTS the trailing text flush
+   against it (the `lea esi,[edi + PLURAL_PAD]` trick) and finally re-fills the
+   reclaimed tail slots with SPACEs so the total byte count and the fixed NUL
+   position are preserved. */
+
+/* Localize an engLen English key at `start` to a shorter hebLen Hebrew payload,
+   exactly like apply_mi1_dynamic_text_translate.py's PASS1/PASS2 assembly:
+     "pieces of eight"(15)  -> 10 Hebrew bytes + left-shift + pad tail
+     "piece of eight" (14)  -> 11 Hebrew bytes + left-shift + pad tail
+   The engine draws this text with a FIXED length (see the merge patch notes:
+   "the draw renders a fixed count, so a shorter string exposes the terminating
+   NUL as a bogus glyph").  Therefore we must NOT shorten the line.  Instead:
+
+     * write hebLen Hebrew bytes at `start`
+       -> match_start .. match_start+hebLen-1
+     * dst = start+hebLen, src = start+engLen
+     * shift (copy) the text that FOLLOWED the English key leftwards so it sits
+       flush right after the Hebrew  -- the "collapsing" step
+     * finally write (engLen-hebLen) SPACEs at `dst` (the slots just before the
+       ORIGINAL NUL).  The NUL never moves, so strlen()/cached draw count and
+       the fixed-distance glyph reader all stay consistent and never render a
+       NUL/box or a stale tail byte over the following word.
+   Because we shifted the follow-on text flush first, these pad spaces sit only
+   at the very end of the line -- there is no gap inserted *between* the Hebrew
+   and the word that follows it. */
+static void LocalizeShiftPad(BYTE* start, int engLen,
+                             const BYTE* heb, int hebLen) {
+    int k;
+    for (k = 0; k < hebLen; k++) start[k] = heb[k];   /* Hebrew letters */
+
+    {
+        BYTE* dst       = start + hebLen;   /* start; advanced by the shift    */
+        const BYTE* src = start + engLen;   /* text right after the key        */
+        while (*src != 0) {                 /* LEFT-SHIFT tail flush to Hebrew */
+            *dst = *src;
+            ++src;
+            ++dst;
+        }
+        /* Reclaim the (engLen-hebLen) freed bytes with SPACE, keeping the NUL:
+           dst now sits exactly (engLen-hebLen) bytes before the original NUL. */
+        k = engLen - hebLen;
+        while (k-- > 0) { *dst = 0x20; ++dst; }
+    }
+}
 
 static const char* DynamicTranslateC(const char* str) {
     size_t slen = strnlen(str, 1024);
@@ -366,9 +412,10 @@ static const char* DynamicTranslateC(const char* str) {
                 char after  = (i + PIECES_EN_LEN < slen) ? str[i + PIECES_EN_LEN] : 0;
                 int rightOk = (after == 0 || after == ' ');
                 if (leftOk && rightOk) {
-                    BYTE* p = (BYTE*)(str + i);
-                    memcpy(p, enc_plural_heb, HEB_PLURAL_SZ);
-                    for (int k = HEB_PLURAL_SZ; k < PIECES_EN_LEN; k++) p[k] = 0x20;
+                    LocalizeShiftPad((BYTE*)(str + i),
+                                     PIECES_EN_LEN,
+                                     enc_plural_heb,
+                                     HEB_PLURAL_SZ);
                     printf("[+] MI1 dyntext: replaced 'pieces of eight'\n");
                     return str;
                 }
@@ -382,9 +429,10 @@ static const char* DynamicTranslateC(const char* str) {
                 char after  = (i + PIECE_EN_LEN < slen) ? str[i + PIECE_EN_LEN] : 0;
                 int rightOk = (after == 0 || after == ' ');
                 if (leftOk && rightOk) {
-                    BYTE* p = (BYTE*)(str + i);
-                    memcpy(p, enc_singular_heb, HEB_SINGULAR_SZ);
-                    for (int k = HEB_SINGULAR_SZ; k < PIECE_EN_LEN; k++) p[k] = 0x20;
+                    LocalizeShiftPad((BYTE*)(str + i),
+                                     PIECE_EN_LEN,
+                                     enc_singular_heb,
+                                     HEB_SINGULAR_SZ);
                     printf("[+] MI1 dyntext: replaced 'piece of eight'\n");
                     return str;
                 }

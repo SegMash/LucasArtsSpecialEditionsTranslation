@@ -35,37 +35,32 @@ Usage in other scripts
 HEBREW_TO_CODE: dict[str, int] = {
     # ── 22 standard letters ──────────────────────────────────────────────────
     "א": 192,   # Alef #28 #C0
+    "ב": 229,   # Bet #28 #E8
     "ג": 196,   # Gimel #21 #C4
     "ד": 197,   # Dalet #18 #C5
     "ה": 198,   # He #18 #C6
-    "כ": 199,   # Kaf #17 #CD
+    "ו": 205,   # Vav #18 #C7    
     "ז": 200,   # Zayin  #18 #C8
     "ח": 201,   # Het #18 #C9
-    "י": 204,   # Yod #17 #CC
-    "ו": 205,   # Vav #18 #C7    
-    "מ": 209,   # Mem #17 #CF
-    "נ": 210,   # Nun #17 #D0
-    "פ": 217,   # Pe #12 #D9
-    "ר": 223,   # Resh #19 #E3
-    "ש": 224,   # Shin #19 #E4
-    "ת": 225,   # Tav #19 #E5
-    "ם": 228,   # Final Mem #20 #E4
-    "ב": 229,   # Bet #28 #E8
-    "ף": 230,   # Final Pe #20  #E6
-    "ץ": 231,   # Final Tsadi #20 #E7
-    
-    
-    "ך": 232, #EC
     "ט": 233, #E9
+    "י": 204,   # Yod #17 #CC
+    "ך": 232, #EC
+    "כ": 199,   # Kaf #17 #C7
     "ל": 234, #EA
+    "ם": 228,   # Final Mem #20 #E4
+    "מ": 209,   # Mem #17 #CF
+    "ן": 236,   # Final Nun #20 #E5
+    "נ": 210,   # Nun #17 #D0
+    "ס": 241,   # Samekh #11 #F1
     "ע": 235,   # Ayin #11 #EB
-    
-    
-        "ן": 236,   # Final Nun #20 #E5
-        "ס": 241,   # Samekh #11 #ED
-    "ק": 191,   # Qof #22 #F1
+    "ף": 230,   # Final Pe #20  #E6
+    "פ": 217,   # Pe #12 #D9
+    "ץ": 231,   # Final Tsadi #20 #E7
     "צ": 186,   # Tsadi #12  #EE
-    
+    "ק": 191,   # Qof #22 #F1
+    "ר": 223,   # Resh #19 #E3
+    "ש": 224,   # Shin #19 #E0
+    "ת": 225,   # Tav #19 #E5
 }
 
 # ── Reverse mapping: char code → Hebrew letter ────────────────────────────────

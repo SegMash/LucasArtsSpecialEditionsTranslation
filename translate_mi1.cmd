@@ -9,6 +9,7 @@ python.exe .\scripts\text\inject_translation_mi1.py --reverse-for-ltr --txt .\tr
 copy /y .\translations\m1\heb\speech.info "C:\GOG Games\Monkey Island 1 SE\audio\"
 copy /y .\translations\m1\heb\uiText.info "C:\GOG Games\Monkey Island 1 SE\localization\"
 mkdir fonts_mi1
+mkdir "C:\GOG Games\Monkey Island 1 SE\fonts"
 for %%A in ("%FONT_SRC%\*.font") do (
     set "F=%%~nA"
     set "skip=0"
@@ -26,14 +27,14 @@ for %%A in ("%FONT_SRC%\*.font") do (
         :: הרצת סקריפט הפייתון לבניית הפונט בעברית
         python.exe .\scripts\fonts\build_hebrew_font.py mi1 .\fonts_mi1 !F! --hebrew-gap 1 --ttf .\frank.ttf --ttf-bold .\frank.ttf
         :: העתקת הפונט הבנוי החדש אל תיקיית היעד של המשחק
-        copy /y "fonts_mi1\!F!.*" "C:\GOG Games\Monkey Island 1 SE\quickbms\extracted\fonts\"
+        copy /y "fonts_mi1\!F!.*" "C:\GOG Games\Monkey Island 1 SE\fonts\"
     )
 )
 endlocal
-translate_graphics.cmd
+translate_mi1_graphics.cmd
 cd "C:\GOG Games\Monkey Island 1 SE\quickbms"
-quickbms.exe -w -r -r -r monkey_island_2.bms ..\Monkey1.pak extracted
+REM quickbms.exe -w -r -r -r monkey_island_2.bms ..\Monkey1.pak extracted
 cd "C:\WS\LucasArtsSpecialEditionsTranslation"
-python.exe .\scripts\reverse-engineering\apply_mi1_verbline_rtl.py
-python.exe .\scripts\reverse-engineering\apply_mi1_merge_to_object.py
-python.exe .\scripts\reverse-engineering\apply_mi1_dynamic_text_translate.py
+REM python.exe .\scripts\reverse-engineering\apply_mi1_verbline_rtl.py
+REM python.exe .\scripts\reverse-engineering\apply_mi1_merge_to_object.py
+REM python.exe .\scripts\reverse-engineering\apply_mi1_dynamic_text_translate.py
