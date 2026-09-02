@@ -1,4 +1,4 @@
-/*
+﻿/*
  * hebrew_mi1_hook.c
  * ----------------------------------------------------------------------------
  * 32-bit x86 Proxy DLL (version.dll) for Monkey Island 1: SE (MISE.exe).
@@ -32,6 +32,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 /* ------------------------------------------------------------------------- */
 /* Config: addresses you must confirm in YOUR unpacked MISE.exe              */
@@ -404,7 +405,6 @@ static void LocalizeShiftPad(BYTE* start, int engLen,
 
 static const char* DynamicTranslateC(const char* str) {
     size_t slen = strnlen(str, 1024);
-
     if (slen >= PIECES_EN_LEN) {
         for (size_t i = 0; i + PIECES_EN_LEN <= slen; i++) {
             if (str[i] == 'p' && memcmp(str + i, PIECES_EN, PIECES_EN_LEN) == 0) {
@@ -412,12 +412,109 @@ static const char* DynamicTranslateC(const char* str) {
                 char after  = (i + PIECES_EN_LEN < slen) ? str[i + PIECES_EN_LEN] : 0;
                 int rightOk = (after == 0 || after == ' ');
                 if (leftOk && rightOk) {
-                    LocalizeShiftPad((BYTE*)(str + i),
-                                     PIECES_EN_LEN,
-                                     enc_plural_heb,
-                                     HEB_PLURAL_SZ);
-                    printf("[+] MI1 dyntext: replaced 'pieces of eight'\n");
-                    return str;
+                    /* If there's a numeric token immediately before the phrase
+                       (e.g. "480 pieces of eight ..."), move that number to
+                       appear after the Hebrew phrase so the rendered order
+                       becomes "מטבעות כסף 480 ..." rather than keeping the
+                       number at the start. */
+                    size_t num_start = 0, num_len = 0;
+                    if (i >= 2 && str[i - 1] == ' ') {
+                        int j = (int)i - 2;
+                        while (j >= 0 && isdigit((unsigned char)str[j])) j--;
+                        if (j != (int)i - 2) {
+                            size_t candidate_start = (size_t)(j + 1);
+                            /* ensure the number is a separate token (preceded by
+                               start or a space) so we don't grab digits that are
+                               glued to a word */
+                            if (candidate_start == 0 || str[candidate_start - 1] == ' ') {
+                                num_start = candidate_start;
+                                num_len = (size_t)((int)i - 1 - (int)num_start);
+                            }
+                        }
+                    }
+
+                    if (num_len > 0) {
+                        /* extract number */
+                        char numbuf[64];
+                        if (num_len >= sizeof(numbuf)) num_len = sizeof(numbuf) - 1;
+                        memcpy(numbuf, str + num_start, num_len);
+                        numbuf[num_len] = '\0';
+
+                        /* remove "<number><space>" by sliding the rest left */
+                        size_t shift = num_len + 1; /* digits + the space */
+                        size_t slen_now = strnlen(str, 1024);
+                        /* move including terminating NUL */
+                        memmove((char*)str + num_start, (char*)str + i, slen_now - i + 1);
+
+                        /* phrase now lives at new index */
+                        size_t new_i = num_start;
+
+                        /* replace English phrase with Hebrew and shift tail */
+                        LocalizeShiftPad((BYTE*)(str + new_i),
+                                         PIECES_EN_LEN,
+                                         enc_plural_heb,
+                                         HEB_PLURAL_SZ);
+
+                        /* insert the number after the Hebrew phrase, ensuring a
+                           single space before and after the number */
+                        size_t insert_pos = new_i + HEB_PLURAL_SZ;
+                        size_t cur_len = strnlen(str, 1024);
+                        int has_leading_space = (insert_pos > 0 && ((char*)str)[insert_pos - 1] == ' ');
+                        int has_trailing_space = (insert_pos < cur_len && ((char*)str)[insert_pos] == ' ');
+                        char insertbuf[16];
+                        size_t ins_len;
+                        /* Build insertbuf with exactly one space before and after
+                           the number, avoiding duplicates if spaces already exist
+                           around the insertion point. */
+                        if (has_leading_space) {
+                            /* no leading space */
+                            if (has_trailing_space) {
+                                /* no trailing space */
+                                if (num_len >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 1;
+                                memcpy(insertbuf, numbuf, num_len);
+                                insertbuf[num_len] = '\0';
+                                ins_len = num_len;
+                            } else {
+                                /* add trailing space only */
+                                if (num_len + 1 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 2;
+                                memcpy(insertbuf, numbuf, num_len);
+                                insertbuf[num_len] = ' ';
+                                insertbuf[num_len + 1] = '\0';
+                                ins_len = num_len + 1;
+                            }
+                        } else {
+                            /* need leading space */
+                            if (has_trailing_space) {
+                                /* add leading space only */
+                                if (num_len + 1 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 2;
+                                insertbuf[0] = ' ';
+                                memcpy(insertbuf + 1, numbuf, num_len);
+                                insertbuf[num_len + 1] = '\0';
+                                ins_len = num_len + 1;
+                            } else {
+                                /* add both leading and trailing spaces */
+                                if (num_len + 2 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 3;
+                                insertbuf[0] = ' ';
+                                memcpy(insertbuf + 1, numbuf, num_len);
+                                insertbuf[num_len + 1] = ' ';
+                                insertbuf[num_len + 2] = '\0';
+                                ins_len = num_len + 2;
+                            }
+                        }
+                        size_t tail_bytes = cur_len - insert_pos + 1; /* include NUL */
+                        memmove((char*)str + insert_pos + ins_len, (char*)str + insert_pos, tail_bytes);
+                        memcpy((char*)str + insert_pos, insertbuf, ins_len);
+
+                        printf("[+] MI1 dyntext: replaced 'pieces of eight' (moved number)\n");
+                        return str;
+                    } else {
+                        LocalizeShiftPad((BYTE*)(str + i),
+                                         PIECES_EN_LEN,
+                                         enc_plural_heb,
+                                         HEB_PLURAL_SZ);
+                        printf("[+] MI1 dyntext: replaced 'pieces of eight'\n");
+                        return str;
+                    }
                 }
             }
         }
@@ -429,12 +526,95 @@ static const char* DynamicTranslateC(const char* str) {
                 char after  = (i + PIECE_EN_LEN < slen) ? str[i + PIECE_EN_LEN] : 0;
                 int rightOk = (after == 0 || after == ' ');
                 if (leftOk && rightOk) {
-                    LocalizeShiftPad((BYTE*)(str + i),
-                                     PIECE_EN_LEN,
-                                     enc_singular_heb,
-                                     HEB_SINGULAR_SZ);
-                    printf("[+] MI1 dyntext: replaced 'piece of eight'\n");
-                    return str;
+                    /* Handle numeric prefix as with plural: move any number that
+                       immediately precedes the phrase to after the Hebrew word. */
+                    size_t num_start = 0, num_len = 0;
+                    if (i >= 2 && str[i - 1] == ' ') {
+                        int j = (int)i - 2;
+                        while (j >= 0 && isdigit((unsigned char)str[j])) j--;
+                        if (j != (int)i - 2) {
+                            size_t candidate_start = (size_t)(j + 1);
+                            if (candidate_start == 0 || str[candidate_start - 1] == ' ') {
+                                num_start = candidate_start;
+                                num_len = (size_t)((int)i - 1 - (int)num_start);
+                            }
+                        }
+                    }
+
+                    if (num_len > 0) {
+                        char numbuf[64];
+                        if (num_len >= sizeof(numbuf)) num_len = sizeof(numbuf) - 1;
+                        memcpy(numbuf, str + num_start, num_len);
+                        numbuf[num_len] = '\0';
+
+                        size_t slen_now = strnlen(str, 1024);
+                        memmove((char*)str + num_start, (char*)str + i, slen_now - i + 1);
+
+                        size_t new_i = num_start;
+                        LocalizeShiftPad((BYTE*)(str + new_i),
+                                         PIECE_EN_LEN,
+                                         enc_singular_heb,
+                                         HEB_SINGULAR_SZ);
+
+                        /* insert the number after the Hebrew singular phrase */
+                        size_t insert_pos = new_i + HEB_SINGULAR_SZ;
+                        size_t cur_len = strnlen(str, 1024);
+                        int has_leading_space = (insert_pos > 0 && ((char*)str)[insert_pos - 1] == ' ');
+                        int has_trailing_space = (insert_pos < cur_len && ((char*)str)[insert_pos] == ' ');
+                        char insertbuf[16];
+                        size_t ins_len;
+                        /* Build insertbuf with exactly one space before and after
+                           the number, avoiding duplicates if spaces already exist
+                           around the insertion point. */
+                        if (has_leading_space) {
+                            /* no leading space */
+                            if (has_trailing_space) {
+                                /* no trailing space */
+                                if (num_len >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 1;
+                                memcpy(insertbuf, numbuf, num_len);
+                                insertbuf[num_len] = '\0';
+                                ins_len = num_len;
+                            } else {
+                                /* add trailing space only */
+                                if (num_len + 1 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 2;
+                                memcpy(insertbuf, numbuf, num_len);
+                                insertbuf[num_len] = ' ';
+                                insertbuf[num_len + 1] = '\0';
+                                ins_len = num_len + 1;
+                            }
+                        } else {
+                            /* need leading space */
+                            if (has_trailing_space) {
+                                /* add leading space only */
+                                if (num_len + 1 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 2;
+                                insertbuf[0] = ' ';
+                                memcpy(insertbuf + 1, numbuf, num_len);
+                                insertbuf[num_len + 1] = '\0';
+                                ins_len = num_len + 1;
+                            } else {
+                                /* add both leading and trailing spaces */
+                                if (num_len + 2 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 3;
+                                insertbuf[0] = ' ';
+                                memcpy(insertbuf + 1, numbuf, num_len);
+                                insertbuf[num_len + 1] = ' ';
+                                insertbuf[num_len + 2] = '\0';
+                                ins_len = num_len + 2;
+                            }
+                        }
+                        size_t tail_bytes = cur_len - insert_pos + 1; /* include NUL */
+                        memmove((char*)str + insert_pos + ins_len, (char*)str + insert_pos, tail_bytes);
+                        memcpy((char*)str + insert_pos, insertbuf, ins_len);
+
+                        printf("[+] MI1 dyntext: replaced 'piece of eight' (moved number)\n");
+                        return str;
+                    } else {
+                        LocalizeShiftPad((BYTE*)(str + i),
+                                         PIECE_EN_LEN,
+                                         enc_singular_heb,
+                                         HEB_SINGULAR_SZ);
+                        printf("[+] MI1 dyntext: replaced 'piece of eight'\n");
+                        return str;
+                    }
                 }
             }
         }
@@ -450,6 +630,126 @@ static const char* DynamicTranslateC(const char* str) {
                     memcpy(p, enc_guybrush_heb, GUYBRUSH_LEN);
                     printf("[+] MI1 dyntext: replaced 'Guybrush'\n");
                     return str;
+                }
+            }
+        }
+    }
+
+    /* If the string contains game-encoded (high-bit) glyphs and a standalone
+   1..3-digit number appears early, move that number to just before the final
+   word. Example:
+     "ê 480 æñÇ áÍëåéÑ ìá " -> "ê æñÇ áÍëåéÑ 480 ìá " */
+    int has_high = 0;
+    for (size_t _i = 0; _i < slen; ++_i) {
+        if (((unsigned char)str[_i]) & 0x80) { has_high = 1; break; }
+    }
+
+    if (has_high) {
+        size_t num_start = 0, num_len = 0;
+        for (size_t i = 0; i < slen; ++i) {
+            if (isdigit((unsigned char)str[i])) {
+                size_t j = i;
+                while (j < slen && isdigit((unsigned char)str[j])) ++j;
+                size_t len = j - i;
+                if (len >= 1 && len <= 3) {
+                    char before = (i == 0) ? 0 : str[i - 1];
+                    char after = (j < slen) ? str[j] : 0;
+                    if ((i == 0 || before == ' ') && (after == ' ')) {
+                        num_start = i;
+                        num_len = len;
+                        break;
+                    }
+                }
+                i = j;
+            }
+        }
+
+        if (num_len > 0) {
+            /* find start of last token (trim trailing spaces first) */
+            size_t end = slen;
+            while (end > 0 && str[end - 1] == ' ') --end;
+            if (end > 0) {
+                size_t last_token_start = end;
+                while (last_token_start > 0 && str[last_token_start - 1] != ' ')
+                    --last_token_start;
+
+                /* require at least one token between the number and last token */
+                size_t after_num = num_start + num_len;
+                size_t p = after_num;
+                if (p < slen && str[p] == ' ') ++p;
+                while (p < slen && str[p] == ' ') ++p;
+
+                if (p < last_token_start && last_token_start > 0) {
+                    char numbuf[8];
+                    if (num_len >= sizeof(numbuf)) num_len = sizeof(numbuf) - 1;
+                    memcpy(numbuf, str + num_start, num_len);
+                    numbuf[num_len] = '\0';
+
+                    /* remove "<space><number>" from original place */
+                    size_t removal_start = (num_start == 0) ? 0 : (num_start - 1);
+                    size_t removal_len = num_len + ((num_start == 0) ? 0 : 1);
+                    size_t slen_now = strnlen(str, 1024);
+                    memmove((char*)str + removal_start,
+                        (char*)str + removal_start + removal_len,
+                        slen_now - (removal_start + removal_len) + 1);
+
+                    /* adjust insertion position if earlier removal shifted buffer */
+                    size_t insert_pos = last_token_start;
+                    if (removal_start < insert_pos) insert_pos -= removal_len;
+
+                    /* insert the number before last token, ensuring exactly
+                       one space before and one after the number */
+                    size_t cur_len = strnlen(str, 1024);
+                    /* check if there's already a space immediately before
+                       the insertion point (after removal) */
+                    int has_leading_space = (insert_pos > 0 && ((char*)str)[insert_pos - 1] == ' ');
+                    int has_trailing_space = (insert_pos < cur_len && ((char*)str)[insert_pos] == ' ');
+                    char insertbuf[16];
+                    size_t ins_len;
+                    /* Build insertbuf with exactly one space before and after
+                       the number, avoiding duplicates if spaces already exist
+                       around the insertion point. */
+                    if (has_leading_space) {
+                        /* no leading space */
+                        if (has_trailing_space) {
+                            /* no trailing space */
+                            if (num_len >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 1;
+                            memcpy(insertbuf, numbuf, num_len);
+                            insertbuf[num_len] = '\0';
+                            ins_len = num_len;
+                        } else {
+                            /* add trailing space only */
+                            if (num_len + 1 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 2;
+                            memcpy(insertbuf, numbuf, num_len);
+                            insertbuf[num_len] = ' ';
+                            insertbuf[num_len + 1] = '\0';
+                            ins_len = num_len + 1;
+                        }
+                    } else {
+                        /* need leading space */
+                        if (has_trailing_space) {
+                            /* add leading space only */
+                            if (num_len + 1 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 2;
+                            insertbuf[0] = ' ';
+                            memcpy(insertbuf + 1, numbuf, num_len);
+                            insertbuf[num_len + 1] = '\0';
+                            ins_len = num_len + 1;
+                        } else {
+                            /* add both leading and trailing spaces */
+                            if (num_len + 2 >= sizeof(insertbuf)) num_len = sizeof(insertbuf) - 3;
+                            insertbuf[0] = ' ';
+                            memcpy(insertbuf + 1, numbuf, num_len);
+                            insertbuf[num_len + 1] = ' ';
+                            insertbuf[num_len + 2] = '\0';
+                            ins_len = num_len + 2;
+                        }
+                    }
+
+                    size_t tail_bytes = cur_len - insert_pos + 1; /* include NUL */
+                    memmove((char*)str + insert_pos + ins_len,
+                        (char*)str + insert_pos,
+                        tail_bytes);
+                    memcpy((char*)str + insert_pos, insertbuf, ins_len);
                 }
             }
         }
