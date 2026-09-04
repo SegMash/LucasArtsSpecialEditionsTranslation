@@ -3,8 +3,8 @@ setlocal
 
 cd /d "%~dp0..\.."
 
-set "SRC=C:\GOG Games\Monkey Island 2 SE"
-
+set "SRC=C:\GOG Games\Monkey Island 2 SE_Heb"
+set "EN=C:\GOG Games\Monkey Island 2 SE"
 echo [*] Verifying source game files at %SRC%...
 if not exist "%SRC%\Monkey2.exe" (
     echo [-] Monkey2.exe not found in %SRC%
@@ -16,12 +16,8 @@ for %%F in (fonts localization rooms ui) do (
         exit /b 1
     )
 )
-if not exist "%SRC%\HebrewReorderHook.dll" (
-    echo [-] Missing source file %SRC%\HebrewReorderHook.dll
-    exit /b 1
-)
-if not exist "%SRC%\MI2HebrewLoader.exe" (
-    echo [-] Missing source file %SRC%\MI2HebrewLoader.exe
+if not exist "%SRC%\version.dll" (
+    echo [-] Missing source file %SRC%\version.dll
     exit /b 1
 )
 

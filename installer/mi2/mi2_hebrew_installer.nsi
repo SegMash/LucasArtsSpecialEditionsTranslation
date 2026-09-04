@@ -5,6 +5,9 @@
 !include "MUI2.nsh"
 !include "LogicLib.nsh"
 
+!define SRC_HEB "C:\GOG Games\Monkey Island 2 SE_Heb"
+!define DLL_PATH "c:\WS\LucasArtsSpecialEditionsTranslation\HebrewReorderHook\bin\Win32\Release"
+!define SRC_EN  "C:\GOG Games\Monkey Island 2 SE"
 Name "Monkey Island 2 SE - Hebrew Translation"
 OutFile "..\output\MI2_Hebrew_Translation_Setup.exe"
 InstallDirRegKey HKLM "Software\LucasArts\Monkey Island 2 SE" "InstallDir"
@@ -13,6 +16,7 @@ ShowInstDetails show
 Unicode true
 
 !define UNINSTALLER_NAME "Uninstall MI2 Hebrew Translation.exe"
+!define SETTINGS_REL "LucasArts\Monkey Island 2 Special Edition\Settings.ini"
 
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEPAGE_TITLE "Monkey Island 2 SE Hebrew Translation"
@@ -51,6 +55,13 @@ Function un.VerifyGameFiles
     Abort
 FunctionEnd
 
+Function SetSubtitles
+  ReadEnvStr $0 "APPDATA"
+  StrCpy $1 "$0\${SETTINGS_REL}"
+  CreateDirectory "$0\LucasArts\Monkey Island 2 Special Edition"
+  WriteIniStr "$1" "audio" "subtitles" "1"
+  DetailPrint "Settings.ini updated: [audio] subtitles=1"
+FunctionEnd
 Section "Hebrew translation" SecTranslation
   Call VerifyGameFiles
 
@@ -59,28 +70,23 @@ Section "Hebrew translation" SecTranslation
 
   DetailPrint "Installing Hebrew resource folders..."
   SetOutPath "$INSTDIR\fonts"
-  File /r "C:\GOG Games\Monkey Island 2 SE\fonts\*.*"
+  File /r "${SRC_HEB}\fonts\*.*"
 
   SetOutPath "$INSTDIR\localization"
-  File /r "C:\GOG Games\Monkey Island 2 SE\localization\*.*"
+  File /r "${SRC_HEB}\localization\*.*"
 
   SetOutPath "$INSTDIR\rooms"
-  File /r "C:\GOG Games\Monkey Island 2 SE\rooms\*.*"
+  File /r "${SRC_HEB}\rooms\*.*"
 
   SetOutPath "$INSTDIR\ui"
-  File /r "C:\GOG Games\Monkey Island 2 SE\ui\*.*"
+  File /r "${SRC_HEB}\ui\*.*"
 
   DetailPrint "Installing Hebrew loader binaries..."
   SetOutPath "$INSTDIR"
-  File "C:\GOG Games\Monkey Island 2 SE\HebrewReorderHook.dll"
-  File "C:\GOG Games\Monkey Island 2 SE\MI2HebrewLoader.exe"
+  File "${DLL_PATH}\version.dll"
 
-  ; Make sure the loader was actually copied. If it is missing it was almost
-  ; certainly locked/in-use because a previous MI2HebrewLoader.exe instance is
-  ; still running - surface a clear message instead of failing silently.
-  IfFileExists "$INSTDIR\MI2HebrewLoader.exe" loader_ok
-    MessageBox MB_ICONEXCLAMATION "MI2HebrewLoader.exe was not copied because it is currently in use.$\n$\nClose any running MI2HebrewLoader instance and re-run the installer to update it."
-  loader_ok:
+  DetailPrint "Setting game subtitles..."
+  Call SetSubtitles
 
   DetailPrint "Creating uninstaller..."
   WriteUninstaller "$INSTDIR\${UNINSTALLER_NAME}"
@@ -98,8 +104,7 @@ Section "Uninstall"
   RMDir /r "$INSTDIR\ui"
 
   DetailPrint "Removing Hebrew loader binaries..."
-  Delete "$INSTDIR\HebrewReorderHook.dll"
-  Delete "$INSTDIR\MI2HebrewLoader.exe"
+  Delete "$INSTDIR\version.dll"
 
   Delete "$INSTDIR\${UNINSTALLER_NAME}"
 SectionEnd
