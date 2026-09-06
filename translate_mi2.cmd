@@ -1,6 +1,6 @@
 @echo off
 setlocal EnableDelayedExpansion
-set "GAME_DIR=C:\GOG Games\Monkey Island 2 SE"
+set "GAME_DIR=C:\GOG Games\Monkey Island 2 SE_heb"
 set "FONT_SRC=%GAME_DIR%\quickbms\extracted_orig\fonts"
 set "LOCAL_DEST=%GAME_DIR%\localization"
 set "LOC_BACK=%GAME_DIR%\quickbms\extracted_orig\localization"

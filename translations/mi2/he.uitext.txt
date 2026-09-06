@@ -6,9 +6,9 @@ LEADERBOARDS
 ACHIEVEMENTS
 RETURN TO GAME LIBRARY
 PIRATE PERFORMANCE
-HOW TO PLAY
-CONTROLS
-VIDEO SETTINGS
+כיצד לשחק
+בקרי משחק
+הגדרות תצוגה
 CLASSIC EDITION CREDITS
 SPECIAL EDITION CREDITS
 MANUAL
@@ -58,7 +58,7 @@ CONTROLS
 MUSIC VOLUME
 SFX VOLUME
 DIALOG VOLUME
-DEVELOPER'S COMMENTARY
+הערות המפתחים
 לך אל
 תן
 פתח
@@ -949,7 +949,7 @@ Obscenity \n`&$*#!` \nסמלים השקולים למילים וביטויי תו
 סרטים \n`המדריך השלם לקולות של סרטים מצוירים`
 שפשופי ראש \n`איך לתת שפשופי ראש מעולים`
 הגדרות משחק
-AUDIO SETTINGS
+הגדרות שמע
 Monkey Island 2 Special Edition\nLeChuck's Revenge
 Part One: The Largo Embargo
 Part Two: Four Map Pieces
