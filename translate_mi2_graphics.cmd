@@ -8,7 +8,7 @@ python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__ui__mapsaveloadmenu__en_mapsaveloadmenu_bundle_pk_a00.png" --name en_mapsaveloadmenu_bundle_pk_a00 --chunks 0 --gzip --target "%DXT_TARGET_DIR%\mapsaveloadmenu"
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__ui__maphelpmenu__settings__en_mapbonusfeaturesmenu_bundle_pk_a00.png" --name en_mapbonusfeaturesmenu_bundle_pk_a00 --chunks 0 --gzip --target "%DXT_TARGET_DIR%\maphelpmenu\settings"
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__ui__mapconceptartmenu__en_mapconceptartmenu_bundle_pk_a01.png" --name en_mapconceptartmenu_bundle_pk_a01 --chunks 0 --gzip --target "%DXT_TARGET_DIR%\mapconceptartmenu"
-exit
+
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__ui__backgroundmapmenu__en_mapmainmenu_bundle_pk_a01.png" --name en_mapmainmenu_bundle_pk_a01 --chunks 0 --gzip --target "%DXT_TARGET_DIR%\backgroundmapmenu"
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__ui__backgroundmapmenu__en_mapmainmenu_bundle_pk_a00.png" --name en_mapmainmenu_bundle_pk_a00 --chunks 0 --gzip --target "%DXT_TARGET_DIR%\backgroundmapmenu"
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__ui__mapmainmenu__en__en_mapmainmenu_bundle_pk_a02.png" --name en_mapmainmenu_bundle_pk_a02 --chunks 0 --gzip --target "%DXT_TARGET_DIR%\mapmainmenu\en"
@@ -17,6 +17,8 @@ python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images
 
 set "DXT_TARGET_DIR=C:\GOG Games\Monkey Island 2 SE_Heb\rooms\images"
 python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__rooms__images__2_scabb-isl__layer1.png" --name layer1 --chunks 2 --gzip --target "%DXT_TARGET_DIR%\2_scabb-isl"
+python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__rooms__images__26_phatt-isl__layer1.png" --name layer1 --chunks 2 --gzip --target "%DXT_TARGET_DIR%\26_phatt-isl"
+python.exe .\scripts\image\create_dxt_files_mi2.py --input "%PNG_SRC_DIR%\images_mi2__en__rooms__images__45_booty-isl__layer1.png" --name layer1 --chunks 2 --gzip --target "%DXT_TARGET_DIR%\45_booty-isl"
 
 
 set "DXT_TARGET_DIR=C:\GOG Games\Monkey Island 2 SE_Heb\rooms\images
