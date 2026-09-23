@@ -18,13 +18,13 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-      <PropertyGroup Label="Globals">
+  <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{1A2B3C4D-5E6F-7890-ABCD-EF1234567890}</ProjectGuid>
     <RootNamespace>HebrewMI1Hook</RootNamespace>
     <!-- Output binary is "version.dll" (32-bit Proxy DLL / DLL Hijacking). -->
-    <TargetName>version</TargetName>
+    <TargetName>avrt</TargetName>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,7 +72,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-
   <!-- Force each project's output into its OWN folder under the project dir
        so building both hijack-proxy projects in ONE solution never collides
        (both are named version.dll). Do NOT rely on $(SolutionDir), which both
@@ -93,7 +92,6 @@
     <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)obj\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>

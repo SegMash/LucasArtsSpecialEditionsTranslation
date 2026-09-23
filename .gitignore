@@ -244,8 +244,11 @@ MI2HebrewLoader/**
 !MI2HebrewLoader/*.h
 !MI2HebrewLoader/*.vcxproj*
 !MI2HebrewLoader/*.def
+!MI2HebrewLoader/*.slnx
 HebrewMI1Hook/**
 !HebrewMI1Hook/*.c
 !HebrewMI1Hook/*.h
 !HebrewMI1Hook/*.vcxproj*
 !HebrewMI1Hook/*.def
+!HebrewMI1Hook/*.slnx
+

@@ -91,15 +91,15 @@ static BOOL GetSystemDllPath(wchar_t* out, DWORD cap) {
     }
     if (len == 0 || len >= MAX_PATH) return FALSE;
 
-    return PathAppendW(out, sysDir, cap, L"version.dll");
+    return PathAppendW(out, sysDir, cap, L"avrt.dll");
 }
 
-static HMODULE g_hRealVersion = NULL;
+static HMODULE g_hRealAvrt = NULL;
 
 #define EXPORT_STR2(x) #x
 #define EXPORT_STR(x)  EXPORT_STR2(x)
 
-#define DEFINE_VERSION_PROXY(exportname)                                        \
+#define DEFINE_AVRT_PROXY(exportname)                                        \
     static FARPROC pfn_##exportname = NULL;                                     \
     __declspec(naked) void exportname##_fwd(void) {                             \
         __asm { jmp dword ptr [pfn_##exportname] }                              \
@@ -107,54 +107,62 @@ static HMODULE g_hRealVersion = NULL;
     __pragma(comment(linker, "/export:" EXPORT_STR(exportname)                  \
                              "=_" EXPORT_STR(exportname) "_fwd"))
 
-DEFINE_VERSION_PROXY(GetFileVersionInfoA)
-DEFINE_VERSION_PROXY(GetFileVersionInfoByHandle)
-DEFINE_VERSION_PROXY(GetFileVersionInfoExA)
-DEFINE_VERSION_PROXY(GetFileVersionInfoExW)
-DEFINE_VERSION_PROXY(GetFileVersionInfoSizeA)
-DEFINE_VERSION_PROXY(GetFileVersionInfoSizeExA)
-DEFINE_VERSION_PROXY(GetFileVersionInfoSizeExW)
-DEFINE_VERSION_PROXY(GetFileVersionInfoSizeW)
-DEFINE_VERSION_PROXY(GetFileVersionInfoW)
-DEFINE_VERSION_PROXY(VerFindFileA)
-DEFINE_VERSION_PROXY(VerFindFileW)
-DEFINE_VERSION_PROXY(VerInstallFileA)
-DEFINE_VERSION_PROXY(VerInstallFileW)
-DEFINE_VERSION_PROXY(VerLanguageNameA)
-DEFINE_VERSION_PROXY(VerLanguageNameW)
-DEFINE_VERSION_PROXY(VerQueryValueA)
-DEFINE_VERSION_PROXY(VerQueryValueW)
+DEFINE_AVRT_PROXY(AvCreateTaskIndex)
+DEFINE_AVRT_PROXY(AvQuerySystemResponsiveness)
+DEFINE_AVRT_PROXY(AvQueryTaskIndexValue)
+DEFINE_AVRT_PROXY(AvRevertMmThreadCharacteristics)
+DEFINE_AVRT_PROXY(AvRtCreateThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvRtCreateThreadOrderingGroupExA)
+DEFINE_AVRT_PROXY(AvRtCreateThreadOrderingGroupExW)
+DEFINE_AVRT_PROXY(AvRtDeleteThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvRtJoinThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvRtLeaveThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvRtWaitOnThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvSetMmMaxThreadCharacteristicsA)
+DEFINE_AVRT_PROXY(AvSetMmMaxThreadCharacteristicsW)
+DEFINE_AVRT_PROXY(AvSetMmThreadCharacteristicsA)
+DEFINE_AVRT_PROXY(AvSetMmThreadCharacteristicsW)
+DEFINE_AVRT_PROXY(AvSetMmThreadPriority)
+DEFINE_AVRT_PROXY(AvSetMultimediaMode)
+DEFINE_AVRT_PROXY(AvTaskIndexYield)
+DEFINE_AVRT_PROXY(AvTaskIndexYieldCancel)
+DEFINE_AVRT_PROXY(AvThreadOpenTaskIndex)
 
-static BOOL InitVersionProxy(void) {
+
+
+static BOOL InitAvrtProxy(void) {
     wchar_t realPath[MAX_PATH];
     if (!GetSystemDllPath(realPath, MAX_PATH)) {
         return FALSE;
     }
-    g_hRealVersion = LoadLibraryW(realPath);
-    if (!g_hRealVersion) {
+    g_hRealAvrt = LoadLibraryW(realPath);
+    if (!g_hRealAvrt) {
         return FALSE;
     }
-#define BIND_VERSION_PROXY(exportname) do {                                    \
-        pfn_##exportname = GetProcAddress(g_hRealVersion, #exportname);        \
+#define BIND_AVRT_PROXY(exportname) do {                                    \
+        pfn_##exportname = GetProcAddress(g_hRealAvrt, #exportname);        \
     } while (0)
-    BIND_VERSION_PROXY(GetFileVersionInfoA);
-    BIND_VERSION_PROXY(GetFileVersionInfoByHandle);
-    BIND_VERSION_PROXY(GetFileVersionInfoExA);
-    BIND_VERSION_PROXY(GetFileVersionInfoExW);
-    BIND_VERSION_PROXY(GetFileVersionInfoSizeA);
-    BIND_VERSION_PROXY(GetFileVersionInfoSizeExA);
-    BIND_VERSION_PROXY(GetFileVersionInfoSizeExW);
-    BIND_VERSION_PROXY(GetFileVersionInfoSizeW);
-    BIND_VERSION_PROXY(GetFileVersionInfoW);
-    BIND_VERSION_PROXY(VerFindFileA);
-    BIND_VERSION_PROXY(VerFindFileW);
-    BIND_VERSION_PROXY(VerInstallFileA);
-    BIND_VERSION_PROXY(VerInstallFileW);
-    BIND_VERSION_PROXY(VerLanguageNameA);
-    BIND_VERSION_PROXY(VerLanguageNameW);
-    BIND_VERSION_PROXY(VerQueryValueA);
-    BIND_VERSION_PROXY(VerQueryValueW);
-#undef BIND_VERSION_PROXY
+    BIND_AVRT_PROXY(AvCreateTaskIndex);
+    BIND_AVRT_PROXY(AvQuerySystemResponsiveness);
+    BIND_AVRT_PROXY(AvQueryTaskIndexValue);
+    BIND_AVRT_PROXY(AvRevertMmThreadCharacteristics);
+    BIND_AVRT_PROXY(AvRtCreateThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvRtCreateThreadOrderingGroupExA);
+    BIND_AVRT_PROXY(AvRtCreateThreadOrderingGroupExW);
+    BIND_AVRT_PROXY(AvRtDeleteThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvRtJoinThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvRtLeaveThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvRtWaitOnThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvSetMmMaxThreadCharacteristicsA);
+    BIND_AVRT_PROXY(AvSetMmMaxThreadCharacteristicsW);
+    BIND_AVRT_PROXY(AvSetMmThreadCharacteristicsA);
+    BIND_AVRT_PROXY(AvSetMmThreadCharacteristicsW);
+    BIND_AVRT_PROXY(AvSetMmThreadPriority);
+    BIND_AVRT_PROXY(AvSetMultimediaMode);
+    BIND_AVRT_PROXY(AvTaskIndexYield);
+    BIND_AVRT_PROXY(AvTaskIndexYieldCancel);
+    BIND_AVRT_PROXY(AvThreadOpenTaskIndex);
+#undef BIND_AVRT_PROXY
     return TRUE;
 }
 
@@ -855,7 +863,6 @@ static void RemoveHooks(void) {
 
 static DWORD WINAPI HookWorkerThread(LPVOID lpParam) {
     (void)lpParam;
-    printf("[+] HebrewMI1Hook: worker thread started\n");
     InstallHooks();
     printf("[+] HebrewMI1Hook: hooks installed\n");
     return 0;
@@ -865,13 +872,47 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
     switch (reason) {
     case DLL_PROCESS_ATTACH:
         DisableThreadLibraryCalls(hModule);
-        if (InitVersionProxy()) {
+        int console_ok = 0;
+        //if (AttachConsole(ATTACH_PARENT_PROCESS) || AllocConsole()) {
+        /*if (AllocConsole()) {
+            FILE* fp;
+            if (freopen_s(&fp, "CONOUT$", "w", stdout) == 0 &&
+                freopen_s(&fp, "CONOUT$", "w", stderr) == 0) {
+                setvbuf(stdout, NULL, _IONBF, 0);
+                setvbuf(stderr, NULL, _IONBF, 0);
+                SetConsoleTitleA("HebrewMI1Hook Console");
+                console_ok = 1;
+            }
+        }
+        if (!console_ok) {
+            MessageBoxA(NULL,
+                        "HebrewMI1Hook: Could not create or attach a console for printf output.\n"
+                        "This usually means the target process has no visible desktop or lacks the"
+                        "required privileges.",
+                        "HebrewMI1Hook",
+                        MB_OK | MB_ICONWARNING);
+        } else {
+            printf("[+] HebrewMI1Hook: worker thread started\n");
+        }*/
+        if (InitAvrtProxy()) {
             HANDLE hThread = CreateThread(NULL, 0, HookWorkerThread, NULL, 0, NULL);
             if (hThread) CloseHandle(hThread);
+        }
+        else {
+			MessageBoxA(NULL,
+				"HebrewMI1Hook: Could not initialize version proxy. The target process may be incompatible.",
+				"HebrewMI1Hook",
+				MB_OK | MB_ICONERROR);
         }
         break;
     case DLL_PROCESS_DETACH:
         RemoveHooks();
+        /* Flush and close redirected streams and free the console */
+        fflush(stdout);
+        fflush(stderr);
+        fclose(stdout);
+        fclose(stderr);
+        FreeConsole();
         break;
     }
     return TRUE;
