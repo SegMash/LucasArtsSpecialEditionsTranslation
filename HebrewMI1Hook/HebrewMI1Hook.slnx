@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="HebrewMI1Hook.vcxproj" />
+  <Project Path="HebrewMI1Hook.vcxproj" Id="1a2b3c4d-5e6f-7890-abcd-ef1234567890" />
 </Solution>

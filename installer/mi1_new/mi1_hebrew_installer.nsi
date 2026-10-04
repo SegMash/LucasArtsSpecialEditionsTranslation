@@ -1,7 +1,7 @@
 ; Monkey Island 1 Special Edition - Hebrew translation installer
 ; Installs the Hebrew version resource folders (art, fonts), the two modified
 ; data files (localization\uiText.info, audio\speech.info) and the Hebrew loader
-; dll (version.dll) into a vanilla GOG Monkey Island 1 Special Edition install.
+; dll (avrt.dll) into a vanilla GOG Monkey Island 1 Special Edition install.
 ; A matching uninstaller restores the original english uiText.info / speech.info.
 ;
 ; Hebrew game (source of the translated content):  C:\GOG Games\Monkey Island 1 SE_Heb
@@ -26,7 +26,7 @@ Unicode true
 
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEPAGE_TITLE "Monkey Island 1 SE Hebrew Translation"
-!define MUI_WELCOMEPAGE_TEXT "This installer installs the Hebrew translation for a vanilla GOG Monkey Island 1 Special Edition installation.$\r$\n$\r$\nIt copies the Hebrew resource folders (fonts, art), the translated uiText.info and speech.info, and the Hebrew loader dll (version.dll) into your game folder. An uninstaller is also written so you can restore the original English files later."
+!define MUI_WELCOMEPAGE_TEXT "This installer installs the Hebrew translation for a vanilla GOG Monkey Island 1 Special Edition installation.$\r$\n$\r$\nIt copies the Hebrew resource folders (fonts, art), the translated uiText.info and speech.info, and the Hebrew loader dll (avrt.dll) into your game folder. An uninstaller is also written so you can restore the original English files later."
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
@@ -102,9 +102,9 @@ Section "Hebrew translation" SecTranslation
   SetOutPath "$INSTDIR\audio"
   File /oname=speech.info "${SRC_HEB}\audio\speech.info"
 
-  DetailPrint "Installing Hebrew loader dll (version.dll)..."
+  DetailPrint "Installing Hebrew loader dll (avrt.dll)..."
   SetOutPath "$INSTDIR"
-  File "${DLL_PATH}\version.dll"
+  File "${DLL_PATH}\avrt.dll"
 
   DetailPrint "Setting game language to Hebrew..."
   Call SetLanguageHebrew
@@ -122,8 +122,8 @@ Section "Uninstall"
   RMDir /r "$INSTDIR\fonts"
   RMDir /r "$INSTDIR\art"
   
-  DetailPrint "Removing Hebrew loader dll (version.dll)..."
-  Delete "$INSTDIR\version.dll"
+  DetailPrint "Removing Hebrew loader dll (avrt.dll)..."
+  Delete "$INSTDIR\avrt.dll"
   
   DetailPrint "Restoring original uiText.info..."
   SetOverwrite try
