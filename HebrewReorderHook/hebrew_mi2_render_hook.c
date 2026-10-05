@@ -3,22 +3,22 @@
  * -----------------------------------------------------------------
  * 32-bit x86 Proxy DLL for Monkey Island 2: SE (Monkey2.exe).
  *
- * WHY A PROXY (version.dll) BUILD?
+ * WHY A PROXY (avrt.dll) BUILD?
  * --------------------------------
  * This project was originally built to "HebrewReorderHook.dll" and injected
- * manually.  This build instead compiles to "version.dll" and is dropped
+ * manually.  This build instead compiles to "avrt.dll" and is dropped
  * straight into the game's directory, so Windows auto-loads it the moment
  * the game starts (Proxy DLL / DLL Hijacking).  The game already imports the
- * system version.dll, and Windows searches the application directory for it
- * FIRST.  Because the DLL *looks* like the standard version-resource DLL and
- * forwards every real export to the actual system version.dll, there is no
+ * system avrt.dll, and Windows searches the application directory for it
+ * FIRST.  Because the DLL *looks* like the standard Avrt-resource DLL and
+ * forwards every real export to the actual system avrt.dll, there is no
  * CreateRemoteThread / WriteProcessMemory injection step to trigger an
  * antivirus alert.
  *
  * THE TWO RESPONSIBILITIES OF THIS DLL
- *   1. PROXY  - A faithful stand-in for the system version.dll.  Every
- *      version.dll export is a __declspec(naked) thunk that tail-JMPs into
- *      the real, dynamically loaded version.dll function (Dynamic Proxying,
+ *   1. PROXY  - A faithful stand-in for the system avrt.dll.  Every
+ *      avrt.dll export is a __declspec(naked) thunk that tail-JMPs into
+ *      the real, dynamically loaded avrt.dll function (Dynamic Proxying,
  *      NOT static #pragma comment(linker,...) forwarding).
  *   2. HOOK   - The Hebrew string-reversal machinery (memory scan, call-site
  *      redirect, format-string rewrites) runs on a worker thread started with
@@ -26,7 +26,7 @@
  *
  * DYNAMIC SYSTEM-DIR DETECTION
  * ----------------------------
- * The game is 32-bit but may run on 64-bit Windows.  The real version.dll
+ * The game is 32-bit but may run on 64-bit Windows.  The real avrt.dll
  * lives in:
  *       32-bit Windows  : C:\Windows\System32
  *       64-bit Windows  : C:\Windows\SysWOW64   (the 32-bit copy)
@@ -41,11 +41,11 @@
  * !!! VALUE YOU MUST VERIFY YOURSELF BEFORE TRUSTING THIS CODE !!!
  *   - DRAWSTRING_VA (0x004DBFA0) must be confirmed in YOUR Monkey2.exe build.
  *
- * Build (32-bit proxy, output "version.dll"):
+ * Build (32-bit proxy, output "avrt.dll"):
  *   Each proxy thunk is exported via a #pragma comment(linker, "/export:...")
- *   emitted right where the thunk is defined, using the exact version.dll
- *   export name.  Set the project Output (+ TargetName) to "version".
- *   Command line:  cl /LD hebrew_mi2_render_hook.c /Fe:version.dll
+ *   emitted right where the thunk is defined, using the exact avrt.dll
+ *   export name.  Set the project Output (+ TargetName) to "Avrt".
+ *   Command line:  cl /LD hebrew_mi2_render_hook.c /Fe:avrt.dll
  * -----------------------------------------------------------------
  */
 
@@ -80,11 +80,11 @@ static BOOL PathAppendW(wchar_t* out, const wchar_t* dir,
 }
 
 /*
- * Build the full path to the REAL system version.dll.
+ * Build the full path to the REAL system avrt.dll.
  * Returns TRUE and fills `out` (a `cap`-size buffer) on success.
  *
  * Because the game is 32-bit, on 64-bit Windows the 32-bit copy of
- * version.dll lives in the WOW64 redirection directory (SysWOW64).
+ * avrt.dll lives in the WOW64 redirection directory (SysWOW64).
  * GetSystemWow64Directory is resolved dynamically (it does not exist on
  * native 32-bit Windows); if it is unavailable or returns 0 we fall back to
  * GetSystemDirectory, which is correct for a genuinely 32-bit OS.
@@ -114,12 +114,12 @@ static BOOL GetSystemDllPath(wchar_t* out, DWORD cap) {
     }
     if (len == 0 || len >= MAX_PATH) return FALSE;
 
-    /* 3) sysDir\version.dll */
-    return PathAppendW(out, sysDir, cap, L"version.dll");
+    /* 3) sysDir\avrt.dll */
+    return PathAppendW(out, sysDir, cap, L"avrt.dll");
 }
 
-/* Handle to the real system version.dll. */
-static HMODULE g_hRealVersion = NULL;
+/* Handle to the real system avrt.dll. */
+static HMODULE g_hRealAvrt = NULL;
 
 /*
  * Macro: define one naked forwarder thunk plus its function-pointer slot.
@@ -127,21 +127,21 @@ static HMODULE g_hRealVersion = NULL;
  * Each thunk does `jmp dword ptr [slot]` - an absolute indirect jump through
  * the slot.  The caller's arguments are left untouched on the stack, so the
  * real (stdcall) function we land in handles them exactly as it would have
- * if the game had called the system version.dll directly.  This is the
+ * if the game had called the system avrt.dll directly.  This is the
  * canonical, cheap "forwarding" implementation and it is why no return-value
  * fix-up is ever required.
  */
 /*
  * NOTE on function naming:
  * -----------------------------------
- * The real export names (GetFileVersionInfoA, VerQueryValueW, ...) are also
+ * The real export names (GetFileAvrtInfoA, VerQueryValueW, ...) are also
  * declared in the Windows SDK header <winver.h>, which is pulled in through
  * <windows.h>.  If we named our C functions the same, we would get C2373
  * ("redefinition; different type modifiers") because our __declspec(naked)
  * void-returning thunks clash with the SDK's WINAPI (stdcall) BOOL-returning
  * prototypes.  We therefore give every internal thunk a `_fwd` suffix and
  * map it to the public export name with a /export linker directive
- * ("/export:GetFileVersionInfoA=_GetFileVersionInfoA_fwd", where the `_`
+ * ("/export:GetFileAvrtInfoA=_GetFileAvrtInfoA_fwd", where the `_`
  * prefix is the standard 32-bit cdecl name decoration).
  */
 /* Stringize helper needed to build the /export linker directive. */
@@ -150,7 +150,7 @@ static HMODULE g_hRealVersion = NULL;
 
 /*
  * Define one naked proxy thunk plus its function-pointer slot, and emit a
- * linker /export that publishes the PUBLIC version.dll name mapped onto the
+ * linker /export that publishes the PUBLIC avrt.dll name mapped onto the
  * internal `_X_fwd` symbol (leading underscore = 32-bit cdecl decoration).
  *
  * Why a /export linker directive instead of only the .def / __declspec(dllexport):
@@ -160,10 +160,10 @@ static HMODULE g_hRealVersion = NULL;
  *     /export directive here ROOTS the thunk (the directive references it)
  *     so it is always emitted, in every configuration and toolset.
  *   - The /export names our OWN thunk (not a statically-linked system
- *     function), so nothing is linked against version.lib and the dynamic
+ *     function), so nothing is linked against Avrt.lib and the dynamic
  *     proxying design is preserved.
  */
-#define DEFINE_VERSION_PROXY(exportname)                                        \
+#define DEFINE_AVRT_PROXY(exportname)                                        \
     static FARPROC pfn_##exportname = NULL;                                     \
     __declspec(naked) void exportname##_fwd(void) {                             \
         __asm { jmp dword ptr [pfn_##exportname] }                              \
@@ -171,67 +171,73 @@ static HMODULE g_hRealVersion = NULL;
     __pragma(comment(linker, "/export:" EXPORT_STR(exportname)                  \
                              "=_" EXPORT_STR(exportname) "_fwd"))
 
-/* Instantiate a thunk + slot + /export for every real version.dll export. */
-DEFINE_VERSION_PROXY(GetFileVersionInfoA)
-DEFINE_VERSION_PROXY(GetFileVersionInfoByHandle)
-DEFINE_VERSION_PROXY(GetFileVersionInfoExA)
-DEFINE_VERSION_PROXY(GetFileVersionInfoExW)
-DEFINE_VERSION_PROXY(GetFileVersionInfoSizeA)
-DEFINE_VERSION_PROXY(GetFileVersionInfoSizeExA)
-DEFINE_VERSION_PROXY(GetFileVersionInfoSizeExW)
-DEFINE_VERSION_PROXY(GetFileVersionInfoSizeW)
-DEFINE_VERSION_PROXY(GetFileVersionInfoW)
-DEFINE_VERSION_PROXY(VerFindFileA)
-DEFINE_VERSION_PROXY(VerFindFileW)
-DEFINE_VERSION_PROXY(VerInstallFileA)
-DEFINE_VERSION_PROXY(VerInstallFileW)
-DEFINE_VERSION_PROXY(VerLanguageNameA)
-DEFINE_VERSION_PROXY(VerLanguageNameW)
-DEFINE_VERSION_PROXY(VerQueryValueA)
-DEFINE_VERSION_PROXY(VerQueryValueW)
+/* Instantiate a thunk + slot + /export for every real avrt.dll export. */
+DEFINE_AVRT_PROXY(AvCreateTaskIndex)
+DEFINE_AVRT_PROXY(AvQuerySystemResponsiveness)
+DEFINE_AVRT_PROXY(AvQueryTaskIndexValue)
+DEFINE_AVRT_PROXY(AvRevertMmThreadCharacteristics)
+DEFINE_AVRT_PROXY(AvRtCreateThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvRtCreateThreadOrderingGroupExA)
+DEFINE_AVRT_PROXY(AvRtCreateThreadOrderingGroupExW)
+DEFINE_AVRT_PROXY(AvRtDeleteThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvRtJoinThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvRtLeaveThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvRtWaitOnThreadOrderingGroup)
+DEFINE_AVRT_PROXY(AvSetMmMaxThreadCharacteristicsA)
+DEFINE_AVRT_PROXY(AvSetMmMaxThreadCharacteristicsW)
+DEFINE_AVRT_PROXY(AvSetMmThreadCharacteristicsA)
+DEFINE_AVRT_PROXY(AvSetMmThreadCharacteristicsW)
+DEFINE_AVRT_PROXY(AvSetMmThreadPriority)
+DEFINE_AVRT_PROXY(AvSetMultimediaMode)
+DEFINE_AVRT_PROXY(AvTaskIndexYield)
+DEFINE_AVRT_PROXY(AvTaskIndexYieldCancel)
+DEFINE_AVRT_PROXY(AvThreadOpenTaskIndex)
 
 /*
  * Wire every forwarder slot to the matching exported function of the real
- * system version.dll.  This MUST run in DllMain synchronously so the proxy
+ * system avrt.dll.  This MUST run in DllMain synchronously so the proxy
  * is fully functional before the game can call any of these functions.
  * Returns FALSE if the real DLL could not be resolved (the proxy still
- * loads, but version-resource calls would have no backing function).
+ * loads, but Avrt-resource calls would have no backing function).
  */
-static BOOL InitVersionProxy(void) {
+static BOOL InitAvrtProxy(void) {
     wchar_t realPath[MAX_PATH];
     if (!GetSystemDllPath(realPath, MAX_PATH)) {
         return FALSE;
     }
 
-    g_hRealVersion = LoadLibraryW(realPath);
-    if (!g_hRealVersion) {
+    g_hRealAvrt = LoadLibraryW(realPath);
+    if (!g_hRealAvrt) {
         return FALSE;
     }
 
     /* Fetch and store each forwarded address. */
-#define BIND_VERSION_PROXY(exportname) do {                                    \
-        pfn_##exportname = GetProcAddress(g_hRealVersion, #exportname);        \
+#define BIND_AVRT_PROXY(exportname) do {                                    \
+        pfn_##exportname = GetProcAddress(g_hRealAvrt, #exportname);        \
     } while (0)
 
-    BIND_VERSION_PROXY(GetFileVersionInfoA);
-    BIND_VERSION_PROXY(GetFileVersionInfoByHandle);
-    BIND_VERSION_PROXY(GetFileVersionInfoExA);
-    BIND_VERSION_PROXY(GetFileVersionInfoExW);
-    BIND_VERSION_PROXY(GetFileVersionInfoSizeA);
-    BIND_VERSION_PROXY(GetFileVersionInfoSizeExA);
-    BIND_VERSION_PROXY(GetFileVersionInfoSizeExW);
-    BIND_VERSION_PROXY(GetFileVersionInfoSizeW);
-    BIND_VERSION_PROXY(GetFileVersionInfoW);
-    BIND_VERSION_PROXY(VerFindFileA);
-    BIND_VERSION_PROXY(VerFindFileW);
-    BIND_VERSION_PROXY(VerInstallFileA);
-    BIND_VERSION_PROXY(VerInstallFileW);
-    BIND_VERSION_PROXY(VerLanguageNameA);
-    BIND_VERSION_PROXY(VerLanguageNameW);
-    BIND_VERSION_PROXY(VerQueryValueA);
-    BIND_VERSION_PROXY(VerQueryValueW);
+    BIND_AVRT_PROXY(AvCreateTaskIndex);
+    BIND_AVRT_PROXY(AvQuerySystemResponsiveness);
+    BIND_AVRT_PROXY(AvQueryTaskIndexValue);
+    BIND_AVRT_PROXY(AvRevertMmThreadCharacteristics);
+    BIND_AVRT_PROXY(AvRtCreateThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvRtCreateThreadOrderingGroupExA);
+    BIND_AVRT_PROXY(AvRtCreateThreadOrderingGroupExW);
+    BIND_AVRT_PROXY(AvRtDeleteThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvRtJoinThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvRtLeaveThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvRtWaitOnThreadOrderingGroup);
+    BIND_AVRT_PROXY(AvSetMmMaxThreadCharacteristicsA);
+    BIND_AVRT_PROXY(AvSetMmMaxThreadCharacteristicsW);
+    BIND_AVRT_PROXY(AvSetMmThreadCharacteristicsA);
+    BIND_AVRT_PROXY(AvSetMmThreadCharacteristicsW);
+    BIND_AVRT_PROXY(AvSetMmThreadPriority);
+    BIND_AVRT_PROXY(AvSetMultimediaMode);
+    BIND_AVRT_PROXY(AvTaskIndexYield);
+    BIND_AVRT_PROXY(AvTaskIndexYieldCancel);
+    BIND_AVRT_PROXY(AvThreadOpenTaskIndex);
 
-#undef BIND_VERSION_PROXY
+#undef BIND_AVRT_PROXY
 
     return TRUE;
 }
@@ -950,8 +956,8 @@ static void RemoveHook(void) {
  * Worker thread started from DllMain.  All the expensive / potentially slow
  * work (EnumerateCallSites memory scan, VirtualProtect, format-swap writes)
  * is performed here so that DLL load never blocks the game while the OS
- * loader lock is held.  The proxy (InitVersionProxy) is already resolved, so
- * the game's version-resource calls keep working regardless.
+ * loader lock is held.  The proxy (InitAvrtProxy) is already resolved, so
+ * the game's Avrt-resource calls keep working regardless.
  */
 static DWORD WINAPI HookWorkerThread(LPVOID lpParam) {
     (void)lpParam;   /* unreferenced formal parameter */
@@ -981,8 +987,8 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
         //CreateDebugConsole();
 
         /* 1) Bring up the DYNAMIC PROXY synchronously so the game's very
-              first version-resource call is forwarded to the real DLL. */
-        if (InitVersionProxy()) {
+              first Avrt-resource call is forwarded to the real DLL. */
+        if (InitAvrtProxy()) {
             /* 2) Defer the Hebrew hook wiring to a worker thread so we
                   return from DllMain immediately.  The proxy above is
                   already fully functional, which is exactly what the OS
@@ -999,9 +1005,9 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD reason, LPVOID lpReserved) {
         RemoveHook();
         //FreeDebugConsole();
 
-        /* It is intentionally NOT safe to call FreeLibrary on g_hRealVersion
+        /* It is intentionally NOT safe to call FreeLibrary on g_hRealAvrt
            here: during process teardown the loader lock / shutdown order may
-           make it fragile, and version-resource calls can still be made until
+           make it fragile, and Avrt-resource calls can still be made until
            the very end.  Leaving the system DLL loaded is the conservative,
            crash-free choice for a proxy. */
         break;
